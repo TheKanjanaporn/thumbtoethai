@@ -23,7 +23,7 @@
             <h3><i class="fa-solid fa-lock"></i> Staff Lead Manager</h3>
             <div id="pinSection">
                 <p>Enter access code to view and export collected leads.</p>
-                <input type="password" id="staffPin" placeholder="Enter PIN (Default: 1234)">
+                <input type="password" id="staffPin" data-en="Enter PIN (Default: 1234)" data-th="กรอกรหัสผ่าน PIN (เริ่มต้น: 1234)" placeholder="Enter PIN (Default: 1234)">
                 <button onclick="verifyPin()" class="btn-primary">Verify Access</button>
                 <p id="pinError" class="error-msg" style="display:none;">Incorrect Access Code</p>
             </div>
@@ -59,12 +59,15 @@
                 duit <span class="logo-sub">THAILAND</span>
             </a>
             <nav class="nav-links" id="navLinks">
-                <a href="#about" class="nav-item">About Us</a>
-                <a href="#shop" class="nav-item">Shop</a>
-                <a href="#event" class="nav-item nav-highlight">Event Exclusive</a>
-                <a href="#contact" class="nav-item">Contact</a>
+                <a href="#about" class="nav-item" data-en="About Us" data-th="เกี่ยวกับเรา">About Us</a>
+                <a href="#shop" class="nav-item" data-en="Shop" data-th="สินค้าของเรา">Shop</a>
+                <a href="#event" class="nav-item nav-highlight" data-en="Event Exclusive" data-th="สิทธิพิเศษในงาน">Event Exclusive</a>
+                <a href="#contact" class="nav-item" data-en="Contact" data-th="ติดต่อเรา">Contact</a>
             </nav>
             <div class="nav-actions">
+                <button class="lang-switch-btn" onclick="toggleLanguage()" id="langBtn" aria-label="Switch Language">
+                    <i class="fa-solid fa-globe" style="margin-right: 4px;"></i> <span id="langBtnText">TH</span>
+                </button>
                 <button class="menu-btn" onclick="toggleMenu()" id="menuBtn" aria-label="Toggle Navigation Menu">
                     <i class="fa-solid fa-bars"></i>
                 </button>
@@ -82,30 +85,30 @@
             <div class="slide active">
                 <div class="slide-image" style="background-image: linear-gradient(rgba(44, 42, 41, 0.2), rgba(44, 42, 41, 0.4)), url('https://cdn.imweb.me/thumbnail/20250428/ddee63d251372.jpg');"></div>
                 <div class="slide-content">
-                    <span class="slide-badge">Hot Pick</span>
-                    <h2>duit yummy ball</h2>
-                    <p>your playful toy buddy, nose work master.</p>
-                    <a href="#shop" class="btn-outline-white" onclick="filterCategory('toys')">Explore Toys</a>
+                    <span class="slide-badge" data-en="Hot Pick" data-th="สินค้ายอดฮิต">Hot Pick</span>
+                    <h2 data-en="duit yummy ball" data-th="duit yummy ball">duit yummy ball</h2>
+                    <p data-en="your playful toy buddy, nose work master." data-th="ของเล่นสัตว์เลี้ยงแสนสนุก ฝึกดมกลิ่นและทักษะสมอง">your playful toy buddy, nose work master.</p>
+                    <a href="#shop" class="btn-outline-white" onclick="filterCategory('toys')" data-en="Explore Toys" data-th="เลือกชมของเล่น">Explore Toys</a>
                 </div>
             </div>
             <!-- Slide 2: Automatic Feeder -->
             <div class="slide">
                 <div class="slide-image" style="background-image: linear-gradient(rgba(44, 42, 41, 0.2), rgba(44, 42, 41, 0.4)), url('https://cdn.imweb.me/thumbnail/20240419/4d999960b611b.jpg');"></div>
                 <div class="slide-content">
-                    <span class="slide-badge">Smart Tech</span>
-                    <h2>duit automatic feeder</h2>
-                    <p>customizable smart feeder, never miss a meal.</p>
-                    <a href="#shop" class="btn-outline-white" onclick="filterCategory('appliances')">Explore Appliances</a>
+                    <span class="slide-badge" data-en="Smart Tech" data-th="อุปกรณ์อัจฉริยะ">Smart Tech</span>
+                    <h2 data-en="duit automatic feeder" data-th="เครื่องให้อาหารอัตโนมัติ duit">duit automatic feeder</h2>
+                    <p data-en="customizable smart feeder, never miss a meal." data-th="เครื่องให้อาหารอัจฉริยะ ตั้งเวลาได้ตามใจ หมดกังวลทุกมื้อ">customizable smart feeder, never miss a meal.</p>
+                    <a href="#shop" class="btn-outline-white" onclick="filterCategory('appliances')" data-en="Explore Appliances" data-th="เลือกชมอุปกรณ์">Explore Appliances</a>
                 </div>
             </div>
             <!-- Slide 3: Catthenon -->
             <div class="slide">
                 <div class="slide-image" style="background-image: linear-gradient(rgba(44, 42, 41, 0.2), rgba(44, 42, 41, 0.4)), url('https://cdn.imweb.me/thumbnail/20241216/f2f68e665eb7f.jpg');"></div>
                 <div class="slide-content">
-                    <span class="slide-badge">Luxury Furniture</span>
-                    <h2>duit catthenon</h2>
-                    <p>modular cat scratching tower, the kingdom of cats.</p>
-                    <a href="#shop" class="btn-outline-white" onclick="filterCategory('furniture')">Explore Furniture</a>
+                    <span class="slide-badge" data-en="Luxury Furniture" data-th="เฟอร์นิเจอร์สุดหรู">Luxury Furniture</span>
+                    <h2 data-en="duit catthenon" data-th="คอนโดแมวที่ลับเล็บ duit">duit catthenon</h2>
+                    <p data-en="modular cat scratching tower, the kingdom of cats." data-th="คอนโดแมวที่ลับเล็บสไตล์โมเดิร์น อาณาจักรของเจ้าเหมียว">modular cat scratching tower, the kingdom of cats.</p>
+                    <a href="#shop" class="btn-outline-white" onclick="filterCategory('furniture')" data-en="Explore Furniture" data-th="เลือกชมเฟอร์นิเจอร์">Explore Furniture</a>
                 </div>
             </div>
         </div>
@@ -128,24 +131,24 @@
         <div class="container">
             <div class="about-grid">
                 <div class="about-text-content">
-                    <span class="section-tag">Duit Design Lab</span>
-                    <h2 class="section-title">Harmonizing Pets & Modern Interiors</h2>
-                    <p class="about-lead">
+                    <span class="section-tag" data-en="Duit Design Lab" data-th="Duit Design Lab">Duit Design Lab</span>
+                    <h2 class="section-title" data-en="Harmonizing Pets & Modern Interiors" data-th="ความลงตัวระหว่างสัตว์เลี้ยงและบ้านสไตล์โมเดิร์น">Harmonizing Pets & Modern Interiors</h2>
+                    <p class="about-lead" data-en="DUIT believes that pet furniture shouldn't disrupt your home's aesthetic. Originating from South Korea, we design products that blend seamlessly into minimalist spaces, providing optimal ergonomics for cats while maintaining premium decor standards." data-th="DUIT เชื่อว่าเฟอร์นิเจอร์สัตว์เลี้ยงไม่จำเป็นต้องทำลายความสวยงามของบ้านคุณ แบรนด์พรีเมียมสัญชาติเกาหลีใต้ที่ออกแบบผลิตภัณฑ์ให้เข้ากับพื้นที่มินิมอลอย่างลงตัว สวยงามตามหลักสรีรศาสตร์สำหรับสัตว์เลี้ยง พร้อมคงระดับมาตรฐานการตกแต่งระดับหรู">
                         DUIT believes that pet furniture shouldn't disrupt your home's aesthetic. Originating from South Korea, we design products that blend seamlessly into minimalist spaces, providing optimal ergonomics for cats while maintaining premium decor standards.
                     </p>
                     <div class="features-mini">
                         <div class="feat-item">
                             <span class="feat-icon"><i class="fa-solid fa-leaf"></i></span>
                             <div>
-                                <h4>Premium Eco Materials</h4>
-                                <p>Non-toxic, organic felt, high-grade birch plywood, and safety-tested powder coating.</p>
+                                <h4 data-en="Premium Eco Materials" data-th="วัสดุรักษ์โลกพรีเมียม">Premium Eco Materials</h4>
+                                <p data-en="Non-toxic, organic felt, high-grade birch plywood, and safety-tested powder coating." data-th="สักหลาดออร์แกนิกไร้สารพิษ, ไม้อัดไม้เบิร์ชคุณภาพสูง และการเคลือบสีฝุ่นที่ปลอดภัยสำหรับสัตว์เลี้ยง">Non-toxic, organic felt, high-grade birch plywood, and safety-tested powder coating.</p>
                             </div>
                         </div>
                         <div class="feat-item">
                             <span class="feat-icon"><i class="fa-solid fa-hand-holding-heart"></i></span>
                             <div>
-                                <h4>Designed for Cats</h4>
-                                <p>Engineered based on feline behaviors—scratching, lounging, climbing, and sensory play.</p>
+                                <h4 data-en="Designed for Cats" data-th="ออกแบบมาเพื่อแมวโดยเฉพาะ">Designed for Cats</h4>
+                                <p data-en="Engineered based on feline behaviors—scratching, lounging, climbing, and sensory play." data-th="คิดค้นพัฒนาอิงจากพฤติกรรมตามธรรมชาติของแมว ทั้งการลับเล็บ พักผ่อน ปีนป่าย และกระตุ้นสัมผัส">Engineered based on feline behaviors—scratching, lounging, climbing, and sensory play.</p>
                             </div>
                         </div>
                     </div>
@@ -161,22 +164,22 @@
     <section class="section catalog-section" id="shop">
         <div class="container">
             <div class="catalog-header">
-                <span class="section-tag">DUIT Product Catalog</span>
-                <h2 class="section-title">Explore Our Collections</h2>
-                <p class="catalog-subtext">Click on any product to view full specifications, dimensions, and materials.</p>
+                <span class="section-tag" data-en="DUIT Product Catalog" data-th="แคตตาล็อกสินค้า DUIT">DUIT Product Catalog</span>
+                <h2 class="section-title" data-en="Explore Our Collections" data-th="เลือกชมคอลเลกชันสินค้า">Explore Our Collections</h2>
+                <p class="catalog-subtext" data-en="Click on any product to view full specifications, dimensions, and materials." data-th="คลิกบนตัวสินค้าเพื่อชมสเปกอย่างละเอียด ขนาด วัสดุ และราคาพิเศษ">Click on any product to view full specifications, dimensions, and materials.</p>
             </div>
 
             <!-- Search and Filter bar -->
             <div class="filter-bar">
                 <div class="category-tabs" id="categoryTabs">
-                    <button class="tab-btn active" onclick="filterCategory('all')">All</button>
-                    <button class="tab-btn" onclick="filterCategory('furniture')">Furniture</button>
-                    <button class="tab-btn" onclick="filterCategory('appliances')">Smart Appliances</button>
-                    <button class="tab-btn" onclick="filterCategory('toys')">Toys & Accessories</button>
+                    <button class="tab-btn active" onclick="filterCategory('all')" data-category="all" data-en="All" data-th="ทั้งหมด">All</button>
+                    <button class="tab-btn" onclick="filterCategory('furniture')" data-category="furniture" data-en="Furniture" data-th="เฟอร์นิเจอร์">Furniture</button>
+                    <button class="tab-btn" onclick="filterCategory('appliances')" data-category="appliances" data-en="Smart Appliances" data-th="อุปกรณ์อัจฉริยะ">Smart Appliances</button>
+                    <button class="tab-btn" onclick="filterCategory('toys')" data-category="toys" data-en="Toys & Accessories" data-th="ของเล่นและอุปกรณ์">Toys & Accessories</button>
                 </div>
                 <div class="search-box">
                     <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" id="searchInput" placeholder="Search products..." oninput="handleSearch()">
+                    <input type="text" id="searchInput" data-en="Search products..." data-th="ค้นหาสินค้า..." placeholder="Search products..." oninput="handleSearch()">
                 </div>
             </div>
 
@@ -194,24 +197,24 @@
                 <div class="event-glow"></div>
                 <div class="event-grid">
                     <div class="event-info">
-                        <span class="event-badge"><i class="fa-solid fa-gift"></i> Event Special</span>
-                        <h2>DUIT Event Exclusive Offer</h2>
-                        <p>Welcome to our showroom! Scan the QR Code at our booth to explore our products. Register below to receive an <strong>instant 10% discount coupon</strong> valid for any purchases made today!</p>
+                        <span class="event-badge" data-en="<i class='fa-solid fa-gift'></i> Event Special" data-th="<i class='fa-solid fa-gift'></i> สิทธิพิเศษในงาน"><i class="fa-solid fa-gift"></i> Event Special</span>
+                        <h2 data-en="DUIT Event Exclusive Offer" data-th="ข้อเสนอพิเศษเฉพาะงานนี้">DUIT Event Exclusive Offer</h2>
+                        <p data-en="Welcome to our showroom! Scan the QR Code at our booth to explore our products. Register below to receive an instant 10% discount coupon valid for any purchases made today!" data-th="ยินดีต้อนรับสู่โชว์รูมของเรา! เพียงสแกน QR Code ที่บูธเพื่อเลือกชมสินค้า ลงทะเบียนด้านล่างเพื่อรับคูปองส่วนลด 10% ทันที สำหรับซื้อสินค้าภายในงานวันนี้!">Welcome to our showroom! Scan the QR Code at our booth to explore our products. Register below to receive an instant 10% discount coupon valid for any purchases made today!</p>
                         
                         <div class="event-perks">
-                            <div class="perk"><i class="fa-solid fa-circle-check"></i> <span>10% OFF all items</span></div>
-                            <div class="perk"><i class="fa-solid fa-circle-check"></i> <span>Free Shipping in Thailand</span></div>
-                            <div class="perk"><i class="fa-solid fa-circle-check"></i> <span>DUIT Premium Gift Bag</span></div>
+                            <div class="perk"><i class="fa-solid fa-circle-check"></i> <span data-en="10% OFF all items" data-th="ลด 10% ทุกรายการสินค้า">10% OFF all items</span></div>
+                            <div class="perk"><i class="fa-solid fa-circle-check"></i> <span data-en="Free Shipping in Thailand" data-th="จัดส่งฟรีทั่วประเทศไทย">Free Shipping in Thailand</span></div>
+                            <div class="perk"><i class="fa-solid fa-circle-check"></i> <span data-en="DUIT Premium Gift Bag" data-th="รับฟรีถุงของขวัญสุดพรีเมียมจาก DUIT">DUIT Premium Gift Bag</span></div>
                         </div>
                     </div>
                     <div class="event-action-box">
                         <!-- Registration Form -->
                         <form id="couponForm" onsubmit="generateCoupon(event)">
-                            <h3>Claim Your 10% Discount</h3>
-                            <p class="form-subtext">Enter your details to generate your voucher.</p>
+                            <h3 data-en="Claim Your 10% Discount" data-th="รับคูปองส่วนลด 10%">Claim Your 10% Discount</h3>
+                            <p class="form-subtext" data-en="Enter your details to generate your voucher." data-th="กรอกข้อมูลของคุณเพื่อรับโค้ดส่วนลดพิเศษ">Enter your details to generate your voucher.</p>
                             
                             <div class="form-group">
-                                <label for="userName">Your Name</label>
+                                <label for="userName" data-en="Your Name" data-th="ชื่อ-นามสกุลของคุณ">Your Name</label>
                                 <div class="input-wrapper">
                                     <i class="fa-solid fa-user"></i>
                                     <input type="text" id="userName" required placeholder="John Doe">
@@ -219,7 +222,7 @@
                             </div>
                             
                             <div class="form-group">
-                                <label for="userPhone">Mobile Number</label>
+                                <label for="userPhone" data-en="Mobile Number" data-th="เบอร์โทรศัพท์มือถือ">Mobile Number</label>
                                 <div class="input-wrapper">
                                     <i class="fa-solid fa-phone"></i>
                                     <input type="tel" id="userPhone" required placeholder="081-234-5678">
@@ -227,7 +230,7 @@
                             </div>
                             
                             <div class="form-group">
-                                <label for="userLine">LINE ID</label>
+                                <label for="userLine" data-en="LINE ID" data-th="LINE ID">LINE ID</label>
                                 <div class="input-wrapper">
                                     <i class="fa-brands fa-line"></i>
                                     <input type="text" id="userLine" required placeholder="line_id">
@@ -235,7 +238,7 @@
                             </div>
 
                             <button type="submit" class="btn-submit">
-                                <span>Generate Discount Code</span> <i class="fa-solid fa-arrow-right-long"></i>
+                                <span data-en="Generate Discount Code" data-th="สร้างโค้ดคูปองส่วนลด">Generate Discount Code</span> <i class="fa-solid fa-arrow-right-long"></i>
                             </button>
                         </form>
 
@@ -243,14 +246,14 @@
                         <div id="couponResult" style="display: none;" class="coupon-voucher">
                             <div class="voucher-header">
                                 <h4>DUIT THAILAND</h4>
-                                <span class="voucher-badge">10% DISCOUNT</span>
+                                <span class="voucher-badge" data-en="10% DISCOUNT" data-th="ส่วนลด 10%">10% DISCOUNT</span>
                             </div>
                             <div class="voucher-body">
-                                <p class="voucher-label">CLAIMED BY</p>
+                                <p class="voucher-label" data-en="CLAIMED BY" data-th="ผู้รับสิทธิ์คูปอง">CLAIMED BY</p>
                                 <p class="voucher-value" id="voucherName">JOHN DOE</p>
                                 
                                 <div class="code-box">
-                                    <span class="code-label">PROMO CODE</span>
+                                    <span class="code-label" data-en="PROMO CODE" data-th="รหัสโปรโมชัน">PROMO CODE</span>
                                     <strong id="voucherCode">DUIT-EVENT-1234</strong>
                                     <button class="copy-code-btn" onclick="copyVoucherCode()" title="Copy Code">
                                         <i class="fa-regular fa-copy"></i>
@@ -259,15 +262,14 @@
                             </div>
                             <div class="voucher-footer">
                                 <div class="qr-placeholder">
-                                    <!-- A mock QR code image to look extremely official -->
                                     <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://line.me/R/ti/p/@duit_thailand" alt="DUIT Thailand LINE QR">
                                 </div>
                                 <div class="voucher-notes">
-                                    <p><strong>Scan QR or Add Line: @duit_thailand</strong></p>
-                                    <p>Show this screen to the staff at our checkout counter or send it to our Line official to redeem.</p>
+                                    <p><strong data-en="Scan QR or Add Line: @duit_thailand" data-th="สแกน QR หรือ แอดไลน์: @duit_thailand">Scan QR or Add Line: @duit_thailand</strong></p>
+                                    <p data-en="Show this screen to the staff at our checkout counter or send it to our Line official to redeem." data-th="แสดงหน้านี้ให้เจ้าหน้าที่ที่เคาน์เตอร์ชำระเงิน หรือส่งข้อความยืนยันทาง LINE OA เพื่อใช้สิทธิ์ส่วนลด">Show this screen to the staff at our checkout counter or send it to our Line official to redeem.</p>
                                 </div>
                             </div>
-                            <button onclick="resetCouponForm()" class="btn-secondary-outline">Get Another Code</button>
+                            <button onclick="resetCouponForm()" class="btn-secondary-outline" data-en="Get Another Code" data-th="รับรหัสเพิ่ม">Get Another Code</button>
                         </div>
                     </div>
                 </div>
@@ -291,7 +293,7 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <h3>duit <span>THAILAND</span></h3>
-                    <p>Minimalist premium pet furniture and appliances. Imported from South Korea, crafted with love for modern homes.</p>
+                    <p data-en="Minimalist premium pet furniture and appliances. Imported from South Korea, crafted with love for modern homes." data-th="เฟอร์นิเจอร์และอุปกรณ์สัตว์เลี้ยงระดับพรีเมียมสไตล์มินิมอล นำเข้าจากประเทศเกาหลีใต้ รังสรรค์ด้วยความรักเพื่อยกระดับบ้านสไตล์โมเดิร์น">Minimalist premium pet furniture and appliances. Imported from South Korea, crafted with love for modern homes.</p>
                     <div class="social-links">
                         <a href="https://line.me/R/ti/p/@duit_thailand" target="_blank" class="social-icon"><i class="fa-brands fa-line"></i></a>
                         <a href="#" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
@@ -300,17 +302,17 @@
                     </div>
                 </div>
                 <div class="footer-links">
-                    <h4>Quick Links</h4>
+                    <h4 data-en="Quick Links" data-th="ลิงก์ด่วน">Quick Links</h4>
                     <ul>
-                        <li><a href="#about">Our Story</a></li>
-                        <li><a href="#shop">All Products</a></li>
-                        <li><a href="#event">Event Offer</a></li>
-                        <li><a href="https://duitoverseas.com/" target="_blank">DUIT Global</a></li>
+                        <li><a href="#about" data-en="Our Story" data-th="เรื่องราวของเรา">Our Story</a></li>
+                        <li><a href="#shop" data-en="All Products" data-th="สินค้าทั้งหมด">All Products</a></li>
+                        <li><a href="#event" data-en="Event Offer" data-th="โปรโมชันในงาน">Event Offer</a></li>
+                        <li><a href="https://duitoverseas.com/" target="_blank" data-en="DUIT Global" data-th="DUIT ต่างประเทศ">DUIT Global</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
-                    <h4>Showroom Contact</h4>
-                    <p><i class="fa-solid fa-location-dot"></i> Bangkok Showroom, Thailand</p>
+                    <h4 data-en="Showroom Contact" data-th="ติดต่อโชว์รูม">Showroom Contact</h4>
+                    <p><i class="fa-solid fa-location-dot"></i> <span data-en="Bangkok Showroom, Thailand" data-th="โชว์รูมกรุงเทพฯ, ประเทศไทย">Bangkok Showroom, Thailand</span></p>
                     <p><i class="fa-solid fa-envelope"></i> contact@duitthailand.com</p>
                     <p><i class="fa-solid fa-phone"></i> +66 (0) 2-123-4567</p>
                     <p><i class="fa-brands fa-line"></i> LINE: @duit_thailand</p>
@@ -318,10 +320,10 @@
             </div>
             <hr class="footer-divider">
             <div class="footer-bottom">
-                <p>&copy; 2026 DUIT Thailand. All rights reserved.</p>
+                <p data-en="&copy; 2026 DUIT Thailand. All rights reserved." data-th="&copy; 2026 DUIT ประเทศไทย สงวนลิขสิทธิ์ทั้งหมด">&copy; 2026 DUIT Thailand. All rights reserved.</p>
                 <div class="staff-access">
                     <!-- Staff only portal link -->
-                    <button class="btn-staff-link" onclick="openStaffPortal()"><i class="fa-solid fa-cog"></i> Lead Manager</button>
+                    <button class="btn-staff-link" onclick="openStaffPortal()"><i class="fa-solid fa-cog"></i> <span data-en="Lead Manager" data-th="ระบบจัดการผู้ติดต่อ">Lead Manager</span></button>
                 </div>
             </div>
         </div>
