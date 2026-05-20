@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DUIT Thailand | Premium Minimalist Cat Furniture & Tech</title>
+    <!-- Meta Descriptions for SEO -->
+    <meta name="description" content="Discover DUIT Thailand's premium minimalist cat furniture, modular scratchers, and smart pet drying rooms. Scan to explore our exclusive event catalog.">
+    <!-- Google Fonts: Outfit (modern geometric sans-serif) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Staff Portal Backdrop and Modal -->
+    <div id="staffModal" class="modal-backdrop staff-modal" style="display: none;">
+        <div class="modal-container staff-container">
+            <button class="modal-close" onclick="closeStaffPortal()">&times;</button>
+            <h3><i class="fa-solid fa-lock"></i> Staff Lead Manager</h3>
+            <div id="pinSection">
+                <p>Enter access code to view and export collected leads.</p>
+                <input type="password" id="staffPin" placeholder="Enter PIN (Default: 1234)">
+                <button onclick="verifyPin()" class="btn-primary">Verify Access</button>
+                <p id="pinError" class="error-msg" style="display:none;">Incorrect Access Code</p>
+            </div>
+            <div id="leadsSection" style="display: none;">
+                <div class="leads-actions">
+                    <button onclick="exportLeads()" class="btn-success"><i class="fa-solid fa-file-csv"></i> Export to CSV</button>
+                    <button onclick="clearLeads()" class="btn-danger"><i class="fa-solid fa-trash-can"></i> Clear All</button>
+                </div>
+                <div class="leads-table-container">
+                    <table id="leadsTable">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Phone</th>
+                                <th>LINE ID</th>
+                                <th>Coupon</th>
+                                <th>Time</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leadsTableBody">
+                            <!-- Populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation Bar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                duit <span class="logo-sub">THAILAND</span>
+            </a>
+            <nav class="nav-links" id="navLinks">
+                <a href="#about" class="nav-item">About Us</a>
+                <a href="#shop" class="nav-item">Shop</a>
+                <a href="#event" class="nav-item nav-highlight">Event Exclusive</a>
+                <a href="#contact" class="nav-item">Contact</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="menu-btn" onclick="toggleMenu()" id="menuBtn" aria-label="Toggle Navigation Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Nav Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="toggleMenu()"></div>
+
+    <!-- Hero Showcase Slider -->
+    <section class="hero-slider" id="home">
+        <div class="slides-container" id="slidesContainer">
+            <!-- Slide 1: Yummy Ball -->
+            <div class="slide active">
+                <div class="slide-image" style="background-image: linear-gradient(rgba(44, 42, 41, 0.2), rgba(44, 42, 41, 0.4)), url('https://cdn.imweb.me/thumbnail/20250428/ddee63d251372.jpg');"></div>
+                <div class="slide-content">
+                    <span class="slide-badge">Hot Pick</span>
+                    <h2>duit yummy ball</h2>
+                    <p>your playful toy buddy, nose work master.</p>
+                    <a href="#shop" class="btn-outline-white" onclick="filterCategory('toys')">Explore Toys</a>
+                </div>
+            </div>
+            <!-- Slide 2: Automatic Feeder -->
+            <div class="slide">
+                <div class="slide-image" style="background-image: linear-gradient(rgba(44, 42, 41, 0.2), rgba(44, 42, 41, 0.4)), url('https://cdn.imweb.me/thumbnail/20240419/4d999960b611b.jpg');"></div>
+                <div class="slide-content">
+                    <span class="slide-badge">Smart Tech</span>
+                    <h2>duit automatic feeder</h2>
+                    <p>customizable smart feeder, never miss a meal.</p>
+                    <a href="#shop" class="btn-outline-white" onclick="filterCategory('appliances')">Explore Appliances</a>
+                </div>
+            </div>
+            <!-- Slide 3: Catthenon -->
+            <div class="slide">
+                <div class="slide-image" style="background-image: linear-gradient(rgba(44, 42, 41, 0.2), rgba(44, 42, 41, 0.4)), url('https://cdn.imweb.me/thumbnail/20241216/f2f68e665eb7f.jpg');"></div>
+                <div class="slide-content">
+                    <span class="slide-badge">Luxury Furniture</span>
+                    <h2>duit catthenon</h2>
+                    <p>modular cat scratching tower, the kingdom of cats.</p>
+                    <a href="#shop" class="btn-outline-white" onclick="filterCategory('furniture')">Explore Furniture</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slider Controls -->
+        <button class="slider-arrow prev" onclick="prevSlide()" aria-label="Previous Slide">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button class="slider-arrow next" onclick="nextSlide()" aria-label="Next Slide">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+
+        <div class="slider-dots" id="sliderDots">
+            <!-- Dots generated dynamically -->
+        </div>
+    </section>
+
+    <!-- Brand Intro/Philosophy -->
+    <section class="section brand-about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text-content">
+                    <span class="section-tag">Duit Design Lab</span>
+                    <h2 class="section-title">Harmonizing Pets & Modern Interiors</h2>
+                    <p class="about-lead">
+                        DUIT believes that pet furniture shouldn't disrupt your home's aesthetic. Originating from South Korea, we design products that blend seamlessly into minimalist spaces, providing optimal ergonomics for cats while maintaining premium decor standards.
+                    </p>
+                    <div class="features-mini">
+                        <div class="feat-item">
+                            <span class="feat-icon"><i class="fa-solid fa-leaf"></i></span>
+                            <div>
+                                <h4>Premium Eco Materials</h4>
+                                <p>Non-toxic, organic felt, high-grade birch plywood, and safety-tested powder coating.</p>
+                            </div>
+                        </div>
+                        <div class="feat-item">
+                            <span class="feat-icon"><i class="fa-solid fa-hand-holding-heart"></i></span>
+                            <div>
+                                <h4>Designed for Cats</h4>
+                                <p>Engineered based on feline behaviors—scratching, lounging, climbing, and sensory play.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <img src="https://cdn.imweb.me/thumbnail/20241121/5295dc42418e9.jpg" alt="DUIT Interior Design Philosophy" class="about-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Catalog Section -->
+    <section class="section catalog-section" id="shop">
+        <div class="container">
+            <div class="catalog-header">
+                <span class="section-tag">DUIT Product Catalog</span>
+                <h2 class="section-title">Explore Our Collections</h2>
+                <p class="catalog-subtext">Click on any product to view full specifications, dimensions, and materials.</p>
+            </div>
+
+            <!-- Search and Filter bar -->
+            <div class="filter-bar">
+                <div class="category-tabs" id="categoryTabs">
+                    <button class="tab-btn active" onclick="filterCategory('all')">All</button>
+                    <button class="tab-btn" onclick="filterCategory('furniture')">Furniture</button>
+                    <button class="tab-btn" onclick="filterCategory('appliances')">Smart Appliances</button>
+                    <button class="tab-btn" onclick="filterCategory('toys')">Toys & Accessories</button>
+                </div>
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="searchInput" placeholder="Search products..." oninput="handleSearch()">
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="products-grid" id="productsGrid">
+                <!-- Products dynamically loaded by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Exclusive Interactive Coupon Section -->
+    <section class="section event-section" id="event">
+        <div class="container">
+            <div class="event-card">
+                <div class="event-glow"></div>
+                <div class="event-grid">
+                    <div class="event-info">
+                        <span class="event-badge"><i class="fa-solid fa-gift"></i> Event Special</span>
+                        <h2>DUIT Event Exclusive Offer</h2>
+                        <p>Welcome to our showroom! Scan the QR Code at our booth to explore our products. Register below to receive an <strong>instant 10% discount coupon</strong> valid for any purchases made today!</p>
+                        
+                        <div class="event-perks">
+                            <div class="perk"><i class="fa-solid fa-circle-check"></i> <span>10% OFF all items</span></div>
+                            <div class="perk"><i class="fa-solid fa-circle-check"></i> <span>Free Shipping in Thailand</span></div>
+                            <div class="perk"><i class="fa-solid fa-circle-check"></i> <span>DUIT Premium Gift Bag</span></div>
+                        </div>
+                    </div>
+                    <div class="event-action-box">
+                        <!-- Registration Form -->
+                        <form id="couponForm" onsubmit="generateCoupon(event)">
+                            <h3>Claim Your 10% Discount</h3>
+                            <p class="form-subtext">Enter your details to generate your voucher.</p>
+                            
+                            <div class="form-group">
+                                <label for="userName">Your Name</label>
+                                <div class="input-wrapper">
+                                    <i class="fa-solid fa-user"></i>
+                                    <input type="text" id="userName" required placeholder="John Doe">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="userPhone">Mobile Number</label>
+                                <div class="input-wrapper">
+                                    <i class="fa-solid fa-phone"></i>
+                                    <input type="tel" id="userPhone" required placeholder="081-234-5678">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="userLine">LINE ID</label>
+                                <div class="input-wrapper">
+                                    <i class="fa-brands fa-line"></i>
+                                    <input type="text" id="userLine" required placeholder="line_id">
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn-submit">
+                                <span>Generate Discount Code</span> <i class="fa-solid fa-arrow-right-long"></i>
+                            </button>
+                        </form>
+
+                        <!-- Generated Coupon Result (hidden by default) -->
+                        <div id="couponResult" style="display: none;" class="coupon-voucher">
+                            <div class="voucher-header">
+                                <h4>DUIT THAILAND</h4>
+                                <span class="voucher-badge">10% DISCOUNT</span>
+                            </div>
+                            <div class="voucher-body">
+                                <p class="voucher-label">CLAIMED BY</p>
+                                <p class="voucher-value" id="voucherName">JOHN DOE</p>
+                                
+                                <div class="code-box">
+                                    <span class="code-label">PROMO CODE</span>
+                                    <strong id="voucherCode">DUIT-EVENT-1234</strong>
+                                    <button class="copy-code-btn" onclick="copyVoucherCode()" title="Copy Code">
+                                        <i class="fa-regular fa-copy"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="voucher-footer">
+                                <div class="qr-placeholder">
+                                    <!-- A mock QR code image to look extremely official -->
+                                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://line.me/R/ti/p/@duit_thailand" alt="DUIT Thailand LINE QR">
+                                </div>
+                                <div class="voucher-notes">
+                                    <p><strong>Scan QR or Add Line: @duit_thailand</strong></p>
+                                    <p>Show this screen to the staff at our checkout counter or send it to our Line official to redeem.</p>
+                                </div>
+                            </div>
+                            <button onclick="resetCouponForm()" class="btn-secondary-outline">Get Another Code</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Detail Modal -->
+    <div id="productModal" class="modal-backdrop" style="display: none;">
+        <div class="modal-container">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div class="modal-grid" id="modalGridContent">
+                <!-- Loaded dynamically by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact & Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>duit <span>THAILAND</span></h3>
+                    <p>Minimalist premium pet furniture and appliances. Imported from South Korea, crafted with love for modern homes.</p>
+                    <div class="social-links">
+                        <a href="https://line.me/R/ti/p/@duit_thailand" target="_blank" class="social-icon"><i class="fa-brands fa-line"></i></a>
+                        <a href="#" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://duitoverseas.com/" target="_blank" class="social-icon"><i class="fa-solid fa-globe"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#about">Our Story</a></li>
+                        <li><a href="#shop">All Products</a></li>
+                        <li><a href="#event">Event Offer</a></li>
+                        <li><a href="https://duitoverseas.com/" target="_blank">DUIT Global</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Showroom Contact</h4>
+                    <p><i class="fa-solid fa-location-dot"></i> Bangkok Showroom, Thailand</p>
+                    <p><i class="fa-solid fa-envelope"></i> contact@duitthailand.com</p>
+                    <p><i class="fa-solid fa-phone"></i> +66 (0) 2-123-4567</p>
+                    <p><i class="fa-brands fa-line"></i> LINE: @duit_thailand</p>
+                </div>
+            </div>
+            <hr class="footer-divider">
+            <div class="footer-bottom">
+                <p>&copy; 2026 DUIT Thailand. All rights reserved.</p>
+                <div class="staff-access">
+                    <!-- Staff only portal link -->
+                    <button class="btn-staff-link" onclick="openStaffPortal()"><i class="fa-solid fa-cog"></i> Lead Manager</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <script src="app.js"></script>
+</body>
+</html>
