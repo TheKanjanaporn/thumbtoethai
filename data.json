@@ -1,0 +1,900 @@
+{
+    "products": [
+        {
+            "id": "table_plus",
+            "category": "appliances",
+            "title": {
+                "th": "The Table+",
+                "en": "The Table+"
+            },
+            "subtitle": {
+                "th": "เครื่องให้อาหารมินิมอลสไตล์",
+                "en": "Minimalist Smart Feeder"
+            },
+            "badge": {
+                "th": "เทคโนโลยีอัจฉริยะ",
+                "en": "Smart Tech"
+            },
+            "price": "7,490",
+            "image": "data:image/jpeg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAAA8AAD/4QN/aHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA5LjEtYzAwMSA3OS5hOGQ0NzUzNDksIDIwMjMvMDMvMjMtMTM6MDU6NDUgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9InhtcC5kaWQ6OTgzYTI0MDItM2E2Ni1iOTRlLWFjNTktZDlmODUwMmRjNDI4IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkU3RDEyNzA3MTc1MDExRUVCQjgxREZEMUUwOEJGREEwIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkU3RDEyNzA2MTc1MDExRUVCQjgxREZEMUUwOEJGREEwIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCAyNC42IChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjk4M2EyNDAyLTNhNjYtYjk0ZS1hYzU5LWQ5Zjg1MDJkYzQyOCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5ODNhMjQwMi0zYTY2LWI5NGUtYWM1OS1kOWY4NTAyZGM0MjgiLz4gPC9yZGY6RGVzY3JpcHRpb24+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AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//2Q==",
+            "description": {
+                "th": "เครื่องให้อาหารอัตโนมัติสไตล์มินิมอล เชื่อมต่อแอพได้ วัสดุพลาสติกเกรดเดียวกับขวดนมเด็ก",
+                "en": "Minimalist smart automatic feeder. Connects to app, made from food-grade plastic — same quality as baby bottles."
+            },
+            "features": {
+                "th": [
+                    "มินิมอล",
+                    "เชื่อมแอพได้",
+                    "วัสดุทำจากพลาสติกเกรดเดียวกับขวดนมเด็ก"
+                ],
+                "en": [
+                    "Minimalist design",
+                    "App connectivity",
+                    "Food-grade plastic (same as baby bottles)"
+                ]
+            }
+        },
+        {
+            "id": "daily_table",
+            "category": "appliances",
+            "title": {
+                "en": "Daily Table",
+                "th": "Daily Table"
+            },
+            "subtitle": {
+                "en": "Elevated Food Bowl Stand",
+                "th": "ชามอาหารมินิมอล"
+            },
+            "badge": {
+                "en": "Popular",
+                "th": "ยอดนิยม"
+            },
+            "price": "2,590",
+            "image": "assets/daily_table.png",
+            "description": {
+                "en": "Minimalist elevated food bowl stand. 100% washable, reduces neck strain while eating.",
+                "th": "ชามอาหารพร้อมขาตั้งสไตล์มินิมอล ทำความสะอาดได้ 100% ช่วยให้สัตว์เลี้ยงไม่ต้องก้มจนเกินไปขณะกินอาหาร"
+            },
+            "features": {
+                "en": [
+                    "100% washable",
+                    "Elevated bowl stand with legs",
+                    "Reduces neck strain while eating"
+                ],
+                "th": [
+                    "สามารถทำความสะอาดได้ 100%",
+                    "ชามอาหารพร้อมขาตั้ง",
+                    "ช่วยให้สัตว์เลี้ยงไม่ต้องก้มจนเกินไปขณะกินอาหาร"
+                ]
+            }
+        },
+        {
+            "id": "wave_pot",
+            "category": "appliances",
+            "title": {
+                "en": "Wave Pot",
+                "th": "Wave Pot"
+            },
+            "subtitle": {
+                "en": "Ceramic Water Fountain",
+                "th": "น้ำพุพร้อมระบบกรองน้ำชั้นเลิศ"
+            },
+            "badge": {
+                "en": "New",
+                "th": "ใหม่"
+            },
+            "price": "2,790",
+            "image": "assets/wave_pot.png",
+            "description": {
+                "en": "Premium ceramic water fountain with filtration. Wave-like flow encourages cats to drink more water. Silent operation.",
+                "th": "น้ำพุเซรามิกพร้อมระบบกรองน้ำชั้นเลิศ การไหลของน้ำเหมือนคลื่นช่วยกระตุ้นการดื่มน้ำ ไม่มีเสียงรบกวน"
+            },
+            "features": {
+                "en": [
+                    "Made from ceramic material",
+                    "Wave-like water flow",
+                    "Encourages hydration",
+                    "Silent operation",
+                    "Easy assembly within minutes"
+                ],
+                "th": [
+                    "ตัววัสดุผลิตจากเซรามิก",
+                    "การไหลของน้ำเหมือนคลื่น",
+                    "ช่วยกระตุ้นการกินน้ำ",
+                    "ไม่มีเสียงดังรบกวน",
+                    "ประกอบง่ายภายในไม่กี่นาที"
+                ]
+            }
+        },
+        {
+            "id": "water_pot",
+            "category": "appliances",
+            "title": {
+                "en": "Water Pot",
+                "th": "Water Pot"
+            },
+            "subtitle": {
+                "en": "Premium Water Fountain",
+                "th": "น้ำพุระบบกรองน้ำชั้นเลิศ"
+            },
+            "badge": {
+                "en": "Premium",
+                "th": "พรีเมียม"
+            },
+            "price": "4,390",
+            "image": "assets/water_pot.png",
+            "description": {
+                "en": "Advanced water fountain with human-grade filtration. Easy to disassemble and clean. Completely silent.",
+                "th": "น้ำพุพร้อมระบบกรองน้ำเกรดเดียวกับคนดื่ม สามารถถอดทำความสะอาดได้ง่าย ไม่มีเสียงดังรบกวน"
+            },
+            "features": {
+                "en": [
+                    "Human-grade water filtration",
+                    "Easy disassembly for cleaning",
+                    "Silent motor"
+                ],
+                "th": [
+                    "มาพร้อมระบบกรองน้ำเกรดเดียวกับคนดื่ม",
+                    "สามารถถอดทำความสะอาดได้",
+                    "ไม่มีเสียงดังรบกวน"
+                ]
+            }
+        },
+        {
+            "id": "mouse_bot",
+            "category": "appliances",
+            "title": {
+                "en": "Mouse Bot",
+                "th": "Mouse Bot"
+            },
+            "subtitle": {
+                "en": "Interactive AI Cat Toy",
+                "th": "ของเล่นแมวเลียนแบบอัตโนมัติ"
+            },
+            "badge": {
+                "en": "Smart",
+                "th": "อัจฉริยะ"
+            },
+            "price": "1,490",
+            "image": "assets/mouse_bot.jpg",
+            "description": {
+                "en": "Smart interactive cat toy that mimics mouse movement. Auto-switches modes, stops automatically when not in use.",
+                "th": "ของเล่นแมวอัจฉริยะเลียนแบบการเคลื่อนที่ของหนู ปรับโหมดได้ หยุดอัตโนมัติเมื่อแมวไม่ได้เล่น"
+            },
+            "features": {
+                "en": [
+                    "Adjustable movement modes",
+                    "No remote control needed",
+                    "Auto-stops when cat isn't playing"
+                ],
+                "th": [
+                    "สามารถปรับเปลี่ยนโหมดได้",
+                    "ไม่ต้องคอยบังคับ",
+                    "หากไม่ได้เล่นด้วย Mouse Bot จะหยุดอัตโนมัติ"
+                ]
+            }
+        },
+        {
+            "id": "poopoo_2way",
+            "category": "appliances",
+            "title": {
+                "en": "Poo Poo Box 2-Way",
+                "th": "Poo Poo Box 2-Way"
+            },
+            "subtitle": {
+                "en": "Dual-Entry Litter Box",
+                "th": "ห้องน้ำแมวแบบเข้าได้สองทาง"
+            },
+            "badge": {
+                "en": "Best Seller",
+                "th": "ขายดี"
+            },
+            "price": "2,990",
+            "image": "assets/poopoo_2way.png",
+            "description": {
+                "en": "Dual-entry litter box — enter from top or side. Excellent odor control while in use. Easy to clean.",
+                "th": "ห้องน้ำแมวเข้าได้สองทาง เก็บกลิ่นได้ดีขณะที่สัตว์เลี้ยงใช้งาน ทำความสะอาดง่าย"
+            },
+            "features": {
+                "en": [
+                    "Dual-entry (top & side)",
+                    "Excellent odor control during use",
+                    "Easy to clean"
+                ],
+                "th": [
+                    "ห้องน้ำที่เข้าได้อย่างดีออกดี",
+                    "สามารถเข้าได้สองทาง",
+                    "เก็บกลิ่นได้ดีขณะที่สัตว์เลี้ยงใช้งาน"
+                ]
+            }
+        },
+        {
+            "id": "poopoo_cube",
+            "category": "appliances",
+            "title": {
+                "en": "Poo Poo Box (CUBE)",
+                "th": "Poo Poo Box (CUBE)"
+            },
+            "subtitle": {
+                "en": "Large Cube Litter Box",
+                "th": "ห้องน้ำแมวขนาดใหญ่กว่าเดิม"
+            },
+            "badge": {
+                "en": "Spacious",
+                "th": "กว้างขวาง"
+            },
+            "price": "2,990",
+            "image": "assets/poopoo_cube.png",
+            "description": {
+                "en": "Large cube-shaped litter box. Easy to clean with no odor or bacteria buildup.",
+                "th": "ห้องน้ำแมวรูปทรงลูกบาศก์ขนาดใหญ่ ทำความสะอาดง่าย ไม่สะสมกลิ่นและแบคทีเรีย"
+            },
+            "features": {
+                "en": [
+                    "Extra large size",
+                    "Easy to clean",
+                    "No odor or bacteria buildup"
+                ],
+                "th": [
+                    "มีขนาดใหญ่",
+                    "ทำความสะอาดง่าย",
+                    "ไม่สะสมกลิ่นและแบคทีเรีย"
+                ]
+            }
+        },
+        {
+            "id": "poopoo_long",
+            "category": "appliances",
+            "title": {
+                "en": "Poo Poo Box (LONG)",
+                "th": "Poo Poo Box (LONG)"
+            },
+            "subtitle": {
+                "en": "XL Long Litter Box",
+                "th": "ห้องน้ำแมวขนาดใหญ่พิเศษ"
+            },
+            "badge": {
+                "en": "XL Size",
+                "th": "ไซส์ XL"
+            },
+            "price": "3,490",
+            "image": "assets/poopoo_long.png",
+            "description": {
+                "en": "Extra-large long litter box specially sized for bigger cats.",
+                "th": "ห้องน้ำแมวยาวขนาดใหญ่พิเศษ เหมาะสำหรับแมวตัวใหญ่"
+            },
+            "features": {
+                "en": [
+                    "Extra large special size",
+                    "Easy to clean",
+                    "No odor or bacteria"
+                ],
+                "th": [
+                    "ห้องน้ำที่มีขนาดใหญ่พิเศษ",
+                    "ทำความสะอาดง่าย",
+                    "ไม่สะสมกลิ่นและแบคทีเรีย"
+                ]
+            }
+        },
+        {
+            "id": "peek_a_poo",
+            "category": "appliances",
+            "title": {
+                "en": "Peek a Poo",
+                "th": "Peek a Poo"
+            },
+            "subtitle": {
+                "en": "Top-Entry Litter Box",
+                "th": "ห้องน้ำสำหรับมองจากบน"
+            },
+            "badge": {
+                "en": "Odor Free",
+                "th": "ไร้กลิ่น"
+            },
+            "price": "2,390",
+            "image": "assets/peek_a_poo.png",
+            "description": {
+                "en": "Top-entry litter box. Easy to clean, dual handles, non-stick surface gentle on paws.",
+                "th": "ห้องน้ำแบบเปิดจากบน ทำความสะอาดง่าย มีที่จับสองด้าน พื้นผิวนุ่ม"
+            },
+            "features": {
+                "en": [
+                    "Easy to clean",
+                    "Dual handles for easy lifting",
+                    "Non-stick surface gentle on paws"
+                ],
+                "th": [
+                    "ทำความสะอาดง่าย",
+                    "มีที่จับสองด้านทำให้ยกได้ง่าย",
+                    "พื้นผิวนุ่มไม่ทำให้เล็บสัตว์เลี้ยงติด"
+                ]
+            }
+        },
+        {
+            "id": "standing_board",
+            "category": "furniture",
+            "title": {
+                "en": "Standing Board",
+                "th": "Standing Board"
+            },
+            "subtitle": {
+                "en": "Vertical Scratch Board",
+                "th": "กระดานสำหรับลับเล็บ"
+            },
+            "badge": {
+                "en": "Durable",
+                "th": "ทนทาน"
+            },
+            "price": "2,390",
+            "image": "assets/standing_board.png",
+            "description": {
+                "en": "Durable vertical scratch board. Helps cats fully stretch their body. No cardboard dust.",
+                "th": "กระดานลับเล็บแบบตั้ง วัสดุแข็งแรงทนทาน ช่วยให้น้องแมวยืดตัวได้สุด"
+            },
+            "features": {
+                "en": [
+                    "Strong and durable material",
+                    "Helps cats stretch fully",
+                    "No cardboard dust or mess"
+                ],
+                "th": [
+                    "วัสดุแข็งแรงทนทาน ใช้ได้นาน",
+                    "ช่วยให้น้องแมวยืดตัวได้สุด",
+                    "ไม่มีเศษกระดาษหลุดเลอะเกอะ"
+                ]
+            }
+        },
+        {
+            "id": "run_run_mat",
+            "category": "furniture",
+            "title": {
+                "en": "Run Run Mat (M/L)",
+                "th": "Run Run Mat (M/L)"
+            },
+            "subtitle": {
+                "en": "Anti-slip Pet Mat",
+                "th": "พรมกันลื่น ดักใยผ้าพิเศษ"
+            },
+            "badge": {
+                "en": "M / L Size",
+                "th": "ไซส์ M / L"
+            },
+            "price": "3,690 / 4,390",
+            "image": "assets/run_run_mat.png",
+            "description": {
+                "en": "Special fiber anti-slip pet mat. Waterproof & easy to clean.",
+                "th": "พรมกันลื่นดักใยผ้าพิเศษ กันน้ำและทำความสะอาดง่าย"
+            },
+            "features": {
+                "en": [
+                    "Waterproof & easy to clean",
+                    "Claw-friendly anti-slip material",
+                    "5mm cushion reduces noise"
+                ],
+                "th": [
+                    "กันน้ำและทำความสะอาดง่าย",
+                    "กันลื่น เหมาะสำหรับกรงเล็บ",
+                    "เบาะกันกระแทก 5 มม. ลดเสียงรบกวน"
+                ]
+            }
+        },
+        {
+            "id": "all_day_basket",
+            "category": "furniture",
+            "title": {
+                "en": "All Day Basket",
+                "th": "All Day Basket"
+            },
+            "subtitle": {
+                "en": "Large Cat Basket",
+                "th": "คลอดแมวขนาดใหญ่"
+            },
+            "badge": {
+                "en": "Cozy",
+                "th": "อบอุ่น"
+            },
+            "price": "2,990",
+            "image": "assets/all_day_basket.png",
+            "description": {
+                "en": "Large and spacious cat basket. Durable with thick premium material.",
+                "th": "ตะกร้าแมวขนาดใหญ่ ทนทาน ใช้วัสดุหนาคุณภาพสูง"
+            },
+            "features": {
+                "en": [
+                    "Large size",
+                    "Durable thick premium material"
+                ],
+                "th": [
+                    "มีขนาดใหญ่",
+                    "ทนทาน ใช้วัสดุลักษณะแบบหนาที่สุด"
+                ]
+            }
+        },
+        {
+            "id": "all_day_rack",
+            "category": "furniture",
+            "title": {
+                "en": "All Day Rack",
+                "th": "All Day Rack"
+            },
+            "subtitle": {
+                "en": "Multi-Purpose Cat Shelf",
+                "th": "ชั้นวางของแมว"
+            },
+            "badge": {
+                "en": "Versatile",
+                "th": "อเนกประสงค์"
+            },
+            "price": "4,890",
+            "image": "assets/all_day_rack.jpg",
+            "description": {
+                "en": "Multi-purpose cat shelf with strong steel frame. Easy assembly, fits any location.",
+                "th": "ชั้นวางของอเนกประสงค์ โครงเหล็กแข็งแรงและประกอบง่าย"
+            },
+            "features": {
+                "en": [
+                    "Multiple usage configurations",
+                    "Strong steel frame & easy assembly",
+                    "Fits any location"
+                ],
+                "th": [
+                    "ใช้งานได้หลายรูปแบบ",
+                    "โครงเหล็กแข็งแรงและประกอบง่าย",
+                    "เข้าได้กับทุกสถานที่"
+                ]
+            }
+        },
+        {
+            "id": "allday_board",
+            "category": "toys",
+            "title": {
+                "en": "All-day Board",
+                "th": "All-day Board"
+            },
+            "subtitle": {
+                "en": "Ergonomic Curved Scratcher",
+                "th": "แผ่นลับเล็บแมว"
+            },
+            "badge": {
+                "en": "Ergonomic",
+                "th": "เข้ากับสรีระ"
+            },
+            "price": "1,990",
+            "image": "assets/allday_board.png",
+            "description": {
+                "en": "Curved scratch board ergonomically designed for cats.",
+                "th": "แผ่นลับเล็บโค้งมนเข้ากับสรีระแมว ทำความสะอาดง่าย"
+            },
+            "features": {
+                "en": [
+                    "Ergonomic curve fits cat body",
+                    "Easy to clean",
+                    "Sturdy board, minimal cardboard dust"
+                ],
+                "th": [
+                    "โค้งมนเข้ากับสรีระแมว",
+                    "ทำความสะอาดง่าย",
+                    "กระดาษแข็ง ผงกระดาษน้อย"
+                ]
+            }
+        },
+        {
+            "id": "peanut_board",
+            "category": "toys",
+            "title": {
+                "en": "Peanut Board",
+                "th": "Peanut Board"
+            },
+            "subtitle": {
+                "en": "4-in-1 Multipurpose Scratcher",
+                "th": "บอร์ดลับเล็บแมว บำรุงสี่แขน"
+            },
+            "badge": {
+                "en": "4 in 1",
+                "th": "4 อิน 1"
+            },
+            "price": "2,490",
+            "image": "assets/peanut_board.png",
+            "description": {
+                "en": "4-in-1 multipurpose scratch board for sleeping and scratching.",
+                "th": "ที่ลับเล็บอเนกประสงค์ 4 in 1 ใช้ได้ทั้งนอนและลับเล็บ"
+            },
+            "features": {
+                "en": [
+                    "4-in-1 multipurpose design",
+                    "Use for sleeping & scratching",
+                    "No cardboard dust or mess"
+                ],
+                "th": [
+                    "ที่ลับเล็บอเนกประสงค์ 4 in 1",
+                    "ใช้ได้กับนอนและลับเล็บ",
+                    "ไม่มีเศษกระดาษหลุดเลอะเกอะ"
+                ]
+            }
+        },
+        {
+            "id": "antibug_light",
+            "category": "appliances",
+            "title": {
+                "en": "Anti-bug Light",
+                "th": "Anti-bug Light"
+            },
+            "subtitle": {
+                "en": "Natural Insect Repellent Light",
+                "th": "ไฟกันแมลง"
+            },
+            "badge": {
+                "en": "Natural",
+                "th": "ธรรมชาติ 100%"
+            },
+            "price": "1,090",
+            "image": "assets/antibug_light.png",
+            "description": {
+                "en": "Protects your pets from insects naturally. Made from 100% natural herbs.",
+                "th": "ป้องกันสัตว์เลี้ยงจากแมลง ใช้สมุนไพรธรรมชาติ 100%"
+            },
+            "features": {
+                "en": [
+                    "Protects pets from insects",
+                    "100% natural herbs",
+                    "Night flashing light for safe walking"
+                ],
+                "th": [
+                    "ป้องกันสัตว์เลี้ยงจากแมลงได้",
+                    "ใช้สมุนไพรธรรมชาติ 100%",
+                    "มีไฟกะพริบสำหรับการเดินตอนกลางคืน"
+                ]
+            }
+        },
+        {
+            "id": "car_seat",
+            "category": "furniture",
+            "title": {
+                "en": "Go Go Car Seat",
+                "th": "Go Go Car Seat"
+            },
+            "subtitle": {
+                "en": "Pet Car Travel Seat",
+                "th": "ที่นั่งในรถยนต์ สำหรับการเดินทาง"
+            },
+            "badge": {
+                "en": "Travel",
+                "th": "เดินทาง"
+            },
+            "price": "5,450",
+            "image": "assets/car_seat.png",
+            "description": {
+                "en": "Thick and durable pet car seat. Anti-bacterial material, 3-in-1 usage modes.",
+                "th": "ที่นั่งในรถยนต์สำหรับสัตว์เลี้ยง หนาและทนทาน วัสดุต้านเชื้อแบคทีเรีย"
+            },
+            "features": {
+                "en": [
+                    "Thick & durable — no tearing",
+                    "Anti-bacterial material",
+                    "3-in-1 usage modes"
+                ],
+                "th": [
+                    "หนาและทนทาน ไม่ฉีกขาด",
+                    "วัสดุต้านเชื้อแบคทีเรีย",
+                    "ใช้งานได้แบบ 3 in 1"
+                ]
+            }
+        },
+        {
+            "id": "silicone_mat",
+            "category": "toys",
+            "title": {
+                "en": "Silicone Mat",
+                "th": "Silicone Mat"
+            },
+            "subtitle": {
+                "en": "Food & Water Silicone Placemat",
+                "th": "แผ่นซิลิโคนรองอาหาร/น้ำ"
+            },
+            "badge": {
+                "en": "BPA Free",
+                "th": "ปลอด BPA"
+            },
+            "price": "790",
+            "image": "assets/silicone_mat.png",
+            "description": {
+                "en": "Anti-slip waterproof silicone placemat with 1cm raised edge. BPA-free.",
+                "th": "แผ่นซิลิโคนกันลื่นและกันน้ำ มีขอบสูง 1 ซม. วัสดุซิลิโคนปลอดสาร BPA"
+            },
+            "features": {
+                "en": [
+                    "Anti-slip & waterproof",
+                    "1cm raised edge prevents spills",
+                    "BPA-free silicone"
+                ],
+                "th": [
+                    "กันลื่นและกันน้ำ",
+                    "มีขอบสูง 1 ซม. ป้องกันของเหลวรั่วไหล",
+                    "วัสดุซิลิโคนปลอดสาร BPA"
+                ]
+            }
+        },
+        {
+            "id": "nonslip_mat",
+            "category": "toys",
+            "title": {
+                "en": "Non-slip Silicone Mat",
+                "th": "Non-slip Silicone Mat"
+            },
+            "subtitle": {
+                "en": "Safety Floor Mat for Pets",
+                "th": "แผ่นกันลื่นสำหรับน้องแมว"
+            },
+            "badge": {
+                "en": "Safety",
+                "th": "ปลอดภัย"
+            },
+            "price": "2,350",
+            "image": "assets/nonslip_mat.png",
+            "description": {
+                "en": "Premium non-slip silicone floor mat for pets. Waterproof with BPA-free silicone.",
+                "th": "แผ่นกันลื่นสำหรับน้องแมว กันลื่นและกันน้ำ วัสดุซิลิโคนปลอดภัย"
+            },
+            "features": {
+                "en": [
+                    "Anti-slip & waterproof",
+                    "BPA-free safe silicone material"
+                ],
+                "th": [
+                    "กันลื่นและกันน้ำ",
+                    "วัสดุซิลิโคนปลอดภัย"
+                ]
+            }
+        },
+        {
+            "id": "dry_mat",
+            "category": "toys",
+            "title": {
+                "en": "Dry Mat",
+                "th": "Dry Mat"
+            },
+            "subtitle": {
+                "en": "Diatomite Absorbent Mat",
+                "th": "แผ่นรองซับน้ำ"
+            },
+            "badge": {
+                "en": "Quick Dry",
+                "th": "ซับน้ำเร็ว"
+            },
+            "price": "990",
+            "image": "assets/dry_mat.png",
+            "description": {
+                "en": "Premium diatomite drying mat. Highly absorbent, ideal for placing under food bowls.",
+                "th": "แผ่นรองซับน้ำจากไดอะตอมไมต์ ซับซับดี เหมาะสำหรับวางชามอาหาร/น้ำ"
+            },
+            "features": {
+                "en": [
+                    "Diatomite material",
+                    "Highly absorbent",
+                    "Ideal for food & water bowl placement"
+                ],
+                "th": [
+                    "ใช้วัสดุไดอะตอมไมต์",
+                    "ซับซับดี",
+                    "เหมาะสำหรับวางชามอาหาร/น้ำ"
+                ]
+            }
+        },
+        {
+            "id": "floating_bath_tub",
+            "category": "toys",
+            "title": {
+                "en": "Floating Bath Tub",
+                "th": "Floating Bath Tub"
+            },
+            "subtitle": {
+                "en": "Foldable Pet Bath Tub",
+                "th": "อ่างอาบน้ำสำหรับสัตว์เลี้ยง"
+            },
+            "badge": {
+                "en": "Foldable",
+                "th": "พับได้"
+            },
+            "price": "1,990",
+            "image": "assets/floating_bath_tub.png",
+            "description": {
+                "en": "Foldable pet bath tub to save space. Anti-slip material, strong structure.",
+                "th": "อ่างอาบน้ำสำหรับสัตว์เลี้ยงที่พับเก็บได้ ประหยัดพื้นที่ วัสดุกันลื่น"
+            },
+            "features": {
+                "en": [
+                    "Foldable, space-saving design",
+                    "Anti-slip material",
+                    "Strong structure distributes weight evenly"
+                ],
+                "th": [
+                    "พับเก็บได้/ประหยัดพื้นที่",
+                    "วัสดุกันลื่น",
+                    "โครงสร้างแข็งแรงกระจายน้ำหนักดี"
+                ]
+            }
+        },
+        {
+            "id": "banana_brush",
+            "category": "toys",
+            "title": {
+                "en": "Banana Brush",
+                "th": "Banana Brush"
+            },
+            "subtitle": {
+                "en": "Natural Pet Grooming Brush",
+                "th": "แปรงขนแมว"
+            },
+            "badge": {
+                "en": "Natural",
+                "th": "ธรรมชาติ"
+            },
+            "price": "1,200",
+            "image": "assets/banana_brush.png",
+            "description": {
+                "en": "Gentle banana-shaped grooming brush. 100% natural bristles.",
+                "th": "แปรงขนแมวทรงกล้วย อ่อนโยน ขนแปรงธรรมชาติ 100%"
+            },
+            "features": {
+                "en": [
+                    "Gentle — non-irritating",
+                    "100% natural bristles",
+                    "Designed specifically for pets"
+                ],
+                "th": [
+                    "อ่อนโยน/ไม่ระคายเคือง",
+                    "ขนแปรงธรรมชาติ 100%",
+                    "ออกแบบมาเพื่อสัตว์เลี้ยงโดยเฉพาะ"
+                ]
+            }
+        },
+        {
+            "id": "soft_brush",
+            "category": "toys",
+            "title": {
+                "en": "Soft Brush",
+                "th": "Soft Brush"
+            },
+            "subtitle": {
+                "en": "Self-Cleaning Grooming Brush",
+                "th": "แปรงขนนุ่มแมว"
+            },
+            "badge": {
+                "en": "Easy Clean",
+                "th": "ทำความสะอาดง่าย"
+            },
+            "price": "1,090",
+            "image": "assets/soft_brush.png",
+            "description": {
+                "en": "Ultra-soft grooming brush with self-cleaning button.",
+                "th": "แปรงขนนุ่มนวลพร้อมปุ่มกำจัดขน"
+            },
+            "features": {
+                "en": [
+                    "Ultra-soft bristles",
+                    "Easy grip handle",
+                    "Self-cleaning button removes fur"
+                ],
+                "th": [
+                    "แปรงนุ่มนวล",
+                    "จับง่าย",
+                    "มีปุ่ม กำจัดขนหลังใช้งาน"
+                ]
+            }
+        },
+        {
+            "id": "catthenon",
+            "category": "furniture",
+            "title": {
+                "en": "Catthenon",
+                "th": "Catthenon"
+            },
+            "subtitle": {
+                "en": "Premium Cat Scratcher Tower",
+                "th": "ที่ลับเล็บแมว"
+            },
+            "badge": {
+                "en": "Premium",
+                "th": "พรีเมียม"
+            },
+            "price": "3,190",
+            "image": "assets/catthenon.jpg",
+            "description": {
+                "en": "Premium Catthenon cat scratcher with strong, stable structure. Paper rope — odorless.",
+                "th": "ที่ลับเล็บแมวพรีเมียม Catthenon โครงสร้างแข็งแรง วัสดุเชือกกระดาษ ไร้กลิ่น"
+            },
+            "features": {
+                "en": [
+                    "Strong, stable structure",
+                    "Paper rope material — odorless & minimal dust",
+                    "Easy assembly"
+                ],
+                "th": [
+                    "โครงสร้างแข็งแรง มั่นคง",
+                    "วัสดุเชือกกระดาษ ไร้กลิ่น/ฝุ่นน้อย",
+                    "ประกอบง่าย"
+                ]
+            }
+        }
+    ],
+    "slides": [
+        {
+            "id": "slide1",
+            "badgeEn": "Hot Pick",
+            "badgeTh": "สินค้ายอดฮิต",
+            "titleEn": "duit yummy ball",
+            "titleTh": "duit yummy ball",
+            "descEn": "your playful toy buddy, nose work master.",
+            "descTh": "ของเล่นสัตว์เลี้ยงแสนสนุก ฝึกดมกลิ่นและทักษะสมอง",
+            "btnEn": "Explore Toys",
+            "btnTh": "เลือกชมของเล่น",
+            "btnCategory": "toys",
+            "image": "https://cdn.imweb.me/thumbnail/20250428/ddee63d251372.jpg"
+        },
+        {
+            "id": "slide2",
+            "badgeEn": "Smart Tech",
+            "badgeTh": "อุปกรณ์อัจฉริยะ",
+            "titleEn": "duit automatic feeder",
+            "titleTh": "เครื่องให้อาหารอัตโนมัติ duit",
+            "descEn": "customizable smart feeder, never miss a meal.",
+            "descTh": "เครื่องให้อาหารอัจฉริยะ ตั้งเวลาได้ตามใจ หมดกังวลทุกมื้อ",
+            "btnEn": "Explore Appliances",
+            "btnTh": "เลือกชมอุปกรณ์",
+            "btnCategory": "appliances",
+            "image": "https://cdn.imweb.me/thumbnail/20240419/4d999960b611b.jpg"
+        },
+        {
+            "id": "slide3",
+            "badgeEn": "Luxury Furniture",
+            "badgeTh": "เฟอร์นิเจอร์สุดหรู",
+            "titleEn": "duit catthenon",
+            "titleTh": "คอนโดแมวที่ลับเล็บ duit",
+            "descEn": "modular cat scratching tower, the kingdom of cats.",
+            "descTh": "คอนโดแมวที่ลับเล็บสไตล์โมเดิร์น อาณาจักรของเจ้าเหมียว",
+            "btnEn": "Explore Furniture",
+            "btnTh": "เลือกชมเฟอร์นิเจอร์",
+            "btnCategory": "furniture",
+            "image": "https://cdn.imweb.me/thumbnail/20241216/f2f68e665eb7f.jpg"
+        }
+    ],
+    "event": {
+        "discount": 10,
+        "lineUrl": "https://line.me/R/ti/p/@duit_thailand",
+        "titleEn": "DUIT Event Exclusive Offer",
+        "titleTh": "ข้อเสนอพิเศษเฉพาะงานนี้",
+        "descEn": "Welcome to our showroom! Scan the QR Code at our booth to explore our products. Register below to receive an instant 10% discount coupon valid for any purchases made today!",
+        "descTh": "ยินดีต้อนรับสู่โชว์รูมของเรา! เพียงสแกน QR Code ที่บูธเพื่อเลือกชมสินค้า ลงทะเบียนด้านล่างเพื่อรับคูปองส่วนลด 10% ทันที สำหรับซื้อสินค้าภายในงานวันนี้!",
+        "perks": [
+            {
+                "en": "10% OFF all items",
+                "th": "ลด 10% ทุกรายการสินค้า"
+            },
+            {
+                "en": "Free Shipping in Thailand",
+                "th": "จัดส่งฟรีทั่วประเทศไทย"
+            },
+            {
+                "en": "DUIT Premium Gift Bag",
+                "th": "รับฟรีถุงของขวัญสุดพรีเมียมจาก DUIT"
+            }
+        ]
+    },
+    "store": {
+        "addressTh": "โชว์รูมกรุงเทพฯ, ประเทศไทย",
+        "addressEn": "Bangkok Showroom, Thailand",
+        "email": "contact@duitthailand.com",
+        "phone": "+66 (0) 2-123-4567",
+        "lineId": "@duit_thailand",
+        "lineUrl": "https://line.me/R/ti/p/@duit_thailand",
+        "fbUrl": "#",
+        "igUrl": "#",
+        "globalUrl": "https://duitoverseas.com/",
+        "aboutTh": "เฟอร์นิเจอร์และอุปกรณ์สัตว์เลี้ยงระดับพรีเมียมสไตล์มินิมอล นำเข้าจากประเทศเกาหลีใต้ รังสรรค์ด้วยความรักเพื่อยกระดับบ้านสไตล์โมเดิร์น",
+        "aboutEn": "Minimalist premium pet furniture and appliances. Imported from South Korea, crafted with love for modern homes."
+    },
+    "settings": {
+        "adminPin": "admin1234",
+        "staffPin": "1234"
+    }
+}

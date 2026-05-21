@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DUIT Admin Panel | ระบบจัดการหลังบ้าน</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="admin.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+
+<!-- ============================================================
+     LOGIN PAGE
+     ============================================================ -->
+<div id="loginPage">
+    <div class="login-card">
+        <div class="login-logo">
+            duit
+            <span>THAILAND</span>
+        </div>
+        <h2 class="login-title"><i class="fa-solid fa-shield-halved" style="color:var(--admin-accent); margin-right:6px;"></i>Admin Panel</h2>
+        <p class="login-sub">กรอกรหัสผ่านเพื่อเข้าสู่ระบบจัดการ</p>
+
+        <div class="login-input-wrap">
+            <i class="fa-solid fa-lock"></i>
+            <input type="password" id="adminPinInput" class="login-input" placeholder="รหัสผ่าน Admin" maxlength="20"
+                onkeydown="if(event.key==='Enter') doAdminLogin()">
+        </div>
+
+        <button class="login-btn" onclick="doAdminLogin()">
+            <i class="fa-solid fa-arrow-right-to-bracket"></i> เข้าสู่ระบบ
+        </button>
+        <p class="login-error" id="loginError">
+            <i class="fa-solid fa-circle-exclamation"></i> รหัสผ่านไม่ถูกต้อง
+        </p>
+
+        <p style="margin-top:2rem; font-size:0.75rem; color:var(--admin-text-dim);">
+            รหัสเริ่มต้น: <code style="color:var(--admin-accent);">admin1234</code>
+        </p>
+
+        <a href="index.html" style="display:block; margin-top:1rem; font-size:0.78rem; color:var(--admin-text-dim); text-decoration:none;">
+            <i class="fa-solid fa-arrow-left" style="margin-right:4px;"></i>กลับสู่หน้าหลัก
+        </a>
+    </div>
+</div>
+
+<!-- ============================================================
+     ADMIN APP (hidden until login)
+     ============================================================ -->
+<div id="adminApp">
+
+    <!-- Sidebar Overlay (mobile) -->
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeMobileSidebar()"></div>
+
+    <!-- SIDEBAR -->
+    <aside class="admin-sidebar" id="adminSidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">duit <span>THAILAND</span></div>
+            <div class="sidebar-badge">ADMIN CMS</div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="nav-section-label">ภาพรวม</div>
+            <button class="sidebar-link active" id="nav-dashboard" onclick="showPanel('dashboard')">
+                <i class="fa-solid fa-chart-pie"></i> แดชบอร์ด
+            </button>
+
+            <div class="nav-section-label">จัดการเนื้อหา</div>
+            <button class="sidebar-link" id="nav-products" onclick="showPanel('products')">
+                <i class="fa-solid fa-box"></i> สินค้า
+                <span class="badge-count" id="productCount">0</span>
+            </button>
+            <button class="sidebar-link" id="nav-slider" onclick="showPanel('slider')">
+                <i class="fa-solid fa-images"></i> Hero Slider
+            </button>
+            <button class="sidebar-link" id="nav-event" onclick="showPanel('event')">
+                <i class="fa-solid fa-gift"></i> Event Section
+            </button>
+            <button class="sidebar-link" id="nav-store" onclick="showPanel('store')">
+                <i class="fa-solid fa-store"></i> ข้อมูลร้าน
+            </button>
+            <button class="sidebar-link" id="nav-discount" onclick="showPanel('discount')">
+                <i class="fa-solid fa-percent"></i> ส่วนลด Pet Expo
+                <span class="discount-nav-dot" id="discountNavDot" style="display:none; width:8px;height:8px;background:#e74c3c;border-radius:50%;margin-left:auto;"></span>
+            </button>
+
+            <div class="nav-section-label">ระบบ</div>
+            <button class="sidebar-link" id="nav-leads" onclick="showPanel('leads')">
+                <i class="fa-solid fa-users"></i> Leads ลูกค้า
+                <span class="badge-count" id="leadsCount">0</span>
+            </button>
+            <button class="sidebar-link" id="nav-settings" onclick="showPanel('settings')">
+                <i class="fa-solid fa-gear"></i> ตั้งค่า
+            </button>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="index.html" target="_blank" class="sidebar-view-site">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> ดูหน้าเว็บ
+            </a>
+            <button class="logout-btn" onclick="doLogout()">
+                <i class="fa-solid fa-right-from-bracket"></i> ออกจากระบบ
+            </button>
+        </div>
+    </aside>
+
+    <!-- MAIN AREA -->
+    <div class="admin-main">
+        <!-- TOP BAR -->
+        <div class="admin-topbar">
+            <div style="display:flex; align-items:center; gap:1rem;">
+                <button class="admin-hamburger" id="hamburgerBtn" onclick="toggleMobileSidebar()">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <div class="topbar-title">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span id="topbarTitle">แดชบอร์ด</span>
+                </div>
+            </div>
+            <div class="topbar-right">
+                <div class="topbar-save-status" id="saveStatus">
+                    <i class="fa-solid fa-cloud-arrow-up"></i> บันทึกแล้ว
+                </div>
+                <button class="btn btn-primary btn-sm" onclick="exportCMSData()">
+                    <i class="fa-solid fa-download"></i> Export
+                </button>
+                <label class="btn btn-secondary btn-sm" style="cursor:pointer;" title="Import JSON backup">
+                    <i class="fa-solid fa-upload"></i> Import
+                    <input type="file" accept=".json" style="display:none;" onchange="importCMSData(event)">
+                </label>
+            </div>
+        </div>
+
+        <!-- CONTENT -->
+        <div class="admin-content">
+
+            <!-- ==============================
+                 DASHBOARD PANEL
+                 ============================== -->
+            <div class="admin-panel active" id="panel-dashboard">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon gold"><i class="fa-solid fa-box"></i></div>
+                        <div>
+                            <div class="stat-value" id="stat-products">0</div>
+                            <div class="stat-label">สินค้าทั้งหมด</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon blue"><i class="fa-solid fa-images"></i></div>
+                        <div>
+                            <div class="stat-value" id="stat-slides">0</div>
+                            <div class="stat-label">Hero Slides</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon green"><i class="fa-solid fa-users"></i></div>
+                        <div>
+                            <div class="stat-value" id="stat-leads">0</div>
+                            <div class="stat-label">Leads ลูกค้า</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon orange"><i class="fa-solid fa-tag"></i></div>
+                        <div>
+                            <div class="stat-value" id="stat-categories">3</div>
+                            <div class="stat-label">หมวดหมู่</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2><i class="fa-solid fa-circle-info"></i> คู่มือการใช้งาน</h2>
+                    </div>
+                    <div class="card-body">
+                        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem;">
+                            <div style="background:var(--admin-surface-2); border-radius:var(--radius-sm); padding:1.1rem; border:1px solid var(--admin-border);">
+                                <div style="color:var(--admin-accent); font-size:1.4rem; margin-bottom:0.5rem;"><i class="fa-solid fa-box"></i></div>
+                                <div style="font-weight:600; margin-bottom:0.3rem; font-size:0.9rem;">สินค้า</div>
+                                <div style="font-size:0.78rem; color:var(--admin-text-muted);">เพิ่ม แก้ไข ลบสินค้า, อัปโหลดรูปภาพ, ตั้งราคา และหมวดหมู่</div>
+                            </div>
+                            <div style="background:var(--admin-surface-2); border-radius:var(--radius-sm); padding:1.1rem; border:1px solid var(--admin-border);">
+                                <div style="color:var(--admin-info); font-size:1.4rem; margin-bottom:0.5rem;"><i class="fa-solid fa-images"></i></div>
+                                <div style="font-weight:600; margin-bottom:0.3rem; font-size:0.9rem;">Hero Slider</div>
+                                <div style="font-size:0.78rem; color:var(--admin-text-muted);">เปลี่ยนรูป ข้อความ หัวข้อ และลิงก์ปุ่มในแต่ละ slide</div>
+                            </div>
+                            <div style="background:var(--admin-surface-2); border-radius:var(--radius-sm); padding:1.1rem; border:1px solid var(--admin-border);">
+                                <div style="color:var(--admin-success); font-size:1.4rem; margin-bottom:0.5rem;"><i class="fa-solid fa-gift"></i></div>
+                                <div style="font-weight:600; margin-bottom:0.3rem; font-size:0.9rem;">Event Section</div>
+                                <div style="font-size:0.78rem; color:var(--admin-text-muted);">แก้ไขข้อเสนอ %, รายการสิทธิ์ และ QR Code LINE</div>
+                            </div>
+                            <div style="background:var(--admin-surface-2); border-radius:var(--radius-sm); padding:1.1rem; border:1px solid var(--admin-border);">
+                                <div style="color:var(--admin-warning); font-size:1.4rem; margin-bottom:0.5rem;"><i class="fa-solid fa-store"></i></div>
+                                <div style="font-weight:600; margin-bottom:0.3rem; font-size:0.9rem;">ข้อมูลร้าน</div>
+                                <div style="font-size:0.78rem; color:var(--admin-text-muted);">แก้ที่อยู่ เบอร์โทร อีเมล LINE และ social links</div>
+                            </div>
+                        </div>
+
+                        <div style="margin-top:1.5rem; padding:1rem; background:var(--admin-info-bg); border-radius:var(--radius-sm); border:1px solid rgba(96,165,250,0.2); font-size:0.82rem; color:var(--admin-info);">
+                            <i class="fa-solid fa-lightbulb" style="margin-right:6px;"></i>
+                            <strong>เคล็ดลับ:</strong> ใช้ปุ่ม <strong>Export</strong> เพื่อสำรองข้อมูล และ <strong>Import</strong> เพื่อกู้คืน ทุกครั้งที่บันทึกจะแสดงผลในหน้าเว็บทันที
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==============================
+                 DISCOUNT PANEL (PET EXPO)
+                 ============================== -->
+            <div class="admin-panel" id="panel-discount">
+
+                <!-- Big Toggle Card -->
+                <div class="card" style="background: linear-gradient(135deg, #1a0a08, #2c1210); border-color: rgba(231,76,60,0.3);">
+                    <div class="card-header" style="border-color:rgba(231,76,60,0.2);">
+                        <h2 style="color:#fff;"><i class="fa-solid fa-percent" style="color:#e74c3c;"></i> ระบบส่วนลด Pet Expo</h2>
+                        <!-- Big ON/OFF Toggle -->
+                        <div style="display:flex; align-items:center; gap:1rem;">
+                            <span id="discountToggleLabel" style="font-size:0.85rem; font-weight:600; color:rgba(255,255,255,0.6);">OFF</span>
+                            <label class="big-toggle">
+                                <input type="checkbox" id="discountToggle" onchange="onDiscountToggle(this.checked)">
+                                <span class="big-toggle-slider"></span>
+                            </label>
+                            <span id="discountOnLabel" style="font-size:0.85rem; font-weight:700; color:#e74c3c; display:none;">ON ⚡</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:center;">
+                            <!-- Percent control -->
+                            <div>
+                                <label class="form-label" style="color:rgba(255,255,255,0.7); margin-bottom:0.75rem; display:block;">
+                                    เปอร์เซ็นต์ส่วนลด
+                                </label>
+                                <div style="display:flex; align-items:center; gap:1rem;">
+                                    <input type="range" id="discountSlider" min="1" max="50" value="10"
+                                        style="flex:1; accent-color:#e74c3c; height:6px;"
+                                        oninput="syncDiscountInput(this.value)">
+                                    <div style="display:flex; align-items:center; background:rgba(255,255,255,0.08); border:1px solid rgba(231,76,60,0.3); border-radius:8px; overflow:hidden; width:90px;">
+                                        <input type="number" id="discountInput" min="1" max="50" value="10"
+                                            style="width:55px; background:transparent; border:none; color:#fff; font-size:1.25rem; font-weight:700; padding:0.4rem 0.6rem; text-align:right; outline:none;"
+                                            oninput="syncDiscountSlider(this.value)">
+                                        <span style="color:rgba(255,255,255,0.5); font-size:1rem; padding-right:0.5rem;">%</span>
+                                    </div>
+                                </div>
+                                <div style="display:flex; justify-content:space-between; margin-top:0.4rem;">
+                                    <span style="font-size:0.7rem; color:rgba(255,255,255,0.3);">1%</span>
+                                    <span style="font-size:0.7rem; color:rgba(255,255,255,0.3);">50%</span>
+                                </div>
+                                <button class="btn btn-primary mt-2" onclick="saveDiscount()" style="background:linear-gradient(135deg,#c0392b,#e74c3c); border:none; width:100%;">
+                                    <i class="fa-solid fa-floppy-disk"></i> บันทึกการตั้งค่า
+                                </button>
+                            </div>
+                            <!-- Preview -->
+                            <div>
+                                <div style="font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:0.75rem;">Preview — ตัวอย่างราคา</div>
+                                <div id="discountPreview" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08); border-radius:10px; padding:1.25rem;">
+                                    <!-- Filled by JS -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Explanation card -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2><i class="fa-solid fa-circle-info"></i> วิธีใช้งาน</h2>
+                    </div>
+                    <div class="card-body">
+                        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1rem;">
+                            <div style="background:var(--admin-success-bg); border:1px solid rgba(52,211,153,0.2); border-radius:var(--radius-sm); padding:1rem;">
+                                <div style="color:var(--admin-success); font-size:1.2rem; margin-bottom:0.5rem;"><i class="fa-solid fa-toggle-on"></i></div>
+                                <div style="font-weight:600; font-size:0.85rem; margin-bottom:0.25rem;">Toggle ON</div>
+                                <div style="font-size:0.78rem; color:var(--admin-text-muted);">ราคาสินค้าในหน้าเว็บจะแสดงราคาลดพร้อม ribbon "-X%" ทันที</div>
+                            </div>
+                            <div style="background:var(--admin-danger-bg); border:1px solid rgba(248,113,113,0.2); border-radius:var(--radius-sm); padding:1rem;">
+                                <div style="color:var(--admin-danger); font-size:1.2rem; margin-bottom:0.5rem;"><i class="fa-solid fa-toggle-off"></i></div>
+                                <div style="font-weight:600; font-size:0.85rem; margin-bottom:0.25rem;">Toggle OFF</div>
+                                <div style="font-size:0.78rem; color:var(--admin-text-muted);">กลับเป็นราคาปกติ ไม่มี ribbon — % ส่วนลดที่ตั้งไว้ยังคงอยู่</div>
+                            </div>
+                            <div style="background:var(--admin-info-bg); border:1px solid rgba(96,165,250,0.2); border-radius:var(--radius-sm); padding:1rem;">
+                                <div style="color:var(--admin-info); font-size:1.2rem; margin-bottom:0.5rem;"><i class="fa-solid fa-list"></i></div>
+                                <div style="font-weight:600; font-size:0.85rem; margin-bottom:0.25rem;">ส่วนลดรายสินค้า</div>
+                                <div style="font-size:0.78rem; color:var(--admin-text-muted);">กำหนด % ต่างกันแต่ละสินค้าได้ — เว้นว่างไว้ = ใช้ค่า default</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Per-product discount override table -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2><i class="fa-solid fa-sliders"></i> ส่วนลดรายสินค้า <span style="font-size:0.75rem; font-weight:400; color:var(--admin-text-dim);">(เว้นว่าง = ใช้ค่า Default)</span></h2>
+                        <div style="display:flex; gap:0.75rem; align-items:center;">
+                            <div class="admin-search-wrap">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input type="text" class="admin-search" id="discountProductSearch"
+                                    placeholder="ค้นหาสินค้า..." oninput="renderProductDiscountTable()">
+                            </div>
+                            <button class="btn btn-danger btn-sm" onclick="clearAllProductDiscounts()" title="ล้างการตั้งค่าส่วนลดรายสินค้าทั้งหมด">
+                                <i class="fa-solid fa-rotate-left"></i> รีเซ็ตทั้งหมด
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body" style="padding:0;">
+                        <div style="overflow-x:auto;">
+                            <table class="product-list-table">
+                                <thead>
+                                    <tr>
+                                        <th>สินค้า</th>
+                                        <th style="text-align:center; width:100px;">Default %</th>
+                                        <th style="text-align:center; width:160px;">Override %</th>
+                                        <th style="text-align:center; width:140px;">ราคาลด</th>
+                                        <th style="text-align:center; width:80px;">รีเซ็ต</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="productDiscountTableBody">
+                                    <!-- Dynamic -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div style="padding:1rem 1.5rem; display:flex; justify-content:flex-end;">
+                        <button class="btn btn-primary" onclick="saveAllProductDiscounts()">
+                            <i class="fa-solid fa-floppy-disk"></i> บันทึกส่วนลดรายสินค้า
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- ==============================
+                 PRODUCTS PANEL
+                 ============================== -->
+            <div class="admin-panel" id="panel-products">
+                <div class="card">
+                    <div class="card-header">
+                        <h2><i class="fa-solid fa-box"></i> จัดการสินค้า</h2>
+                        <div style="display:flex; gap:0.75rem; align-items:center; flex-wrap:wrap;">
+                            <div class="admin-search-wrap">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input type="text" class="admin-search" id="productSearch" placeholder="ค้นหาสินค้า..." oninput="renderProductTable()">
+                            </div>
+                            <button class="btn btn-primary" onclick="openProductDrawer(null)">
+                                <i class="fa-solid fa-plus"></i> เพิ่มสินค้า
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body" style="padding:0;">
+                        <div style="overflow-x:auto;">
+                            <table class="product-list-table" id="productTable">
+                                <thead>
+                                    <tr>
+                                        <th style="width:60px;">รูป</th>
+                                        <th>ชื่อสินค้า</th>
+                                        <th>หมวดหมู่</th>
+                                        <th style="width:140px;">ป้าย (Badge)</th>
+                                        <th>ราคา</th>
+                                        <th style="width:110px; text-align:center;">จัดการ</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="productTableBody">
+                                    <!-- Dynamic -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==============================
+                 SLIDER PANEL
+                 ============================== -->
+            <div class="admin-panel" id="panel-slider">
+                <div class="card">
+                    <div class="card-header">
+                        <h2><i class="fa-solid fa-images"></i> จัดการ Hero Slider</h2>
+                        <button class="btn btn-primary" onclick="addNewSlide()">
+                            <i class="fa-solid fa-plus"></i> เพิ่ม Slide
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="slide-editor-list" id="slideEditorList">
+                            <!-- Dynamic -->
+                        </div>
+                    </div>
+                </div>
+                <div style="display:flex; justify-content:flex-end;">
+                    <button class="btn btn-primary" onclick="saveSlider()">
+                        <i class="fa-solid fa-floppy-disk"></i> บันทึก Hero Slider
+                    </button>
+                </div>
+            </div>
+
+            <!-- ==============================
+                 EVENT PANEL
+                 ============================== -->
+            <div class="admin-panel" id="panel-event">
+                <div class="card">
+                    <div class="card-header">
+                        <h2><i class="fa-solid fa-gift"></i> จัดการ Event Section</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label">% ส่วนลด (ตัวเลข)</label>
+                                <input type="number" class="form-input" id="event-discount" value="10" min="1" max="100">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">LINE QR URL</label>
+                                <input type="text" class="form-input" id="event-lineUrl" placeholder="https://line.me/R/ti/p/@duit_thailand">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">หัวข้อ Event (TH)</label>
+                                <input type="text" class="form-input" id="event-titleTh" placeholder="ข้อเสนอพิเศษเฉพาะงานนี้">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">หัวข้อ Event (EN)</label>
+                                <input type="text" class="form-input" id="event-titleEn" placeholder="DUIT Event Exclusive Offer">
+                            </div>
+                            <div class="form-group span-2">
+                                <label class="form-label">คำอธิบาย (TH)</label>
+                                <textarea class="form-textarea" id="event-descTh"></textarea>
+                            </div>
+                            <div class="form-group span-2">
+                                <label class="form-label">คำอธิบาย (EN)</label>
+                                <textarea class="form-textarea" id="event-descEn"></textarea>
+                            </div>
+                        </div>
+
+                        <hr class="section-divider">
+
+                        <div style="font-weight:600; margin-bottom:1rem; font-size:0.9rem;">
+                            <i class="fa-solid fa-circle-check" style="color:var(--admin-accent);"></i> รายการสิทธิ์พิเศษ
+                        </div>
+                        <div id="perksEditorList" style="display:flex; flex-direction:column; gap:0.5rem; margin-bottom:1rem;">
+                            <!-- Dynamic -->
+                        </div>
+                        <button class="add-feature-btn" onclick="addPerkRow()">
+                            <i class="fa-solid fa-plus"></i> เพิ่มสิทธิ์
+                        </button>
+                    </div>
+                </div>
+
+                <div style="display:flex; justify-content:flex-end; gap:0.75rem;">
+                    <button class="btn btn-primary" onclick="saveEventSection()">
+                        <i class="fa-solid fa-floppy-disk"></i> บันทึก Event Section
+                    </button>
+                </div>
+            </div>
+
+            <!-- ==============================
+                 STORE INFO PANEL
+                 ============================== -->
+            <div class="admin-panel" id="panel-store">
+                <div class="card">
+                    <div class="card-header">
+                        <h2><i class="fa-solid fa-store"></i> ข้อมูลร้านค้า / Footer</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label">ที่อยู่ (TH)</label>
+                                <input type="text" class="form-input" id="store-addressTh" placeholder="โชว์รูมกรุงเทพฯ, ประเทศไทย">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">ที่อยู่ (EN)</label>
+                                <input type="text" class="form-input" id="store-addressEn" placeholder="Bangkok Showroom, Thailand">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">อีเมล</label>
+                                <input type="email" class="form-input" id="store-email" placeholder="contact@duitthailand.com">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">เบอร์โทร</label>
+                                <input type="text" class="form-input" id="store-phone" placeholder="+66 (0) 2-123-4567">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">LINE ID</label>
+                                <input type="text" class="form-input" id="store-lineId" placeholder="@duit_thailand">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">LINE URL</label>
+                                <input type="text" class="form-input" id="store-lineUrl" placeholder="https://line.me/R/ti/p/@duit_thailand">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Facebook URL</label>
+                                <input type="text" class="form-input" id="store-fbUrl" placeholder="https://facebook.com/...">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Instagram URL</label>
+                                <input type="text" class="form-input" id="store-igUrl" placeholder="https://instagram.com/...">
+                            </div>
+                            <div class="form-group span-2">
+                                <label class="form-label">เว็บไซต์หลัก (DUIT Global)</label>
+                                <input type="text" class="form-input" id="store-globalUrl" placeholder="https://duitoverseas.com/">
+                            </div>
+                        </div>
+
+                        <hr class="section-divider">
+                        <div style="font-weight:600; margin-bottom:1rem; font-size:0.9rem;">
+                            <i class="fa-solid fa-pen" style="color:var(--admin-accent);"></i> About Us (ข้อความแนะนำแบรนด์)
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label">คำอธิบายแบรนด์ (TH)</label>
+                                <textarea class="form-textarea" id="store-aboutTh" style="min-height:120px;"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">คำอธิบายแบรนด์ (EN)</label>
+                                <textarea class="form-textarea" id="store-aboutEn" style="min-height:120px;"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="display:flex; justify-content:flex-end;">
+                    <button class="btn btn-primary" onclick="saveStoreInfo()">
+                        <i class="fa-solid fa-floppy-disk"></i> บันทึกข้อมูลร้าน
+                    </button>
+                </div>
+            </div>
+
+            <!-- ==============================
+                 LEADS PANEL
+                 ============================== -->
+            <div class="admin-panel" id="panel-leads">
+                <div class="card">
+                    <div class="card-header">
+                        <h2><i class="fa-solid fa-users"></i> Leads ลูกค้า</h2>
+                        <div style="display:flex; gap:0.5rem;">
+                            <button class="btn btn-success btn-sm" onclick="exportLeadsCSV()">
+                                <i class="fa-solid fa-file-csv"></i> Export CSV
+                            </button>
+                            <button class="btn btn-danger btn-sm" onclick="clearLeadsData()">
+                                <i class="fa-solid fa-trash-can"></i> ลบทั้งหมด
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body" style="padding:0;">
+                        <div class="leads-table-wrap">
+                            <table class="leads-tbl" id="leadsTable">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>ชื่อ</th>
+                                        <th>เบอร์โทร</th>
+                                        <th>LINE ID</th>
+                                        <th>โค้ด</th>
+                                        <th>วันที่</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="leadsTableBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==============================
+                 SETTINGS PANEL
+                 ============================== -->
+            <div class="admin-panel" id="panel-settings">
+                <div class="card">
+                    <div class="card-header">
+                        <h2><i class="fa-solid fa-lock"></i> จัดการรหัสผ่าน</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="settings-grid">
+                            <div>
+                                <div style="font-weight:600; margin-bottom:1rem; font-size:0.9rem; color:var(--admin-text);">
+                                    <i class="fa-solid fa-user-shield" style="color:var(--admin-accent); margin-right:6px;"></i>รหัสผ่าน Admin Panel
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">รหัสผ่านปัจจุบัน</label>
+                                    <div class="pin-field-wrap">
+                                        <input type="password" class="form-input" id="adminPinCurrent" placeholder="รหัสผ่านปัจจุบัน">
+                                        <button class="pin-toggle" onclick="togglePinVisibility('adminPinCurrent', this)"><i class="fa-solid fa-eye"></i></button>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">รหัสผ่านใหม่</label>
+                                    <div class="pin-field-wrap">
+                                        <input type="password" class="form-input" id="adminPinNew" placeholder="รหัสผ่านใหม่">
+                                        <button class="pin-toggle" onclick="togglePinVisibility('adminPinNew', this)"><i class="fa-solid fa-eye"></i></button>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">ยืนยันรหัสผ่านใหม่</label>
+                                    <div class="pin-field-wrap">
+                                        <input type="password" class="form-input" id="adminPinConfirm" placeholder="ยืนยันรหัสผ่านใหม่">
+                                        <button class="pin-toggle" onclick="togglePinVisibility('adminPinConfirm', this)"><i class="fa-solid fa-eye"></i></button>
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary mt-2" onclick="changeAdminPin()">
+                                    <i class="fa-solid fa-key"></i> เปลี่ยนรหัสผ่าน Admin
+                                </button>
+                            </div>
+
+                            <div>
+                                <div style="font-weight:600; margin-bottom:1rem; font-size:0.9rem; color:var(--admin-text);">
+                                    <i class="fa-solid fa-users" style="color:var(--admin-info); margin-right:6px;"></i>รหัสผ่าน Staff Leads Manager
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">PIN ใหม่ (Staff)</label>
+                                    <div class="pin-field-wrap">
+                                        <input type="password" class="form-input" id="staffPinNew" placeholder="PIN สำหรับ Staff" maxlength="10">
+                                        <button class="pin-toggle" onclick="togglePinVisibility('staffPinNew', this)"><i class="fa-solid fa-eye"></i></button>
+                                    </div>
+                                    <div class="form-hint">PIN ปัจจุบัน: <span id="currentStaffPinHint" style="color:var(--admin-accent);">****</span></div>
+                                </div>
+                                <button class="btn btn-primary mt-2" onclick="changeStaffPin()">
+                                    <i class="fa-solid fa-key"></i> เปลี่ยน PIN Staff
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2><i class="fa-solid fa-database"></i> จัดการข้อมูล CMS</h2>
+                    </div>
+                    <div class="card-body">
+                        <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+                            <button class="btn btn-secondary" onclick="exportCMSData()">
+                                <i class="fa-solid fa-download"></i> Export ข้อมูล JSON
+                            </button>
+                            <label class="btn btn-secondary" style="cursor:pointer;">
+                                <i class="fa-solid fa-upload"></i> Import ข้อมูล JSON
+                                <input type="file" accept=".json" style="display:none;" onchange="importCMSData(event)">
+                            </label>
+                            <button class="btn btn-danger" onclick="resetToDefaults()">
+                                <i class="fa-solid fa-rotate-left"></i> รีเซ็ตเป็นค่าเริ่มต้น
+                            </button>
+                        </div>
+                        <div class="form-hint mt-1">
+                            <i class="fa-solid fa-info-circle"></i> Export เพื่อสำรองข้อมูล Import เพื่อกู้คืน รีเซ็ตจะลบการแก้ไขทั้งหมดของ CMS
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- /admin-content -->
+    </div> <!-- /admin-main -->
+</div> <!-- /adminApp -->
+
+<!-- ============================================================
+     PRODUCT EDIT DRAWER
+     ============================================================ -->
+<div class="admin-modal-backdrop" id="productDrawer" onclick="onDrawerBackdropClick(event)">
+    <div class="admin-drawer">
+        <div class="drawer-header">
+            <h3 id="drawerTitle"><i class="fa-solid fa-box-open"></i> เพิ่มสินค้า</h3>
+            <button class="drawer-close" onclick="closeProductDrawer()">&times;</button>
+        </div>
+        <div class="drawer-body">
+            <input type="hidden" id="editProductId">
+
+            <!-- Image Section -->
+            <div class="form-group mb-3">
+                <label class="form-label">รูปภาพสินค้า</label>
+                <div style="display:flex; gap:1rem; align-items:flex-start; flex-wrap:wrap;">
+                    <div style="flex:1; min-width:200px;">
+                        <div class="image-upload-area" id="imageDropZone">
+                            <input type="file" accept="image/*" id="imageFileInput" onchange="handleImageUpload(event)">
+                            <div id="uploadPrompt">
+                                <div class="image-upload-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+                                <p><strong>คลิกหรือลากไฟล์</strong> มาวางที่นี่</p>
+                                <p style="font-size:0.72rem; margin-top:4px; color:var(--admin-text-dim);">PNG, JPG, WEBP (max 4MB)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="flex:1; min-width:200px;">
+                        <label class="form-label">หรือใส่ URL รูปภาพ</label>
+                        <input type="text" class="form-input" id="imageUrlInput" placeholder="https://..." oninput="previewImageFromUrl(this.value)">
+                        <div class="form-hint mt-1">รองรับ URL จาก Google Drive, Imgur, CDN ฯลฯ</div>
+                    </div>
+                </div>
+                <div id="imagePreviewContainer" style="margin-top:0.75rem; display:none;">
+                    <img id="imagePreviewEl" src="" alt="preview" style="max-width:100%; max-height:200px; object-fit:contain; border-radius:var(--radius-sm); background:var(--admin-surface-2); padding:8px;">
+                    <div class="image-preview-actions">
+                        <button class="btn btn-danger btn-sm" onclick="clearImageInput()">
+                            <i class="fa-solid fa-trash"></i> ลบรูป
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Basic Info -->
+            <div class="form-grid">
+                <div class="form-group">
+                    <label class="form-label">ชื่อสินค้า (TH) <span class="required">*</span></label>
+                    <input type="text" class="form-input" id="prod-titleTh" placeholder="ชื่อสินค้าภาษาไทย">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">ชื่อสินค้า (EN) <span class="required">*</span></label>
+                    <input type="text" class="form-input" id="prod-titleEn" placeholder="Product name in English">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">ชื่อรอง (TH)</label>
+                    <input type="text" class="form-input" id="prod-subtitleTh" placeholder="คำอธิบายย่อ">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">ชื่อรอง (EN)</label>
+                    <input type="text" class="form-input" id="prod-subtitleEn" placeholder="Short subtitle">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">หมวดหมู่ <span class="required">*</span></label>
+                    <select class="form-select" id="prod-category">
+                        <option value="appliances">Smart Appliances (อุปกรณ์อัจฉริยะ)</option>
+                        <option value="furniture">Furniture (เฟอร์นิเจอร์)</option>
+                        <option value="toys">Toys & Accessories (ของเล่น)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">ราคา (บาท) <span class="required">*</span></label>
+                    <input type="text" class="form-input" id="prod-price" placeholder="เช่น 2,990">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Badge (TH)</label>
+                    <input type="text" class="form-input" id="prod-badgeTh" placeholder="เช่น ขายดี, ใหม่">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Badge (EN)</label>
+                    <input type="text" class="form-input" id="prod-badgeEn" placeholder="e.g. Best Seller, New">
+                </div>
+                <div class="form-group span-2">
+                    <label class="form-label">คำอธิบาย (TH)</label>
+                    <textarea class="form-textarea" id="prod-descTh" placeholder="รายละเอียดสินค้าภาษาไทย"></textarea>
+                </div>
+                <div class="form-group span-2">
+                    <label class="form-label">คำอธิบาย (EN)</label>
+                    <textarea class="form-textarea" id="prod-descEn" placeholder="Product description in English"></textarea>
+                </div>
+            </div>
+
+            <hr class="section-divider">
+
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:0.75rem;">
+                <div style="font-weight:600; font-size:0.9rem;"><i class="fa-solid fa-star" style="color:var(--admin-accent); margin-right:6px;"></i>จุดเด่น (TH)</div>
+            </div>
+            <div class="features-list" id="featuresTh"></div>
+            <button class="add-feature-btn" onclick="addFeatureRow('Th')">
+                <i class="fa-solid fa-plus"></i> เพิ่มจุดเด่น (TH)
+            </button>
+
+            <div style="display:flex; align-items:center; justify-content:space-between; margin:1.25rem 0 0.75rem;">
+                <div style="font-weight:600; font-size:0.9rem;"><i class="fa-solid fa-star" style="color:var(--admin-accent); margin-right:6px;"></i>จุดเด่น (EN)</div>
+            </div>
+            <div class="features-list" id="featuresEn"></div>
+            <button class="add-feature-btn" onclick="addFeatureRow('En')">
+                <i class="fa-solid fa-plus"></i> Add Feature (EN)
+            </button>
+        </div>
+
+        <div class="drawer-footer">
+            <button class="btn btn-secondary" onclick="closeProductDrawer()">ยกเลิก</button>
+            <button class="btn btn-primary" onclick="saveProduct()">
+                <i class="fa-solid fa-floppy-disk"></i> บันทึกสินค้า
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================
+     QR CODE MODAL
+     ============================================================ -->
+<div class="admin-modal-backdrop" id="qrModal" onclick="onQrModalBackdropClick(event)" style="align-items:center; justify-content:center;">
+    <div class="card" style="width:100%; max-width:350px; text-align:center; position:relative;">
+        <button class="drawer-close" style="position:absolute; top:1rem; right:1rem;" onclick="closeQrModal()"><i class="fa-solid fa-xmark"></i></button>
+        <h2 style="margin-bottom:0.5rem;" id="qrProductName">QR Code สินค้า</h2>
+        <p style="font-size:0.85rem; color:var(--admin-text-dim); margin-bottom:1.5rem;">สแกนเพื่อเข้าถึงหน้ารายละเอียดสินค้าโดยตรง</p>
+        
+        <div id="qrCodeContainer" style="display:flex; justify-content:center; margin-bottom:1.5rem; background:#fff; padding:1rem; border-radius:12px; border:1px solid var(--admin-border);">
+            <!-- QR code will be generated here -->
+        </div>
+
+        <button class="btn btn-primary" style="width:100%; justify-content:center;" onclick="downloadQRCode()">
+            <i class="fa-solid fa-download"></i> ดาวน์โหลด QR Code
+        </button>
+    </div>
+</div>
+
+<!-- Toast Container -->
+<div class="toast-container" id="toastContainer"></div>
+
+<script src="admin.js"></script>
+</body>
+</html>

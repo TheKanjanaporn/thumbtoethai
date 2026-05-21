@@ -1,9 +1,27 @@
 // ==========================================
+// CMS DATA LOADER
+// โหลดข้อมูลจาก Admin Panel (localStorage)
+// ==========================================
+async function loadCMSSiteData() {
+    try {
+        const res = await fetch('/api/data');
+        _cmsData = await res.json();
+    } catch (e) {
+        const saved = localStorage.getItem("duit_cms_data");
+        _cmsData = saved ? JSON.parse(saved) : null;
+    }
+    
+    if (_cmsData && _cmsData.products && _cmsData.products.length > 0) {
+        PRODUCTS = _cmsData.products;
+    }
+}
+
+// ==========================================
 // PRODUCTS DATABASE (DUIT THAILAND)
 // ข้อมูลจาก Cat Expo 2025 - Staff Manual
 // 24 สินค้าทั้งหมด
 // ==========================================
-const PRODUCTS = [
+const PRODUCTS_DEFAULT = [
 
     // ===== หน้า 1: อาหาร & น้ำ =====
     {
@@ -81,7 +99,7 @@ const PRODUCTS = [
         subtitle: { en: "Interactive AI Cat Toy",  th: "ของเล่นแมวเลียนแบบอัตโนมัติ" },
         badge:    { en: "Smart",         th: "อัจฉริยะ" },
         price: "1,490",
-        image: "assets/mouse_bot.png",
+        image: "assets/mouse_bot.jpg",
         description: {
             en: "Smart interactive cat toy that mimics mouse movement. Auto-switches modes, stops automatically when not in use.",
             th: "ของเล่นแมวอัจฉริยะเลียนแบบการเคลื่อนที่ของหนู ปรับโหมดได้ หยุดอัตโนมัติเมื่อแมวไม่ได้เล่น"
@@ -221,7 +239,7 @@ const PRODUCTS = [
         subtitle: { en: "Multi-Purpose Cat Shelf", th: "ชั้นวางของแมว" },
         badge:    { en: "Versatile",              th: "อเนกประสงค์" },
         price: "4,890",
-        image: "assets/all_day_rack.png",
+        image: "assets/all_day_rack.jpg",
         description: {
             en: "Multi-purpose cat shelf with strong steel frame. Easy assembly, fits any location in your home.",
             th: "ชั้นวางของอเนกประสงค์ โครงเหล็กแข็งแรงและประกอบง่าย เข้าได้กับทุกสถานที่"
@@ -412,7 +430,7 @@ const PRODUCTS = [
         subtitle: { en: "Premium Cat Scratcher Tower", th: "ที่ลับเล็บแมว" },
         badge:    { en: "Premium",                     th: "พรีเมียม" },
         price: "3,190",
-        image: "assets/catthenon.png",
+        image: "assets/catthenon.jpg",
         description: {
             en: "Premium Catthenon cat scratcher with strong, stable structure. Paper rope material — odorless and minimal dust. Easy assembly.",
             th: "ที่ลับเล็บแมวพรีเมียม Catthenon โครงสร้างแข็งแรง มั่นคง วัสดุเชือกกระดาษ ไร้กลิ่น/ฝุ่นน้อย ประกอบง่าย"
@@ -426,6 +444,12 @@ const PRODUCTS = [
 ];
 
 // ==========================================
+// ACTIVE DATA (CMS override or defaults)
+// ==========================================
+let _cmsData = null;
+let PRODUCTS = [...PRODUCTS_DEFAULT];
+
+// ==========================================
 // STATE VARIABLES
 // ==========================================
 let currentCategory = "all";
@@ -437,15 +461,30 @@ let currentLanguage = localStorage.getItem("duit_lang") || "th";
 // ==========================================
 // CORE INITIALIZATION
 // ==========================================
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+    // Load CMS Data first
+    await loadCMSSiteData();
+
+    // Apply CMS overrides to static HTML elements
+    applyCMSOverrides();
+
     // Apply saved language on load
     applyLanguage();
 
     // Load products
     renderProducts();
 
-    // Set up Hero Slider
+    // Set up Hero Slider (render from CMS or HTML)
     initSlider();
+
+    // Check for ?product=id in URL for QR code scanning
+    const urlParams = new URLSearchParams(window.location.search);
+    const productIdParam = urlParams.get('product');
+    if (productIdParam) {
+        setTimeout(() => {
+            openModal(productIdParam);
+        }, 100);
+    }
 
     // Setup navigation clicks to close menu on mobile
     const navItems = document.querySelectorAll(".nav-item");
@@ -461,6 +500,123 @@ document.addEventListener("DOMContentLoaded", () => {
     // Check if user already claimed a coupon in this session
     checkExistingCoupon();
 });
+
+// ==========================================
+// CMS OVERRIDES — apply to live page
+// ==========================================
+function applyCMSOverrides() {
+    if (!_cmsData) return;
+
+    // --- Hero Slider ---
+    if (_cmsData.slides && _cmsData.slides.length > 0) {
+        renderCMSSlider(_cmsData.slides);
+    }
+
+    // --- Event Section ---
+    if (_cmsData.event) {
+        applyEventCMS(_cmsData.event);
+    }
+
+    // --- Store / Footer ---
+    if (_cmsData.store) {
+        applyStoreCMS(_cmsData.store);
+    }
+
+    // --- Staff PIN override ---
+    if (_cmsData.settings && _cmsData.settings.staffPin) {
+        window.__staffPin = _cmsData.settings.staffPin;
+    }
+}
+
+function renderCMSSlider(slides) {
+    const container = document.getElementById("slidesContainer");
+    if (!container) return;
+    container.innerHTML = "";
+
+    slides.forEach((slide, idx) => {
+        const div = document.createElement("div");
+        div.className = "slide" + (idx === 0 ? " active" : "");
+        div.innerHTML = `
+            <div class="slide-image" style="background-image: linear-gradient(rgba(44,42,41,0.2), rgba(44,42,41,0.4)), url('${slide.image}');"></div>
+            <div class="slide-content">
+                <span class="slide-badge" data-en="${escHTMLAttr(slide.badgeEn)}" data-th="${escHTMLAttr(slide.badgeTh)}">${escHTML(slide.badgeTh)}</span>
+                <h2 data-en="${escHTMLAttr(slide.titleEn)}" data-th="${escHTMLAttr(slide.titleTh)}">${escHTML(slide.titleTh)}</h2>
+                <p data-en="${escHTMLAttr(slide.descEn)}" data-th="${escHTMLAttr(slide.descTh)}">${escHTML(slide.descTh)}</p>
+                <a href="#shop" class="btn-outline-white" onclick="filterCategory('${slide.btnCategory}');"
+                    data-en="${escHTMLAttr(slide.btnEn)}" data-th="${escHTMLAttr(slide.btnTh)}">${escHTML(slide.btnTh)}</a>
+            </div>`;
+        container.appendChild(div);
+    });
+}
+
+function applyEventCMS(ev) {
+    const lang = currentLanguage;
+    // Title
+    const h2 = document.querySelector("#event h2[data-en]");
+    if (h2) { h2.setAttribute("data-en", ev.titleEn || ""); h2.setAttribute("data-th", ev.titleTh || ""); }
+    // Description
+    const desc = document.querySelector("#event p[data-en]");
+    if (desc) { desc.setAttribute("data-en", ev.descEn || ""); desc.setAttribute("data-th", ev.descTh || ""); }
+    // Perks
+    const perksContainer = document.querySelector(".event-perks");
+    if (perksContainer && ev.perks && ev.perks.length > 0) {
+        perksContainer.innerHTML = ev.perks.map(p =>
+            `<div class="perk"><i class="fa-solid fa-circle-check"></i> <span data-en="${escHTMLAttr(p.en)}" data-th="${escHTMLAttr(p.th)}">${escHTML(p.th)}</span></div>`
+        ).join("");
+    }
+    // QR Code
+    if (ev.lineUrl) {
+        const qrImg = document.querySelector(".qr-placeholder img");
+        if (qrImg) qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(ev.lineUrl)}`;
+        document.querySelectorAll(`a[href="https://line.me/R/ti/p/@duit_thailand"]`).forEach(el => el.href = ev.lineUrl);
+    }
+    // Coupon form title (%)
+    const claimTitle = document.querySelector("#couponForm h3[data-en]");
+    if (claimTitle && ev.discount) {
+        const pct = ev.discount + "%";
+        claimTitle.setAttribute("data-en", `Claim Your ${pct} Discount`);
+        claimTitle.setAttribute("data-th", `รับคูปองส่วนลด ${pct}`);
+    }
+}
+
+function applyStoreCMS(store) {
+    // Address
+    const addrEl = document.querySelector(".footer-contact p [data-en]");
+    if (addrEl) { addrEl.setAttribute("data-en", store.addressEn || ""); addrEl.setAttribute("data-th", store.addressTh || ""); }
+    // Email
+    const emailPs = document.querySelectorAll(".footer-contact p");
+    emailPs.forEach(p => {
+        if (p.innerHTML.includes("fa-envelope") && store.email) p.innerHTML = `<i class="fa-solid fa-envelope"></i> ${escHTML(store.email)}`;
+        if (p.innerHTML.includes("fa-phone") && store.phone) p.innerHTML = `<i class="fa-solid fa-phone"></i> ${escHTML(store.phone)}`;
+        if (p.innerHTML.includes("fa-brands fa-line") && store.lineId) p.innerHTML = `<i class="fa-brands fa-line"></i> LINE: ${escHTML(store.lineId)}`;
+    });
+    // Social links
+    const socialLinks = document.querySelectorAll(".social-links .social-icon");
+    if (socialLinks[0] && store.lineUrl) socialLinks[0].href = store.lineUrl;
+    if (socialLinks[1] && store.fbUrl)   socialLinks[1].href = store.fbUrl;
+    if (socialLinks[2] && store.igUrl)   socialLinks[2].href = store.igUrl;
+    if (socialLinks[3] && store.globalUrl) socialLinks[3].href = store.globalUrl;
+    // DUIT Global link
+    document.querySelectorAll(`a[href="https://duitoverseas.com/"]`).forEach(el => { if (store.globalUrl) el.href = store.globalUrl; });
+    // About brand description
+    const aboutLead = document.querySelector(".about-lead");
+    if (aboutLead && (store.aboutEn || store.aboutTh)) {
+        if (store.aboutEn) aboutLead.setAttribute("data-en", store.aboutEn);
+        if (store.aboutTh) aboutLead.setAttribute("data-th", store.aboutTh);
+    }
+}
+
+function escHTMLAttr(str) {
+    return String(str || "").replace(/[&<>"']/g, c =>
+        ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":'&#39;' }[c])
+    );
+}
+
+function escHTML(str) {
+    return String(str || "").replace(/[&<>]/g, c =>
+        ({ "&":"&amp;", "<":"&lt;", ">":"&gt;" }[c])
+    );
+}
 
 // ==========================================
 // LANGUAGE TOGGLE SYSTEM
@@ -588,12 +744,77 @@ function goToSlide(index) {
 }
 
 // ==========================================
+// DISCOUNT / SALE UTILITIES
+// ==========================================
+function getDiscountConfig() {
+    const cms = loadCMSSiteData();
+    if (cms && cms.discount && cms.discount.enabled) {
+        return {
+            enabled: true,
+            defaultPercent: parseInt(cms.discount.percent) || 0,
+            overrides: cms.discount.overrides || {}
+        };
+    }
+    return { enabled: false, defaultPercent: 0, overrides: {} };
+}
+
+function getProductDiscountPercent(disc, productId) {
+    if (!disc.enabled) return null;
+    const ov = disc.overrides[productId];
+    if (ov !== undefined && ov !== null && String(ov).trim() !== "" && !isNaN(parseInt(ov))) {
+        return parseInt(ov);
+    }
+    return disc.defaultPercent;
+}
+
+function calcDiscountedPrice(priceStr, percent) {
+    if (!priceStr || percent <= 0) return priceStr;
+    // Handle range prices like "3,690 / 4,390"
+    if (priceStr.includes('/')) {
+        return priceStr.split('/').map(p => calcDiscountedPrice(p.trim(), percent)).join(' / ');
+    }
+    const num = parseInt(priceStr.replace(/[^0-9]/g, ''));
+    if (isNaN(num) || num === 0) return priceStr;
+    const discounted = Math.round(num * (1 - percent / 100));
+    return discounted.toLocaleString('th-TH');
+}
+
+// ==========================================
 // CATALOG RENDERING & FILTERING
 // ==========================================
 function renderProducts() {
     const grid = document.getElementById("productsGrid");
     grid.innerHTML = "";
     const lang = currentLanguage;
+    const disc = getDiscountConfig();
+
+    // Show/hide expo banner
+    let banner = document.getElementById("expoDiscountBanner");
+    if (disc.enabled) {
+        if (!banner) {
+            banner = document.createElement("div");
+            banner.id = "expoDiscountBanner";
+            banner.className = "expo-discount-banner";
+            grid.parentElement.insertBefore(banner, grid);
+        }
+        // Use defaultPercent for the banner, maybe add "สูงสุด" (Up to) if overrides exist
+        const hasOverrides = Object.keys(disc.overrides || {}).length > 0;
+        const maxPct = hasOverrides ? Math.max(disc.defaultPercent, ...Object.values(disc.overrides)) : disc.defaultPercent;
+        
+        const bannerTitle = lang === "th" ? "สิทธิพิเศษ · PET EXPO" : "PET EXPO SPECIAL";
+        const bannerDesc  = lang === "th"
+            ? `ส่วนลดพิเศษสูงสุด ${maxPct}% เฉพาะในงานเท่านั้น`
+            : `Up to ${maxPct}% OFF — Event exclusive`;
+        banner.innerHTML = `
+            <div class="expo-banner-icon">🐾</div>
+            <div class="expo-banner-text">
+                <div class="expo-banner-title">${bannerTitle}</div>
+                <div class="expo-banner-desc">${bannerDesc}</div>
+            </div>
+            <div class="expo-banner-pct">${maxPct}<span>%</span></div>`;
+    } else {
+        if (banner) banner.remove();
+    }
 
     // Filter array
     const filtered = PRODUCTS.filter(p => {
@@ -622,18 +843,34 @@ function renderProducts() {
 
     filtered.forEach(p => {
         const card = document.createElement("div");
-        card.className = "product-card";
+        const productPct = getProductDiscountPercent(disc, p.id); // null if OFF
+        const hasSale = productPct !== null && productPct > 0;
+        card.className = "product-card" + (hasSale ? " on-sale" : "");
         card.setAttribute("onclick", `openModal('${p.id}')`);
 
         const title    = p.title[lang]    || p.title.en;
         const subtitle = p.subtitle[lang] || p.subtitle.en;
         const badge    = p.badge[lang]    || p.badge.en;
-        const priceLabel   = `฿${p.price}`;
         const detailsLabel = lang === "th" ? "รายละเอียด" : "Details";
+
+        // Build price HTML
+        let priceHtml;
+        if (hasSale) {
+            const salePrice = calcDiscountedPrice(p.price, productPct);
+            const saveLbl   = lang === "th" ? `ลด ${productPct}%` : `-${productPct}%`;
+            priceHtml = `
+                <div class="price-block">
+                    <span class="price-original">฿${p.price}</span>
+                    <span class="price-sale">฿${salePrice}<span class="price-save-chip">${saveLbl}</span></span>
+                </div>`;
+        } else {
+            priceHtml = `<span>฿${p.price}</span>`;
+        }
 
         card.innerHTML = `
             <div class="product-image-wrap">
                 <span class="product-badge">${badge}</span>
+                ${hasSale ? `<span class="discount-ribbon">-${productPct}%</span>` : ''}
                 <img src="${p.image}" alt="${title}" loading="lazy">
             </div>
             <div class="product-info">
@@ -642,7 +879,7 @@ function renderProducts() {
                     <span>${subtitle}</span>
                 </div>
                 <div class="product-price">
-                    <span>${priceLabel}</span>
+                    ${priceHtml}
                     <button class="btn-details">${detailsLabel} <i class="fa-solid fa-arrow-right"></i></button>
                 </div>
             </div>
@@ -702,6 +939,7 @@ function openModal(productId) {
     if (!product) return;
 
     const lang = currentLanguage;
+    const disc = getDiscountConfig();
     const modal = document.getElementById("productModal");
     const gridContent = document.getElementById("modalGridContent");
 
@@ -710,7 +948,6 @@ function openModal(productId) {
     const badge       = product.badge[lang]       || product.badge.en;
     const description = product.description[lang] || product.description.en;
     const features    = product.features[lang]    || product.features.en;
-    const priceLabel  = `฿${product.price}`;
     const currency    = lang === "th" ? "บาท" : "THB";
     const featuresLabel = lang === "th" ? "จุดเด่นสินค้า" : "Product Highlights";
     const orderLabel  = lang === "th" ? "สั่งซื้อผ่าน LINE" : "Order via LINE";
@@ -720,15 +957,38 @@ function openModal(productId) {
         `<li><i class="fa-solid fa-circle-check" style="color:var(--color-accent); margin-right: 0.5rem;"></i> ${f}</li>`
     ).join("");
 
+    // Build price HTML (with or without discount)
+    const productPct = getProductDiscountPercent(disc, product.id);
+    const hasSale = productPct !== null && productPct > 0;
+    let priceHtml;
+    if (hasSale) {
+        const salePrice  = calcDiscountedPrice(product.price, productPct);
+        const discLbl    = lang === "th" ? `ลด ${productPct}%` : `-${productPct}% OFF`;
+        priceHtml = `
+            <div class="modal-price-block">
+                <span class="modal-price-sale">฿${salePrice}</span>
+                <span class="modal-discount-badge">${discLbl}</span>
+            </div>
+            <div class="modal-price-original">ราคาปกติ ฿${product.price} ${currency}</div>`;
+    } else {
+        priceHtml = `<p class="modal-price">฿${product.price} <span style="font-size:0.8rem; font-weight:400;">${currency}</span></p>`;
+    }
+
+    // Get LINE URL from CMS if set
+    const lineUrl = (_cmsData && _cmsData.store && _cmsData.store.lineUrl)
+        ? _cmsData.store.lineUrl
+        : "https://line.me/R/ti/p/@duit_thailand";
+
     gridContent.innerHTML = `
         <div class="modal-visual">
             <img src="${product.image}" alt="${title}">
+            ${hasSale ? `<div style="position:absolute;top:1rem;right:1rem;background:linear-gradient(135deg,#c0392b,#e74c3c);color:#fff;font-size:0.8rem;font-weight:700;padding:5px 10px;border-radius:8px;">-${productPct}%</div>` : ''}
         </div>
         <div class="modal-body">
             <span class="product-badge">${badge}</span>
             <h3>${title}</h3>
-            <p class="modal-subtitle" style="color: var(--color-text-muted); margin-bottom: 0.5rem; font-size: 0.9rem;">${subtitle}</p>
-            <p class="modal-price">${priceLabel} <span style="font-size:0.8rem; font-weight:400;">${currency}</span></p>
+            <p class="modal-subtitle" style="color: var(--color-text-muted); margin-bottom: 0.75rem; font-size: 0.9rem;">${subtitle}</p>
+            ${priceHtml}
             <p class="modal-desc">${description}</p>
 
             <div class="spec-list">
@@ -742,7 +1002,7 @@ function openModal(productId) {
             </ul>
 
             <div class="modal-actions">
-                <a href="https://line.me/R/ti/p/@duit_thailand" target="_blank" class="btn-primary">
+                <a href="${lineUrl}" target="_blank" class="btn-primary">
                     <i class="fa-brands fa-line"></i> ${orderLabel}
                 </a>
                 <button onclick="closeModal()" class="btn-secondary">${closeLabel}</button>
@@ -775,7 +1035,7 @@ window.addEventListener("click", (e) => {
 // ==========================================
 // EVENT LEAD CAPTURE & COUPON GENERATION
 // ==========================================
-function generateCoupon(event) {
+async function generateCoupon(event) {
     event.preventDefault();
 
     const name  = document.getElementById("userName").value;
@@ -792,14 +1052,27 @@ function generateCoupon(event) {
         phone: phone,
         line: line,
         code: promoCode,
-        timestamp: new Date().toLocaleString()
+        timestamp: new Date().toLocaleString('th-TH')
     };
 
-    let leads = JSON.parse(localStorage.getItem("duit_leads")) || [];
-    leads.push(newLead);
-    localStorage.setItem("duit_leads", JSON.stringify(leads));
+    try {
+        // Fetch current leads, append, and save
+        const res = await fetch('/api/leads');
+        let leads = [];
+        if (res.ok) leads = await res.json();
+        
+        leads.push(newLead);
+        await fetch('/api/leads', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(leads)
+        });
+    } catch (e) {
+        let leads = JSON.parse(localStorage.getItem("duit_leads")) || [];
+        leads.push(newLead);
+        localStorage.setItem("duit_leads", JSON.stringify(leads));
+    }
 
-    // Also store coupon session
     localStorage.setItem("claimed_coupon", JSON.stringify(newLead));
 
     // Show Voucher View
@@ -861,7 +1134,9 @@ function closeStaffPortal() {
 
 function verifyPin() {
     const pin = document.getElementById("staffPin").value;
-    if (pin === "1234") {
+    // Use PIN from CMS settings if available, fall back to default
+    const correctPin = (window.__staffPin) || "1234";
+    if (pin === correctPin) {
         document.getElementById("pinSection").style.display = "none";
         document.getElementById("leadsSection").style.display = "block";
         renderLeadsTable();
