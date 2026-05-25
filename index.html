@@ -11,7 +11,7 @@
     <!-- Google Fonts: Outfit (modern geometric sans-serif) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Custom CSS -->
@@ -246,35 +246,36 @@
                 <div class="event-glow"></div>
                 <div class="event-grid">
                     <div class="event-info">
-                        <span class="event-badge" data-en="<i class='fa-solid fa-gift'></i> Event Special"
-                            data-th="<i class='fa-solid fa-gift'></i> สิทธิพิเศษในงาน"><i class="fa-solid fa-gift"></i>
-                            Event Special</span>
-                        <h2 data-en="DUIT Event Exclusive Offer" data-th="ข้อเสนอพิเศษเฉพาะงานนี้">DUIT Event Exclusive
-                            Offer</h2>
-                        <p data-en="Welcome to our showroom! Scan the QR Code at our booth to explore our products. Register below to receive an instant 10% discount coupon valid for any purchases made today!"
-                            data-th="ยินดีต้อนรับสู่โชว์รูมของเรา! เพียงสแกน QR Code ที่บูธเพื่อเลือกชมสินค้า ลงทะเบียนด้านล่างเพื่อรับคูปองส่วนลด 10% ทันที สำหรับซื้อสินค้าภายในงานวันนี้!">
-                            Welcome to our showroom! Scan the QR Code at our booth to explore our products. Register
-                            below to receive an instant 10% discount coupon valid for any purchases made today!</p>
+                        <span class="event-badge" data-en="<i class='fa-solid fa-crown'></i> VIP Membership"
+                            data-th="<i class='fa-solid fa-crown'></i> สมัครสมาชิก VIP"><i
+                                class="fa-solid fa-crown"></i>
+                            VIP Membership</span>
+                        <h2 data-en="DUIT Exclusive Club" data-th="DUIT Exclusive Club">DUIT Exclusive Club</h2>
+                        <p data-en="Join the DUIT family and get exclusive privileges before anyone else! Early access to new collections, pet care tricks, and birthday discounts."
+                            data-th="เข้าร่วมเป็นครอบครัว DUIT รับสิทธิพิเศษก่อนใคร สิทธิ์ซื้อสินค้าคอลเลกชันใหม่ก่อนใคร ทริคดูแลสัตว์เลี้ยง และส่วนลดเดือนเกิด">
+                            Join the DUIT family and get exclusive privileges before anyone else! Early access to new
+                            collections, pet care tricks, and birthday discounts.</p>
 
                         <div class="event-perks">
-                            <div class="perk"><i class="fa-solid fa-circle-check"></i> <span data-en="10% OFF all items"
-                                    data-th="ลด 10% ทุกรายการสินค้า">10% OFF all items</span></div>
                             <div class="perk"><i class="fa-solid fa-circle-check"></i> <span
-                                    data-en="Free Shipping in Thailand" data-th="จัดส่งฟรีทั่วประเทศไทย">Free Shipping
-                                    in Thailand</span></div>
+                                    data-en="Early access to new collections"
+                                    data-th="สิทธิ์ซื้อสินค้าคอลเลกชันใหม่ก่อนใคร">Early access to new
+                                    collections</span></div>
                             <div class="perk"><i class="fa-solid fa-circle-check"></i> <span
-                                    data-en="DUIT Premium Gift Bag" data-th="รับฟรีถุงของขวัญสุดพรีเมียมจาก DUIT">DUIT
-                                    Premium Gift Bag</span></div>
+                                    data-en="Exclusive pet care tricks"
+                                    data-th="ทริคดูแลสัตว์เลี้ยงสุดเอ็กซ์คลูซีฟ">Exclusive pet care tricks</span></div>
+                            <div class="perk"><i class="fa-solid fa-circle-check"></i> <span
+                                    data-en="Special birthday discount" data-th="ส่วนลดพิเศษในเดือนเกิด">Special
+                                    birthday discount</span></div>
                         </div>
                     </div>
                     <div class="event-action-box">
                         <!-- Registration Form -->
-                        <form id="couponForm" onsubmit="generateCoupon(event)">
-                            <h3 data-en="Claim Your 10% Discount" data-th="รับคูปองส่วนลด 10%">Claim Your 10% Discount
-                            </h3>
-                            <p class="form-subtext" data-en="Enter your details to generate your voucher."
-                                data-th="กรอกข้อมูลของคุณเพื่อรับโค้ดส่วนลดพิเศษ">Enter your details to generate your
-                                voucher.</p>
+                        <form id="membershipForm" onsubmit="registerMembership(event)">
+                            <h3 data-en="Join DUIT Family" data-th="สมัครสมาชิก DUIT Family">Join DUIT Family</h3>
+                            <p class="form-subtext" data-en="Enter your details to join our exclusive club."
+                                data-th="กรอกข้อมูลของคุณเพื่อรับสิทธิพิเศษ">Enter your details to join our exclusive
+                                club.</p>
 
                             <div class="form-group">
                                 <label for="userName" data-en="Your Name" data-th="ชื่อ-นามสกุลของคุณ">Your Name</label>
@@ -302,48 +303,44 @@
                             </div>
 
                             <button type="submit" class="btn-submit">
-                                <span data-en="Generate Discount Code" data-th="สร้างโค้ดคูปองส่วนลด">Generate Discount
-                                    Code</span> <i class="fa-solid fa-arrow-right-long"></i>
+                                <span data-en="Join Now" data-th="สมัครสมาชิกเลย">Join Now</span> <i
+                                    class="fa-solid fa-arrow-right-long"></i>
                             </button>
                         </form>
 
-                        <!-- Generated Coupon Result (hidden by default) -->
-                        <div id="couponResult" style="display: none;" class="coupon-voucher">
-                            <div class="voucher-header">
-                                <h4>DUIT THAILAND</h4>
-                                <span class="voucher-badge" data-en="10% DISCOUNT" data-th="ส่วนลด 10%">10%
-                                    DISCOUNT</span>
+                        <!-- Membership Success Result (hidden by default) -->
+                        <div id="membershipResult" style="display: none;" class="coupon-voucher membership-success-card">
+                            <div class="voucher-header success-header">
+                                <div class="success-icon-wrapper">
+                                    <i class="fa-solid fa-circle-check"></i>
+                                </div>
+                                <h4 data-en="Welcome to DUIT Family!" data-th="ยินดีต้อนรับสู่ครอบครัว DUIT!">Welcome to DUIT Family!</h4>
+                                <p class="success-subtitle" data-en="Your VIP Membership is now active!" data-th="การสมัครสมาชิก VIP ของคุณเสร็จสมบูรณ์แล้ว!">Your VIP Membership is now active!</p>
                             </div>
-                            <div class="voucher-body">
-                                <p class="voucher-label" data-en="CLAIMED BY" data-th="ผู้รับสิทธิ์คูปอง">CLAIMED BY</p>
-                                <p class="voucher-value" id="voucherName">JOHN DOE</p>
-
-                                <div class="code-box">
-                                    <span class="code-label" data-en="PROMO CODE" data-th="รหัสโปรโมชัน">PROMO
-                                        CODE</span>
-                                    <strong id="voucherCode">DUIT-EVENT-1234</strong>
-                                    <button class="copy-code-btn" onclick="copyVoucherCode()" title="Copy Code">
-                                        <i class="fa-regular fa-copy"></i>
-                                    </button>
+                            <div class="voucher-body vip-card-body">
+                                <div class="badge-glow"></div>
+                                <div class="vip-card-header">
+                                    <span class="club-title">DUIT EXCLUSIVE CLUB</span>
+                                    <span class="badge-status">VIP MEMBER</span>
+                                </div>
+                                <div class="vip-card-fields">
+                                    <div class="badge-field">
+                                        <span class="field-label" data-en="MEMBER NAME" data-th="ชื่อสมาชิก">MEMBER NAME</span>
+                                        <strong id="memberNameDisplay">JOHN DOE</strong>
+                                    </div>
+                                    <div class="badge-field">
+                                        <span class="field-label" data-en="MEMBER ID" data-th="รหัสสมาชิก">MEMBER ID</span>
+                                        <strong id="memberIdDisplay">DUIT-VIP-8273</strong>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="voucher-footer">
-                                <div class="qr-placeholder">
-                                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://line.me/R/ti/p/@duit_thailand"
-                                        alt="DUIT Thailand LINE QR">
-                                </div>
+                            <div class="voucher-footer success-footer">
                                 <div class="voucher-notes">
-                                    <p><strong data-en="Scan QR or Add Line: @duit_thailand"
-                                            data-th="สแกน QR หรือ แอดไลน์: @duit_thailand">Scan QR or Add Line:
-                                            @duit_thailand</strong></p>
-                                    <p data-en="Show this screen to the staff at our checkout counter or send it to our Line official to redeem."
-                                        data-th="แสดงหน้านี้ให้เจ้าหน้าที่ที่เคาน์เตอร์ชำระเงิน หรือส่งข้อความยืนยันทาง LINE OA เพื่อใช้สิทธิ์ส่วนลด">
-                                        Show this screen to the staff at our checkout counter or send it to our Line
-                                        official to redeem.</p>
+                                    <p data-en="We have registered your contact details. Stay tuned for special perks, news, and exclusive updates via your LINE ID!" data-th="เราได้ลงทะเบียนข้อมูลของคุณเรียบร้อยแล้ว เตรียมพบกับสิทธิพิเศษ ข่าวสาร และอัปเดตสุดเอ็กซ์คลูซีฟผ่าน LINE ID ของคุณ!">We have registered your contact details. Stay tuned for special perks, news, and exclusive updates via your LINE ID!</p>
                                 </div>
                             </div>
-                            <button onclick="resetCouponForm()" class="btn-secondary-outline" data-en="Get Another Code"
-                                data-th="รับรหัสเพิ่ม">Get Another Code</button>
+                            <button onclick="resetMembershipForm()" class="btn-secondary-outline reset-member-btn" data-en="Register Another Member"
+                                data-th="สมัครสมาชิกเพิ่ม">Register Another Member</button>
                         </div>
                     </div>
                 </div>
@@ -409,7 +406,8 @@
                     <button class="btn-staff-link" onclick="openStaffPortal()"><i class="fa-solid fa-cog"></i> <span
                             data-en="Lead Manager" data-th="ระบบจัดการผู้ติดต่อ">Lead Manager</span></button>
                     <a href="admin.html" class="btn-staff-link" style="text-decoration:none; margin-left:0.5rem;">
-                        <i class="fa-solid fa-shield-halved"></i> <span data-en="Admin Panel" data-th="ระบบหลังบ้าน">ระบบหลังบ้าน</span>
+                        <i class="fa-solid fa-shield-halved"></i> <span data-en="Admin Panel"
+                            data-th="ระบบหลังบ้าน">ระบบหลังบ้าน</span>
                     </a>
                 </div>
             </div>

@@ -7,10 +7,12 @@
     <meta name="robots" content="noindex, nofollow">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" rel="stylesheet">
     <link rel="stylesheet" href="admin.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
 </head>
 <body>
 
@@ -74,6 +76,10 @@
             <button class="sidebar-link" id="nav-products" onclick="showPanel('products')">
                 <i class="fa-solid fa-box"></i> สินค้า
                 <span class="badge-count" id="productCount">0</span>
+            </button>
+            <button class="sidebar-link" id="nav-categories" onclick="showPanel('categories')">
+                <i class="fa-solid fa-tags"></i> หมวดหมู่สินค้า
+                <span class="badge-count" id="categoryCount">0</span>
             </button>
             <button class="sidebar-link" id="nav-slider" onclick="showPanel('slider')">
                 <i class="fa-solid fa-images"></i> Hero Slider
@@ -332,6 +338,38 @@
                     </div>
                 </div>
             </div>
+
+            <!-- ==============================
+                 CATEGORIES PANEL
+                 ============================== -->
+            <div class="admin-panel" id="panel-categories">
+                <div class="card">
+                    <div class="card-header">
+                        <h2><i class="fa-solid fa-tags"></i> จัดการหมวดหมู่สินค้า</h2>
+                        <button class="btn btn-primary" onclick="openCategoryDrawer(null)">
+                            <i class="fa-solid fa-plus"></i> เพิ่มหมวดหมู่
+                        </button>
+                    </div>
+                    <div class="card-body" style="padding:0;">
+                        <div style="overflow-x:auto;">
+                            <table class="product-list-table" id="categoryTable">
+                                <thead>
+                                    <tr>
+                                        <th style="width:120px;">รหัส (ID)</th>
+                                        <th>ชื่อหมวดหมู่ (TH)</th>
+                                        <th>ชื่อหมวดหมู่ (EN)</th>
+                                        <th style="width:110px; text-align:center;">จัดการ</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="categoryTableBody">
+                                    <!-- Dynamic -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- ==============================
                  PRODUCTS PANEL
                  ============================== -->
@@ -359,6 +397,7 @@
                                         <th>หมวดหมู่</th>
                                         <th style="width:140px;">ป้าย (Badge)</th>
                                         <th>ราคา</th>
+                                        <th style="width:90px; text-align:center;">ลำดับ</th>
                                         <th style="width:110px; text-align:center;">จัดการ</th>
                                     </tr>
                                 </thead>
@@ -710,9 +749,7 @@
                 <div class="form-group">
                     <label class="form-label">หมวดหมู่ <span class="required">*</span></label>
                     <select class="form-select" id="prod-category">
-                        <option value="appliances">Smart Appliances (อุปกรณ์อัจฉริยะ)</option>
-                        <option value="furniture">Furniture (เฟอร์นิเจอร์)</option>
-                        <option value="toys">Toys & Accessories (ของเล่น)</option>
+                        <!-- Dynamic Categories -->
                     </select>
                 </div>
                 <div class="form-group">
@@ -727,6 +764,14 @@
                     <label class="form-label">Badge (EN)</label>
                     <input type="text" class="form-input" id="prod-badgeEn" placeholder="e.g. Best Seller, New">
                 </div>
+                <div class="form-group">
+                    <label class="form-label">ขนาดสินค้า (TH)</label>
+                    <input type="text" class="form-input" id="prod-dimTh" placeholder="เช่น กว้าง 40 x ยาว 50 x สูง 40 ซม.">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">ขนาดสินค้า (EN)</label>
+                    <input type="text" class="form-input" id="prod-dimEn" placeholder="e.g. W 40 x L 50 x H 40 cm">
+                </div>
                 <div class="form-group span-2">
                     <label class="form-label">คำอธิบาย (TH)</label>
                     <textarea class="form-textarea" id="prod-descTh" placeholder="รายละเอียดสินค้าภาษาไทย"></textarea>
@@ -736,6 +781,17 @@
                     <textarea class="form-textarea" id="prod-descEn" placeholder="Product description in English"></textarea>
                 </div>
             </div>
+
+            <hr class="section-divider">
+
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:0.75rem;">
+                <div style="font-weight:600; font-size:0.9rem;"><i class="fa-solid fa-images" style="color:var(--admin-accent); margin-right:6px;"></i>ตัวเลือกสินค้า / อัลบั้มภาพ (Variants)</div>
+            </div>
+            <div class="form-hint" style="margin-bottom:0.75rem;">หากสินค้ามีหลายสีหรือหลายไซส์ สามารถเพิ่มรูปภาพและชื่อสีได้ที่นี่ (จะแสดงเป็นปุ่มเลื่อนรูปภาพในหน้าเว็บ)</div>
+            <div class="features-list" id="variantsList"></div>
+            <button class="add-feature-btn" onclick="addVariantRow()">
+                <i class="fa-solid fa-plus"></i> เพิ่มตัวเลือกสินค้า / รูปภาพ
+            </button>
 
             <hr class="section-divider">
 
@@ -784,9 +840,66 @@
     </div>
 </div>
 
+<!-- ============================================================
+     CATEGORY EDIT DRAWER
+     ============================================================ -->
+<div class="admin-modal-backdrop" id="categoryDrawer" onclick="onCategoryDrawerBackdropClick(event)">
+    <div class="admin-drawer">
+        <div class="drawer-header">
+            <h3 id="categoryDrawerTitle"><i class="fa-solid fa-tags"></i> เพิ่มหมวดหมู่</h3>
+            <button class="drawer-close" onclick="closeCategoryDrawer()">&times;</button>
+        </div>
+        <div class="drawer-body">
+            <input type="hidden" id="editCategoryOldId">
+            <div class="form-grid">
+                <div class="form-group span-2">
+                    <label class="form-label">รหัสหมวดหมู่ (ID) <span class="required">*</span></label>
+                    <input type="text" class="form-input" id="cat-id" placeholder="เช่น cat_clothes (ภาษาอังกฤษหรือตัวเลข)">
+                    <div class="form-hint mt-1">ห้ามซ้ำกับหมวดหมู่อื่น และไม่ควรเว้นวรรค เช่น appliances</div>
+                </div>
+                <div class="form-group span-2">
+                    <label class="form-label">ชื่อหมวดหมู่ (TH) <span class="required">*</span></label>
+                    <input type="text" class="form-input" id="cat-titleTh" placeholder="เช่น เสื้อผ้าแมว">
+                </div>
+                <div class="form-group span-2">
+                    <label class="form-label">ชื่อหมวดหมู่ (EN) <span class="required">*</span></label>
+                    <input type="text" class="form-input" id="cat-titleEn" placeholder="เช่น Cat Clothes">
+                </div>
+            </div>
+        </div>
+        <div class="drawer-footer">
+            <button class="btn btn-secondary" onclick="closeCategoryDrawer()">ยกเลิก</button>
+            <button class="btn btn-primary" onclick="saveCategory()">
+                <i class="fa-solid fa-floppy-disk"></i> บันทึกหมวดหมู่
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================
+     CROPPER MODAL
+     ============================================================ -->
+<div class="admin-modal-backdrop" id="cropperModal" style="z-index: 10000; align-items:center; justify-content:center;">
+    <div class="card" style="width:100%; max-width:800px; text-align:center; position:relative; max-height: 90vh; display: flex; flex-direction: column;">
+        <h2 style="margin-bottom:1rem;" id="cropperTitle">ครอบตัดรูปภาพ</h2>
+        
+        <div style="flex:1; width:100%; max-height: 60vh; background-color: #f0f0f0; border-radius: 8px; overflow: hidden; display:flex; justify-content:center; align-items:center;">
+            <img id="cropperImage" src="" alt="Picture" style="max-width: 100%; max-height: 100%; display:block;">
+        </div>
+
+        <div style="margin-top:1.5rem; display:flex; justify-content:center; gap: 1rem;">
+            <button class="btn btn-secondary" onclick="closeCropperModal()">ยกเลิก</button>
+            <button class="btn btn-primary" onclick="confirmCrop()">
+                <i class="fa-solid fa-crop"></i> ยืนยันการตัด
+            </button>
+        </div>
+    </div>
+</div>
+
 <!-- Toast Container -->
 <div class="toast-container" id="toastContainer"></div>
 
-<script src="admin.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+<script src="admin.js?v=1.4"></script>
 </body>
 </html>

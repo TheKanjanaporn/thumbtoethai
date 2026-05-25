@@ -820,42 +820,55 @@
     "slides": [
         {
             "id": "slide1",
-            "badgeEn": "Hot Pick",
+            "image": "https://cdn.imweb.me/thumbnail/20250428/ddee63d251372.jpg",
             "badgeTh": "สินค้ายอดฮิต",
-            "titleEn": "duit yummy ball",
+            "badgeEn": "Hot Pick",
             "titleTh": "duit yummy ball",
-            "descEn": "your playful toy buddy, nose work master.",
+            "titleEn": "duit yummy ball",
             "descTh": "ของเล่นสัตว์เลี้ยงแสนสนุก ฝึกดมกลิ่นและทักษะสมอง",
-            "btnEn": "Explore Toys",
+            "descEn": "your playful toy buddy, nose work master.",
             "btnTh": "เลือกชมของเล่น",
-            "btnCategory": "toys",
-            "image": "https://cdn.imweb.me/thumbnail/20250428/ddee63d251372.jpg"
+            "btnEn": "Explore Toys",
+            "btnCategory": "toys"
         },
         {
             "id": "slide2",
-            "badgeEn": "Smart Tech",
+            "image": "https://cdn.imweb.me/thumbnail/20240419/4d999960b611b.jpg",
             "badgeTh": "อุปกรณ์อัจฉริยะ",
-            "titleEn": "duit automatic feeder",
+            "badgeEn": "Smart Tech",
             "titleTh": "เครื่องให้อาหารอัตโนมัติ duit",
-            "descEn": "customizable smart feeder, never miss a meal.",
+            "titleEn": "duit automatic feeder",
             "descTh": "เครื่องให้อาหารอัจฉริยะ ตั้งเวลาได้ตามใจ หมดกังวลทุกมื้อ",
-            "btnEn": "Explore Appliances",
+            "descEn": "customizable smart feeder, never miss a meal.",
             "btnTh": "เลือกชมอุปกรณ์",
-            "btnCategory": "appliances",
-            "image": "https://cdn.imweb.me/thumbnail/20240419/4d999960b611b.jpg"
+            "btnEn": "Explore Appliances",
+            "btnCategory": "appliances"
+        },
+        {
+            "id": "slide1779358696097",
+            "image": "",
+            "badgeTh": "ใหม่",
+            "badgeEn": "New",
+            "titleTh": "สไลด์ใหม่",
+            "titleEn": "New Slide",
+            "descTh": "",
+            "descEn": "",
+            "btnTh": "เลือกชม",
+            "btnEn": "Explore",
+            "btnCategory": "all"
         },
         {
             "id": "slide3",
-            "badgeEn": "Luxury Furniture",
+            "image": "https://cdn.imweb.me/thumbnail/20241216/f2f68e665eb7f.jpg",
             "badgeTh": "เฟอร์นิเจอร์สุดหรู",
-            "titleEn": "duit catthenon",
+            "badgeEn": "Luxury Furniture",
             "titleTh": "คอนโดแมวที่ลับเล็บ duit",
-            "descEn": "modular cat scratching tower, the kingdom of cats.",
+            "titleEn": "duit catthenon",
             "descTh": "คอนโดแมวที่ลับเล็บสไตล์โมเดิร์น อาณาจักรของเจ้าเหมียว",
-            "btnEn": "Explore Furniture",
+            "descEn": "modular cat scratching tower, the kingdom of cats.",
             "btnTh": "เลือกชมเฟอร์นิเจอร์",
-            "btnCategory": "furniture",
-            "image": "https://cdn.imweb.me/thumbnail/20241216/f2f68e665eb7f.jpg"
+            "btnEn": "Explore Furniture",
+            "btnCategory": "furniture"
         }
     ],
     "event": {

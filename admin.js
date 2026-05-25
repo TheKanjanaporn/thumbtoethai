@@ -6,6 +6,12 @@
 // ==========================================
 // DEFAULT DATA (mirrors app.js defaults)
 // ==========================================
+const DEFAULT_CATEGORIES = [
+    { id: "appliances", name: { th: "อุปกรณ์อัจฉริยะ", en: "Smart Appliances" } },
+    { id: "furniture", name: { th: "เฟอร์นิเจอร์", en: "Furniture" } },
+    { id: "toys", name: { th: "ของเล่น", en: "Toys & Accessories" } }
+];
+
 const DEFAULT_PRODUCTS = [
     { id:"table_plus", category:"appliances", title:{en:"The Table+",th:"The Table+"}, subtitle:{en:"Minimalist Smart Feeder",th:"เครื่องให้อาหารมินิมอลสไตล์"}, badge:{en:"Smart Tech",th:"เทคโนโลยีอัจฉริยะ"}, price:"7,490", image:"assets/table_plus.png", description:{en:"Minimalist smart automatic feeder. Connects to app, made from food-grade plastic — same quality as baby bottles.",th:"เครื่องให้อาหารอัตโนมัติสไตล์มินิมอล เชื่อมต่อแอพได้ วัสดุพลาสติกเกรดเดียวกับขวดนมเด็ก"}, features:{en:["Minimalist design","App connectivity","Food-grade plastic (same as baby bottles)"],th:["มินิมอล","เชื่อมแอพได้","วัสดุทำจากพลาสติกเกรดเดียวกับขวดนมเด็ก"]}},
     { id:"daily_table", category:"appliances", title:{en:"Daily Table",th:"Daily Table"}, subtitle:{en:"Elevated Food Bowl Stand",th:"ชามอาหารมินิมอล"}, badge:{en:"Popular",th:"ยอดนิยม"}, price:"2,590", image:"assets/daily_table.png", description:{en:"Minimalist elevated food bowl stand. 100% washable, reduces neck strain while eating.",th:"ชามอาหารพร้อมขาตั้งสไตล์มินิมอล ทำความสะอาดได้ 100% ช่วยให้สัตว์เลี้ยงไม่ต้องก้มจนเกินไปขณะกินอาหาร"}, features:{en:["100% washable","Elevated bowl stand with legs","Reduces neck strain while eating"],th:["สามารถทำความสะอาดได้ 100%","ชามอาหารพร้อมขาตั้ง","ช่วยให้สัตว์เลี้ยงไม่ต้องก้มจนเกินไปขณะกินอาหาร"]}},
@@ -101,11 +107,27 @@ async function loadCMSData() {
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(saved)
                 });
+            } else {
+                // If local storage is also empty, try to fetch default data.json
+                try {
+                    const defaultRes = await fetch('/data.json');
+                    saved = await defaultRes.json();
+                    if (saved && Object.keys(saved).length > 0) {
+                        await fetch('/api/data', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(saved)
+                        });
+                    }
+                } catch (jsonErr) {
+                    console.warn("Failed to seed from default data.json", jsonErr);
+                }
             }
         }
 
         if (saved && Object.keys(saved).length > 0) {
             cmsData = saved;
+            if (!cmsData.categories) cmsData.categories = JSON.parse(JSON.stringify(DEFAULT_CATEGORIES));
             if (!cmsData.products) cmsData.products = [...DEFAULT_PRODUCTS];
             if (!cmsData.slides)   cmsData.slides   = [...DEFAULT_SLIDES];
             if (!cmsData.event)    cmsData.event    = { ...DEFAULT_EVENT };
@@ -113,6 +135,7 @@ async function loadCMSData() {
             if (!cmsData.settings) cmsData.settings = { ...DEFAULT_SETTINGS };
         } else {
             cmsData = {
+                categories: JSON.parse(JSON.stringify(DEFAULT_CATEGORIES)),
                 products: JSON.parse(JSON.stringify(DEFAULT_PRODUCTS)),
                 slides:   JSON.parse(JSON.stringify(DEFAULT_SLIDES)),
                 event:    JSON.parse(JSON.stringify(DEFAULT_EVENT)),
@@ -125,8 +148,10 @@ async function loadCMSData() {
         const localSaved = localStorage.getItem("duit_cms_data");
         if (localSaved) {
             cmsData = JSON.parse(localSaved);
+            if (!cmsData.categories) cmsData.categories = JSON.parse(JSON.stringify(DEFAULT_CATEGORIES));
         } else {
             cmsData = {
+                categories: JSON.parse(JSON.stringify(DEFAULT_CATEGORIES)),
                 products: JSON.parse(JSON.stringify(DEFAULT_PRODUCTS)),
                 slides:   JSON.parse(JSON.stringify(DEFAULT_SLIDES)),
                 event:    JSON.parse(JSON.stringify(DEFAULT_EVENT)),
@@ -187,6 +212,8 @@ function showAdminApp() {
     document.getElementById("adminApp").style.display = "flex";
     refreshDashboard();
     renderProductTable();
+    renderCategoryTable();
+    updateCategoryDropdown();
     renderLeadsTable();
 }
 
@@ -210,13 +237,13 @@ function showPanel(name) {
 
     // Update topbar title
     const titles = {
-        dashboard: "แดชบอร์ด", products: "จัดการสินค้า",
+        dashboard: "แดชบอร์ด", products: "จัดการสินค้า", categories: "หมวดหมู่สินค้า",
         slider: "Hero Slider", event: "Event Section",
         store: "ข้อมูลร้านค้า", leads: "Leads ลูกค้า", settings: "ตั้งค่า",
         discount: "ส่วนลด Pet Expo"
     };
     const icons = {
-        dashboard: "chart-pie", products: "box", slider: "images",
+        dashboard: "chart-pie", products: "box", categories: "tags", slider: "images",
         event: "gift", store: "store", leads: "users", settings: "gear",
         discount: "percent"
     };
@@ -521,22 +548,27 @@ function renderProductTable() {
     );
 
     if (filtered.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="5"><div class="empty-state" style="padding:2rem;">
+        tbody.innerHTML = `<tr><td colspan="7"><div class="empty-state" style="padding:2rem;">
             <i class="fa-solid fa-box-open"></i><h3>ไม่พบสินค้า</h3></div></td></tr>`;
         return;
     }
 
     filtered.forEach((p, idx) => {
+        const cat = cmsData.categories.find(c => c.id === p.category);
+        const catName = cat ? cat.name.en : p.category;
+
+        const masterIdx = cmsData.products.findIndex(x => x.id === p.id);
+        const isFirst = masterIdx === 0;
+        const isLast = masterIdx === cmsData.products.length - 1;
+
         const tr = document.createElement("tr");
-        const catClass = {appliances:"appliances", furniture:"furniture", toys:"toys"}[p.category] || "";
-        const catLabel = {appliances:"Appliances", furniture:"Furniture", toys:"Toys"}[p.category] || p.category;
         tr.innerHTML = `
             <td><img class="product-thumb" src="${escHTML(p.image)}" alt="${escHTML(p.title.th)}" onerror="this.src='data:image/svg+xml,<svg xmlns=\\'http://www.w3.org/2000/svg\\'><rect width=\\'48\\' height=\\'48\\' fill=\\'%23333\\'/></svg>'"></td>
             <td class="product-name-cell">
                 <strong>${escHTML(p.title.th)}</strong>
                 <span>${escHTML(p.title.en)}</span>
             </td>
-            <td><span class="category-tag ${catClass}">${catLabel}</span></td>
+            <td><span class="category-tag">${escHTML(catName)}</span></td>
             <td>
                 <div style="display:flex; flex-direction:column; gap:4px;">
                     <input type="text" class="form-input" style="padding:0.2rem 0.4rem; font-size:0.75rem;" value="${escHTML(p.badge?.th || '')}" onchange="updateInlineBadge('${escHTML(p.id)}', 'th', this.value)" placeholder="TH (เช่น ใหม่)">
@@ -544,6 +576,16 @@ function renderProductTable() {
                 </div>
             </td>
             <td class="price-cell">฿${escHTML(p.price)}</td>
+            <td style="text-align:center;">
+                <div style="display:flex; gap:4px; justify-content:center; align-items:center;">
+                    <button class="btn btn-secondary btn-sm btn-icon" title="ย้ายขึ้น" ${isFirst || q !== "" ? "disabled style='opacity:0.3; cursor:not-allowed;'" : ""} onclick="moveProduct('${escHTML(p.id)}', -1)">
+                        <i class="fa-solid fa-arrow-up"></i>
+                    </button>
+                    <button class="btn btn-secondary btn-sm btn-icon" title="ย้ายลง" ${isLast || q !== "" ? "disabled style='opacity:0.3; cursor:not-allowed;'" : ""} onclick="moveProduct('${escHTML(p.id)}', 1)">
+                        <i class="fa-solid fa-arrow-down"></i>
+                    </button>
+                </div>
+            </td>
             <td>
                 <div class="action-btns" style="justify-content:center;">
                     <button class="btn btn-secondary btn-sm btn-icon" title="QR Code" onclick="openQrModal('${escHTML(p.id)}', '${escHTML(p.title.th).replace(/'/g, "\\'")}')">
@@ -559,6 +601,21 @@ function renderProductTable() {
             </td>`;
         tbody.appendChild(tr);
     });
+}
+
+function moveProduct(productId, direction) {
+    const idx = cmsData.products.findIndex(p => p.id === productId);
+    if (idx === -1) return;
+    const newIdx = idx + direction;
+    if (newIdx < 0 || newIdx >= cmsData.products.length) return;
+
+    // Swap items in-place
+    const temp = cmsData.products[idx];
+    cmsData.products[idx] = cmsData.products[newIdx];
+    cmsData.products[newIdx] = temp;
+
+    saveCMSData();
+    renderProductTable();
 }
 
 function updateInlineBadge(productId, lang, newVal) {
@@ -646,8 +703,8 @@ function openProductDrawer(productId) {
     const drawer = document.getElementById("productDrawer");
     drawer.classList.add("open");
 
-    // Reset
-    clearImageInput();
+    // Reset everything first
+    clearProductForm();
     document.getElementById("featuresTh").innerHTML = "";
     document.getElementById("featuresEn").innerHTML = "";
 
@@ -655,7 +712,6 @@ function openProductDrawer(productId) {
         // ADD mode
         document.getElementById("drawerTitle").innerHTML = '<i class="fa-solid fa-plus"></i> เพิ่มสินค้าใหม่';
         document.getElementById("editProductId").value = "";
-        clearProductForm();
         addFeatureRow("Th");
         addFeatureRow("En");
     } else {
@@ -678,11 +734,13 @@ function onDrawerBackdropClick(e) {
 
 function clearProductForm() {
     ["prod-titleTh","prod-titleEn","prod-subtitleTh","prod-subtitleEn",
-     "prod-price","prod-badgeTh","prod-badgeEn","prod-descTh","prod-descEn"].forEach(id => {
+     "prod-price","prod-badgeTh","prod-badgeEn","prod-descTh","prod-descEn",
+     "prod-dimTh", "prod-dimEn"].forEach(id => {
         const el = document.getElementById(id);
         if (el) el.value = "";
     });
-    document.getElementById("prod-category").value = "appliances";
+    document.getElementById("variantsList").innerHTML = "";
+    document.getElementById("prod-category").value = cmsData.categories.length ? cmsData.categories[0].id : "";
     document.getElementById("imageUrlInput").value = "";
     clearImageInput();
 }
@@ -692,10 +750,12 @@ function fillProductForm(p) {
     document.getElementById("prod-titleEn").value    = p.title.en || "";
     document.getElementById("prod-subtitleTh").value = p.subtitle.th || "";
     document.getElementById("prod-subtitleEn").value = p.subtitle.en || "";
-    document.getElementById("prod-category").value   = p.category || "appliances";
+    document.getElementById("prod-category").value   = p.category || (cmsData.categories.length ? cmsData.categories[0].id : "");
     document.getElementById("prod-price").value      = p.price || "";
     document.getElementById("prod-badgeTh").value    = p.badge.th || "";
     document.getElementById("prod-badgeEn").value    = p.badge.en || "";
+    document.getElementById("prod-dimTh").value      = (p.dimensions && p.dimensions.th) ? p.dimensions.th : "";
+    document.getElementById("prod-dimEn").value      = (p.dimensions && p.dimensions.en) ? p.dimensions.en : "";
     document.getElementById("prod-descTh").value     = p.description.th || "";
     document.getElementById("prod-descEn").value     = p.description.en || "";
     document.getElementById("imageUrlInput").value   = p.image || "";
@@ -703,6 +763,8 @@ function fillProductForm(p) {
     // Features
     (p.features.th || []).forEach(f => addFeatureRow("Th", f));
     (p.features.en || []).forEach(f => addFeatureRow("En", f));
+    // Variants
+    (p.variants || []).forEach(v => addVariantRow(v.name.th, v.name.en, v.image, v.desc?.th, v.desc?.en));
 }
 
 function saveProduct() {
@@ -726,14 +788,29 @@ function saveProduct() {
     const featuresEn = Array.from(document.querySelectorAll("#featuresEn .feature-input"))
         .map(i => i.value.trim()).filter(Boolean);
 
+    // Collect variants
+    const variants = [];
+    document.querySelectorAll(".variant-row").forEach(row => {
+        const th = row.querySelector(".var-name-th").value.trim();
+        const en = row.querySelector(".var-name-en").value.trim();
+        const img = row.querySelector(".var-image").value.trim();
+        const dTh = row.querySelector(".var-desc-th").value.trim();
+        const dEn = row.querySelector(".var-desc-en").value.trim();
+        if (th || en || img) {
+            variants.push({ name: { th, en }, image: img, desc: { th: dTh, en: dEn } });
+        }
+    });
+
     const productData = {
         id: id || slugify(titleEn) + "_" + Date.now(),
         category: document.getElementById("prod-category").value,
         title:    { th: titleTh, en: titleEn },
         subtitle: { th: document.getElementById("prod-subtitleTh").value.trim(), en: document.getElementById("prod-subtitleEn").value.trim() },
         badge:    { th: document.getElementById("prod-badgeTh").value.trim(), en: document.getElementById("prod-badgeEn").value.trim() },
+        dimensions: { th: document.getElementById("prod-dimTh").value.trim(), en: document.getElementById("prod-dimEn").value.trim() },
         price,
         image,
+        variants,
         description: { th: document.getElementById("prod-descTh").value.trim(), en: document.getElementById("prod-descEn").value.trim() },
         features: { th: featuresTh, en: featuresEn }
     };
@@ -776,6 +853,154 @@ function addFeatureRow(lang, value = "") {
     container.appendChild(row);
 }
 
+// Variant rows
+function addVariantRow(th = "", en = "", img = "", descTh = "", descEn = "") {
+    const container = document.getElementById("variantsList");
+    const row = document.createElement("div");
+    row.className = "feature-row variant-row";
+    const uniqueId = "var-img-" + Date.now() + Math.floor(Math.random() * 1000);
+    row.innerHTML = `
+        <div style="flex:1; display:flex; flex-direction:column; gap:8px;">
+            <div style="display:flex; gap:8px;">
+                <input type="text" class="form-input var-name-th" value="${escHTML(th)}" placeholder="ชื่อตัวเลือก (TH) เช่น สีดำ" style="flex:1;">
+                <input type="text" class="form-input var-name-en" value="${escHTML(en)}" placeholder="Variant name (EN) e.g. Black" style="flex:1;">
+            </div>
+            <div style="display:flex; gap:8px;">
+                <input type="text" id="${uniqueId}" class="form-input var-image" value="${escHTML(img)}" placeholder="URL รูปภาพ (https://...)" style="flex:1;">
+                <input type="file" accept="image/*" style="display:none;" onchange="handleVariantImageUpload(event, '${uniqueId}')">
+                <button type="button" class="btn btn-secondary btn-icon" onclick="this.previousElementSibling.click()" title="อัปโหลดรูปภาพ" style="padding: 0.5rem 0.75rem;">
+                    <i class="fa-solid fa-upload"></i>
+                </button>
+            </div>
+            <textarea class="form-textarea var-desc-th" placeholder="คำอธิบายเพิ่มเติมเฉพาะตัวเลือกนี้ (TH) (ไม่บังคับ)" rows="2">${escHTML(descTh)}</textarea>
+            <textarea class="form-textarea var-desc-en" placeholder="Variant description (EN) (Optional)" rows="2">${escHTML(descEn)}</textarea>
+        </div>
+        <button type="button" class="btn btn-danger btn-sm btn-icon" style="align-self: flex-start; margin-left:8px;" onclick="this.parentElement.remove()" title="ลบ">
+            <i class="fa-solid fa-minus"></i>
+        </button>`;
+    container.appendChild(row);
+}
+
+// ==========================================
+// CROPPER HANDLING
+// ==========================================
+let cropper = null;
+let currentCropTarget = null; // 'main' or targetId for variant
+
+function loadCropperDependencies(callback) {
+    if (window.Cropper) {
+        return callback();
+    }
+    
+    const css = document.createElement('link');
+    css.rel = 'stylesheet';
+    css.href = 'https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css';
+    document.head.appendChild(css);
+    
+    const script = document.createElement('script');
+    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js';
+    script.onload = callback;
+    document.head.appendChild(script);
+}
+
+function ensureCropperModal() {
+    if (document.getElementById('cropperModal')) return;
+    
+    const modalHtml = `
+    <div class="admin-modal-backdrop" id="cropperModal" style="z-index: 10000; align-items:center; justify-content:center; display:none;">
+        <div class="card" style="width:100%; max-width:800px; text-align:center; position:relative; max-height: 90vh; display: flex; flex-direction: column;">
+            <h2 style="margin-bottom:1rem;" id="cropperTitle">ครอบตัดรูปภาพ</h2>
+            <div style="flex:1; width:100%; min-height: 400px; max-height: 60vh; background-color: #f0f0f0; border-radius: 8px; overflow: hidden; display:flex; justify-content:center; align-items:center;">
+                <img id="cropperImage" src="" alt="Picture" style="max-width: 100%; max-height: 100%; display:block;">
+            </div>
+            <div style="margin-top:1.5rem; display:flex; justify-content:center; gap: 1rem;">
+                <button class="btn btn-secondary" onclick="closeCropperModal()">ยกเลิก</button>
+                <button class="btn btn-primary" onclick="confirmCrop()">
+                    <i class="fa-solid fa-crop"></i> ยืนยันการตัด
+                </button>
+            </div>
+        </div>
+    </div>`;
+    document.body.insertAdjacentHTML('beforeend', modalHtml);
+}
+
+function openCropper(dataUrl, target) {
+    currentCropTarget = target;
+    
+    // Ensure HTML and Dependencies exist
+    ensureCropperModal();
+    loadCropperDependencies(() => {
+        const modal = document.getElementById('cropperModal');
+        const image = document.getElementById('cropperImage');
+        
+        if (cropper) {
+            cropper.destroy();
+            cropper = null;
+        }
+        
+        image.src = dataUrl;
+        modal.style.display = 'flex';
+        modal.classList.add('open');
+        
+        setTimeout(() => {
+            cropper = new Cropper(image, {
+                aspectRatio: 55 / 45,
+                viewMode: 1,
+                dragMode: 'move',
+                autoCropArea: 1,
+                restore: false,
+                guides: true,
+                center: true,
+                highlight: false,
+                cropBoxMovable: true,
+                cropBoxResizable: true,
+                toggleDragModeOnDblclick: false,
+            });
+        }, 100);
+    });
+}
+
+function closeCropperModal() {
+    const modal = document.getElementById('cropperModal');
+    if (modal) {
+        modal.classList.remove('open');
+        setTimeout(() => { modal.style.display = 'none'; }, 300);
+    }
+    if (cropper) {
+        cropper.destroy();
+        cropper = null;
+    }
+    // Safely clear all file inputs
+    const fileInputs = document.querySelectorAll('input[type="file"]');
+    fileInputs.forEach(input => input.value = '');
+}
+
+function confirmCrop() {
+    if (!cropper) return;
+    
+    const canvas = cropper.getCroppedCanvas({
+        width: 800,
+        height: Math.round(800 * (45 / 55))
+    });
+    
+    if (!canvas) {
+        showToast("ไม่สามารถครอบตัดรูปภาพได้", "error");
+        return;
+    }
+    
+    const croppedDataUrl = canvas.toDataURL('image/jpeg', 0.85);
+    
+    if (currentCropTarget === 'main') {
+        document.getElementById("imageUrlInput").value = croppedDataUrl;
+        showImagePreview(croppedDataUrl);
+    } else {
+        const input = document.getElementById(currentCropTarget);
+        if (input) input.value = croppedDataUrl;
+    }
+    
+    closeCropperModal();
+}
+
 // ==========================================
 // IMAGE HANDLING
 // ==========================================
@@ -789,8 +1014,22 @@ function handleImageUpload(event) {
     const reader = new FileReader();
     reader.onload = (e) => {
         const dataUrl = e.target.result;
-        document.getElementById("imageUrlInput").value = dataUrl;
-        showImagePreview(dataUrl);
+        openCropper(dataUrl, 'main');
+    };
+    reader.readAsDataURL(file);
+}
+
+function handleVariantImageUpload(event, targetId) {
+    const file = event.target.files[0];
+    if (!file) return;
+    if (file.size > 4 * 1024 * 1024) {
+        showToast("ไฟล์ใหญ่เกิน 4MB", "error");
+        return;
+    }
+    const reader = new FileReader();
+    reader.onload = (e) => {
+        const dataUrl = e.target.result;
+        openCropper(dataUrl, targetId);
     };
     reader.readAsDataURL(file);
 }
@@ -820,6 +1059,135 @@ function clearImageInput() {
     if (prompt) prompt.style.display = "block";
     const fileInput = document.getElementById("imageFileInput");
     if (fileInput) fileInput.value = "";
+}
+
+// ==========================================
+// CATEGORY MANAGEMENT
+// ==========================================
+function updateCategoryDropdown() {
+    const sel = document.getElementById("prod-category");
+    if (!sel) return;
+    sel.innerHTML = "";
+    (cmsData.categories || []).forEach(cat => {
+        const opt = document.createElement("option");
+        opt.value = cat.id;
+        opt.textContent = `${cat.name.en} (${cat.name.th})`;
+        sel.appendChild(opt);
+    });
+}
+
+function renderCategoryTable() {
+    const tbody = document.getElementById("categoryTableBody");
+    if (!tbody) return;
+    tbody.innerHTML = "";
+    
+    document.getElementById("categoryCount").innerText = (cmsData.categories || []).length;
+    document.getElementById("stat-categories").innerText = (cmsData.categories || []).length;
+
+    (cmsData.categories || []).forEach(cat => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+            <td><code>${escHTML(cat.id)}</code></td>
+            <td>${escHTML(cat.name.th)}</td>
+            <td>${escHTML(cat.name.en)}</td>
+            <td style="text-align:center;">
+                <button class="btn btn-secondary btn-sm" onclick="openCategoryDrawer('${cat.id}')">
+                    <i class="fa-solid fa-pen"></i>
+                </button>
+                <button class="btn btn-danger btn-sm" onclick="deleteCategory('${cat.id}')">
+                    <i class="fa-solid fa-trash"></i>
+                </button>
+            </td>
+        `;
+        tbody.appendChild(tr);
+    });
+}
+
+function openCategoryDrawer(id) {
+    const modal = document.getElementById("categoryDrawer");
+    modal.classList.add("show");
+    
+    if (id) {
+        document.getElementById("categoryDrawerTitle").innerHTML = '<i class="fa-solid fa-tags"></i> แก้ไขหมวดหมู่';
+        const cat = cmsData.categories.find(c => c.id === id);
+        document.getElementById("editCategoryOldId").value = id;
+        document.getElementById("cat-id").value = cat.id;
+        document.getElementById("cat-titleTh").value = cat.name.th;
+        document.getElementById("cat-titleEn").value = cat.name.en;
+    } else {
+        document.getElementById("categoryDrawerTitle").innerHTML = '<i class="fa-solid fa-tags"></i> เพิ่มหมวดหมู่';
+        document.getElementById("editCategoryOldId").value = "";
+        document.getElementById("cat-id").value = "";
+        document.getElementById("cat-titleTh").value = "";
+        document.getElementById("cat-titleEn").value = "";
+    }
+}
+
+function closeCategoryDrawer() {
+    document.getElementById("categoryDrawer").classList.remove("show");
+}
+
+function onCategoryDrawerBackdropClick(e) {
+    if (e.target.id === "categoryDrawer") closeCategoryDrawer();
+}
+
+function saveCategory() {
+    const oldId = document.getElementById("editCategoryOldId").value;
+    let newId = document.getElementById("cat-id").value.trim().toLowerCase();
+    const th = document.getElementById("cat-titleTh").value.trim();
+    const en = document.getElementById("cat-titleEn").value.trim();
+
+    if (!newId || !th || !en) {
+        showToast("กรุณากรอกข้อมูลให้ครบ", "error");
+        return;
+    }
+    
+    newId = slugify(newId);
+
+    if (oldId !== newId && cmsData.categories.find(c => c.id === newId)) {
+        showToast("รหัสหมวดหมู่นี้มีอยู่แล้ว!", "error");
+        return;
+    }
+
+    if (oldId) {
+        const cat = cmsData.categories.find(c => c.id === oldId);
+        cat.id = newId;
+        cat.name.th = th;
+        cat.name.en = en;
+        
+        if (oldId !== newId) {
+            cmsData.products.forEach(p => {
+                if (p.category === oldId) p.category = newId;
+            });
+        }
+    } else {
+        cmsData.categories.push({
+            id: newId,
+            name: { th, en }
+        });
+    }
+
+    closeCategoryDrawer();
+    renderCategoryTable();
+    updateCategoryDropdown();
+    if (oldId && oldId !== newId) renderProductTable();
+    saveToAPI();
+    showToast("บันทึกหมวดหมู่เรียบร้อย", "success");
+}
+
+function deleteCategory(id) {
+    const inUse = cmsData.products.some(p => p.category === id);
+    if (inUse) {
+        showToast("ไม่สามารถลบได้ มีสินค้าอยู่ในหมวดหมู่นี้", "error");
+        return;
+    }
+    if (confirm("ยืนยันการลบหมวดหมู่นี้?")) {
+        cmsData.categories = cmsData.categories.filter(c => c.id !== id);
+        renderCategoryTable();
+        updateCategoryDropdown();
+        saveToAPI();
+        showToast("ลบหมวดหมู่เรียบร้อย", "success");
+    }
 }
 
 // ==========================================

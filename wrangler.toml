@@ -1,0 +1,9 @@
+name = "duitthailand"
+compatibility_date = "2024-05-25"
+pages_build_output_dir = "."
+
+[[kv_namespaces]]
+binding = "DUIT_KV"
+# Note: When deploying to production, you will need to add an "id" field here.
+# For local dev, wrangler will automatically create a local mock.
+id = "f74fbf32586b4f1c87e041181476e157"

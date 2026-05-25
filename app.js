@@ -7,8 +7,30 @@ async function loadCMSSiteData() {
         const res = await fetch('/api/data');
         _cmsData = await res.json();
     } catch (e) {
+        console.warn("Failed to fetch from /api/data, using localStorage:", e);
+    }
+    
+    // If KV data is empty, null or undefined, try to fallback to localStorage
+    if (!_cmsData || Object.keys(_cmsData).length === 0) {
         const saved = localStorage.getItem("duit_cms_data");
-        _cmsData = saved ? JSON.parse(saved) : null;
+        if (saved) {
+            try {
+                _cmsData = JSON.parse(saved);
+                console.log("Loaded fallback data from localStorage");
+            } catch (err) {
+                console.error("Failed to parse localStorage data", err);
+            }
+        }
+    }
+    
+    // Fall back to default data.json if no CMS data exists anywhere
+    if (!_cmsData || Object.keys(_cmsData).length === 0) {
+        try {
+            const res = await fetch('/data.json');
+            _cmsData = await res.json();
+        } catch (err) {
+            console.warn("Failed to load default data.json, using hardcoded fallback", err);
+        }
     }
     
     if (_cmsData && _cmsData.products && _cmsData.products.length > 0) {
@@ -443,6 +465,12 @@ const PRODUCTS_DEFAULT = [
 
 ];
 
+const CATEGORIES_DEFAULT = [
+    { id: "appliances", name: { th: "อุปกรณ์อัจฉริยะ", en: "Smart Tech" } },
+    { id: "furniture", name: { th: "เฟอร์นิเจอร์", en: "Furniture" } },
+    { id: "toys", name: { th: "ของเล่น", en: "Toys" } }
+];
+
 // ==========================================
 // ACTIVE DATA (CMS override or defaults)
 // ==========================================
@@ -498,19 +526,28 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     // Check if user already claimed a coupon in this session
-    checkExistingCoupon();
+    checkExistingMembership();
 });
 
 // ==========================================
 // CMS OVERRIDES — apply to live page
 // ==========================================
 function applyCMSOverrides() {
-    if (!_cmsData) return;
+    if (!_cmsData) {
+        renderCategoryTabs(CATEGORIES_DEFAULT);
+        return;
+    }
 
     // --- Hero Slider ---
     if (_cmsData.slides && _cmsData.slides.length > 0) {
         renderCMSSlider(_cmsData.slides);
     }
+
+    // --- Categories ---
+    const activeCats = (_cmsData.categories && _cmsData.categories.length > 0) 
+        ? _cmsData.categories 
+        : CATEGORIES_DEFAULT;
+    renderCategoryTabs(activeCats);
 
     // --- Event Section ---
     if (_cmsData.event) {
@@ -526,6 +563,26 @@ function applyCMSOverrides() {
     if (_cmsData.settings && _cmsData.settings.staffPin) {
         window.__staffPin = _cmsData.settings.staffPin;
     }
+}
+
+function renderCategoryTabs(categories) {
+    const tabsContainer = document.getElementById("categoryTabs");
+    if (!tabsContainer) return;
+    
+    const allTab = tabsContainer.querySelector("[data-category='all']");
+    tabsContainer.innerHTML = "";
+    if (allTab) tabsContainer.appendChild(allTab);
+
+    categories.forEach(cat => {
+        const btn = document.createElement("button");
+        btn.className = "tab-btn" + (currentCategory === cat.id ? " active" : "");
+        btn.setAttribute("onclick", `filterCategory('${escHTML(cat.id)}')`);
+        btn.setAttribute("data-category", escHTML(cat.id));
+        btn.setAttribute("data-en", escHTML(cat.name.en));
+        btn.setAttribute("data-th", escHTML(cat.name.th));
+        btn.textContent = currentLanguage === "th" ? cat.name.th : cat.name.en;
+        tabsContainer.appendChild(btn);
+    });
 }
 
 function renderCMSSlider(slides) {
@@ -867,16 +924,27 @@ function renderProducts() {
             priceHtml = `<span>฿${p.price}</span>`;
         }
 
+        let variantsHtml = "";
+        if (p.variants && p.variants.length > 0) {
+            const varHtml = p.variants.map((v, vIdx) => {
+                const vName = v.name[lang] || v.name.en;
+                // We use escHTML to prevent quotes from breaking HTML
+                return `<button type="button" class="variant-btn-mini" style="background-image:url('${v.image}')" title="${vName}" onclick="event.stopPropagation(); changeCardVariant(this, '${p.id}', ${vIdx})"></button>`;
+            }).join("");
+            variantsHtml = `<div class="card-variants" style="display:flex; gap:6px; margin-top:8px;">${varHtml}</div>`;
+        }
+
         card.innerHTML = `
             <div class="product-image-wrap">
                 <span class="product-badge">${badge}</span>
                 ${hasSale ? `<span class="discount-ribbon">-${productPct}%</span>` : ''}
-                <img src="${p.image}" alt="${title}" loading="lazy">
+                <img id="card-img-${p.id}" src="${p.image}" alt="${title}" loading="lazy">
             </div>
             <div class="product-info">
                 <h3 class="product-title">${title}</h3>
                 <div class="product-meta">
-                    <span>${subtitle}</span>
+                    <span id="card-sub-${p.id}">${subtitle}</span>
+                    ${variantsHtml}
                 </div>
                 <div class="product-price">
                     ${priceHtml}
@@ -903,11 +971,32 @@ function filterCategory(category) {
 
     renderProducts();
 
-    // Auto scroll down to grid on mobile
     if (window.innerWidth < 768) {
         document.getElementById("shop").scrollIntoView({ behavior: "smooth" });
     }
 }
+
+window.changeCardVariant = function(btnElement, productId, vIdx) {
+    const product = PRODUCTS.find(p => p.id === productId);
+    if (!product || !product.variants || !product.variants[vIdx]) return;
+    
+    const v = product.variants[vIdx];
+    const lang = currentLanguage;
+    const vName = v.name[lang] || v.name.en;
+
+    // Change image
+    const imgEl = document.getElementById(`card-img-${productId}`);
+    if (imgEl && v.image) imgEl.src = v.image;
+
+    // Change subtitle/description
+    const subEl = document.getElementById(`card-sub-${productId}`);
+    if (subEl) subEl.innerText = vName;
+
+    // Update active class
+    const container = btnElement.parentElement;
+    container.querySelectorAll('.variant-btn-mini').forEach(b => b.classList.remove('active'));
+    btnElement.classList.add('active');
+};
 
 function handleSearch() {
     searchQuery = document.getElementById("searchInput").value;
@@ -948,6 +1037,10 @@ function openModal(productId) {
     const badge       = product.badge[lang]       || product.badge.en;
     const description = product.description[lang] || product.description.en;
     const features    = product.features[lang]    || product.features.en;
+    const dimensions  = (product.dimensions && product.dimensions[lang]) || (product.dimensions && product.dimensions.en) || "";
+    
+    // Store variants globally for the selector function
+    window.currentVariants = product.variants || [];
     const currency    = lang === "th" ? "บาท" : "THB";
     const featuresLabel = lang === "th" ? "จุดเด่นสินค้า" : "Product Highlights";
     const orderLabel  = lang === "th" ? "สั่งซื้อผ่าน LINE" : "Order via LINE";
@@ -971,7 +1064,58 @@ function openModal(productId) {
             </div>
             <div class="modal-price-original">ราคาปกติ ฿${product.price} ${currency}</div>`;
     } else {
-        priceHtml = `<p class="modal-price">฿${product.price} <span style="font-size:0.8rem; font-weight:400;">${currency}</span></p>`;
+        priceHtml = `<p class="modal-price" style="display:flex; align-items:baseline;">฿${product.price} <span style="font-size:1rem; font-weight:400; color:var(--color-text-muted); margin-left:6px;">${currency}</span></p>`;
+    }
+
+    // Build dimensions HTML
+    let dimensionsHtml = "";
+    if (dimensions) {
+        const dimLabel = lang === "th" ? "ขนาดสินค้า" : "Dimensions";
+        dimensionsHtml = `
+            <div class="spec-item" style="border-bottom: 1px solid var(--color-border); padding-bottom: 1rem; margin-bottom: 1rem;">
+                <span class="spec-label" style="font-size: 0.95rem;">${dimLabel}</span>
+                <span class="spec-value" style="font-size: 0.95rem;">${dimensions}</span>
+            </div>
+        `;
+    }
+
+    // Build unified variants array including the main cover image
+    let finalVariants = [];
+    if (product.image) {
+        finalVariants.push({
+            name: { th: "หน้าปก", en: "Cover" },
+            image: product.image,
+            desc: product.description // Use main desc
+        });
+    }
+
+    if (window.currentVariants && window.currentVariants.length > 0) {
+        window.currentVariants.forEach(v => {
+            // Avoid exact duplicate of cover image
+            if (v.image !== product.image) {
+                finalVariants.push(v);
+            }
+        });
+    }
+
+    window.currentVariants = finalVariants;
+
+    // Build variants HTML
+    let variantsHtml = "";
+    if (window.currentVariants.length > 1) {
+        const varLabel = lang === "th" ? "ตัวเลือกสินค้า:" : "Options:";
+        const btnHtml = window.currentVariants.map((v, idx) => {
+            const vName = v.name[lang] || v.name.en;
+            return `<button class="variant-btn" onclick="selectVariant(${idx}, this)" title="${vName}" style="background-image:url('${v.image}')"></button>`;
+        }).join("");
+        variantsHtml = `
+            <div class="modal-variants-wrap" style="margin-top: 1rem; margin-bottom: 1rem;">
+                <div style="font-size: 0.85rem; font-weight: 600; margin-bottom: 0.5rem;">${varLabel} <span id="selectedVariantName" style="color:var(--color-accent); font-weight:700;"></span></div>
+                <div class="variant-btn-container" style="display: flex; gap: 8px; flex-wrap: wrap;">
+                    ${btnHtml}
+                </div>
+            </div>
+        `;
     }
 
     // Get LINE URL from CMS if set
@@ -979,27 +1123,41 @@ function openModal(productId) {
         ? _cmsData.store.lineUrl
         : "https://line.me/R/ti/p/@duit_thailand";
 
+    // Prepare for dynamic descriptions
+    window.currentProductDesc = description;
+    window.currentVariantIndex = 0;
+
+    let sliderArrows = '';
+    if (window.currentVariants && window.currentVariants.length > 1) {
+        sliderArrows = `
+            <button class="slider-arrow slider-arrow-left" onclick="prevVariant(event)"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="slider-arrow slider-arrow-right" onclick="nextVariant(event)"><i class="fa-solid fa-chevron-right"></i></button>
+        `;
+    }
+
     gridContent.innerHTML = `
-        <div class="modal-visual">
-            <img src="${product.image}" alt="${title}">
-            ${hasSale ? `<div style="position:absolute;top:1rem;right:1rem;background:linear-gradient(135deg,#c0392b,#e74c3c);color:#fff;font-size:0.8rem;font-weight:700;padding:5px 10px;border-radius:8px;">-${productPct}%</div>` : ''}
+        <div class="modal-visual" style="position:relative;">
+            <img id="modalMainImage" src="${product.image}" alt="${title}">
+            ${hasSale ? `<div style="position:absolute;top:1rem;right:1rem;background:linear-gradient(135deg,#c0392b,#e74c3c);color:#fff;font-size:0.8rem;font-weight:700;padding:5px 10px;border-radius:8px;z-index:2;">-${productPct}%</div>` : ''}
+            ${sliderArrows}
         </div>
         <div class="modal-body">
-            <span class="product-badge">${badge}</span>
-            <h3>${title}</h3>
-            <p class="modal-subtitle" style="color: var(--color-text-muted); margin-bottom: 0.75rem; font-size: 0.9rem;">${subtitle}</p>
+            <span class="product-badge" style="margin-bottom:1rem; display:inline-block;">${badge}</span>
+            <h3 style="font-size: 1.8rem; font-weight:600;">${title}</h3>
+            <p class="modal-subtitle" style="color: var(--color-text-muted); margin-bottom: 1.5rem; font-size: 1rem;">${subtitle}</p>
             ${priceHtml}
-            <p class="modal-desc">${description}</p>
+            ${variantsHtml}
+            <p class="modal-desc" id="modalDescription" style="font-size: 0.95rem; line-height: 1.6; margin-bottom: 2rem;">${description}</p>
 
-            <div class="spec-list">
-                <div class="spec-item">
-                    <span class="spec-label">${featuresLabel}</span>
+            <div class="spec-list" style="margin-bottom: 2rem; border-top: 1px solid var(--color-border); padding-top: 1.5rem;">
+                ${dimensionsHtml}
+                <div class="features-section">
+                    <div class="spec-label" style="font-size: 0.95rem; margin-bottom: 0.75rem;">${featuresLabel}</div>
+                    <ul style="list-style: none; padding: 0; margin-bottom: 2rem; font-size: 0.95rem; color: var(--color-text-muted);">
+                        ${featuresHtml}
+                    </ul>
                 </div>
             </div>
-
-            <ul style="list-style: none; padding: 0; margin-bottom: 2rem; font-size: 0.85rem; color: var(--color-text-muted);">
-                ${featuresHtml}
-            </ul>
 
             <div class="modal-actions">
                 <a href="${lineUrl}" target="_blank" class="btn-primary">
@@ -1012,7 +1170,79 @@ function openModal(productId) {
 
     modal.style.display = "flex";
     document.body.style.overflow = "hidden";
+
+    // Auto-select first variant (which is now the cover image)
+    if (window.currentVariants && window.currentVariants.length > 0) {
+        selectVariant(0);
+    }
+
+    // Force synchronize heights for all browsers (Bulletproof fallback)
+    setTimeout(() => {
+        const visual = document.querySelector('.modal-visual');
+        const body = document.querySelector('.modal-body');
+        if (visual && body && body.offsetHeight > 0) {
+            visual.style.height = body.offsetHeight + 'px';
+        }
+    }, 100);
 }
+
+// Global function to handle variant selection
+window.selectVariant = function(index, btnElement) {
+    if (!window.currentVariants) return;
+    const variant = window.currentVariants[index];
+    if (!variant) return;
+
+    window.currentVariantIndex = index;
+
+    // Update main image
+    const mainImg = document.getElementById("modalMainImage");
+    if (mainImg && variant.image) {
+        mainImg.src = variant.image;
+    }
+
+    // Update label
+    const lang = currentLanguage;
+    const vName = variant.name[lang] || variant.name.en;
+    const labelEl = document.getElementById("selectedVariantName");
+    if (labelEl) labelEl.innerText = vName;
+
+    // Update Description
+    const descEl = document.getElementById("modalDescription");
+    if (descEl) {
+        let vDesc = "";
+        if (variant.desc) {
+            vDesc = variant.desc[lang] || variant.desc.en || "";
+        }
+        // Fallback to main product description if variant description is empty
+        descEl.innerHTML = vDesc.trim() !== "" ? vDesc : window.currentProductDesc;
+    }
+
+    // Update active class on buttons
+    document.querySelectorAll(".variant-btn").forEach(btn => btn.classList.remove("active"));
+    if (btnElement) {
+        btnElement.classList.add("active");
+    } else {
+        // Find the button by index if btnElement is not passed (e.g. from arrow clicks)
+        const buttons = document.querySelectorAll(".variant-btn");
+        if (buttons[index]) buttons[index].classList.add("active");
+    }
+};
+
+window.nextVariant = function(e) {
+    if (e) e.stopPropagation();
+    if (!window.currentVariants) return;
+    let newIndex = window.currentVariantIndex + 1;
+    if (newIndex >= window.currentVariants.length) newIndex = 0;
+    selectVariant(newIndex);
+};
+
+window.prevVariant = function(e) {
+    if (e) e.stopPropagation();
+    if (!window.currentVariants) return;
+    let newIndex = window.currentVariantIndex - 1;
+    if (newIndex < 0) newIndex = window.currentVariants.length - 1;
+    selectVariant(newIndex);
+};
 
 function closeModal() {
     const modal = document.getElementById("productModal");
@@ -1033,72 +1263,79 @@ window.addEventListener("click", (e) => {
 });
 
 // ==========================================
-// EVENT LEAD CAPTURE & COUPON GENERATION
+// EVENT LEAD CAPTURE & VIP MEMBERSHIP REGISTRATION
 // ==========================================
-async function generateCoupon(event) {
+async function registerMembership(event) {
     event.preventDefault();
 
     const name  = document.getElementById("userName").value;
     const phone = document.getElementById("userPhone").value;
     const line  = document.getElementById("userLine").value;
 
-    // Generate unique code suffix
+    // Generate unique member ID
     const randomSuffix = Math.floor(1000 + Math.random() * 9000);
-    const promoCode = `DUIT-EVENT-${randomSuffix}`;
+    const memberId = `DUIT-VIP-${randomSuffix}`;
 
-    // Store in local storage
-    const newLead = {
+    const newMember = {
         name: name,
         phone: phone,
         line: line,
-        code: promoCode,
+        code: memberId,
         timestamp: new Date().toLocaleString('th-TH')
     };
 
     try {
-        // Fetch current leads, append, and save
         const res = await fetch('/api/leads');
         let leads = [];
         if (res.ok) leads = await res.json();
         
-        leads.push(newLead);
+        leads.push(newMember);
         await fetch('/api/leads', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(leads)
         });
     } catch (e) {
-        let leads = JSON.parse(localStorage.getItem("duit_leads")) || [];
-        leads.push(newLead);
-        localStorage.setItem("duit_leads", JSON.stringify(leads));
+        // Fallback handled below
     }
 
-    localStorage.setItem("claimed_coupon", JSON.stringify(newLead));
+    let leads = JSON.parse(localStorage.getItem("duit_leads")) || [];
+    leads.push(newMember);
+    localStorage.setItem("duit_leads", JSON.stringify(leads));
 
-    // Show Voucher View
-    showVoucher(newLead);
+    localStorage.setItem("claimed_membership", JSON.stringify(newMember));
+
+    showMembershipSuccess(newMember);
 }
 
-function showVoucher(lead) {
-    document.getElementById("couponForm").style.display = "none";
-    document.getElementById("couponResult").style.display = "block";
+function showMembershipSuccess(member) {
+    const formEl = document.getElementById("membershipForm");
+    const resultEl = document.getElementById("membershipResult");
+    if (formEl) formEl.style.display = "none";
+    if (resultEl) resultEl.style.display = "block";
 
-    document.getElementById("voucherName").textContent = lead.name;
-    document.getElementById("voucherCode").textContent = lead.code;
+    const nameDisp = document.getElementById("memberNameDisplay");
+    const idDisp = document.getElementById("memberIdDisplay");
+    if (nameDisp) nameDisp.textContent = member.name;
+    if (idDisp) idDisp.textContent = member.code;
 }
 
-function resetCouponForm() {
-    localStorage.removeItem("claimed_coupon");
-    document.getElementById("couponResult").style.display = "none";
-    document.getElementById("couponForm").style.display = "block";
-    document.getElementById("couponForm").reset();
+function resetMembershipForm() {
+    localStorage.removeItem("claimed_membership");
+    const resultEl = document.getElementById("membershipResult");
+    const formEl = document.getElementById("membershipForm");
+    if (resultEl) resultEl.style.display = "none";
+    if (formEl) {
+        formEl.style.display = "block";
+        formEl.reset();
+    }
 }
 
-function checkExistingCoupon() {
-    const saved = localStorage.getItem("claimed_coupon");
+function checkExistingMembership() {
+    const saved = localStorage.getItem("claimed_membership");
     if (saved) {
-        const lead = JSON.parse(saved);
-        showVoucher(lead);
+        const member = JSON.parse(saved);
+        showMembershipSuccess(member);
     }
 }
 
