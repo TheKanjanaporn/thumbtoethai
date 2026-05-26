@@ -1466,6 +1466,7 @@ img {
     overflow-y: auto;
     box-sizing: border-box;
     padding: 0;
+    flex: 1; /* Stretch to fill the remaining 45% space of the modal container! */
 }
 
 .modal-body-content {
