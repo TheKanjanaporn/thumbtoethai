@@ -936,7 +936,7 @@ function renderProducts() {
 
         card.innerHTML = `
             <div class="product-image-wrap">
-                <span class="product-badge">${badge}</span>
+                ${badge && badge.trim() !== "" ? `<span class="product-badge">${badge}</span>` : ""}
                 <img id="card-img-${p.id}" src="${p.image}" alt="${title}" loading="lazy">
             </div>
             <div class="product-info">
@@ -1151,7 +1151,7 @@ function openModal(productId) {
         </div>
         <div class="modal-body">
             <div class="modal-body-content">
-                <span class="product-badge" style="margin-bottom:1rem; display:inline-block;">${badge}</span>
+                ${badge && badge.trim() !== "" ? `<span class="product-badge" style="margin-bottom:1rem; display:inline-block;">${badge}</span>` : ""}
                 <h3 style="font-size: 1.8rem; font-weight:600;">${title}</h3>
                 <p class="modal-subtitle" style="color: var(--color-text-muted); margin-bottom: 1.5rem; font-size: 1rem;">${subtitle}</p>
                 ${priceHtml}
