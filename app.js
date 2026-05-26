@@ -925,12 +925,13 @@ function renderProducts() {
 
         let variantsHtml = "";
         if (p.variants && p.variants.length > 0) {
+            // รูปหลักเป็นปุ่มแรกเสมอ (index -1 = กลับมารูปเดิม)
+            const coverBtn = `<button type="button" class="variant-btn-mini active" style="background-image:url('${p.image}')" title="${subtitle}" onclick="event.stopPropagation(); changeCardVariant(this, '${p.id}', -1)"></button>`;
             const varHtml = p.variants.map((v, vIdx) => {
                 const vName = v.name[lang] || v.name.en;
-                // We use escHTML to prevent quotes from breaking HTML
                 return `<button type="button" class="variant-btn-mini" style="background-image:url('${v.image}')" title="${vName}" onclick="event.stopPropagation(); changeCardVariant(this, '${p.id}', ${vIdx})"></button>`;
             }).join("");
-            variantsHtml = `<div class="card-variants" style="display:flex; gap:6px; margin-top:8px;">${varHtml}</div>`;
+            variantsHtml = `<div class="card-variants" style="display:flex; gap:6px; margin-top:8px;">${coverBtn}${varHtml}</div>`;
         }
 
         card.innerHTML = `
@@ -976,21 +977,31 @@ function filterCategory(category) {
 
 window.changeCardVariant = function(btnElement, productId, vIdx) {
     const product = PRODUCTS.find(p => p.id === productId);
-    if (!product || !product.variants || !product.variants[vIdx]) return;
-    
-    const v = product.variants[vIdx];
+    if (!product) return;
+
     const lang = currentLanguage;
-    const vName = v.name[lang] || v.name.en;
+    let newImage, newSubtitle;
 
-    // Change image
+    if (vIdx === -1) {
+        // กลับมารูปหลัก (cover)
+        newImage = product.image;
+        newSubtitle = product.subtitle[lang] || product.subtitle.en;
+    } else {
+        if (!product.variants || !product.variants[vIdx]) return;
+        const v = product.variants[vIdx];
+        newImage = v.image;
+        newSubtitle = v.name[lang] || v.name.en;
+    }
+
+    // เปลี่ยนรูป
     const imgEl = document.getElementById(`card-img-${productId}`);
-    if (imgEl && v.image) imgEl.src = v.image;
+    if (imgEl && newImage) imgEl.src = newImage;
 
-    // Change subtitle/description
+    // เปลี่ยน subtitle
     const subEl = document.getElementById(`card-sub-${productId}`);
-    if (subEl) subEl.innerText = vName;
+    if (subEl) subEl.innerText = newSubtitle;
 
-    // Update active class
+    // อัปเดต active class
     const container = btnElement.parentElement;
     container.querySelectorAll('.variant-btn-mini').forEach(b => b.classList.remove('active'));
     btnElement.classList.add('active');
