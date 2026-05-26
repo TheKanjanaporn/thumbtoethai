@@ -901,7 +901,9 @@ img {
 
 /* Expo discount banner (top of catalog section) */
 .expo-discount-banner {
-    background-color: var(--color-accent);
+    background-color: var(--color-accent-light);
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-accent);
     border-radius: var(--radius-md);
     padding: 0;
     margin-bottom: 2.5rem;
@@ -909,17 +911,10 @@ img {
     align-items: stretch;
     overflow: hidden;
     position: relative;
-    box-shadow: var(--shadow-md);
 }
 
-/* Left accent stripe */
 .expo-discount-banner::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 0; bottom: 0;
-    width: 4px;
-    background: rgba(255, 255, 255, 0.35);
-    border-radius: 0;
+    content: none;
 }
 
 .expo-discount-banner::after {
@@ -932,7 +927,7 @@ img {
 
 .expo-banner-text {
     flex: 1;
-    padding: 1.1rem 1.5rem 1.1rem 1.75rem;
+    padding: 1rem 1.5rem;
 }
 
 .expo-banner-title {
@@ -940,26 +935,26 @@ img {
     font-weight: 700;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.75);
+    color: var(--color-accent);
     margin-bottom: 4px;
 }
 
 .expo-banner-desc {
-    font-size: 0.95rem;
-    color: #fff;
-    font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--color-text-main);
+    font-weight: 400;
     letter-spacing: 0;
 }
 
-/* Right side percentage block */
 .expo-banner-divider {
     display: none;
 }
 
 .expo-banner-pct {
-    background: rgba(0, 0, 0, 0.12);
-    color: #fff;
-    font-size: 2rem;
+    background: var(--color-accent-light);
+    border-left: 1px solid var(--color-border);
+    color: var(--color-accent-hover);
+    font-size: 1.9rem;
     font-weight: 800;
     letter-spacing: -0.03em;
     line-height: 1;
@@ -967,16 +962,16 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 1.75rem;
+    padding: 0 1.5rem;
     -webkit-text-fill-color: unset;
     background-clip: unset;
     -webkit-background-clip: unset;
 }
 
 .expo-banner-pct span {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 600;
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--color-accent);
     margin-left: 2px;
     -webkit-text-fill-color: unset;
     background: none;
