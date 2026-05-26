@@ -901,39 +901,62 @@ img {
 
 /* Expo discount banner (top of catalog section) */
 .expo-discount-banner {
-    background: linear-gradient(135deg, var(--color-accent-light) 0%, #ede3d8 100%);
-    border: 1px solid rgba(190, 158, 130, 0.35);
+    background: linear-gradient(135deg, #1c1714 0%, #241e1a 50%, #1c1714 100%);
+    border: 1px solid rgba(201, 169, 110, 0.3);
     border-radius: var(--radius-md);
-    padding: 1rem 1.5rem;
+    padding: 1.1rem 1.75rem;
     margin-bottom: 2.5rem;
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.25rem;
     flex-wrap: wrap;
     position: relative;
     overflow: hidden;
+    box-shadow:
+        0 1px 0 rgba(201, 169, 110, 0.15) inset,
+        0 8px 32px rgba(0, 0, 0, 0.18);
 }
 
+/* Top gold hairline */
+.expo-discount-banner::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(201,169,110,0.6), transparent);
+    pointer-events: none;
+}
+
+/* Traveling shimmer */
 .expo-discount-banner::before {
     content: '';
     position: absolute;
     top: -50%;
-    left: -10%;
-    width: 25%;
+    left: -20%;
+    width: 20%;
     height: 200%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.45), transparent);
-    animation: bannerShine 4s ease-in-out infinite;
+    background: linear-gradient(90deg, transparent, rgba(255, 240, 200, 0.05), transparent);
+    animation: bannerShine 5s ease-in-out infinite;
+    pointer-events: none;
 }
 
 @keyframes bannerShine {
-    0% { left: -30%; }
-    100% { left: 130%; }
+    0%   { left: -25%; }
+    100% { left: 125%; }
+}
+
+/* Divider line between text and percentage */
+.expo-discount-banner .expo-banner-divider {
+    width: 1px;
+    height: 36px;
+    background: rgba(201, 169, 110, 0.25);
+    flex-shrink: 0;
 }
 
 .expo-banner-icon {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     flex-shrink: 0;
-    opacity: 0.85;
+    filter: grayscale(0.2) brightness(1.1);
 }
 
 .expo-banner-text {
@@ -942,25 +965,29 @@ img {
 }
 
 .expo-banner-title {
-    font-size: 0.78rem;
+    font-size: 0.7rem;
     font-weight: 700;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--color-accent-hover);
-    margin-bottom: 2px;
+    color: #c9a96e;
+    margin-bottom: 3px;
 }
 
 .expo-banner-desc {
-    font-size: 0.88rem;
-    color: var(--color-text-muted);
-    font-weight: 400;
+    font-size: 0.875rem;
+    color: rgba(255, 248, 235, 0.62);
+    font-weight: 300;
+    letter-spacing: 0.01em;
 }
 
 .expo-banner-pct {
-    font-size: 2.25rem;
+    font-size: 2.4rem;
     font-weight: 800;
-    color: var(--color-accent-hover);
-    letter-spacing: -0.04em;
+    background: linear-gradient(135deg, #e8c97a 0%, #c9a96e 50%, #a8804a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.03em;
     line-height: 1;
     flex-shrink: 0;
 }
@@ -968,7 +995,10 @@ img {
 .expo-banner-pct span {
     font-size: 1rem;
     font-weight: 500;
-    color: var(--color-accent);
+    background: linear-gradient(135deg, #c9a96e, #a8804a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 

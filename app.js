@@ -868,6 +868,7 @@ function renderProducts() {
                 <div class="expo-banner-title">${bannerTitle}</div>
                 <div class="expo-banner-desc">${bannerDesc}</div>
             </div>
+            <div class="expo-banner-divider"></div>
             <div class="expo-banner-pct">${maxPct}<span>%</span></div>`;
     } else {
         if (banner) banner.remove();
