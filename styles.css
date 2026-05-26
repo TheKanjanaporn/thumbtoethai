@@ -1413,7 +1413,6 @@ img {
     flex: 0 0 55%;
     width: 55%;
     aspect-ratio: 1 / 1;
-    overflow: hidden;
 }
 
 .modal-visual img {
@@ -1459,75 +1458,6 @@ img {
 
 .modal-visual .slider-arrow-right {
     right: 1rem;
-}
-
-/* Thumbnail image strip at the bottom of modal-visual */
-.modal-thumbnail-strip {
-    display: flex;
-    flex-direction: row;
-    gap: 8px;
-    padding: 10px 14px;
-    overflow-x: auto;
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(8px);
-    border-top: 1px solid var(--color-border);
-    flex-shrink: 0;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(0,0,0,0.15) transparent;
-}
-
-.modal-thumbnail-strip::-webkit-scrollbar {
-    height: 4px;
-}
-.modal-thumbnail-strip::-webkit-scrollbar-track {
-    background: transparent;
-}
-.modal-thumbnail-strip::-webkit-scrollbar-thumb {
-    background: rgba(0,0,0,0.15);
-    border-radius: 4px;
-}
-
-.modal-thumb-btn {
-    flex-shrink: 0;
-    width: 56px;
-    height: 56px;
-    border-radius: 8px;
-    border: 2px solid transparent;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: var(--color-surface-1);
-    cursor: pointer;
-    transition: var(--transition-fast);
-    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-    position: relative;
-    overflow: hidden;
-    outline: none;
-}
-
-.modal-thumb-btn::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 6px;
-    border: 2px solid transparent;
-    transition: var(--transition-fast);
-    pointer-events: none;
-}
-
-.modal-thumb-btn:hover {
-    transform: scale(1.08);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-.modal-thumb-btn.active {
-    border-color: transparent;
-    transform: scale(1.05);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-}
-
-.modal-thumb-btn.active::after {
-    border-color: var(--color-accent);
 }
 
 .modal-body {
@@ -1671,25 +1601,14 @@ img {
         flex: 0 0 auto !important;
         width: 100% !important;
         height: auto !important;
-        aspect-ratio: unset !important;
-        max-height: none !important;
+        aspect-ratio: 1 / 1 !important;
+        max-height: 50vh !important;
     }
     .modal-visual img {
-        width: 100% !important;
-        height: auto !important;
-        max-height: 42vw !important;
-        min-height: 180px !important;
+        height: 100% !important;
         object-fit: contain !important;
         padding: 0.75rem !important;
         box-sizing: border-box !important;
-    }
-    .modal-thumbnail-strip {
-        padding: 8px 10px !important;
-        gap: 6px !important;
-    }
-    .modal-thumb-btn {
-        width: 46px !important;
-        height: 46px !important;
     }
     .modal-body {
         width: 100% !important;

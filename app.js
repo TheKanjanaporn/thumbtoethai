@@ -1099,16 +1099,20 @@ function openModal(productId) {
 
     window.currentVariants = finalVariants;
 
-    // Build thumbnail strip HTML (goes inside modal-visual, below the main image)
-    let thumbnailStripHtml = "";
+    // Build variants HTML
+    let variantsHtml = "";
     if (window.currentVariants.length > 1) {
-        const thumbHtml = window.currentVariants.map((v, idx) => {
+        const varLabel = lang === "th" ? "ตัวเลือกสินค้า:" : "Options:";
+        const btnHtml = window.currentVariants.map((v, idx) => {
             const vName = v.name[lang] || v.name.en;
-            return `<button class="modal-thumb-btn" onclick="selectVariant(${idx}, this)" title="${vName}" style="background-image:url('${v.image}')"></button>`;
+            return `<button class="variant-btn" onclick="selectVariant(${idx}, this)" title="${vName}" style="background-image:url('${v.image}')"></button>`;
         }).join("");
-        thumbnailStripHtml = `
-            <div class="modal-thumbnail-strip">
-                ${thumbHtml}
+        variantsHtml = `
+            <div class="modal-variants-wrap" style="margin-top: 1rem; margin-bottom: 1rem;">
+                <div style="font-size: 0.85rem; font-weight: 600; margin-bottom: 0.5rem;">${varLabel} <span id="selectedVariantName" style="color:var(--color-accent); font-weight:700;"></span></div>
+                <div class="variant-btn-container" style="display: flex; gap: 8px; flex-wrap: wrap;">
+                    ${btnHtml}
+                </div>
             </div>
         `;
     }
@@ -1134,7 +1138,6 @@ function openModal(productId) {
         <div class="modal-visual" style="position:relative;">
             <img id="modalMainImage" src="${product.image}" alt="${title}">
             ${sliderArrows}
-            ${thumbnailStripHtml}
         </div>
         <div class="modal-body">
             <div class="modal-body-content">
@@ -1142,6 +1145,7 @@ function openModal(productId) {
                 <h3 style="font-size: 1.8rem; font-weight:600;">${title}</h3>
                 <p class="modal-subtitle" style="color: var(--color-text-muted); margin-bottom: 1.5rem; font-size: 1rem;">${subtitle}</p>
                 ${priceHtml}
+                ${variantsHtml}
                 <p class="modal-desc" id="modalDescription" style="font-size: 0.95rem; line-height: 1.6; margin-bottom: 2rem;">${description}</p>
 
                 <div class="spec-list" style="margin-bottom: 2rem; border-top: 1px solid var(--color-border); padding-top: 1.5rem;">
@@ -1224,13 +1228,13 @@ window.selectVariant = function(index, btnElement) {
         descEl.innerHTML = vDesc.trim() !== "" ? vDesc : window.currentProductDesc;
     }
 
-    // Update active class on thumbnail buttons
-    document.querySelectorAll(".modal-thumb-btn").forEach(btn => btn.classList.remove("active"));
+    // Update active class on buttons
+    document.querySelectorAll(".variant-btn").forEach(btn => btn.classList.remove("active"));
     if (btnElement) {
         btnElement.classList.add("active");
     } else {
         // Find the button by index if btnElement is not passed (e.g. from arrow clicks)
-        const buttons = document.querySelectorAll(".modal-thumb-btn");
+        const buttons = document.querySelectorAll(".variant-btn");
         if (buttons[index]) buttons[index].classList.add("active");
     }
 
