@@ -1167,6 +1167,7 @@ function openModal(productId) {
     `;
 
     modal.style.display = "flex";
+    document.documentElement.style.overflow = "hidden";
     document.body.style.overflow = "hidden";
 
     // Auto-select first variant (which is now the cover image)
@@ -1251,6 +1252,7 @@ window.prevVariant = function(e) {
 function closeModal() {
     const modal = document.getElementById("productModal");
     modal.style.display = "none";
+    document.documentElement.style.overflow = "";
     document.body.style.overflow = "";
 }
 
@@ -1365,11 +1367,13 @@ function openStaffPortal() {
     document.getElementById("pinError").style.display = "none";
     document.getElementById("pinSection").style.display = "block";
     document.getElementById("leadsSection").style.display = "none";
+    document.documentElement.style.overflow = "hidden";
     document.body.style.overflow = "hidden";
 }
 
 function closeStaffPortal() {
     document.getElementById("staffModal").style.display = "none";
+    document.documentElement.style.overflow = "";
     document.body.style.overflow = "";
 }
 
