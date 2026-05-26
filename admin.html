@@ -130,13 +130,13 @@
             </div>
             <div class="topbar-right">
                 <div class="topbar-save-status" id="saveStatus">
-                    <i class="fa-solid fa-cloud-arrow-up"></i> บันทึกแล้ว
+                    <i class="fa-solid fa-cloud-arrow-up"></i><span class="btn-text-hide-mob"> บันทึกแล้ว</span>
                 </div>
                 <button class="btn btn-primary btn-sm" onclick="exportCMSData()">
-                    <i class="fa-solid fa-download"></i> Export
+                    <i class="fa-solid fa-download"></i> <span class="btn-text-hide-mob">Export</span>
                 </button>
                 <label class="btn btn-secondary btn-sm" style="cursor:pointer;" title="Import JSON backup">
-                    <i class="fa-solid fa-upload"></i> Import
+                    <i class="fa-solid fa-upload"></i> <span class="btn-text-hide-mob">Import</span>
                     <input type="file" accept=".json" style="display:none;" onchange="importCMSData(event)">
                 </label>
             </div>
