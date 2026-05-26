@@ -1140,28 +1140,30 @@ function openModal(productId) {
             ${sliderArrows}
         </div>
         <div class="modal-body">
-            <span class="product-badge" style="margin-bottom:1rem; display:inline-block;">${badge}</span>
-            <h3 style="font-size: 1.8rem; font-weight:600;">${title}</h3>
-            <p class="modal-subtitle" style="color: var(--color-text-muted); margin-bottom: 1.5rem; font-size: 1rem;">${subtitle}</p>
-            ${priceHtml}
-            ${variantsHtml}
-            <p class="modal-desc" id="modalDescription" style="font-size: 0.95rem; line-height: 1.6; margin-bottom: 2rem;">${description}</p>
+            <div class="modal-body-content">
+                <span class="product-badge" style="margin-bottom:1rem; display:inline-block;">${badge}</span>
+                <h3 style="font-size: 1.8rem; font-weight:600;">${title}</h3>
+                <p class="modal-subtitle" style="color: var(--color-text-muted); margin-bottom: 1.5rem; font-size: 1rem;">${subtitle}</p>
+                ${priceHtml}
+                ${variantsHtml}
+                <p class="modal-desc" id="modalDescription" style="font-size: 0.95rem; line-height: 1.6; margin-bottom: 2rem;">${description}</p>
 
-            <div class="spec-list" style="margin-bottom: 2rem; border-top: 1px solid var(--color-border); padding-top: 1.5rem;">
-                ${dimensionsHtml}
-                <div class="features-section">
-                    <div class="spec-label" style="font-size: 0.95rem; margin-bottom: 0.75rem;">${featuresLabel}</div>
-                    <ul style="list-style: none; padding: 0; margin-bottom: 2rem; font-size: 0.95rem; color: var(--color-text-muted);">
-                        ${featuresHtml}
-                    </ul>
+                <div class="spec-list" style="margin-bottom: 2rem; border-top: 1px solid var(--color-border); padding-top: 1.5rem;">
+                    ${dimensionsHtml}
+                    <div class="features-section">
+                        <div class="spec-label" style="font-size: 0.95rem; margin-bottom: 0.75rem;">${featuresLabel}</div>
+                        <ul style="list-style: none; padding: 0; margin-bottom: 2rem; font-size: 0.95rem; color: var(--color-text-muted);">
+                            ${featuresHtml}
+                        </ul>
+                    </div>
                 </div>
-            </div>
 
-            <div class="modal-actions">
-                <a href="${lineUrl}" target="_blank" class="btn-primary">
-                    <i class="fa-brands fa-line"></i> ${orderLabel}
-                </a>
-                <button onclick="closeModal()" class="btn-secondary">${closeLabel}</button>
+                <div class="modal-actions">
+                    <a href="${lineUrl}" target="_blank" class="btn-primary">
+                        <i class="fa-brands fa-line"></i> ${orderLabel}
+                    </a>
+                    <button onclick="closeModal()" class="btn-secondary">${closeLabel}</button>
+                </div>
             </div>
         </div>
     `;

@@ -1460,12 +1460,21 @@ img {
 }
 
 .modal-body {
-    padding: 3rem 1.25rem 3rem 3rem;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     overflow-y: auto;
     box-sizing: border-box;
+    padding: 0;
+}
+
+.modal-body-content {
+    padding: 3rem;
+    padding-right: 3.5rem; /* Beautiful padding to give safe space for Close X button and keep scrollbar perfectly flush with the right edge! */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
 /* Premium Minimalist Scrollbar for details panel */
@@ -1601,8 +1610,11 @@ img {
     }
     .modal-body {
         width: 100% !important;
-        padding: 2.5rem 1.5rem !important;
+        padding: 0 !important;
         overflow-y: visible !important;
+    }
+    .modal-body-content {
+        padding: 2.5rem 1.5rem !important;
     }
     .modal-container {
         width: 95%;
