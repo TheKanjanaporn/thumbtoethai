@@ -222,9 +222,9 @@
             <div class="admin-panel" id="panel-discount">
 
                 <!-- Big Toggle Card -->
-                <div class="card" style="background: linear-gradient(135deg, #fdfaf6, #f6f3ed); border-color: rgba(231,76,60,0.15);">
-                    <div class="card-header" style="border-color:rgba(231,76,60,0.15);">
-                        <h2><i class="fa-solid fa-percent" style="color:#e74c3c;"></i> ระบบส่วนลด Pet Expo</h2>
+                <div class="card">
+                    <div class="card-header">
+                        <h2><i class="fa-solid fa-tags"></i> ระบบส่วนลด Pet Expo</h2>
                         <!-- Big ON/OFF Toggle -->
                         <div style="display:flex; align-items:center; gap:1rem;">
                             <span id="discountToggleLabel" style="font-size:0.85rem; font-weight:600; color:var(--admin-text-muted);">OFF</span>
@@ -232,7 +232,7 @@
                                 <input type="checkbox" id="discountToggle" onchange="onDiscountToggle(this.checked)">
                                 <span class="big-toggle-slider"></span>
                             </label>
-                            <span id="discountOnLabel" style="font-size:0.85rem; font-weight:700; color:#e74c3c; display:none;">ON ⚡</span>
+                            <span id="discountOnLabel" style="font-size:0.85rem; font-weight:700; color:var(--admin-success); display:none;">ON</span>
                         </div>
                     </div>
                     <div class="card-body">
@@ -244,9 +244,9 @@
                                 </label>
                                 <div style="display:flex; align-items:center; gap:1rem;">
                                     <input type="range" id="discountSlider" min="1" max="50" value="10"
-                                        style="flex:1; accent-color:#e74c3c; height:6px;"
+                                        style="flex:1; accent-color:var(--admin-accent); height:6px;"
                                         oninput="syncDiscountInput(this.value)">
-                                    <div style="display:flex; align-items:center; background:rgba(0,0,0,0.03); border:1px solid rgba(231,76,60,0.2); border-radius:8px; overflow:hidden; width:90px;">
+                                    <div style="display:flex; align-items:center; background:var(--admin-surface); border:1px solid var(--admin-border); border-radius:8px; overflow:hidden; width:90px;">
                                         <input type="number" id="discountInput" min="1" max="50" value="10"
                                             style="width:55px; background:transparent; border:none; color:var(--admin-text); font-size:1.25rem; font-weight:700; padding:0.4rem 0.6rem; text-align:right; outline:none;"
                                             oninput="syncDiscountSlider(this.value)">
@@ -257,7 +257,7 @@
                                     <span style="font-size:0.7rem; color:var(--admin-text-dim);">1%</span>
                                     <span style="font-size:0.7rem; color:var(--admin-text-dim);">50%</span>
                                 </div>
-                                <button class="btn btn-primary mt-2" onclick="saveDiscount()" style="background:linear-gradient(135deg,#c0392b,#e74c3c); border:none; width:100%;">
+                                <button class="btn btn-primary mt-2" onclick="saveDiscount()" style="width:100%;">
                                     <i class="fa-solid fa-floppy-disk"></i> บันทึกการตั้งค่า
                                 </button>
                             </div>

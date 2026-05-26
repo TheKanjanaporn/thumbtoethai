@@ -45,15 +45,15 @@
 }
 
 .big-toggle input:checked + .big-toggle-slider {
-    background: linear-gradient(135deg, #c0392b, #e74c3c);
-    border-color: #c0392b;
-    box-shadow: 0 0 20px rgba(231,76,60,0.4);
+    background: var(--admin-success);
+    border-color: var(--admin-success);
+    box-shadow: none; /* Minimalist: no aggressive glow */
 }
 
 .big-toggle input:checked + .big-toggle-slider::before {
     transform: translateX(30px);
     background: #fff;
-    box-shadow: 0 2px 12px rgba(192,57,43,0.4);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
 
