@@ -1137,7 +1137,6 @@ function openModal(productId) {
     gridContent.innerHTML = `
         <div class="modal-visual" style="position:relative;">
             <img id="modalMainImage" src="${product.image}" alt="${title}">
-            ${hasSale ? `<div style="position:absolute;top:1rem;right:1rem;background:linear-gradient(135deg,#c0392b,#e74c3c);color:#fff;font-size:0.8rem;font-weight:700;padding:5px 10px;border-radius:8px;z-index:2;">-${productPct}%</div>` : ''}
             ${sliderArrows}
         </div>
         <div class="modal-body">
