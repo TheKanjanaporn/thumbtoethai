@@ -1174,7 +1174,25 @@ function openModal(productId) {
     if (window.currentVariants && window.currentVariants.length > 0) {
         selectVariant(0);
     }
+    // Force synchronize heights for all browsers (Bulletproof fallback)
+    syncModalHeights();
+}
 
+// Global function to synchronize visual height to details height
+function syncModalHeights() {
+    setTimeout(() => {
+        const visual = document.querySelector('.modal-visual');
+        if (visual) {
+            if (window.innerWidth > 768) {
+                const body = document.querySelector('.modal-body');
+                if (body && body.offsetHeight > 0) {
+                    visual.style.height = body.offsetHeight + 'px';
+                }
+            } else {
+                visual.style.height = ''; // Reset height to let CSS/mobile styles govern it
+            }
+        }
+    }, 50);
 }
 
 // Global function to handle variant selection
@@ -1217,6 +1235,9 @@ window.selectVariant = function(index, btnElement) {
         const buttons = document.querySelectorAll(".variant-btn");
         if (buttons[index]) buttons[index].classList.add("active");
     }
+
+    // Recalculate heights dynamically on variant change to prevent layout breakdown and scrollbars!
+    syncModalHeights();
 };
 
 window.nextVariant = function(e) {
