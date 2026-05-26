@@ -1468,6 +1468,24 @@ img {
     box-sizing: border-box;
 }
 
+/* Premium Minimalist Scrollbar for details panel */
+.modal-body::-webkit-scrollbar {
+    width: 6px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+    background: rgba(44, 42, 41, 0.15);
+    border-radius: 10px;
+}
+
+.modal-body::-webkit-scrollbar-thumb:hover {
+    background: rgba(44, 42, 41, 0.3);
+}
+
 .modal-body .product-badge {
     position: static;
     display: inline-block;
