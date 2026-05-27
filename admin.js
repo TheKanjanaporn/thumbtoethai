@@ -28,7 +28,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Best Seller",
             "th": "ขายดี"
         },
-        "price": "390",
+        "price": "720",
         "image": "assets/Daisy.jpg",
         "description": {
             "en": "Signature daisy patterned five-toe grip socks. Provides optimal grip for your toes and sole. Designed in Korea.",
@@ -64,7 +64,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Cute Choice",
             "th": "ลายน่ารัก"
         },
-        "price": "420",
+        "price": "720",
         "image": "assets/Bichon.jpg",
         "description": {
             "en": "Adorable Bichon Frise dog pattern pilates socks with non-slip sole grip. Snug elastic fit that stays secure.",
@@ -100,7 +100,7 @@ const DEFAULT_PRODUCTS = [
             "en": "New Arrival",
             "th": "มาใหม่"
         },
-        "price": "420",
+        "price": "720",
         "image": "assets/Bubble Bubble.jpg",
         "description": {
             "en": "Unique bubble-patterned five-toe grip socks to add vibrant energy to your practice. Breathable instep for fresh comfort.",
@@ -136,7 +136,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Elegant",
             "th": "หรูหรา"
         },
-        "price": "450",
+        "price": "720",
         "image": "assets/Cosmos.jpg",
         "description": {
             "en": "Elegant cosmos space themed five-toe grip socks. Perfect mystical color blend for a premium studio look.",
@@ -172,7 +172,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Premium Solid",
             "th": "สีแนะนำ"
         },
-        "price": "390",
+        "price": "720",
         "image": "assets/Emerald.jpg",
         "description": {
             "en": "Rich emerald solid five-toe grip socks. A perfect balance of athletic performance and minimalist aesthetic.",
@@ -208,7 +208,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Popular",
             "th": "ยอดนิยม"
         },
-        "price": "390",
+        "price": "720",
         "image": "assets/Flower.jpg",
         "description": {
             "en": "Beautiful blooming flower five-toe grip socks. Soft pastel palette that brings positive vibes and cozy comfort to your practice.",
@@ -244,7 +244,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Hot Item",
             "th": "ยอดฮิต"
         },
-        "price": "450",
+        "price": "720",
         "image": "assets/Galaxy.jpg",
         "description": {
             "en": "Deep starry galaxy five-toe grip socks. Features a premium nebula gradient design to make you stand out.",
@@ -280,7 +280,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Fresh Aesthetic",
             "th": "สีสดใส"
         },
-        "price": "390",
+        "price": "840",
         "image": "assets/Lemon.jpg",
         "description": {
             "en": "Bright sunny lemon yellow five-toe grip socks. Uplifts your studio mood and energizes your Pilates sequences.",
@@ -316,7 +316,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Modern Look",
             "th": "ลุคโมเดิร์น"
         },
-        "price": "420",
+        "price": "840",
         "image": "assets/Marble.jpg",
         "description": {
             "en": "Chic modern marble textured five-toe grip socks. The perfect choice for stylish practitioners who appreciate fine aesthetics.",
@@ -352,7 +352,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Earthy Tones",
             "th": "เอิร์ธโทน"
         },
-        "price": "390",
+        "price": "840",
         "image": "assets/Woody.jpg",
         "description": {
             "en": "Cozy warm woody brown five-toe grip socks. Brings the calming sense of nature and organic warm textures to your practice.",
@@ -388,7 +388,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Daily Sporty",
             "th": "ใส่ลำลอง"
         },
-        "price": "290",
+        "price": "720",
         "image": "assets/Polo.jpg",
         "description": {
             "en": "Classic ribbed daily five-toe socks without grip. Ideal for pairing with sneakers, casual outdoor wear, and preventing toe-rub friction.",
@@ -424,7 +424,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Cozy Home",
             "th": "หวานละมุน"
         },
-        "price": "290",
+        "price": "720",
         "image": "assets/Peach Lavender.jpg",
         "description": {
             "en": "Sweet peach and lavender dual-toned daily five-toe socks. Perfect cozy fit for home lounging, light walks, and preventing blisters.",
@@ -460,7 +460,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Open Toe",
             "th": "เปิดนิ้วเท้า"
         },
-        "price": "390",
+        "price": "840",
         "image": "assets/Daisy Open Toe.jpg",
         "description": {
             "en": "Signature daisy patterned five-toe open toe grip socks. Open toe design allows for better sensory feedback and natural toe movement. Designed in Korea.",
@@ -496,7 +496,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Earthy Tones",
             "th": "เอิร์ธโทน"
         },
-        "price": "390",
+        "price": "840",
         "image": "assets/Earth White.png",
         "description": {
             "en": "Classic earth white five-toe grip socks. Minimalist off-white color that matches beautifully with any studio attire and offers top-tier stability.",
@@ -532,7 +532,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Open Toe",
             "th": "เปิดนิ้วเท้า"
         },
-        "price": "390",
+        "price": "840",
         "image": "assets/Earth White Open Toe.png",
         "description": {
             "en": "Classic earth white open toe five-toe grip socks. Offers a barefoot feel with ultimate non-slip stability and sensory freedom.",
@@ -568,7 +568,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Open Toe",
             "th": "เปิดนิ้วเท้า"
         },
-        "price": "420",
+        "price": "840",
         "image": "assets/Marble Open Toe.png",
         "description": {
             "en": "Modern abstract marble textured open toe grip socks. Blends elegance with performance and barefoot feedback for professional studio work.",
@@ -604,7 +604,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Open Toe",
             "th": "เปิดนิ้วเท้า"
         },
-        "price": "390",
+        "price": "840",
         "image": "assets/Woody Open Toe.png",
         "description": {
             "en": "Cozy woody brown open toe five-toe grip socks. Earthy natural tone meets organic barefoot movement for a grounding experience.",
@@ -640,7 +640,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Vibrant",
             "th": "สีสดใส"
         },
-        "price": "390",
+        "price": "840",
         "image": "assets/Pink.jpg",
         "description": {
             "en": "Vibrant and sweet dreamy pink five-toe grip socks. Energize your pilates session with a bright splash of color and secure grip performance.",
@@ -676,7 +676,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Earthy",
             "th": "สีธรรมชาติ"
         },
-        "price": "390",
+        "price": "720",
         "image": "assets/Mud.jpg",
         "description": {
             "en": "Organic deep mud-grey five-toe grip socks. Natural, grounded tone that offers a clean, professional studio look with great durability.",
@@ -712,7 +712,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Playful",
             "th": "สายแฟชั่น"
         },
-        "price": "420",
+        "price": "720",
         "image": "assets/Pink Panther.jpg",
         "description": {
             "en": "Playful and wild pink and black panther patterned five-toe grip socks. A fashionable statement piece for pilates enthusiasts who love styling.",
@@ -748,7 +748,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Classic",
             "th": "เรียบง่าย"
         },
-        "price": "390",
+        "price": "840",
         "image": "assets/Silver.jpg",
         "description": {
             "en": "Elegant silver-grey solid five-toe grip socks. Clean, professional look that coordinates with all activewear collections perfectly.",
@@ -784,7 +784,7 @@ const DEFAULT_PRODUCTS = [
             "en": "New",
             "th": "ใหม่"
         },
-        "price": "390",
+        "price": "720",
         "image": "assets/green_plus.jpg",
         "shopeeUrl": "https://shopee.co.th/thumbtoe_th?entryPoint=ShopBySearch&searchKeyword=thumb%20toe",
         "description": {
@@ -821,7 +821,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Knee High",
             "th": "ยาวใต้เข่า"
         },
-        "price": "450",
+        "price": "840",
         "image": "assets/knee_socks_black.jpg",
         "shopeeUrl": "https://shopee.co.th/thumbtoe_th?entryPoint=ShopBySearch&searchKeyword=thumb%20toe",
         "description": {
@@ -893,7 +893,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Sweet Ruffle",
             "th": "ขอบระบาย"
         },
-        "price": "390",
+        "price": "650",
         "image": "assets/frill_socks.jpg",
         "shopeeUrl": "https://shopee.co.th/thumbtoe_th?entryPoint=ShopBySearch&searchKeyword=thumb%20toe",
         "description": {
@@ -930,7 +930,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Athletic",
             "th": "สปอร์ต"
         },
-        "price": "390",
+        "price": "720",
         "image": "assets/sport_socks.jpg",
         "shopeeUrl": "https://shopee.co.th/thumbtoe_th?entryPoint=ShopBySearch&searchKeyword=thumb%20toe",
         "description": {
@@ -967,7 +967,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Elegant",
             "th": "หรูหรา"
         },
-        "price": "450",
+        "price": "840",
         "image": "assets/swan_socks.jpg",
         "shopeeUrl": "https://shopee.co.th/thumbtoe_th?entryPoint=ShopBySearch&searchKeyword=thumb%20toe",
         "description": {
@@ -1004,7 +1004,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Classic Solid",
             "th": "สีแนะนำ"
         },
-        "price": "390",
+        "price": "720",
         "image": "assets/oat.jpg",
         "description": {
             "en": "Minimalist oat beige solid five-toe grip socks. Perfect clean aesthetic to pair with any outfit.",
@@ -1039,7 +1039,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Open Toe",
             "th": "เปิดนิ้วเท้า"
         },
-        "price": "390",
+        "price": "840",
         "image": "assets/oat_open_toe.jpg",
         "description": {
             "en": "Minimalist open-toe five-toe grip socks in soft oat beige. Allows natural toe movement and barefoot feedback.",
@@ -1074,7 +1074,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Cute Choice",
             "th": "ลายน่ารัก"
         },
-        "price": "420",
+        "price": "720",
         "image": "assets/teddy.jpg",
         "description": {
             "en": "Cozy teddy bear patterned five-toe grip socks. Sweet pastel brown tones with high-density non-slip sole grip.",
@@ -1109,7 +1109,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Vibrant",
             "th": "สีสดใส"
         },
-        "price": "390",
+        "price": "840",
         "image": "assets/purple.jpg",
         "description": {
             "en": "Lovely lavender purple solid five-toe grip socks. Brightens up your outfit while offering maximum support.",
@@ -1144,7 +1144,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Sweet Pastels",
             "th": "สีพาสเทล"
         },
-        "price": "390",
+        "price": "840",
         "image": "assets/lilac.jpeg",
         "description": {
             "en": "Delicate pastel lilac shade five-toe grip socks. Offers a soft, feminine look with premium slip-free sole stability.",
@@ -1179,7 +1179,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Fresh Dynamic",
             "th": "สีเปรี้ยวซ่า"
         },
-        "price": "390",
+        "price": "840",
         "image": "assets/lime.jpeg",
         "description": {
             "en": "Zesty pastel lime green five-toe grip socks. Add a fun, energetic pop of fresh green to your studio workouts.",
@@ -1214,7 +1214,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Fluffy Vibe",
             "th": "ลายก้อนเมฆ"
         },
-        "price": "390",
+        "price": "720",
         "image": "assets/cloudy.png",
         "description": {
             "en": "Dreamy soft sky cloudy patterned five-toe grip socks. Light off-white and blue sky aesthetic for premium comfort.",
@@ -1249,7 +1249,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Sweet Cherry",
             "th": "ลายผลไม้"
         },
-        "price": "390",
+        "price": "720",
         "image": "assets/cherry.jpg",
         "description": {
             "en": "Adorable cherry patterned five-toe grip socks. Red cherries print brings a sweet youthful charm to your workout style.",
@@ -1284,7 +1284,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Mystic Sky",
             "th": "ลายท้องฟ้า"
         },
-        "price": "390",
+        "price": "720",
         "image": "assets/skyline.jpg",
         "description": {
             "en": "Beautiful gradient blue skyline themed five-toe grip socks. Offers a elegant grounded horizon vibe for your Pilates sequences.",
@@ -1319,7 +1319,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Vibrant",
             "th": "สีทูโทน"
         },
-        "price": "390",
+        "price": "720",
         "image": "assets/smoothie.jpg",
         "description": {
             "en": "Mixed pastel tones reminiscent of a delicious fruit smoothie. Brings colorful positive energy and premium safety to your feet.",
@@ -1354,7 +1354,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Starry Night",
             "th": "หรูหราพิเศษ"
         },
-        "price": "450",
+        "price": "720",
         "image": "assets/space.jpg",
         "description": {
             "en": "Mystical deep space themed five-toe grip socks. Premium galaxy cosmic gradients and star prints for a highly distinct look.",
@@ -1389,7 +1389,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Contrast Look",
             "th": "สีทูโทน"
         },
-        "price": "390",
+        "price": "720",
         "image": "assets/oreo.jpg",
         "description": {
             "en": "Sleek contrast black and white cookie theme five-toe grip socks. Sporty, chic, and timeless minimalist aesthetic.",
@@ -1424,7 +1424,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Clean Soft",
             "th": "สียอดฮิต"
         },
-        "price": "390",
+        "price": "720",
         "image": "assets/cream.jpg",
         "description": {
             "en": "Classic clean cream off-white solid five-toe grip socks. Snug comfortable fit designed for Pilates, Yoga, and Barre.",
@@ -1459,7 +1459,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Luxurious",
             "th": "สีแนะนำ"
         },
-        "price": "390",
+        "price": "840",
         "image": "assets/burgundy.jpg",
         "description": {
             "en": "Deep luxurious solid burgundy wine red five-toe grip socks. Add an elegant touch of mature premium aesthetic to your feet.",
@@ -1494,7 +1494,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Athletic",
             "th": "สปอร์ตเรียบหรู"
         },
-        "price": "390",
+        "price": "840",
         "image": "assets/dark_navy.jpg",
         "description": {
             "en": "Classic professional solid dark navy five-toe grip socks. Ultimate athletic performance with a clean, low-profile style.",
@@ -1529,7 +1529,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Earthy",
             "th": "เอิร์ธโทน"
         },
-        "price": "390",
+        "price": "350",
         "image": "assets/olive_green.jpg",
         "description": {
             "en": "Earthy solid olive green five-toe grip socks. Blends beautifully with nature-themed studio designs and coordinates cleanly.",
@@ -1564,7 +1564,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Sweet Dream",
             "th": "หวานละมุน"
         },
-        "price": "390",
+        "price": "720",
         "image": "assets/macaron.jpg",
         "description": {
             "en": "Sweet multi-pastel block colors reminiscent of delicious french macarons. Dreamy, playful look to elevate your mood.",
@@ -1599,7 +1599,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Playful",
             "th": "สายแฟชั่นน่ารัก"
         },
-        "price": "420",
+        "price": "720",
         "image": "assets/fried_egg.jpg",
         "description": {
             "en": "Playful and funny sunny side up fried egg patterned five-toe grip socks. Add a joyful splash of breakfast charm to Pilates.",
@@ -1634,7 +1634,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Popular",
             "th": "ลายน่ารัก"
         },
-        "price": "390",
+        "price": "840",
         "image": "assets/love.jpg",
         "description": {
             "en": "Sweet pink and white patterned hearts scattered five-toe grip socks. Brings positive, sweet romantic vibes to your practice sessions.",
@@ -1669,7 +1669,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Lucky Vibe",
             "th": "มาใหม่"
         },
-        "price": "390",
+        "price": "720",
         "image": "assets/lucky.jpg",
         "description": {
             "en": "Lucky four-leaf clover patterned five-toe grip socks. Green and white pastel elements bring positive energy and fortune to you.",
@@ -1704,7 +1704,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Starry Vibe",
             "th": "ลายท้องฟ้า"
         },
-        "price": "390",
+        "price": "720",
         "image": "assets/moon.jpg",
         "description": {
             "en": "Elegant crescent moon and starry night sky themed five-toe grip socks. A mystical dark background with bright yellow moon accents.",
@@ -1739,7 +1739,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Traveler Vibe",
             "th": "ลายน่ารัก"
         },
-        "price": "390",
+        "price": "840",
         "image": "assets/airplane.jpg",
         "description": {
             "en": "Playful little airplane themed five-toe grip socks. Bright blue and white prints to fly through your pilates exercises with secure grip.",
@@ -1774,7 +1774,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Sweet Pastels",
             "th": "สีพาสเทล"
         },
-        "price": "390",
+        "price": "350",
         "image": "assets/baby_blue.jpg",
         "description": {
             "en": "Delicate solid baby blue sky themed five-toe grip socks. Dreamy pastel aesthetics with premium non-slip performance.",
@@ -1809,7 +1809,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Sweet Pastels",
             "th": "สีพาสเทล"
         },
-        "price": "390",
+        "price": "350",
         "image": "assets/baby_pink.jpg",
         "description": {
             "en": "Delicate soft baby blossom pink solid five-toe grip socks. Ultimate sweet princess vibe with reliable non-slip safety.",
@@ -1844,7 +1844,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Vibrant",
             "th": "สีสดใส"
         },
-        "price": "390",
+        "price": "720",
         "image": "assets/blueberry_sock.jpg",
         "description": {
             "en": "Vibrant fruity blueberry deep violet five-toe grip socks. Add a splash of elegant deep purple to your Pilates collections.",
@@ -1879,7 +1879,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Modern Vibe",
             "th": "สีแนะนำ"
         },
-        "price": "390",
+        "price": "720",
         "image": "assets/blurple.jpg",
         "description": {
             "en": "Chic solid blurple (blue-purple blend) five-toe grip socks. Highly modern dynamic color blocks to pop your activewear outfit.",
@@ -1914,7 +1914,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Cute Choice",
             "th": "ลายน่ารัก"
         },
-        "price": "420",
+        "price": "720",
         "image": "assets/cartoon.jpg",
         "description": {
             "en": "Playful and sweet colorful cartoon print five-toe grip socks. Designed for practitioners who love cheerful, fun studio looks.",
@@ -1949,7 +1949,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Soft Comfort",
             "th": "สียอดฮิต"
         },
-        "price": "390",
+        "price": "720",
         "image": "assets/fluffy.jpg",
         "description": {
             "en": "Extremely soft cloudy fluffy styled five-toe grip socks. Mixed gentle pastel hues for top comfort and slip-free performance.",
@@ -1984,7 +1984,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Earthy Tones",
             "th": "เอิร์ธโทน"
         },
-        "price": "390",
+        "price": "720",
         "image": "assets/foggy.jpg",
         "description": {
             "en": "Calming solid foggy grey five-toe grip socks. Earthy grounded tone that gives a clean, peaceful professional aesthetic.",
@@ -2019,7 +2019,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Sporty Classic",
             "th": "สีแนะนำ"
         },
-        "price": "390",
+        "price": "350",
         "image": "assets/navy_black.jpg",
         "description": {
             "en": "Chic sporty contrast navy blue and black splay five-toe grip socks. Deep, professional look with ultimate traction safety.",
@@ -2054,7 +2054,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Artistic",
             "th": "ดีไซน์เก๋"
         },
-        "price": "390",
+        "price": "840",
         "image": "assets/pencil.jpg",
         "description": {
             "en": "Artistic pencil sketch thin striped five-toe grip socks. Modern minimalist layout to show style and performance in studio classes.",
@@ -2089,7 +2089,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Earthy Tones",
             "th": "สียอดนิยม"
         },
-        "price": "390",
+        "price": "720",
         "image": "assets/woody_n.jpeg",
         "description": {
             "en": "Cozy warm natural woody earthy brown five-toe grip socks. Gives a calming organic warmth feel with superior stability.",
@@ -2124,7 +2124,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Earthy Tones",
             "th": "สีแนะนำ"
         },
-        "price": "390",
+        "price": "840",
         "image": "assets/oak.jpg",
         "description": {
             "en": "Classic deep solid oak brown five-toe grip socks. Grounded natural tone designed to provide top performance stability.",
@@ -2159,7 +2159,7 @@ const DEFAULT_PRODUCTS = [
             "en": "Everyday Comfort",
             "th": "สวมใส่ลำลอง"
         },
-        "price": "290",
+        "price": "350",
         "image": "assets/daily_sock.jpg",
         "description": {
             "en": "Soft, cozy, and highly breathable five-toe socks without silicon sole grip. Perfect everyday choice for shoes, casual walks, and sweat absorption.",
