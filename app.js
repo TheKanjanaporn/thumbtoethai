@@ -62,8 +62,8 @@ const PRODUCTS_DEFAULT = [
         "id": "daisy",
         "category": "grip",
         "title": {
-            "en": "Daisy Grip Socks",
-            "th": "Daisy Grip Socks"
+            "en": "Daisy",
+            "th": "Daisy"
         },
         "subtitle": {
             "en": "Signature Flower Grip Socks",
@@ -98,8 +98,8 @@ const PRODUCTS_DEFAULT = [
         "id": "bichon",
         "category": "grip",
         "title": {
-            "en": "Bichon Grip Socks",
-            "th": "Bichon Grip Socks"
+            "en": "Bichon",
+            "th": "Bichon"
         },
         "subtitle": {
             "en": "Cute Bichon Dog Pattern Socks",
@@ -134,8 +134,8 @@ const PRODUCTS_DEFAULT = [
         "id": "bubble_bubble",
         "category": "grip",
         "title": {
-            "en": "Bubble Bubble Grip Socks",
-            "th": "Bubble Bubble Grip Socks"
+            "en": "Bubble Bubble",
+            "th": "Bubble Bubble"
         },
         "subtitle": {
             "en": "Vibrant Bubble Pattern Socks",
@@ -170,8 +170,8 @@ const PRODUCTS_DEFAULT = [
         "id": "cosmos",
         "category": "grip",
         "title": {
-            "en": "Cosmos Grip Socks",
-            "th": "Cosmos Grip Socks"
+            "en": "Cosmos",
+            "th": "Cosmos"
         },
         "subtitle": {
             "en": "Elegant Cosmos Space Theme",
@@ -206,8 +206,8 @@ const PRODUCTS_DEFAULT = [
         "id": "emerald",
         "category": "grip",
         "title": {
-            "en": "Emerald Grip Socks",
-            "th": "Emerald Grip Socks"
+            "en": "Emerald",
+            "th": "Emerald"
         },
         "subtitle": {
             "en": "Rich Emerald Green Solid Socks",
@@ -242,8 +242,8 @@ const PRODUCTS_DEFAULT = [
         "id": "flower",
         "category": "grip",
         "title": {
-            "en": "Flower Grip Socks",
-            "th": "Flower Grip Socks"
+            "en": "Flower",
+            "th": "Flower"
         },
         "subtitle": {
             "en": "Sweet Blooming Flower Pattern",
@@ -278,8 +278,8 @@ const PRODUCTS_DEFAULT = [
         "id": "galaxy",
         "category": "grip",
         "title": {
-            "en": "Galaxy Grip Socks",
-            "th": "Galaxy Grip Socks"
+            "en": "Galaxy",
+            "th": "Galaxy"
         },
         "subtitle": {
             "en": "Mystical Dusty Nebula Theme",
@@ -314,8 +314,8 @@ const PRODUCTS_DEFAULT = [
         "id": "lemon",
         "category": "grip",
         "title": {
-            "en": "Lemon Grip Socks",
-            "th": "Lemon Grip Socks"
+            "en": "Lemon",
+            "th": "Lemon"
         },
         "subtitle": {
             "en": "Sunny Day Lemon Yellow Socks",
@@ -350,8 +350,8 @@ const PRODUCTS_DEFAULT = [
         "id": "marble",
         "category": "grip",
         "title": {
-            "en": "Marble Grip Socks",
-            "th": "Marble Grip Socks"
+            "en": "Marble",
+            "th": "Marble"
         },
         "subtitle": {
             "en": "Modern Abstract Marble Textures",
@@ -386,8 +386,8 @@ const PRODUCTS_DEFAULT = [
         "id": "woody",
         "category": "grip",
         "title": {
-            "en": "Woody Grip Socks",
-            "th": "Woody Grip Socks"
+            "en": "Woody",
+            "th": "Woody"
         },
         "subtitle": {
             "en": "Warm Earthy Woody Brown Socks",
@@ -422,8 +422,8 @@ const PRODUCTS_DEFAULT = [
         "id": "polo",
         "category": "daily",
         "title": {
-            "en": "Polo Daily Socks",
-            "th": "Polo Daily Socks"
+            "en": "Polo Daily",
+            "th": "Polo Daily"
         },
         "subtitle": {
             "en": "Sporty Ribbed Non-Grip Socks",
@@ -458,8 +458,8 @@ const PRODUCTS_DEFAULT = [
         "id": "peach_lavender",
         "category": "daily",
         "title": {
-            "en": "Peach Lavender Socks",
-            "th": "Peach Lavender Socks"
+            "en": "Peach Lavender",
+            "th": "Peach Lavender"
         },
         "subtitle": {
             "en": "Sweet Two-Tone Non-Grip Socks",
@@ -494,8 +494,8 @@ const PRODUCTS_DEFAULT = [
         "id": "daisy_open_toe",
         "category": "grip",
         "title": {
-            "en": "Daisy Open Toe Grip Socks",
-            "th": "Daisy Open Toe Grip Socks"
+            "en": "Daisy Open Toe",
+            "th": "Daisy Open Toe"
         },
         "subtitle": {
             "en": "Signature Open-Toe Flower Socks",
@@ -530,8 +530,8 @@ const PRODUCTS_DEFAULT = [
         "id": "earth_white",
         "category": "grip",
         "title": {
-            "en": "Earth White Grip Socks",
-            "th": "Earth White Grip Socks"
+            "en": "Earth White",
+            "th": "Earth White"
         },
         "subtitle": {
             "en": "Minimalist Classic Off-White Socks",
@@ -566,8 +566,8 @@ const PRODUCTS_DEFAULT = [
         "id": "earth_white_open_toe",
         "category": "grip",
         "title": {
-            "en": "Earth White Open Toe Grip Socks",
-            "th": "Earth White Open Toe Grip Socks"
+            "en": "Earth White Open Toe",
+            "th": "Earth White Open Toe"
         },
         "subtitle": {
             "en": "Barefoot Feel Off-White Socks",
@@ -602,8 +602,8 @@ const PRODUCTS_DEFAULT = [
         "id": "marble_open_toe",
         "category": "grip",
         "title": {
-            "en": "Marble Open Toe Grip Socks",
-            "th": "Marble Open Toe Grip Socks"
+            "en": "Marble Open Toe",
+            "th": "Marble Open Toe"
         },
         "subtitle": {
             "en": "Modern Marble Open-Toe Design",
@@ -638,8 +638,8 @@ const PRODUCTS_DEFAULT = [
         "id": "woody_open_toe",
         "category": "grip",
         "title": {
-            "en": "Woody Open Toe Grip Socks",
-            "th": "Woody Open Toe Grip Socks"
+            "en": "Woody Open Toe",
+            "th": "Woody Open Toe"
         },
         "subtitle": {
             "en": "Warm Earthy Brown Open-Toe Socks",
@@ -674,8 +674,8 @@ const PRODUCTS_DEFAULT = [
         "id": "pink",
         "category": "grip",
         "title": {
-            "en": "Pink Grip Socks",
-            "th": "Pink Grip Socks"
+            "en": "Pink",
+            "th": "Pink"
         },
         "subtitle": {
             "en": "Sweet Dreamy Pink Socks",
@@ -710,8 +710,8 @@ const PRODUCTS_DEFAULT = [
         "id": "mud",
         "category": "grip",
         "title": {
-            "en": "Mud Grip Socks",
-            "th": "Mud Grip Socks"
+            "en": "Mud",
+            "th": "Mud"
         },
         "subtitle": {
             "en": "Organic Deep Mud-Grey Socks",
@@ -746,8 +746,8 @@ const PRODUCTS_DEFAULT = [
         "id": "pink_panther",
         "category": "grip",
         "title": {
-            "en": "Pink Panther Grip Socks",
-            "th": "Pink Panther Grip Socks"
+            "en": "Pink Panther",
+            "th": "Pink Panther"
         },
         "subtitle": {
             "en": "Vibrant Panther Pattern Socks",
@@ -782,8 +782,8 @@ const PRODUCTS_DEFAULT = [
         "id": "silver",
         "category": "grip",
         "title": {
-            "en": "Silver Grip Socks",
-            "th": "Silver Grip Socks"
+            "en": "Silver",
+            "th": "Silver"
         },
         "subtitle": {
             "en": "Elegant Silver-Grey Solid Socks",
@@ -818,8 +818,8 @@ const PRODUCTS_DEFAULT = [
         "id": "green_plus",
         "category": "grip",
         "title": {
-            "en": "Green Plus Grip Socks",
-            "th": "Green Plus Grip Socks"
+            "en": "Green Plus",
+            "th": "Green Plus"
         },
         "subtitle": {
             "en": "Vibrant Green Signature Grip Socks",
@@ -855,8 +855,8 @@ const PRODUCTS_DEFAULT = [
         "id": "knee_socks",
         "category": "grip",
         "title": {
-            "en": "Knee High Grip Socks",
-            "th": "Knee High Grip Socks"
+            "en": "Knee High",
+            "th": "Knee High"
         },
         "subtitle": {
             "en": "Elegant Over-the-Calf Grip Socks",
@@ -927,8 +927,8 @@ const PRODUCTS_DEFAULT = [
         "id": "frill_socks",
         "category": "grip",
         "title": {
-            "en": "Frill Grip Socks",
-            "th": "Frill Grip Socks"
+            "en": "Frill",
+            "th": "Frill"
         },
         "subtitle": {
             "en": "Sweet Ruffle Ankle Grip Socks",
@@ -964,8 +964,8 @@ const PRODUCTS_DEFAULT = [
         "id": "sport_socks",
         "category": "grip",
         "title": {
-            "en": "Sport Grip Socks",
-            "th": "Sport Grip Socks"
+            "en": "Sport",
+            "th": "Sport"
         },
         "subtitle": {
             "en": "Athletic High-Performance Grip Socks",
@@ -1001,8 +1001,8 @@ const PRODUCTS_DEFAULT = [
         "id": "swan_socks",
         "category": "grip",
         "title": {
-            "en": "Swan Princess Grip Socks",
-            "th": "Swan Princess Grip Socks"
+            "en": "Swan Princess",
+            "th": "Swan Princess"
         },
         "subtitle": {
             "en": "Elegant Swan Ribbon Grip Socks",
@@ -1038,8 +1038,8 @@ const PRODUCTS_DEFAULT = [
         "id": "oat",
         "category": "grip",
         "title": {
-            "en": "Oat Grip Socks",
-            "th": "Oat Grip Socks"
+            "en": "Oat",
+            "th": "Oat"
         },
         "subtitle": {
             "en": "Warm Minimalist Oat Beige Socks",
@@ -1073,8 +1073,8 @@ const PRODUCTS_DEFAULT = [
         "id": "oat_open_toe",
         "category": "grip",
         "title": {
-            "en": "Oat Open Toe Grip Socks",
-            "th": "Oat Open Toe Grip Socks"
+            "en": "Oat Open Toe",
+            "th": "Oat Open Toe"
         },
         "subtitle": {
             "en": "Barefoot Sensation Oat Socks",
@@ -1108,8 +1108,8 @@ const PRODUCTS_DEFAULT = [
         "id": "teddy",
         "category": "grip",
         "title": {
-            "en": "Teddy Grip Socks",
-            "th": "Teddy Grip Socks"
+            "en": "Teddy",
+            "th": "Teddy"
         },
         "subtitle": {
             "en": "Warm Cozy Teddy Bear Pattern Socks",
@@ -1143,8 +1143,8 @@ const PRODUCTS_DEFAULT = [
         "id": "purple",
         "category": "grip",
         "title": {
-            "en": "Purple Grip Socks",
-            "th": "Purple Grip Socks"
+            "en": "Purple",
+            "th": "Purple"
         },
         "subtitle": {
             "en": "Sweet Lavender Purple Solid Socks",
@@ -1178,8 +1178,8 @@ const PRODUCTS_DEFAULT = [
         "id": "lilac",
         "category": "grip",
         "title": {
-            "en": "Lilac Grip Socks",
-            "th": "Lilac Grip Socks"
+            "en": "Lilac",
+            "th": "Lilac"
         },
         "subtitle": {
             "en": "Delicate Pastel Lilac Socks",
@@ -1213,8 +1213,8 @@ const PRODUCTS_DEFAULT = [
         "id": "lime",
         "category": "grip",
         "title": {
-            "en": "Lime Grip Socks",
-            "th": "Lime Grip Socks"
+            "en": "Lime",
+            "th": "Lime"
         },
         "subtitle": {
             "en": "Zesty Pastel Lime Green Socks",
@@ -1248,8 +1248,8 @@ const PRODUCTS_DEFAULT = [
         "id": "cloudy",
         "category": "grip",
         "title": {
-            "en": "Cloudy Grip Socks",
-            "th": "Cloudy Grip Socks"
+            "en": "Cloudy",
+            "th": "Cloudy"
         },
         "subtitle": {
             "en": "Soft Sky Cloudy White Socks",
@@ -1283,8 +1283,8 @@ const PRODUCTS_DEFAULT = [
         "id": "cherry",
         "category": "grip",
         "title": {
-            "en": "Cherry Grip Socks",
-            "th": "Cherry Grip Socks"
+            "en": "Cherry",
+            "th": "Cherry"
         },
         "subtitle": {
             "en": "Sweet Sweet Red Cherry Pattern",
@@ -1318,8 +1318,8 @@ const PRODUCTS_DEFAULT = [
         "id": "skyline",
         "category": "grip",
         "title": {
-            "en": "Skyline Grip Socks",
-            "th": "Skyline Grip Socks"
+            "en": "Skyline",
+            "th": "Skyline"
         },
         "subtitle": {
             "en": "Deep Blue Sky Horizon Socks",
@@ -1353,8 +1353,8 @@ const PRODUCTS_DEFAULT = [
         "id": "smoothie",
         "category": "grip",
         "title": {
-            "en": "Smoothie Grip Socks",
-            "th": "Smoothie Grip Socks"
+            "en": "Smoothie",
+            "th": "Smoothie"
         },
         "subtitle": {
             "en": "Mixed Fruit Smoothie Pastel Socks",
@@ -1388,8 +1388,8 @@ const PRODUCTS_DEFAULT = [
         "id": "space",
         "category": "grip",
         "title": {
-            "en": "Space Grip Socks",
-            "th": "Space Grip Socks"
+            "en": "Space",
+            "th": "Space"
         },
         "subtitle": {
             "en": "Mystical Deep Space Galaxy Socks",
@@ -1423,8 +1423,8 @@ const PRODUCTS_DEFAULT = [
         "id": "oreo",
         "category": "grip",
         "title": {
-            "en": "Oreo Grip Socks",
-            "th": "Oreo Grip Socks"
+            "en": "Oreo",
+            "th": "Oreo"
         },
         "subtitle": {
             "en": "Black & White Classic Oreo Socks",
@@ -1458,8 +1458,8 @@ const PRODUCTS_DEFAULT = [
         "id": "cream",
         "category": "grip",
         "title": {
-            "en": "Cream Grip Socks",
-            "th": "Cream Grip Socks"
+            "en": "Cream",
+            "th": "Cream"
         },
         "subtitle": {
             "en": "Clean Delicate Cream Off-White",
@@ -1493,8 +1493,8 @@ const PRODUCTS_DEFAULT = [
         "id": "burgundy",
         "category": "grip",
         "title": {
-            "en": "Burgundy Grip Socks",
-            "th": "Burgundy Grip Socks"
+            "en": "Burgundy",
+            "th": "Burgundy"
         },
         "subtitle": {
             "en": "Deep Luxurious Burgundy Red",
@@ -1528,8 +1528,8 @@ const PRODUCTS_DEFAULT = [
         "id": "dark_navy",
         "category": "grip",
         "title": {
-            "en": "Dark Navy Grip Socks",
-            "th": "Dark Navy Grip Socks"
+            "en": "Dark Navy",
+            "th": "Dark Navy"
         },
         "subtitle": {
             "en": "Professional Solid Dark Navy",
@@ -1563,8 +1563,8 @@ const PRODUCTS_DEFAULT = [
         "id": "olive_green",
         "category": "grip",
         "title": {
-            "en": "Olive Green Grip Socks",
-            "th": "Olive Green Grip Socks"
+            "en": "Olive Green",
+            "th": "Olive Green"
         },
         "subtitle": {
             "en": "Deep Earthy Olive Green Socks",
@@ -1598,8 +1598,8 @@ const PRODUCTS_DEFAULT = [
         "id": "macaron",
         "category": "grip",
         "title": {
-            "en": "Macaron Grip Socks",
-            "th": "Macaron Grip Socks"
+            "en": "Macaron",
+            "th": "Macaron"
         },
         "subtitle": {
             "en": "Sweet Colorful Macaron Pastels",
@@ -1633,8 +1633,8 @@ const PRODUCTS_DEFAULT = [
         "id": "fried_egg",
         "category": "grip",
         "title": {
-            "en": "Fried Egg Grip Socks",
-            "th": "Fried Egg Grip Socks"
+            "en": "Fried Egg",
+            "th": "Fried Egg"
         },
         "subtitle": {
             "en": "Cute Sunny Side Up Fried Egg Socks",
@@ -1668,8 +1668,8 @@ const PRODUCTS_DEFAULT = [
         "id": "love",
         "category": "grip",
         "title": {
-            "en": "Love Grip Socks",
-            "th": "Love Grip Socks"
+            "en": "Love",
+            "th": "Love"
         },
         "subtitle": {
             "en": "Sweet Scattered Hearts Love Theme",
@@ -1703,8 +1703,8 @@ const PRODUCTS_DEFAULT = [
         "id": "lucky",
         "category": "grip",
         "title": {
-            "en": "Lucky Grip Socks",
-            "th": "Lucky Grip Socks"
+            "en": "Lucky",
+            "th": "Lucky"
         },
         "subtitle": {
             "en": "Green Four-Leaf Clover Lucky Socks",
@@ -1738,8 +1738,8 @@ const PRODUCTS_DEFAULT = [
         "id": "moon",
         "category": "grip",
         "title": {
-            "en": "Moon Grip Socks",
-            "th": "Moon Grip Socks"
+            "en": "Moon",
+            "th": "Moon"
         },
         "subtitle": {
             "en": "Elegant Crescent Moon and Star Socks",
@@ -1773,8 +1773,8 @@ const PRODUCTS_DEFAULT = [
         "id": "airplane",
         "category": "grip",
         "title": {
-            "en": "Airplane Grip Socks",
-            "th": "Airplane Grip Socks"
+            "en": "Airplane",
+            "th": "Airplane"
         },
         "subtitle": {
             "en": "Playful Little Airplane Travel Socks",
@@ -1808,8 +1808,8 @@ const PRODUCTS_DEFAULT = [
         "id": "baby_blue",
         "category": "grip",
         "title": {
-            "en": "Baby Blue Grip Socks",
-            "th": "Baby Blue Grip Socks"
+            "en": "Baby Blue",
+            "th": "Baby Blue"
         },
         "subtitle": {
             "en": "Delicate Soft Sky Baby Blue Socks",
@@ -1843,8 +1843,8 @@ const PRODUCTS_DEFAULT = [
         "id": "baby_pink",
         "category": "grip",
         "title": {
-            "en": "Baby Pink Grip Socks",
-            "th": "Baby Pink Grip Socks"
+            "en": "Baby Pink",
+            "th": "Baby Pink"
         },
         "subtitle": {
             "en": "Sweet Soft Baby Blossom Pink",
@@ -1878,8 +1878,8 @@ const PRODUCTS_DEFAULT = [
         "id": "blueberry_sock",
         "category": "grip",
         "title": {
-            "en": "Blueberry Grip Socks",
-            "th": "Blueberry Grip Socks"
+            "en": "Blueberry",
+            "th": "Blueberry"
         },
         "subtitle": {
             "en": "Deep Fruity Blueberry Violet Socks",
@@ -1913,8 +1913,8 @@ const PRODUCTS_DEFAULT = [
         "id": "blurple",
         "category": "grip",
         "title": {
-            "en": "Blurple Grip Socks",
-            "th": "Blurple Grip Socks"
+            "en": "Blurple",
+            "th": "Blurple"
         },
         "subtitle": {
             "en": "Chic Blurple Blue-Purple Solid",
@@ -1948,8 +1948,8 @@ const PRODUCTS_DEFAULT = [
         "id": "cartoon",
         "category": "grip",
         "title": {
-            "en": "Cartoon Grip Socks",
-            "th": "Cartoon Grip Socks"
+            "en": "Cartoon",
+            "th": "Cartoon"
         },
         "subtitle": {
             "en": "Adorable Cartoon Character Socks",
@@ -1983,8 +1983,8 @@ const PRODUCTS_DEFAULT = [
         "id": "fluffy",
         "category": "grip",
         "title": {
-            "en": "Fluffy Grip Socks",
-            "th": "Fluffy Grip Socks"
+            "en": "Fluffy",
+            "th": "Fluffy"
         },
         "subtitle": {
             "en": "Cloud Soft Cozy Fluffy Pastel Socks",
@@ -2018,8 +2018,8 @@ const PRODUCTS_DEFAULT = [
         "id": "foggy",
         "category": "grip",
         "title": {
-            "en": "Foggy Grip Socks",
-            "th": "Foggy Grip Socks"
+            "en": "Foggy",
+            "th": "Foggy"
         },
         "subtitle": {
             "en": "Calming Pastel Foggy Grey Socks",
@@ -2053,8 +2053,8 @@ const PRODUCTS_DEFAULT = [
         "id": "navy_black",
         "category": "grip",
         "title": {
-            "en": "Navy Black Grip Socks",
-            "th": "Navy Black Grip Socks"
+            "en": "Navy Black",
+            "th": "Navy Black"
         },
         "subtitle": {
             "en": "Contrast Navy Ankle Black Toes Socks",
@@ -2088,8 +2088,8 @@ const PRODUCTS_DEFAULT = [
         "id": "pencil",
         "category": "grip",
         "title": {
-            "en": "Pencil Grip Socks",
-            "th": "Pencil Grip Socks"
+            "en": "Pencil",
+            "th": "Pencil"
         },
         "subtitle": {
             "en": "Chic Pencil Sketch Stripes Socks",
@@ -2123,8 +2123,8 @@ const PRODUCTS_DEFAULT = [
         "id": "woody_n",
         "category": "grip",
         "title": {
-            "en": "Woody N Grip Socks",
-            "th": "Woody N Grip Socks"
+            "en": "Woody N",
+            "th": "Woody N"
         },
         "subtitle": {
             "en": "Warm Woody Natural Earthy Solid",
@@ -2158,8 +2158,8 @@ const PRODUCTS_DEFAULT = [
         "id": "oak",
         "category": "grip",
         "title": {
-            "en": "Oak Grip Socks",
-            "th": "Oak Grip Socks"
+            "en": "Oak",
+            "th": "Oak"
         },
         "subtitle": {
             "en": "Deep Earthy Oak Brown Solid",
@@ -2193,8 +2193,8 @@ const PRODUCTS_DEFAULT = [
         "id": "daily_sock",
         "category": "daily",
         "title": {
-            "en": "Daily Five-Toe Socks",
-            "th": "Daily Five-Toe Socks"
+            "en": "Daily Five-Toe",
+            "th": "Daily Five-Toe"
         },
         "subtitle": {
             "en": "Cozy Breathable Non-Slip Daily Socks",
