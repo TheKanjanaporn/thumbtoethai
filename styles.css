@@ -64,10 +64,26 @@ html {
 body {
     font-family: var(--font-main);
     background-color: var(--color-bg);
-    /* Large, rich repeating pastel flower background pattern (inspired by the retro brand graphic) */
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='360' viewBox='0 0 360 360'%3E%3Cg fill='%23f48fb1' fill-opacity='0.08'%3E%3Ccircle cx='60' cy='70' r='28'/%3E%3Ccircle cx='88' cy='70' r='28'/%3E%3Ccircle cx='32' cy='70' r='28'/%3E%3Ccircle cx='74' cy='94.2' r='28'/%3E%3Ccircle cx='46' cy='94.2' r='28'/%3E%3Ccircle cx='74' cy='45.8' r='28'/%3E%3Ccircle cx='46' cy='45.8' r='28'/%3E%3C/g%3E%3Cg fill='%234db6ac' fill-opacity='0.08'%3E%3Ccircle cx='290' cy='90' r='24'/%3E%3Ccircle cx='314' cy='90' r='24'/%3E%3Ccircle cx='266' cy='90' r='24'/%3E%3Ccircle cx='302' cy='110.8' r='24'/%3E%3Ccircle cx='278' cy='110.8' r='24'/%3E%3Ccircle cx='302' cy='69.2' r='24'/%3E%3Ccircle cx='278' cy='69.2' r='24'/%3E%3C/g%3E%3Cg fill='%23ffd54f' fill-opacity='0.09'%3E%3Ccircle cx='140' cy='240' r='32'/%3E%3Ccircle cx='172' cy='240' r='32'/%3E%3Ccircle cx='108' cy='240' r='32'/%3E%3Ccircle cx='156' cy='267.7' r='32'/%3E%3Ccircle cx='124' cy='267.7' r='32'/%3E%3Ccircle cx='156' cy='212.3' r='32'/%3E%3Ccircle cx='124' cy='212.3' r='32'/%3E%3C/g%3E%3Cg fill='%23ba68c8' fill-opacity='0.08'%3E%3Ccircle cx='300' cy='280' r='22'/%3E%3Ccircle cx='321' cy='280' r='22'/%3E%3Ccircle cx='279' cy='280' r='22'/%3E%3Ccircle cx='311' cy='299.1' r='22'/%3E%3Ccircle cx='289' cy='299.1' r='22'/%3E%3Ccircle cx='311' cy='260.9' r='22'/%3E%3Ccircle cx='289' cy='260.9' r='22'/%3E%3C/g%3E%3Cg fill='%2364b5f6' fill-opacity='0.08'%3E%3Ccircle cx='50' cy='290' r='20'/%3E%3Ccircle cx='70' cy='290' r='20'/%3E%3Ccircle cx='30' cy='290' r='20'/%3E%3Ccircle cx='60' cy='307.3' r='20'/%3E%3Ccircle cx='40' cy='307.3' r='20'/%3E%3Ccircle cx='60' cy='272.7' r='20'/%3E%3Ccircle cx='40' cy='272.7' r='20'/%3E%3C/g%3E%3C/svg%3E");
-    background-repeat: repeat;
-    background-attachment: scroll;
+    /* Large, non-repeating pastel flowers floating elegantly along the left/right margins (as requested in the mobile screenshot) */
+    background-image: 
+        /* 1. Top Left Pink Flower */
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cg fill='%23f48fb1' fill-opacity='0.12'%3E%3Ccircle cx='60' cy='60' r='20'/%3E%3Ccircle cx='80' cy='60' r='20'/%3E%3Ccircle cx='40' cy='60' r='20'/%3E%3Ccircle cx='70' cy='77.3' r='20'/%3E%3Ccircle cx='50' cy='77.3' r='20'/%3E%3Ccircle cx='70' cy='42.7' r='20'/%3E%3Ccircle cx='50' cy='42.7' r='20'/%3E%3C/g%3E%3C/svg%3E"),
+        /* 2. Top Right Mint Flower */
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cg fill='%234db6ac' fill-opacity='0.12'%3E%3Ccircle cx='60' cy='60' r='20'/%3E%3Ccircle cx='80' cy='60' r='20'/%3E%3Ccircle cx='40' cy='60' r='20'/%3E%3Ccircle cx='70' cy='77.3' r='20'/%3E%3Ccircle cx='50' cy='77.3' r='20'/%3E%3Ccircle cx='70' cy='42.7' r='20'/%3E%3Ccircle cx='50' cy='42.7' r='20'/%3E%3C/g%3E%3C/svg%3E"),
+        /* 3. Mid Left Yellow Flower */
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cg fill='%23ffd54f' fill-opacity='0.12'%3E%3Ccircle cx='60' cy='60' r='20'/%3E%3Ccircle cx='80' cy='60' r='20'/%3E%3Ccircle cx='40' cy='60' r='20'/%3E%3Ccircle cx='70' cy='77.3' r='20'/%3E%3Ccircle cx='50' cy='77.3' r='20'/%3E%3Ccircle cx='70' cy='42.7' r='20'/%3E%3Ccircle cx='50' cy='42.7' r='20'/%3E%3C/g%3E%3C/svg%3E"),
+        /* 4. Mid Right Purple Flower */
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cg fill='%23ba68c8' fill-opacity='0.12'%3E%3Ccircle cx='60' cy='60' r='20'/%3E%3Ccircle cx='80' cy='60' r='20'/%3E%3Ccircle cx='40' cy='60' r='20'/%3E%3Ccircle cx='70' cy='77.3' r='20'/%3E%3Ccircle cx='50' cy='77.3' r='20'/%3E%3Ccircle cx='70' cy='42.7' r='20'/%3E%3Ccircle cx='50' cy='42.7' r='20'/%3E%3C/g%3E%3C/svg%3E"),
+        /* 5. Lower Left Blue Flower */
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cg fill='%2364b5f6' fill-opacity='0.12'%3E%3Ccircle cx='60' cy='60' r='20'/%3E%3Ccircle cx='80' cy='60' r='20'/%3E%3Ccircle cx='40' cy='60' r='20'/%3E%3Ccircle cx='70' cy='77.3' r='20'/%3E%3Ccircle cx='50' cy='77.3' r='20'/%3E%3Ccircle cx='70' cy='42.7' r='20'/%3E%3Ccircle cx='50' cy='42.7' r='20'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: 
+        left -60px top 180px,
+        right -60px top 520px,
+        left -80px top 1100px,
+        right -70px top 1900px,
+        left -50px top 2700px;
+    background-size: 180px 180px, 200px 200px, 220px 220px, 190px 190px, 170px 170px;
     color: var(--color-text-main);
     line-height: 1.6;
     overflow-x: hidden !important;
