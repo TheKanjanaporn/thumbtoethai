@@ -1033,6 +1033,1196 @@ const PRODUCTS_DEFAULT = [
                 "เจลซิลิโคนเต็มฝ่าเท้าเกาะแน่นมั่นคงยาวนาน"
             ]
         }
+    },
+    {
+        "id": "oat",
+        "category": "grip",
+        "title": {
+            "en": "Oat Grip Socks",
+            "th": "Oat Grip Socks"
+        },
+        "subtitle": {
+            "en": "Warm Minimalist Oat Beige Socks",
+            "th": "ถุงเท้ากันลื่นห้านิ้วสีโอ๊ตเบจธรรมชาติ"
+        },
+        "badge": {
+            "en": "Classic Solid",
+            "th": "สีแนะนำ"
+        },
+        "price": "390",
+        "image": "assets/oat.jpg",
+        "description": {
+            "en": "Minimalist oat beige solid five-toe grip socks. Perfect clean aesthetic to pair with any outfit.",
+            "th": "ถุงเท้ากันลื่นแยกห้านิ้วสีครีมโอ๊ตเบจสไตล์มินิมอลเกาหลี สีสุภาพ แมทช์ง่าย ยึดเกาะแน่นมั่นคง"
+        },
+        "features": {
+            "en": [
+                "Premium combed cotton blend",
+                "Silicon non-slip full-sole grip",
+                "Elastic arch support band"
+            ],
+            "th": [
+                "ผลิตจากเนื้อผ้าฝ้ายผสมพรีเมียมนุ่ม",
+                "ปุ่มซิลิโคนกันลื่นหนาแน่นเต็มฝ่าเท้า",
+                "แถบพยุงอุ้งเท้าเพิ่มความมั่นคง"
+            ]
+        },
+        "shopeeUrl": "https://shopee.co.th/thumbtoe_th?entryPoint=ShopBySearch&searchKeyword=thumb%20toe"
+    },
+    {
+        "id": "oat_open_toe",
+        "category": "grip",
+        "title": {
+            "en": "Oat Open Toe Grip Socks",
+            "th": "Oat Open Toe Grip Socks"
+        },
+        "subtitle": {
+            "en": "Barefoot Sensation Oat Socks",
+            "th": "ถุงเท้ากันลื่นแบบเปิดนิ้วเท้าสีโอ๊ตเบจ"
+        },
+        "badge": {
+            "en": "Open Toe",
+            "th": "เปิดนิ้วเท้า"
+        },
+        "price": "390",
+        "image": "assets/oat_open_toe.jpg",
+        "description": {
+            "en": "Minimalist open-toe five-toe grip socks in soft oat beige. Allows natural toe movement and barefoot feedback.",
+            "th": "ถุงเท้ากันลื่นห้านิ้วแบบเปิดปลายสีโอ๊ตเบจเรียบหรู ปล่อยปลายเท้าอิสระ สัมผัสเครื่องรีฟอร์เมอร์ได้เป็นธรรมชาติ"
+        },
+        "features": {
+            "en": [
+                "Open toe barefoot movement design",
+                "High density silicon print",
+                "Comfort arch compression"
+            ],
+            "th": [
+                "ดีไซน์เปิดนิ้วเท้า เคลื่อนไหวเป็นธรรมชาติ",
+                "ปุ่มซิลิโคนหนาพิเศษเกาะเครื่องแน่น",
+                "ขอบถุงเท้ายืดหยุ่นไม่เลื่อนหลุด"
+            ]
+        },
+        "shopeeUrl": "https://shopee.co.th/thumbtoe_th?entryPoint=ShopBySearch&searchKeyword=thumb%20toe"
+    },
+    {
+        "id": "teddy",
+        "category": "grip",
+        "title": {
+            "en": "Teddy Grip Socks",
+            "th": "Teddy Grip Socks"
+        },
+        "subtitle": {
+            "en": "Warm Cozy Teddy Bear Pattern Socks",
+            "th": "ถุงเท้ากันลื่นห้านิ้วลายน้องหมีเทดดี้แสนอบอุ่น"
+        },
+        "badge": {
+            "en": "Cute Choice",
+            "th": "ลายน่ารัก"
+        },
+        "price": "420",
+        "image": "assets/teddy.jpg",
+        "description": {
+            "en": "Cozy teddy bear patterned five-toe grip socks. Sweet pastel brown tones with high-density non-slip sole grip.",
+            "th": "ถุงเท้าห้านิ้วลายน้องหมีเทดดี้สีน้ำตาลสุดอบอุ่นละมุนตา ดีไซน์คิ้วท์สไตล์คาเฟ่เกาหลี ยึดเกาะแน่นและนุ่มนวล"
+        },
+        "features": {
+            "en": [
+                "Cute teddy character pattern",
+                "Thick cushioned sole comfort",
+                "Safe eco-friendly silicon gel"
+            ],
+            "th": [
+                "ลายน้องหมีและหัวใจน่ารักสดใส",
+                "บุนุ่มใต้ฝ่าเท้าซับแรงกระแทกบริเวณส้น",
+                "ซิลิโคนกันลื่นหนาพิเศษเป็นมิตรต่อผิว"
+            ]
+        },
+        "shopeeUrl": "https://shopee.co.th/thumbtoe_th?entryPoint=ShopBySearch&searchKeyword=thumb%20toe"
+    },
+    {
+        "id": "purple",
+        "category": "grip",
+        "title": {
+            "en": "Purple Grip Socks",
+            "th": "Purple Grip Socks"
+        },
+        "subtitle": {
+            "en": "Sweet Lavender Purple Solid Socks",
+            "th": "ถุงเท้ากันลื่นห้านิ้วสีม่วงหวานพรีเมียม"
+        },
+        "badge": {
+            "en": "Vibrant",
+            "th": "สีสดใส"
+        },
+        "price": "390",
+        "image": "assets/purple.jpg",
+        "description": {
+            "en": "Lovely lavender purple solid five-toe grip socks. Brightens up your outfit while offering maximum support.",
+            "th": "ถุงเท้ากันลื่นสีพื้นสีม่วงพาสเทลแสนหวาน ช่วยเพิ่มความสดใสสดชื่นในชั้นเรียนพิลาทิส ทนทานและระบายดีเยี่ยม"
+        },
+        "features": {
+            "en": [
+                "Lovely purple shade design",
+                "Breathable instep knit structure",
+                "Durable wash-resistant gel"
+            ],
+            "th": [
+                "โทนสีม่วงลาเวนเดอร์หวานละมุนตา",
+                "หลังเท้าทอตาข่ายโปร่งระบายอากาศแห้งไว",
+                "ปุ่มเจลยึดเกาะเครื่องทนทานสูง"
+            ]
+        },
+        "shopeeUrl": "https://shopee.co.th/thumbtoe_th?entryPoint=ShopBySearch&searchKeyword=thumb%20toe"
+    },
+    {
+        "id": "lilac",
+        "category": "grip",
+        "title": {
+            "en": "Lilac Grip Socks",
+            "th": "Lilac Grip Socks"
+        },
+        "subtitle": {
+            "en": "Delicate Pastel Lilac Socks",
+            "th": "ถุงเท้ากันลื่นห้านิ้วสีไลแลคพาสเทลอ่อน"
+        },
+        "badge": {
+            "en": "Sweet Pastels",
+            "th": "สีพาสเทล"
+        },
+        "price": "390",
+        "image": "assets/lilac.jpeg",
+        "description": {
+            "en": "Delicate pastel lilac shade five-toe grip socks. Offers a soft, feminine look with premium slip-free sole stability.",
+            "th": "ถุงเท้ากันลื่นห้านิ้วสีไลแลคอ่อนละมุน นุ่มสบายเท้า ดูอ่อนโยนพรีเมียม ยึดเกาะเครื่องได้อย่างมั่นใจ ปลอดภัย"
+        },
+        "features": {
+            "en": [
+                "Delicate pastel lilac color",
+                "Anatomical split toe fit",
+                "Premium grip dots covering sole"
+            ],
+            "th": [
+                "เฉดสีม่วงไลแลคอ่อน สวยหวานสไตล์เกาหลี",
+                "ช่องแยกนิ้วเท้านุ่มไม่ระคายเคืองช่องนิ้ว",
+                "ซิลิโคนหนาพิเศษเกาะเครื่องเล่นโยคะแน่น"
+            ]
+        },
+        "shopeeUrl": "https://shopee.co.th/thumbtoe_th?entryPoint=ShopBySearch&searchKeyword=thumb%20toe"
+    },
+    {
+        "id": "lime",
+        "category": "grip",
+        "title": {
+            "en": "Lime Grip Socks",
+            "th": "Lime Grip Socks"
+        },
+        "subtitle": {
+            "en": "Zesty Pastel Lime Green Socks",
+            "th": "ถุงเท้ากันลื่นห้านิ้วสีเขียวมะนาวสดใส"
+        },
+        "badge": {
+            "en": "Fresh Dynamic",
+            "th": "สีเปรี้ยวซ่า"
+        },
+        "price": "390",
+        "image": "assets/lime.jpeg",
+        "description": {
+            "en": "Zesty pastel lime green five-toe grip socks. Add a fun, energetic pop of fresh green to your studio workouts.",
+            "th": "ถุงเท้ากันลื่นห้านิ้วสีเขียวมะนาวเลมอนอมเขียว สว่างสดใส ให้ความรู้สึกสดชื่นมีชีวิตชีวา ยึดเกาะดีเยี่ยมในทุกท่า"
+        },
+        "features": {
+            "en": [
+                "Fresh bright lime shade",
+                "Highly sweat-absorbent comb cotton",
+                "Strong silicon grip covering all toes"
+            ],
+            "th": [
+                "สีเขียวไลม์สว่างสดใส สไตล์แฟชั่นสตรีท",
+                "ดูดซับความชื้นและเหงื่อแห้งรวดเร็ว",
+                "ปุ่มซิลิโคนกันลื่นแน่นเต็มฝ่าเท้าและนิ้ว"
+            ]
+        },
+        "shopeeUrl": "https://shopee.co.th/thumbtoe_th?entryPoint=ShopBySearch&searchKeyword=thumb%20toe"
+    },
+    {
+        "id": "cloudy",
+        "category": "grip",
+        "title": {
+            "en": "Cloudy Grip Socks",
+            "th": "Cloudy Grip Socks"
+        },
+        "subtitle": {
+            "en": "Soft Sky Cloudy White Socks",
+            "th": "ถุงเท้ากันลื่นห้านิ้วลายก้อนเมฆนุ่มนวล"
+        },
+        "badge": {
+            "en": "Fluffy Vibe",
+            "th": "ลายก้อนเมฆ"
+        },
+        "price": "390",
+        "image": "assets/cloudy.png",
+        "description": {
+            "en": "Dreamy soft sky cloudy patterned five-toe grip socks. Light off-white and blue sky aesthetic for premium comfort.",
+            "th": "ถุงเท้ากันลื่นห้านิ้วลายน้องก้อนเมฆสีพาสเทลสวรรค์ละมุนตา อ่อนโยน น่ารักคิ้วท์ๆ ทอยางยืดข้อสั้นแน่นกระชับ ไม่ย้วยง่าย"
+        },
+        "features": {
+            "en": [
+                "Cute soft cloud print design",
+                "Double-yarn durable architecture",
+                "Anti-skid industrial grade dots"
+            ],
+            "th": [
+                "ลายพิมพ์ก้อนเมฆและท้องฟ้าน่ารักคลาสสิก",
+                "ทอเส้นด้ายคู่หนาแน่นทนต่อการเสียดสีดึงรั้ง",
+                "ซิลิโคนเต็มฝ่าเท้าป้องกันการลื่นไถลเสถียร"
+            ]
+        },
+        "shopeeUrl": "https://shopee.co.th/thumbtoe_th?entryPoint=ShopBySearch&searchKeyword=thumb%20toe"
+    },
+    {
+        "id": "cherry",
+        "category": "grip",
+        "title": {
+            "en": "Cherry Grip Socks",
+            "th": "Cherry Grip Socks"
+        },
+        "subtitle": {
+            "en": "Sweet Sweet Red Cherry Pattern",
+            "th": "ถุงเท้ากันลื่นห้านิ้วลายเชอร์รี่สีแดงสดใส"
+        },
+        "badge": {
+            "en": "Sweet Cherry",
+            "th": "ลายผลไม้"
+        },
+        "price": "390",
+        "image": "assets/cherry.jpg",
+        "description": {
+            "en": "Adorable cherry patterned five-toe grip socks. Red cherries print brings a sweet youthful charm to your workout style.",
+            "th": "ถุงเท้ากันลื่นห้านิ้วลายลูกเชอร์รี่สีแดงสดสลับใบไม้เขียว สุดน่ารักและเซ็กซี่เบาๆ สไตล์สาวเกาหลี ยึดเกาะดีเป็นเลิศ"
+        },
+        "features": {
+            "en": [
+                "Adorable red cherry patterns",
+                "Instep mesh breathability zone",
+                "Strong traction anti-slip pads"
+            ],
+            "th": [
+                "ลายพิมพ์รูปเชอร์รี่สีแดงสดใสน่ารักสะดุดตา",
+                "ช่องทอโปร่งกลางหลังเท้าช่วยให้อากาศถ่ายเท",
+                "เจลซิลิโคนกันลื่นหนาพิเศษยึดเกาะได้มั่นคง"
+            ]
+        },
+        "shopeeUrl": "https://shopee.co.th/thumbtoe_th?entryPoint=ShopBySearch&searchKeyword=thumb%20toe"
+    },
+    {
+        "id": "skyline",
+        "category": "grip",
+        "title": {
+            "en": "Skyline Grip Socks",
+            "th": "Skyline Grip Socks"
+        },
+        "subtitle": {
+            "en": "Deep Blue Sky Horizon Socks",
+            "th": "ถุงเท้ากันลื่นห้านิ้วลายขอบฟ้ายามเย็น"
+        },
+        "badge": {
+            "en": "Mystic Sky",
+            "th": "ลายท้องฟ้า"
+        },
+        "price": "390",
+        "image": "assets/skyline.jpg",
+        "description": {
+            "en": "Beautiful gradient blue skyline themed five-toe grip socks. Offers a elegant grounded horizon vibe for your Pilates sequences.",
+            "th": "ถุงเท้ากันลื่นห้านิ้วลวดลายไล่ระดับเฉดสีขอบฟ้าสกายไลน์น้ำเงินเข้มขรึม เรียบหรู ทรงพลัง เพิ่มสมาธิและยึดเกาะยอดเยี่ยม"
+        },
+        "features": {
+            "en": [
+                "Beautiful deep blue skyline print",
+                "Comfort snug arch band splay",
+                "High-density silicon non-slip sole"
+            ],
+            "th": [
+                "ลายเฉดสีสกายไลน์น้ำเงินเท่ห์สะดุดตาพรีเมียม",
+                "แถบอุ้มอุ้งเท้าช่วยลดแรงกดและการเมื่อยล้า",
+                "ปุ่มซิลิโคนกันลื่นเจลโปร่งแสงเกาะแน่นเสถียร"
+            ]
+        },
+        "shopeeUrl": "https://shopee.co.th/thumbtoe_th?entryPoint=ShopBySearch&searchKeyword=thumb%20toe"
+    },
+    {
+        "id": "smoothie",
+        "category": "grip",
+        "title": {
+            "en": "Smoothie Grip Socks",
+            "th": "Smoothie Grip Socks"
+        },
+        "subtitle": {
+            "en": "Mixed Fruit Smoothie Pastel Socks",
+            "th": "ถุงเท้ากันลื่นห้านิ้วสีสมูทตี้ผลไม้พาสเทล"
+        },
+        "badge": {
+            "en": "Vibrant",
+            "th": "สีทูโทน"
+        },
+        "price": "390",
+        "image": "assets/smoothie.jpg",
+        "description": {
+            "en": "Mixed pastel tones reminiscent of a delicious fruit smoothie. Brings colorful positive energy and premium safety to your feet.",
+            "th": "ถุงเท้ากันลื่นห้านิ้วถักสลับโทนสีสมูทตี้พาสเทลน่ารักสดใส สวมใส่นุ่มสบายเท้าขั้นสุด พร้อมปุ่มซิลิโคนเจลใสกันลื่นเหนียวแน่น"
+        },
+        "features": {
+            "en": [
+                "Colorful pastel smoothie blend",
+                "Thick heels padding protection",
+                "Non-slip eco friendly gel prints"
+            ],
+            "th": [
+                "เฉดสีผสมสีพาสเทลสมูทตี้ หวานละมุนน่ารัก",
+                "บุส้นส้นเท้าหนาพิเศษป้องกันรองเท้ากัดและรั้ง",
+                "ซิลิโคนเจลแบบใสพิเศษปลอดสารพิษยึดเกาะแน่น"
+            ]
+        },
+        "shopeeUrl": "https://shopee.co.th/thumbtoe_th?entryPoint=ShopBySearch&searchKeyword=thumb%20toe"
+    },
+    {
+        "id": "space",
+        "category": "grip",
+        "title": {
+            "en": "Space Grip Socks",
+            "th": "Space Grip Socks"
+        },
+        "subtitle": {
+            "en": "Mystical Deep Space Galaxy Socks",
+            "th": "ถุงเท้ากันลื่นห้านิ้วลายจักรวาลห้วงอวกาศ"
+        },
+        "badge": {
+            "en": "Starry Night",
+            "th": "หรูหราพิเศษ"
+        },
+        "price": "450",
+        "image": "assets/space.jpg",
+        "description": {
+            "en": "Mystical deep space themed five-toe grip socks. Premium galaxy cosmic gradients and star prints for a highly distinct look.",
+            "th": "ถุงเท้ากันลื่นห้านิ้วดีไซน์ลายดวงดาวและเนบิวลาห้วงจักรวาลสีเข้มหรูหราพรีเมียม เสริมลุคสุดสมาร์ท ชิค และดูแพงในสตูดิโอ"
+        },
+        "features": {
+            "en": [
+                "Deep cosmic space galaxy theme",
+                "Snug supportive compression cuff",
+                "Heavy duty non-slip silicon gel cover"
+            ],
+            "th": [
+                "ลายพิมพ์กาแล็กซี่หมอกควันอวกาศล้ำยุคสวยงาม",
+                "ข้อขอบถุงเท้ายืดหยุ่นกระชับรัดข้อเท้ามั่นคง",
+                "ซิลิโคนแผ่นเต็มฝ่าเท้าพร้อมรับทุกท่าฝึกซ้อม"
+            ]
+        },
+        "shopeeUrl": "https://shopee.co.th/thumbtoe_th?entryPoint=ShopBySearch&searchKeyword=thumb%20toe"
+    },
+    {
+        "id": "oreo",
+        "category": "grip",
+        "title": {
+            "en": "Oreo Grip Socks",
+            "th": "Oreo Grip Socks"
+        },
+        "subtitle": {
+            "en": "Black & White Classic Oreo Socks",
+            "th": "ถุงเท้ากันลื่นห้านิ้วลายโอรีโอ้ขาวดำ"
+        },
+        "badge": {
+            "en": "Contrast Look",
+            "th": "สีทูโทน"
+        },
+        "price": "390",
+        "image": "assets/oreo.jpg",
+        "description": {
+            "en": "Sleek contrast black and white cookie theme five-toe grip socks. Sporty, chic, and timeless minimalist aesthetic.",
+            "th": "ถุงเท้ากันลื่นห้านิ้วสีทูโทนสลับขาว-ดำสไตล์คุกกี้โอรีโอ้ ดูเท่สปอร์ต ย้อนยุคเข้าได้ง่ายกับทุกสีเสื้อผ้า สวมใส่สบายกระชับมั่นใจ"
+        },
+        "features": {
+            "en": [
+                "Sporty contrast black & white cookies",
+                "Premium stretch combed cotton",
+                "High-density non-slip grip control"
+            ],
+            "th": [
+                "การสลับขอบสีโอรีโอ้สุดชิคดูมินิมอลโมเดิร์น",
+                "ผ้าฝ้าย Combed คุณภาพสูงนุ่มหนาพอดีผิว",
+                "ปุ่มซิลิโคนเจลดำตัดขาว ยึดเกาะมั่นใจระดับดีเลิศ"
+            ]
+        },
+        "shopeeUrl": "https://shopee.co.th/thumbtoe_th?entryPoint=ShopBySearch&searchKeyword=thumb%20toe"
+    },
+    {
+        "id": "cream",
+        "category": "grip",
+        "title": {
+            "en": "Cream Grip Socks",
+            "th": "Cream Grip Socks"
+        },
+        "subtitle": {
+            "en": "Clean Delicate Cream Off-White",
+            "th": "ถุงเท้ากันลื่นห้านิ้วสีครีมนมเกาหลีพรีเมียม"
+        },
+        "badge": {
+            "en": "Clean Soft",
+            "th": "สียอดฮิต"
+        },
+        "price": "390",
+        "image": "assets/cream.jpg",
+        "description": {
+            "en": "Classic clean cream off-white solid five-toe grip socks. Snug comfortable fit designed for Pilates, Yoga, and Barre.",
+            "th": "ถุงเท้ากันลื่นห้านิ้วสีพื้นสีครีมนมไข่ไก่อ่อนละมุน สะอาด เรียบร้อย คุมโทนสไตล์เอิร์ธโทนเกาหลี ซิลิโคนเกาะหนึบแน่นหนา"
+        },
+        "features": {
+            "en": [
+                "Delicate soft cream solid tone",
+                "Mesh air cooling flow on instep",
+                "Silicon non-slip gel across sole"
+            ],
+            "th": [
+                "สีครีมนวลพรีเมียม คลาสสิกยอดนิยมแมทช์ง่าย",
+                "ตาข่ายหลังเท้าระบายเหงื่อและความร้อนสะสม",
+                "ปุ่มซิลิโคนเจลเกรดสูงสุดยึดเกาะเครื่องได้อย่างปลอดภัย"
+            ]
+        },
+        "shopeeUrl": "https://shopee.co.th/thumbtoe_th?entryPoint=ShopBySearch&searchKeyword=thumb%20toe"
+    },
+    {
+        "id": "burgundy",
+        "category": "grip",
+        "title": {
+            "en": "Burgundy Grip Socks",
+            "th": "Burgundy Grip Socks"
+        },
+        "subtitle": {
+            "en": "Deep Luxurious Burgundy Red",
+            "th": "ถุงเท้ากันลื่นห้านิ้วสีแดงเบอร์กันดีสุดหรู"
+        },
+        "badge": {
+            "en": "Luxurious",
+            "th": "สีแนะนำ"
+        },
+        "price": "390",
+        "image": "assets/burgundy.jpg",
+        "description": {
+            "en": "Deep luxurious solid burgundy wine red five-toe grip socks. Add an elegant touch of mature premium aesthetic to your feet.",
+            "th": "ถุงเท้ากันลื่นสีพื้นสีแดงไวน์เบอร์กันดีเข้มขรึมดูสง่างาม หรูหราสะดุดตา ช่วยให้รูปเท้าดูเรียวยาว ทอหนานุ่มกระชับมั่นคงเป็นพิเศษ"
+        },
+        "features": {
+            "en": [
+                "Deep elegant burgundy red tone",
+                "Reinforced seamless toes pocket",
+                "Transparent heavy duty silicon grip"
+            ],
+            "th": [
+                "เฉดสีแดงไวน์เบอร์กันดีลึก สุขุมเรียบหรูดูแพง",
+                "ปลายแยกนิ้วทอละเอียดเป็นชิ้นเดียวไม่เบียดนิ้ว",
+                "ปุ่มซิลิโคนหนาพิเศษ ยึดเกาะได้ดีเยี่ยมทุกทิศทาง"
+            ]
+        },
+        "shopeeUrl": "https://shopee.co.th/thumbtoe_th?entryPoint=ShopBySearch&searchKeyword=thumb%20toe"
+    },
+    {
+        "id": "dark_navy",
+        "category": "grip",
+        "title": {
+            "en": "Dark Navy Grip Socks",
+            "th": "Dark Navy Grip Socks"
+        },
+        "subtitle": {
+            "en": "Professional Solid Dark Navy",
+            "th": "ถุงเท้ากันลื่นห้านิ้วสีน้ำเงินกรมท่าเข้ม"
+        },
+        "badge": {
+            "en": "Athletic",
+            "th": "สปอร์ตเรียบหรู"
+        },
+        "price": "390",
+        "image": "assets/dark_navy.jpg",
+        "description": {
+            "en": "Classic professional solid dark navy five-toe grip socks. Ultimate athletic performance with a clean, low-profile style.",
+            "th": "ถุงเท้ากันลื่นสีน้ำเงินกรมท่าเข้มพรีเมียม เรียบง่าย ลุคสปอร์ตเท่เป็นมืออาชีพ ทำความสะอาดง่ายไม่เลอะ ปุ่มซิลิโคนเกาะเครื่องแน่นหนา"
+        },
+        "features": {
+            "en": [
+                "Classic solid dark navy shade",
+                "Excellent elastic arch compression band",
+                "Premium durable silicon gel sole print"
+            ],
+            "th": [
+                "สีน้ำเงินกรมท่าคลาสสิกเข้มลึก ดูเรียบร้อยมั่นใจ",
+                "ขอบยางรัดอุ้งเท้าประคองการทรงตัวได้ดีเยี่ยม",
+                "ซิลิโคนเกรดทนทานต่อการซักเครื่องไม่ลอกง่าย"
+            ]
+        },
+        "shopeeUrl": "https://shopee.co.th/thumbtoe_th?entryPoint=ShopBySearch&searchKeyword=thumb%20toe"
+    },
+    {
+        "id": "olive_green",
+        "category": "grip",
+        "title": {
+            "en": "Olive Green Grip Socks",
+            "th": "Olive Green Grip Socks"
+        },
+        "subtitle": {
+            "en": "Deep Earthy Olive Green Socks",
+            "th": "ถุงเท้ากันลื่นห้านิ้วสีเขียวมะกอกธรรมชาติ"
+        },
+        "badge": {
+            "en": "Earthy",
+            "th": "เอิร์ธโทน"
+        },
+        "price": "390",
+        "image": "assets/olive_green.jpg",
+        "description": {
+            "en": "Earthy solid olive green five-toe grip socks. Blends beautifully with nature-themed studio designs and coordinates cleanly.",
+            "th": "ถุงเท้ากันลื่นห้านิ้วสีเขียวใบมะกอกเอิร์ธโทนธรรมชาติ อบอุ่น เรียบง่าย ได้บรรยากาศธรรมชาติ ยึดเกาะมั่นคงด้วยซิลิโคนเต็มแผ่น"
+        },
+        "features": {
+            "en": [
+                "Warm earthy olive green tone",
+                "Snug blister-prevention comfortable fit",
+                "Anti-skid full footbed gel grip print"
+            ],
+            "th": [
+                "เฉดสีเขียวมะกอกธรรมชาติ อบอุ่น ผ่อนคลาย",
+                "ทอละเอียดนุ่มพอดีป้องกันตุ่มน้ำพุพองจากการขูดรีด",
+                "ซิลิโคนหนาพิเศษช่วยกระจายแรงกดอย่างเสถียร"
+            ]
+        },
+        "shopeeUrl": "https://shopee.co.th/thumbtoe_th?entryPoint=ShopBySearch&searchKeyword=thumb%20toe"
+    },
+    {
+        "id": "macaron",
+        "category": "grip",
+        "title": {
+            "en": "Macaron Grip Socks",
+            "th": "Macaron Grip Socks"
+        },
+        "subtitle": {
+            "en": "Sweet Colorful Macaron Pastels",
+            "th": "ถุงเท้ากันลื่นห้านิ้วสีหวานพาสเทลมาการอง"
+        },
+        "badge": {
+            "en": "Sweet Dream",
+            "th": "หวานละมุน"
+        },
+        "price": "390",
+        "image": "assets/macaron.jpg",
+        "description": {
+            "en": "Sweet multi-pastel block colors reminiscent of delicious french macarons. Dreamy, playful look to elevate your mood.",
+            "th": "ถุงเท้ากันลื่นห้านิ้วสไตล์สลับสีพาสเทลพรีเมียมหวานสไตล์ขนมฝรั่งเศสมาการอง เพิ่มความคิ้วท์และลูกเล่นเก๋ไก๋ให้กับเท้า ยึดเกาะเสถียร"
+        },
+        "features": {
+            "en": [
+                "Sweet colorful macaron pastel blocks",
+                "High elasticity moisture wicking threads",
+                "Transparent non-slip gel grip pads"
+            ],
+            "th": [
+                "คู่สีพาสเทลสลับบล็อก มาการองน่ารักสะดุดตา",
+                "เส้นใยยืดหยุ่นสูง ซับเหงื่อแห้งไวพิเศษหมดกลิ่นอับ",
+                "ซิลิโคนโปร่งแสงยึดเกาะได้แม่นยำยาวนาน"
+            ]
+        },
+        "shopeeUrl": "https://shopee.co.th/thumbtoe_th?entryPoint=ShopBySearch&searchKeyword=thumb%20toe"
+    },
+    {
+        "id": "fried_egg",
+        "category": "grip",
+        "title": {
+            "en": "Fried Egg Grip Socks",
+            "th": "Fried Egg Grip Socks"
+        },
+        "subtitle": {
+            "en": "Cute Sunny Side Up Fried Egg Socks",
+            "th": "ถุงเท้ากันลื่นห้านิ้วลายน้องไข่ดาวสุดคิ้วท์"
+        },
+        "badge": {
+            "en": "Playful",
+            "th": "สายแฟชั่นน่ารัก"
+        },
+        "price": "420",
+        "image": "assets/fried_egg.jpg",
+        "description": {
+            "en": "Playful and funny sunny side up fried egg patterned five-toe grip socks. Add a joyful splash of breakfast charm to Pilates.",
+            "th": "ถุงเท้าห้านิ้วพิมพ์ลายก้อนไข่ดาวทอดสีเหลืองขาวน่ารักตลกสดใส ปลุกความกระปรี้กระเปร่ามีพลังในยามเช้า ปุ่มซิลิโคนเกาะเครื่องดีเยี่ยม"
+        },
+        "features": {
+            "en": [
+                "Funny sunny side up egg patterns",
+                "Snug secure ankle grip wrap",
+                "Safe non-slip eco friendly silicone gel"
+            ],
+            "th": [
+                "ลวดลายไข่ดาวทอดสุดคิ้วท์แปลกใหม่ไม่ซ้ำใคร",
+                "โครงสร้างรัดอุ้งเท้าและส้นกันถุงเท้าบิดเบี้ยวระหว่างเล่น",
+                "ซิลิโคนเจลกันลื่นแน่นหนาเกาะได้แม่นยำทุกองศา"
+            ]
+        },
+        "shopeeUrl": "https://shopee.co.th/thumbtoe_th?entryPoint=ShopBySearch&searchKeyword=thumb%20toe"
+    },
+    {
+        "id": "love",
+        "category": "grip",
+        "title": {
+            "en": "Love Grip Socks",
+            "th": "Love Grip Socks"
+        },
+        "subtitle": {
+            "en": "Sweet Scattered Hearts Love Theme",
+            "th": "ถุงเท้ากันลื่นห้านิ้วลายหัวใจสื่อรักพาสเทล"
+        },
+        "badge": {
+            "en": "Popular",
+            "th": "ลายน่ารัก"
+        },
+        "price": "390",
+        "image": "assets/love.jpg",
+        "description": {
+            "en": "Sweet pink and white patterned hearts scattered five-toe grip socks. Brings positive, sweet romantic vibes to your practice sessions.",
+            "th": "ถุงเท้ากันลื่นห้านิ้วลายมินิหัวใจดวงน้อยสลับสีพาสเทลอ่อนละมุน ให้ความรู้สึกน่ารักสดใส อ่อนโยนและกระชับส้นเท้ายึดเกาะมั่นคงแน่นหนา"
+        },
+        "features": {
+            "en": [
+                "Sweet romantic love hearts theme",
+                "Snug ankle comfort elastic splay",
+                "Dense heavy duty silicon grip print"
+            ],
+            "th": [
+                "ลายพิมพ์มินิหัวใจน่ารักอบอุ่น สไตล์หวานแหวว",
+                "ขอบถุงเท้ายืดหยุ่นสูงพิเศษใส่สบายไม่รัดแน่นจนช้ำ",
+                "ซิลิโคนกันลื่นหนาแน่นเต็มฝ่าเท้ายึดเกาะดีเยี่ยม"
+            ]
+        },
+        "shopeeUrl": "https://shopee.co.th/thumbtoe_th?entryPoint=ShopBySearch&searchKeyword=thumb%20toe"
+    },
+    {
+        "id": "lucky",
+        "category": "grip",
+        "title": {
+            "en": "Lucky Grip Socks",
+            "th": "Lucky Grip Socks"
+        },
+        "subtitle": {
+            "en": "Green Four-Leaf Clover Lucky Socks",
+            "th": "ถุงเท้ากันลื่นห้านิ้วลายใบโคลเวอร์นำโชค"
+        },
+        "badge": {
+            "en": "Lucky Vibe",
+            "th": "มาใหม่"
+        },
+        "price": "390",
+        "image": "assets/lucky.jpg",
+        "description": {
+            "en": "Lucky four-leaf clover patterned five-toe grip socks. Green and white pastel elements bring positive energy and fortune to you.",
+            "th": "ถุงเท้ากันลื่นห้านิ้วลายใบโคลเวอร์สี่แฉกสีเขียวนำโชคพาสเทล ช่วยเติมเต็มพลังบวกและความโชคดีในการฝึกซ้อม ยึดเกาะเสถียรและมั่นคง"
+        },
+        "features": {
+            "en": [
+                "Lucky four-leaf clover prints",
+                "Snug arch stability compression band",
+                "Silicon slip free sole coverage"
+            ],
+            "th": [
+                "ลายใบโคลเวอร์สี่แฉกสัญลักษณ์นำโชคสดใส",
+                "ยางรัดรอบอุ้งเท้าช่วยพยุงข้อและรักษาการทรงตัว",
+                "ซิลิโคนเจลเกาะเครื่องแน่นหนาในทุกจุดรับแรงส้น"
+            ]
+        },
+        "shopeeUrl": "https://shopee.co.th/thumbtoe_th?entryPoint=ShopBySearch&searchKeyword=thumb%20toe"
+    },
+    {
+        "id": "moon",
+        "category": "grip",
+        "title": {
+            "en": "Moon Grip Socks",
+            "th": "Moon Grip Socks"
+        },
+        "subtitle": {
+            "en": "Elegant Crescent Moon and Star Socks",
+            "th": "ถุงเท้ากันลื่นห้านิ้วลายดวงจันทร์และดวงดาว"
+        },
+        "badge": {
+            "en": "Starry Vibe",
+            "th": "ลายท้องฟ้า"
+        },
+        "price": "390",
+        "image": "assets/moon.jpg",
+        "description": {
+            "en": "Elegant crescent moon and starry night sky themed five-toe grip socks. A mystical dark background with bright yellow moon accents.",
+            "th": "ถุงเท้ากันลื่นห้านิ้วลายเสี้ยวพระจันทร์สีทองสุกสว่างและหมู่ดาวพาสเทล เพิ่มระดับความหรูหรา ลึกลับและดูชิคเป็นพิเศษ ยึดเกาะมั่นคง"
+        },
+        "features": {
+            "en": [
+                "Crescent moon and stars dream print",
+                "High breathing sweat absorbing fibers",
+                "Silicon non slip gel sole cover"
+            ],
+            "th": [
+                "ลายพิมพ์เสี้ยวจันทร์เสี้ยวทองและดวงดาวสุดชิค",
+                "ผลิตจากเส้นใยฝ้าย Combed ซับเหงื่อแห้งไวหมดกลิ่นอับ",
+                "เจลซิลิโคนกันลื่นหนาพิเศษเกาะเครื่องเล่นเสถียร"
+            ]
+        },
+        "shopeeUrl": "https://shopee.co.th/thumbtoe_th?entryPoint=ShopBySearch&searchKeyword=thumb%20toe"
+    },
+    {
+        "id": "airplane",
+        "category": "grip",
+        "title": {
+            "en": "Airplane Grip Socks",
+            "th": "Airplane Grip Socks"
+        },
+        "subtitle": {
+            "en": "Playful Little Airplane Travel Socks",
+            "th": "ถุงเท้ากันลื่นห้านิ้วลายเครื่องบินท่องโลกกว้าง"
+        },
+        "badge": {
+            "en": "Traveler Vibe",
+            "th": "ลายน่ารัก"
+        },
+        "price": "390",
+        "image": "assets/airplane.jpg",
+        "description": {
+            "en": "Playful little airplane themed five-toe grip socks. Bright blue and white prints to fly through your pilates exercises with secure grip.",
+            "th": "ถุงเท้าห้านิ้วลายมินิเครื่องบินลัดฟ้าพาสเทลน่ารักสดใส ให้ลุคนักเดินทางผู้เต็มเปี่ยมไปด้วยความฝัน ยึดเกาะกระชับเหนียวแน่นยอดเยี่ยม"
+        },
+        "features": {
+            "en": [
+                "Cute little travel airplane prints",
+                "Soft double-yarn cotton cushion",
+                "Non-slip eco friendly silicone gel"
+            ],
+            "th": [
+                "ลายพิมพ์เครื่องบินและควันปุยเมฆน่ารักสดชื่น",
+                "พื้นบุนุ่มซับน้ำหนักส้นเท้าถนอมข้อต่อกระดูก",
+                "ซิลิโคนปลอดสารพิษยึดเกาะแน่นหนาเสถียรดีเลิศ"
+            ]
+        },
+        "shopeeUrl": "https://shopee.co.th/thumbtoe_th?entryPoint=ShopBySearch&searchKeyword=thumb%20toe"
+    },
+    {
+        "id": "baby_blue",
+        "category": "grip",
+        "title": {
+            "en": "Baby Blue Grip Socks",
+            "th": "Baby Blue Grip Socks"
+        },
+        "subtitle": {
+            "en": "Delicate Soft Sky Baby Blue Socks",
+            "th": "ถุงเท้ากันลื่นห้านิ้วสีฟ้าเบบี้บลูอ่อนละมุน"
+        },
+        "badge": {
+            "en": "Sweet Pastels",
+            "th": "สีพาสเทล"
+        },
+        "price": "390",
+        "image": "assets/baby_blue.jpg",
+        "description": {
+            "en": "Delicate solid baby blue sky themed five-toe grip socks. Dreamy pastel aesthetics with premium non-slip performance.",
+            "th": "ถุงเท้ากันลื่นสีพื้นในเฉดสีฟ้าเบบี้บลูอ่อนโยน สดใสสไตล์พาสเทลเกาหลี ช่วยให้เท้าดูสว่างขาวและแมทช์ชุดง่าย ยึดเกาะเหนียวแน่น"
+        },
+        "features": {
+            "en": [
+                "Delicate soft sky blue solid tone",
+                "Mesh cool air flow knit channels",
+                "High density transparent non-slip print"
+            ],
+            "th": [
+                "เฉดสีฟ้าพาสเทลเบบี้บลูอ่อนโยนน่ารักยอดฮิต",
+                "ทอโปร่งหน้าเท้าเพื่อการระบายอากาศและระเหยเหงื่อ",
+                "ซิลิโคนแผ่นเจลใสพิเศษเกาะแน่นเหนียวเสถียร"
+            ]
+        },
+        "shopeeUrl": "https://shopee.co.th/thumbtoe_th?entryPoint=ShopBySearch&searchKeyword=thumb%20toe"
+    },
+    {
+        "id": "baby_pink",
+        "category": "grip",
+        "title": {
+            "en": "Baby Pink Grip Socks",
+            "th": "Baby Pink Grip Socks"
+        },
+        "subtitle": {
+            "en": "Sweet Soft Baby Blossom Pink",
+            "th": "ถุงเท้ากันลื่นห้านิ้วสีชมพูเบบี้พิงค์พาสเทลอ่อน"
+        },
+        "badge": {
+            "en": "Sweet Pastels",
+            "th": "สีพาสเทล"
+        },
+        "price": "390",
+        "image": "assets/baby_pink.jpg",
+        "description": {
+            "en": "Delicate soft baby blossom pink solid five-toe grip socks. Ultimate sweet princess vibe with reliable non-slip safety.",
+            "th": "ถุงเท้ากันลื่นห้านิ้วสีพื้นชมพูเบบี้พาสเทลอ่อนหวานละมุน ได้ลุคเจ้าหญิงพรีเมียม สวมใส่นุ่มสบายและยึดเกาะแน่นหนาหนึบเซฟตี้ที่สุด"
+        },
+        "features": {
+            "en": [
+                "Sweet soft baby pink solid color",
+                "Comfort snug elastic arch support band",
+                "Premium transparent non-slip gel sole"
+            ],
+            "th": [
+                "สีชมพูเบบี้พาสเทลนม สุดหวานละมุนตาคลาสสิก",
+                "แถบรัดอุ้งเท้ายืดหยุ่นพยุงทรงตัวลดความเมื่อยล้า",
+                "ปุ่มซิลิโคนโปร่งแสงยึดเกาะแน่นและทนทานต่องานเครื่อง"
+            ]
+        },
+        "shopeeUrl": "https://shopee.co.th/thumbtoe_th?entryPoint=ShopBySearch&searchKeyword=thumb%20toe"
+    },
+    {
+        "id": "blueberry_sock",
+        "category": "grip",
+        "title": {
+            "en": "Blueberry Grip Socks",
+            "th": "Blueberry Grip Socks"
+        },
+        "subtitle": {
+            "en": "Deep Fruity Blueberry Violet Socks",
+            "th": "ถุงเท้ากันลื่นห้านิ้วสีม่วงบลูเบอร์รี่สดใส"
+        },
+        "badge": {
+            "en": "Vibrant",
+            "th": "สีสดใส"
+        },
+        "price": "390",
+        "image": "assets/blueberry_sock.jpg",
+        "description": {
+            "en": "Vibrant fruity blueberry deep violet five-toe grip socks. Add a splash of elegant deep purple to your Pilates collections.",
+            "th": "ถุงเท้ากันลื่นแยกห้านิ้วสีม่วงบลูเบอร์รี่เข้มขรึม เรียบหรู สะกดทุกสายตา เพิ่มออร่าในคลาสฝึกซ้อม ยึดเกาะแน่นทนทานมั่นคง"
+        },
+        "features": {
+            "en": [
+                "Deep elegant blueberry purple shade",
+                "Highly breathing moisture absorbing yarn",
+                "Transparent high-density silicon gel grip"
+            ],
+            "th": [
+                "เฉดสีม่วงบลูเบอร์รี่ลึก ดูโดดเด่นมีรสนิยมเรียบหรู",
+                "เส้นใยระบายอากาศชั้นยอดป้องกันเหงื่อแห้งรวดเร็ว",
+                "ปุ่มซิลิโคนหนาเหนียวเป็นพิเศษเซฟการลื่นไถล"
+            ]
+        },
+        "shopeeUrl": "https://shopee.co.th/thumbtoe_th?entryPoint=ShopBySearch&searchKeyword=thumb%20toe"
+    },
+    {
+        "id": "blurple",
+        "category": "grip",
+        "title": {
+            "en": "Blurple Grip Socks",
+            "th": "Blurple Grip Socks"
+        },
+        "subtitle": {
+            "en": "Chic Blurple Blue-Purple Solid",
+            "th": "ถุงเท้ากันลื่นห้านิ้วสีน้ำเงินอมม่วงบลอเพิลสุดชิค"
+        },
+        "badge": {
+            "en": "Modern Vibe",
+            "th": "สีแนะนำ"
+        },
+        "price": "390",
+        "image": "assets/blurple.jpg",
+        "description": {
+            "en": "Chic solid blurple (blue-purple blend) five-toe grip socks. Highly modern dynamic color blocks to pop your activewear outfit.",
+            "th": "ถุงเท้ากันลื่นสีพื้นสีน้ำเงินเหลือบม่วงบลอเพิล โดดเด่น ทันสมัย ชิคสไตล์นีออนเบาๆ เสริมลุคสุดชอปและสปอร์ตเต็มร้อย"
+        },
+        "features": {
+            "en": [
+                "Modern chic blue-purple blend color",
+                "Flexible separate toe pocket pocket",
+                "Heavy density silicone anti-slip prints"
+            ],
+            "th": [
+                "เฉดสีบลอเพิลสลับสี ชิคทันสมัยมีระดับสไตล์โมเดิร์น",
+                "ทอแยกส้นและแยกนิ้วอิสระ สวมใส่ง่ายไม่ระคายเคือง",
+                "ซิลิโคนเต็มแผ่นฝ่าเท้าป้องกันลื่นล้มไถลในทุกสตูดิโอ"
+            ]
+        },
+        "shopeeUrl": "https://shopee.co.th/thumbtoe_th?entryPoint=ShopBySearch&searchKeyword=thumb%20toe"
+    },
+    {
+        "id": "cartoon",
+        "category": "grip",
+        "title": {
+            "en": "Cartoon Grip Socks",
+            "th": "Cartoon Grip Socks"
+        },
+        "subtitle": {
+            "en": "Adorable Cartoon Character Socks",
+            "th": "ถุงเท้ากันลื่นห้านิ้วลวดลายการ์ตูนคิ้วท์เกาหลี"
+        },
+        "badge": {
+            "en": "Cute Choice",
+            "th": "ลายน่ารัก"
+        },
+        "price": "420",
+        "image": "assets/cartoon.jpg",
+        "description": {
+            "en": "Playful and sweet colorful cartoon print five-toe grip socks. Designed for practitioners who love cheerful, fun studio looks.",
+            "th": "ถุงเท้าห้านิ้วลวดลายตัวการ์ตูนพาสเทลน่ารักคิ้วท์สตรีท เพิ่มความสดใสและรอยยิ้มในการออกกำลังกาย ยึดเกาะเครื่องได้อย่างมั่นใจ"
+        },
+        "features": {
+            "en": [
+                "Cheerful pastel cartoon print theme",
+                "Cushioned double yarn heel protection",
+                "Safe industrial grade non-slip gel"
+            ],
+            "th": [
+                "ลวดลายการ์ตูนสลักสีสันพาสเทลโดดเด่นสะดุดตา",
+                "บุนุ่มลดการกระแทกและเสียดสีรอบส้นเท้าอย่างมีประสิทธิภาพ",
+                "ซิลิโคนเจลกันลื่นแน่นกระชับสูง ปลอดภัยเป็นมิตรต่อผิว"
+            ]
+        },
+        "shopeeUrl": "https://shopee.co.th/thumbtoe_th?entryPoint=ShopBySearch&searchKeyword=thumb%20toe"
+    },
+    {
+        "id": "fluffy",
+        "category": "grip",
+        "title": {
+            "en": "Fluffy Grip Socks",
+            "th": "Fluffy Grip Socks"
+        },
+        "subtitle": {
+            "en": "Cloud Soft Cozy Fluffy Pastel Socks",
+            "th": "ถุงเท้ากันลื่นห้านิ้วสีฟลัฟฟี่คลาวด์พาสเทล"
+        },
+        "badge": {
+            "en": "Soft Comfort",
+            "th": "สียอดฮิต"
+        },
+        "price": "390",
+        "image": "assets/fluffy.jpg",
+        "description": {
+            "en": "Extremely soft cloudy fluffy styled five-toe grip socks. Mixed gentle pastel hues for top comfort and slip-free performance.",
+            "th": "ถุงเท้ากันลื่นห้านิ้วสีทอผสมพาสเทลฟลัฟฟี่นุ่มเหมือนปุยเมฆ สวมใส่นุ่มสบายเท้า โอบกระชับเสถียรและกันลื่นเกราะหนึบ"
+        },
+        "features": {
+            "en": [
+                "Delicate cloud soft fluffy pastel tones",
+                "Reinforced heel buffer cushion splay",
+                "Dense anti skid silicon print covering sole"
+            ],
+            "th": [
+                "เฉดสีทอพาสเทลผสมผสาน อ่อนโยน นุ่มสบายตา",
+                "เสริมความหนาพิเศษทอซับรองรับการเดินกระแทกส้น",
+                "ซิลิโคนโปร่งแสงยึดเกาะแน่นเหนียวตลอดการฝึกฝน"
+            ]
+        },
+        "shopeeUrl": "https://shopee.co.th/thumbtoe_th?entryPoint=ShopBySearch&searchKeyword=thumb%20toe"
+    },
+    {
+        "id": "foggy",
+        "category": "grip",
+        "title": {
+            "en": "Foggy Grip Socks",
+            "th": "Foggy Grip Socks"
+        },
+        "subtitle": {
+            "en": "Calming Pastel Foggy Grey Socks",
+            "th": "ถุงเท้ากันลื่นห้านิ้วสีเทาหมอกหมองละมุน"
+        },
+        "badge": {
+            "en": "Earthy Tones",
+            "th": "เอิร์ธโทน"
+        },
+        "price": "390",
+        "image": "assets/foggy.jpg",
+        "description": {
+            "en": "Calming solid foggy grey five-toe grip socks. Earthy grounded tone that gives a clean, peaceful professional aesthetic.",
+            "th": "ถุงเท้ากันลื่นสีเทาหมอกหมองเอิร์ธโทน สุภาพ เรียบง่าย คลาสสิก เหมาะสำหรับผู้ชื่นชอบลุคคุมโทนพรีเมียม สวมสบายทนทานดีเลิศ"
+        },
+        "features": {
+            "en": [
+                "Calming solid foggy grey tone",
+                "Snug supportive instep compression band",
+                "Silicon non slip gel across sole cover"
+            ],
+            "th": [
+                "เฉดสีเทาหมอกหม่นสุภาพ สวยงามเข้าได้ง่ายทุกคอลเลกชัน",
+                "แถบรัดกลางเท้าเพิ่มความมั่นคงล็อกถุงเท้าไม่ให้เลื่อนหมุน",
+                "เจลซิลิโคนกันลื่นหนาพิเศษเกาะเครื่องเล่นเสถียร"
+            ]
+        },
+        "shopeeUrl": "https://shopee.co.th/thumbtoe_th?entryPoint=ShopBySearch&searchKeyword=thumb%20toe"
+    },
+    {
+        "id": "navy_black",
+        "category": "grip",
+        "title": {
+            "en": "Navy Black Grip Socks",
+            "th": "Navy Black Grip Socks"
+        },
+        "subtitle": {
+            "en": "Contrast Navy Ankle Black Toes Socks",
+            "th": "ถุงเท้ากันลื่นห้านิ้วสีน้ำเงินเนวี่ตัดดำสปอร์ต"
+        },
+        "badge": {
+            "en": "Sporty Classic",
+            "th": "สีแนะนำ"
+        },
+        "price": "390",
+        "image": "assets/navy_black.jpg",
+        "description": {
+            "en": "Chic sporty contrast navy blue and black splay five-toe grip socks. Deep, professional look with ultimate traction safety.",
+            "th": "ถุงเท้ากันลื่นสีทูโทนสลับน้ำเงินเนวี่กรมท่าเข้มและปลายเท้าดำ สไตล์คลาสสิกสปอร์ต ดูสมาร์ทเรียบร้อย ยึดเกาะแน่นระดับพรีเมียม"
+        },
+        "features": {
+            "en": [
+                "Snug sporty contrast navy & black",
+                "Premium stretch sweat absorbing combed cotton",
+                "High-density silicone anti slip gel prints"
+            ],
+            "th": [
+                "เฉดสีน้ำเงินสลับปลายเท้าดำสุดเท่หรูหรามินิมอล",
+                "ผ้าฝ้าย Combed ซับเหงื่อระบายความชื้นได้อย่างดีเยี่ยม",
+                "เจลกันลื่นเต็มส้นและนิ้วเกาะเครื่อง Reformer นิ่งสงบ"
+            ]
+        },
+        "shopeeUrl": "https://shopee.co.th/thumbtoe_th?entryPoint=ShopBySearch&searchKeyword=thumb%20toe"
+    },
+    {
+        "id": "pencil",
+        "category": "grip",
+        "title": {
+            "en": "Pencil Grip Socks",
+            "th": "Pencil Grip Socks"
+        },
+        "subtitle": {
+            "en": "Chic Pencil Sketch Stripes Socks",
+            "th": "ถุงเท้ากันลื่นห้านิ้วลายเส้นดินสอสุดชิค"
+        },
+        "badge": {
+            "en": "Artistic",
+            "th": "ดีไซน์เก๋"
+        },
+        "price": "390",
+        "image": "assets/pencil.jpg",
+        "description": {
+            "en": "Artistic pencil sketch thin striped five-toe grip socks. Modern minimalist layout to show style and performance in studio classes.",
+            "th": "ถุงเท้ากันลื่นห้านิ้วลวดลายเส้นดินสอสีทอยูนิคสไตล์ลายทางเก๋ๆ เรียบง่ายแต่เต็มเปี่ยมไปด้วยศิลปะ สวมใส่กระชับยึดเกาะมั่นคงยิ่ง"
+        },
+        "features": {
+            "en": [
+                "Artistic pencil line thin stripes",
+                "Snug comfortable seamless toe box",
+                "Strong transparent non-slip gel prints"
+            ],
+            "th": [
+                "ลวดลายเส้นลายทางสุดชิคมินิมอล เรียบร้อยสวยหรู",
+                "ช่องแยกนิ้วเท้าสวมใส่สบายไร้รอยตะเข็บเบียดคัน",
+                "เจลซิลิโคนแผ่นใสเกรดสูงกันลื่นมั่นใจเต็มที่"
+            ]
+        },
+        "shopeeUrl": "https://shopee.co.th/thumbtoe_th?entryPoint=ShopBySearch&searchKeyword=thumb%20toe"
+    },
+    {
+        "id": "woody_n",
+        "category": "grip",
+        "title": {
+            "en": "Woody N Grip Socks",
+            "th": "Woody N Grip Socks"
+        },
+        "subtitle": {
+            "en": "Warm Woody Natural Earthy Solid",
+            "th": "ถุงเท้ากันลื่นห้านิ้วสีเอิร์ธโทนลายน้ำตาลธรรมชาติ"
+        },
+        "badge": {
+            "en": "Earthy Tones",
+            "th": "สียอดนิยม"
+        },
+        "price": "390",
+        "image": "assets/woody_n.jpeg",
+        "description": {
+            "en": "Cozy warm natural woody earthy brown five-toe grip socks. Gives a calming organic warmth feel with superior stability.",
+            "th": "ถุงเท้ากันลื่นห้านิ้วเฉดสีน้ำตาลธรรมชาติเอิร์ธโทนละมุน อบอุ่น ผ่อนคลาย เรียบง่ายน่ารักสไตล์ธรรมชาติ ยึดเกาะมั่นคงเสถียร"
+        },
+        "features": {
+            "en": [
+                "Natural warm woody brown earthy solid",
+                "Mesh air breath cooling instep panels",
+                "Durable silicon anti-skid print sole cover"
+            ],
+            "th": [
+                "สีน้ำตาลธรรมชาติเอิร์ธโทนสุดนุ่มละมุนตาคลาสสิก",
+                "ตาข่ายโปร่งระบายเหงื่อกลิ่นอับบริเวณหลังเท้าได้ไว",
+                "ปุ่มซิลิโคนเจลแบบใสยึดเกาะเครื่องได้อย่างมั่นใจสูงสุด"
+            ]
+        },
+        "shopeeUrl": "https://shopee.co.th/thumbtoe_th?entryPoint=ShopBySearch&searchKeyword=thumb%20toe"
+    },
+    {
+        "id": "oak",
+        "category": "grip",
+        "title": {
+            "en": "Oak Grip Socks",
+            "th": "Oak Grip Socks"
+        },
+        "subtitle": {
+            "en": "Deep Earthy Oak Brown Solid",
+            "th": "ถุงเท้ากันลื่นห้านิ้วสีน้ำตาลโอ๊คเข้มพรีเมียม"
+        },
+        "badge": {
+            "en": "Earthy Tones",
+            "th": "สีแนะนำ"
+        },
+        "price": "390",
+        "image": "assets/oak.jpg",
+        "description": {
+            "en": "Classic deep solid oak brown five-toe grip socks. Grounded natural tone designed to provide top performance stability.",
+            "th": "ถุงเท้ากันลื่นสีพื้นสีน้ำตาลไม้โอ๊คเข้มพรีเมียม ดูหรูหรา อบอุ่น ผ่อนคลาย คลุมโทนเรียบร้อย ยึดเกาะเครื่องเสถียรและเกาะเครื่องหนึบแน่นที่สุด"
+        },
+        "features": {
+            "en": [
+                "Deep classic solid oak brown tone",
+                "Snug arch stability compression band splay",
+                "High-density transparent non-slip gel print"
+            ],
+            "th": [
+                "เฉดสีน้ำตาลโอ๊คเข้มลายไม้สุภาพ หรูหราคลาสสิก",
+                "ยางรัดพยุงอุ้งเท้าประคองป้องกันหน้าเท้าหมุนและรั้ง",
+                "ซิลิโคนแผ่นเจลกันลื่นเกรดเครื่องยึดมั่นใจสูงสุด"
+            ]
+        },
+        "shopeeUrl": "https://shopee.co.th/thumbtoe_th?entryPoint=ShopBySearch&searchKeyword=thumb%20toe"
+    },
+    {
+        "id": "daily_sock",
+        "category": "daily",
+        "title": {
+            "en": "Daily Five-Toe Socks",
+            "th": "Daily Five-Toe Socks"
+        },
+        "subtitle": {
+            "en": "Cozy Breathable Non-Slip Daily Socks",
+            "th": "ถุงเท้าห้านิ้วสวมสบายสำหรับสวมใส่ทุกวัน (ไม่มีกันลื่น)"
+        },
+        "badge": {
+            "en": "Everyday Comfort",
+            "th": "สวมใส่ลำลอง"
+        },
+        "price": "290",
+        "image": "assets/daily_sock.jpg",
+        "description": {
+            "en": "Soft, cozy, and highly breathable five-toe socks without silicon sole grip. Perfect everyday choice for shoes, casual walks, and sweat absorption.",
+            "th": "ถุงเท้าแฟชั่นสวมใส่ห้านิ้วแบบไม่มีกันลื่น ทรงข้อสั้น นุ่มสบายเท้าแห้งสบายตลอดวัน เหมาะสำหรับใส่เดินนอกบ้านในรองเท้าผ้าใบ ช่วยลดกลิ่นอับชื้นและนิ้วเท้าเบียด"
+        },
+        "features": {
+            "en": [
+                "No silicon print for outdoor shoes comfort",
+                "Ultra soft premium combed cotton threads",
+                "High moisture wicking anti friction splay"
+            ],
+            "th": [
+                "แบบไม่มีซิลิโคน สวมใส่ในรองเท้าเดินนอกบ้านได้นุ่มนวล",
+                "ผลิตจากผ้าคอตตอนเนื้อนุ่มพิเศษทนทานซักล้างง่าย",
+                "แยกสิบนิ้วระเหยเหงื่อและอากาศแห้งไว ป้องกันตุ่มเสียดสี"
+            ]
+        },
+        "shopeeUrl": "https://shopee.co.th/thumbtoe_th?entryPoint=ShopBySearch&searchKeyword=thumb%20toe"
     }
 ];
 
