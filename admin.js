@@ -768,6 +768,226 @@ const DEFAULT_PRODUCTS = [
                 "ปุ่มซิลิโคนเจลแบบใสพิเศษ ยึดเกาะเสถียรและเกาะเครื่องแน่น"
             ]
         }
+    },
+    {
+        "id": "green_plus",
+        "category": "grip",
+        "title": {
+            "en": "Green Plus Grip Socks",
+            "th": "Green Plus Grip Socks"
+        },
+        "subtitle": {
+            "en": "Vibrant Green Signature Grip Socks",
+            "th": "ถุงเท้ากันลื่นห้านิ้วสีเขียวสดใสรุ่นกรีนพลัส"
+        },
+        "badge": {
+            "en": "New",
+            "th": "ใหม่"
+        },
+        "price": "390",
+        "image": "assets/green_plus.jpg",
+        "shopeeUrl": "https://shopee.co.th/thumbtoe_th?entryPoint=ShopBySearch&searchKeyword=thumb%20toe",
+        "description": {
+            "en": "Vibrant green signature five-toe grip socks. Provides optimal grip for your toes and sole. Designed in Korea.",
+            "th": "ถุงเท้ากันลื่นแยกห้านิ้วสีเขียวรุ่นกรีนพลัสที่เป็นเอกลักษณ์ ปุ่มซิลิโคนเต็มฝ่าเท้าและทุกนิ้วเท้า ยึดเกาะเครื่องรีฟอร์เมอร์ได้ดีเยี่ยม สไตล์น่ารักส่งตรงจากเกาหลี"
+        },
+        "features": {
+            "en": [
+                "Premium combed cotton blend",
+                "Individual five-toe separation",
+                "Full-sole silicon non-slip grip",
+                "Elastic arch support band"
+            ],
+            "th": [
+                "ผลิตจากเนื้อผ้าฝ้ายผสมพรีเมียมนุ่มพิเศษ",
+                "ดีไซน์แยก 5 นิ้ว เพื่อการทรงตัวตามธรรมชาติ",
+                "ปุ่มซิลิโคนกันลื่นหนาแน่นเต็มฝ่าเท้า",
+                "แถบยืดหยุ่นโอบอุ้มอุ้งเท้า ลดความเมื่อยล้า"
+            ]
+        }
+    },
+    {
+        "id": "knee_socks",
+        "category": "grip",
+        "title": {
+            "en": "Knee High Grip Socks",
+            "th": "Knee High Grip Socks"
+        },
+        "subtitle": {
+            "en": "Elegant Over-the-Calf Grip Socks",
+            "th": "ถุงเท้ากันลื่นห้านิ้วแบบยาวถึงใต้เข่าสุดหรู"
+        },
+        "badge": {
+            "en": "Knee High",
+            "th": "ยาวใต้เข่า"
+        },
+        "price": "450",
+        "image": "assets/knee_socks_black.jpg",
+        "shopeeUrl": "https://shopee.co.th/thumbtoe_th?entryPoint=ShopBySearch&searchKeyword=thumb%20toe",
+        "description": {
+            "en": "Elegant over-the-calf five-toe grip socks for Pilates and studio practice. Offers full calf coverage, muscle warmth, and superior non-slip grip.",
+            "th": "ถุงเท้ากันลื่นแยกห้านิ้วแบบยาวสูงถึงใต้ข้อเข่า ช่วยรักษาความอบอุ่นของกล้ามเนื้อน่องและกระชับกล้ามเนื้อ ยึดเกาะเครื่องมั่นคงเป็นเลิศ เหมาะสำหรับสตูดิโอ"
+        },
+        "features": {
+            "en": [
+                "Over-the-calf knee high fit",
+                "Keeps calf muscles warm",
+                "Silicon grip across the entire sole",
+                "Breathable combed cotton"
+            ],
+            "th": [
+                "ดีไซน์ยาวสูงถึงใต้ข้อเข่า กระชับพอดี",
+                "ช่วยประคองและรักษาความอบอุ่นของกล้ามเนื้อ",
+                "ซิลิโคนกันลื่นเต็มฝ่าเท้าเกาะเครื่องมั่นคง",
+                "ผลิตจากผ้าฝ้าย Combed ซับเหงื่อระบายดี"
+            ]
+        },
+        "variants": [
+            {
+                "name": {
+                    "th": "สีดำ",
+                    "en": "Black"
+                },
+                "image": "assets/knee_socks_black.jpg",
+                "desc": {
+                    "th": "Knee Socks สีดำสปอร์ตคลาสสิก",
+                    "en": "Classic sport black Knee Socks"
+                }
+            },
+            {
+                "name": {
+                    "th": "สีเทาเงิน (Ash)",
+                    "en": "Ash Grey"
+                },
+                "image": "assets/knee_socks_ash.jpg",
+                "desc": {
+                    "th": "Knee Socks สีเทาเงินสว่างเรียบหรู",
+                    "en": "Sleek and elegant Ash Grey Knee Socks"
+                }
+            },
+            {
+                "name": {
+                    "th": "สีน้ำตาลลายไม้ (Oak)",
+                    "en": "Oak Brown"
+                },
+                "image": "assets/knee_socks_oak.jpg",
+                "desc": {
+                    "th": "Knee Socks สีน้ำตาลลายไม้ธรรมชาติอบอุ่น",
+                    "en": "Warm and natural Oak Brown Knee Socks"
+                }
+            }
+        ]
+    },
+    {
+        "id": "frill_socks",
+        "category": "grip",
+        "title": {
+            "en": "Frill Grip Socks",
+            "th": "Frill Grip Socks"
+        },
+        "subtitle": {
+            "en": "Sweet Ruffle Ankle Grip Socks",
+            "th": "ถุงเท้ากันลื่นห้านิ้วแต่งขอบระบายหวานละมุน"
+        },
+        "badge": {
+            "en": "Sweet Ruffle",
+            "th": "ขอบระบาย"
+        },
+        "price": "390",
+        "image": "assets/frill_socks.jpg",
+        "shopeeUrl": "https://shopee.co.th/thumbtoe_th?entryPoint=ShopBySearch&searchKeyword=thumb%20toe",
+        "description": {
+            "en": "Sweet ruffle ankle five-toe grip socks. Add a feminine touch and colorful aesthetic to your pilates practice with a secure fit.",
+            "th": "ถุงเท้ากันลื่นห้านิ้วแต่งระบายรอบขอบข้อเท้าสไตล์หวานละมุนตา น่ารักสุดชิค เหมาะสำหรับการแมทช์ชุดออกกำลังกาย เพิ่มความคิ้วท์ในสตูดิโอ"
+        },
+        "features": {
+            "en": [
+                "Sweet ruffled ankle design",
+                "Premium combed cotton blend",
+                "Silicon gel non-slip sole print",
+                "Breathable comfort weave"
+            ],
+            "th": [
+                "แต่งขอบระบายน่ารักรอบข้อเท้า สวยหวาน",
+                "เนื้อผ้าคอตตอนพรีเมียมนุ่มหนาพอดี",
+                "ปุ่มซิลิโคนเจลกันลื่นเกาะแน่นเสถียร",
+                "ระบายอากาศหน้าเท้าได้ดี แห้งสบาย"
+            ]
+        }
+    },
+    {
+        "id": "sport_socks",
+        "category": "grip",
+        "title": {
+            "en": "Sport Grip Socks",
+            "th": "Sport Grip Socks"
+        },
+        "subtitle": {
+            "en": "Athletic High-Performance Grip Socks",
+            "th": "ถุงเท้ากันลื่นห้านิ้วสไตล์สปอร์ตข้อกลาง"
+        },
+        "badge": {
+            "en": "Athletic",
+            "th": "สปอร์ต"
+        },
+        "price": "390",
+        "image": "assets/sport_socks.jpg",
+        "shopeeUrl": "https://shopee.co.th/thumbtoe_th?entryPoint=ShopBySearch&searchKeyword=thumb%20toe",
+        "description": {
+            "en": "High-performance athletic five-toe grip socks. Features extra thick sole cushioning, secure mid-crew ankle height, and strong grip control.",
+            "th": "ถุงเท้ากันลื่นห้านิ้วข้อกลางสไตล์สปอร์ตสุดเท่ เสริมความหนาใต้ฝ่าเท้าเพื่อรองรับแรงกดและการเคลื่อนไหวแบบหนักหน่วง ระบายอากาศยอดเยี่ยม"
+        },
+        "features": {
+            "en": [
+                "Mid-crew sporty ribbed ankle",
+                "High-density cushioned sole",
+                "Mesh breathability on instep",
+                "Heavy-duty silicon non-slip grip"
+            ],
+            "th": [
+                "ทรงสปอร์ตข้อกลาง ลอนขอบรัดกระชับข้อ",
+                "พื้นใต้เท้าบุนุ่มหนาพิเศษซับแรงกระแทก",
+                "ทอตาข่ายโปร่งระบายเหงื่อและอากาศไว",
+                "ปุ่มเจลกันลื่นยึดเกาะเครื่องได้อย่างมั่นใจ"
+            ]
+        }
+    },
+    {
+        "id": "swan_socks",
+        "category": "grip",
+        "title": {
+            "en": "Swan Princess Grip Socks",
+            "th": "Swan Princess Grip Socks"
+        },
+        "subtitle": {
+            "en": "Elegant Swan Ribbon Grip Socks",
+            "th": "ถุงเท้ากันลื่นห้านิ้วลายหงส์เจ้าหญิงสุดหรู"
+        },
+        "badge": {
+            "en": "Elegant",
+            "th": "หรูหรา"
+        },
+        "price": "450",
+        "image": "assets/swan_socks.jpg",
+        "shopeeUrl": "https://shopee.co.th/thumbtoe_th?entryPoint=ShopBySearch&searchKeyword=thumb%20toe",
+        "description": {
+            "en": "Elegant swan themed five-toe grip socks. The beautiful swan print patterns and dreamy color palette offer a premium princess aesthetic for Pilates.",
+            "th": "ถุงเท้ากันลื่นห้านิ้วดีไซน์ลวดลายหงส์เจ้าหญิงและริบบิ้นสีพาสเทลหรูหรา เพิ่มระดับความสวยเด่นสะดุดตา ให้ลุคพรีเมียมเสมือนเจ้าหญิงในคลาสเรียน"
+        },
+        "features": {
+            "en": [
+                "Dreamy swan princess design theme",
+                "Arch compression band for support",
+                "Thick heels cushion for blister protection",
+                "High-density durable silicone grip"
+            ],
+            "th": [
+                "ลายพิมพ์รูปหงส์และริบบิ้นสวยหรูพรีเมียม",
+                "แถบกระชับอุ้งเท้าเพิ่มความสมดุลเคลื่อนไหว",
+                "บุนุ่มป้องกันการเสียดสีบริเวณหลังข้อเท้า",
+                "เจลซิลิโคนเต็มฝ่าเท้าเกาะแน่นมั่นคงยาวนาน"
+            ]
+        }
     }
 ];
 
@@ -1492,7 +1712,7 @@ function onDrawerBackdropClick(e) {
 
 function clearProductForm() {
     ["prod-titleTh","prod-titleEn","prod-subtitleTh","prod-subtitleEn",
-     "prod-price","prod-badgeTh","prod-badgeEn","prod-descTh","prod-descEn",
+     "prod-price","prod-shopeeUrl","prod-badgeTh","prod-badgeEn","prod-descTh","prod-descEn",
      "prod-dimTh", "prod-dimEn"].forEach(id => {
         const el = document.getElementById(id);
         if (el) el.value = "";
@@ -1510,6 +1730,7 @@ function fillProductForm(p) {
     document.getElementById("prod-subtitleEn").value = p.subtitle.en || "";
     document.getElementById("prod-category").value   = p.category || (cmsData.categories.length ? cmsData.categories[0].id : "");
     document.getElementById("prod-price").value      = p.price || "";
+    document.getElementById("prod-shopeeUrl").value   = p.shopeeUrl || "";
     document.getElementById("prod-badgeTh").value    = p.badge.th || "";
     document.getElementById("prod-badgeEn").value    = p.badge.en || "";
     document.getElementById("prod-dimTh").value      = (p.dimensions && p.dimensions.th) ? p.dimensions.th : "";
@@ -1567,6 +1788,7 @@ function saveProduct() {
         badge:    { th: document.getElementById("prod-badgeTh").value.trim(), en: document.getElementById("prod-badgeEn").value.trim() },
         dimensions: { th: document.getElementById("prod-dimTh").value.trim(), en: document.getElementById("prod-dimEn").value.trim() },
         price,
+        shopeeUrl: document.getElementById("prod-shopeeUrl").value.trim(),
         image,
         variants,
         description: { th: document.getElementById("prod-descTh").value.trim(), en: document.getElementById("prod-descEn").value.trim() },
