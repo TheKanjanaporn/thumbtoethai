@@ -2,21 +2,37 @@
 // CMS DATA LOADER
 // โหลดข้อมูลจาก Admin Panel (localStorage)
 // ==========================================
+function isDuitData(data) {
+    if (!data || !data.products) return false;
+    const duitIds = ['water_pot', 'wave_pot', 'standing_board', 'nonslip_mat', 'silicone_mat', 'soft_brush', 'table_plus', 'peanut_board', 'poopoo_cube', 'poopoo_2way', 'poopoo_long', 'run_run_mat', 'dry_mat', 'mouse_bot', 'peek_a_poo', 'floating_bath_tub'];
+    return data.products.some(p => p && (duitIds.includes(p.id) || p.category === 'furniture' || p.category === 'appliances'));
+}
+
 async function loadCMSSiteData() {
     try {
         const res = await fetch(`/api/data?_t=${Date.now()}`);
         _cmsData = await res.json();
+        if (isDuitData(_cmsData)) {
+            console.warn("Detected DUIT data in API data. Resetting...");
+            _cmsData = null;
+        }
     } catch (e) {
         console.warn("Failed to fetch from /api/data, using localStorage:", e);
     }
     
     // If KV data is empty, null or undefined, try to fallback to localStorage
     if (!_cmsData || Object.keys(_cmsData).length === 0) {
-        const saved = localStorage.getItem("duit_cms_data");
+        const saved = localStorage.getItem("thumbtoe_cms_data");
         if (saved) {
             try {
-                _cmsData = JSON.parse(saved);
-                console.log("Loaded fallback data from localStorage");
+                const parsed = JSON.parse(saved);
+                if (isDuitData(parsed)) {
+                    console.warn("Detected DUIT data in localStorage. Resetting...");
+                    localStorage.removeItem("thumbtoe_cms_data");
+                } else {
+                    _cmsData = parsed;
+                    console.log("Loaded fallback data from localStorage");
+                }
             } catch (err) {
                 console.error("Failed to parse localStorage data", err);
             }
@@ -38,437 +54,773 @@ async function loadCMSSiteData() {
     }
 }
 
-// ==========================================
-// PRODUCTS DATABASE (DUIT THAILAND)
 // ข้อมูลจาก Cat Expo 2025 - Staff Manual
 // 24 สินค้าทั้งหมด
 // ==========================================
 const PRODUCTS_DEFAULT = [
-
-    // ===== หน้า 1: อาหาร & น้ำ =====
     {
-        id: "table_plus",
-        category: "appliances",
-        title:    { en: "The Table+",    th: "The Table+" },
-        subtitle: { en: "Minimalist Smart Feeder", th: "เครื่องให้อาหารมินิมอลสไตล์" },
-        badge:    { en: "Smart Tech",    th: "เทคโนโลยีอัจฉริยะ" },
-        price: "7,490",
-        image: "assets/table_plus.png",
-        description: {
-            en: "Minimalist smart automatic feeder. Connects to app, made from food-grade plastic — same quality as baby bottles.",
-            th: "เครื่องให้อาหารอัตโนมัติสไตล์มินิมอล เชื่อมต่อแอพได้ วัสดุพลาสติกเกรดเดียวกับขวดนมเด็ก"
+        "id": "daisy",
+        "category": "grip",
+        "title": {
+            "en": "Daisy Grip Socks",
+            "th": "Daisy Grip Socks"
         },
-        features: {
-            en: ["Minimalist design", "App connectivity", "Food-grade plastic (same as baby bottles)"],
-            th: ["มินิมอล", "เชื่อมแอพได้", "วัสดุทำจากพลาสติกเกรดเดียวกับขวดนมเด็ก"]
+        "subtitle": {
+            "en": "Signature Flower Grip Socks",
+            "th": "ถุงเท้ากันลื่นห้านิ้วลายเดซี่สีสันสดใส"
+        },
+        "badge": {
+            "en": "Best Seller",
+            "th": "ขายดี"
+        },
+        "price": "390",
+        "image": "assets/Daisy.jpg",
+        "description": {
+            "en": "Signature daisy patterned five-toe grip socks. Provides optimal grip for your toes and sole. Designed in Korea.",
+            "th": "ถุงเท้ากันลื่นแยกห้านิ้วลายดอกเดซี่ที่เป็นเอกลักษณ์เฉพาะตัว ปุ่มซิลิโคนเต็มฝ่าเท้าและทุกนิ้วเท้า ยึดเกาะเครื่องรีฟอร์เมอร์ได้ดีเยี่ยม สไตล์น่ารักส่งตรงจากเกาหลี"
+        },
+        "features": {
+            "en": [
+                "Premium combed cotton blend",
+                "Individual five-toe separation",
+                "Full-sole silicon non-slip grip",
+                "Elastic arch support band"
+            ],
+            "th": [
+                "ผลิตจากเนื้อผ้าฝ้ายผสมพรีเมียมนุ่มพิเศษ",
+                "ดีไซน์แยก 5 นิ้ว เพื่อการทรงตัวตามธรรมชาติ",
+                "ปุ่มซิลิโคนกันลื่นหนาแน่นเต็มฝ่าเท้า",
+                "แถบยืดหยุ่นโอบอุ้มอุ้งเท้า ลดความเมื่อยล้า"
+            ]
         }
     },
     {
-        id: "daily_table",
-        category: "appliances",
-        title:    { en: "Daily Table",   th: "Daily Table" },
-        subtitle: { en: "Elevated Food Bowl Stand", th: "ชามอาหารมินิมอล" },
-        badge:    { en: "Popular",       th: "ยอดนิยม" },
-        price: "2,590",
-        image: "assets/daily_table.png",
-        description: {
-            en: "Minimalist elevated food bowl stand. 100% washable, reduces neck strain while eating.",
-            th: "ชามอาหารพร้อมขาตั้งสไตล์มินิมอล ทำความสะอาดได้ 100% ช่วยให้สัตว์เลี้ยงไม่ต้องก้มจนเกินไปขณะกินอาหาร"
+        "id": "bichon",
+        "category": "grip",
+        "title": {
+            "en": "Bichon Grip Socks",
+            "th": "Bichon Grip Socks"
         },
-        features: {
-            en: ["100% washable", "Elevated bowl stand with legs", "Reduces neck strain while eating"],
-            th: ["สามารถทำความสะอาดได้ 100%", "ชามอาหารพร้อมขาตั้ง", "ช่วยให้สัตว์เลี้ยงไม่ต้องก้มจนเกินไปขณะกินอาหาร"]
+        "subtitle": {
+            "en": "Cute Bichon Dog Pattern Socks",
+            "th": "ถุงเท้ากันลื่นห้านิ้วลายน้องหมาบิชองสุดน่ารัก"
+        },
+        "badge": {
+            "en": "Cute Choice",
+            "th": "ลายน่ารัก"
+        },
+        "price": "420",
+        "image": "assets/Bichon.jpg",
+        "description": {
+            "en": "Adorable Bichon Frise dog pattern pilates socks with non-slip sole grip. Snug elastic fit that stays secure.",
+            "th": "ถุงเท้าพิลาทิสโยคะแบบห้านิ้วลายน้องหมาบิชองฝรั่งเศสแสนซน สีพาสเทลน่ารัก เหมาะสำหรับผู้ที่หลงใหลในความคิ้วท์ พร้อมปุ่มกันลื่นเจลเกรดพรีเมียม"
+        },
+        "features": {
+            "en": [
+                "Fun cute dog character design",
+                "Moisture-wicking mesh ventilation",
+                "Thick terry cotton on heel for cushioning",
+                "Safe eco-friendly silicone print"
+            ],
+            "th": [
+                "ดีไซน์ตัวการ์ตูนสุนัขบิชองสุดน่ารักสดใส",
+                "ตาข่ายทอด้านบนช่วยระบายความชื้นได้อย่างดี",
+                "บุเทอร์รี่หนานุ่มบริเวณส้นเท้าเพื่อลดแรงกระแทก",
+                "ปุ่มซิลิโคนเจลที่เป็นมิตรต่อผิวหนังและกันลื่นแน่น"
+            ]
         }
     },
     {
-        id: "wave_pot",
-        category: "appliances",
-        title:    { en: "Wave Pot",      th: "Wave Pot" },
-        subtitle: { en: "Ceramic Water Fountain", th: "น้ำพุพร้อมระบบกรองน้ำชั้นเลิศ" },
-        badge:    { en: "New",           th: "ใหม่" },
-        price: "2,790",
-        image: "assets/wave_pot.png",
-        description: {
-            en: "Premium ceramic water fountain with filtration. Wave-like flow encourages cats to drink more water. Silent operation.",
-            th: "น้ำพุเซรามิกพร้อมระบบกรองน้ำชั้นเลิศ การไหลของน้ำเหมือนคลื่นช่วยกระตุ้นการดื่มน้ำ ไม่มีเสียงรบกวน"
+        "id": "bubble_bubble",
+        "category": "grip",
+        "title": {
+            "en": "Bubble Bubble Grip Socks",
+            "th": "Bubble Bubble Grip Socks"
         },
-        features: {
-            en: ["Made from ceramic material", "Wave-like water flow", "Encourages hydration", "Silent operation", "Easy assembly within minutes"],
-            th: ["ตัววัสดุผลิตจากเซรามิก", "การไหลของน้ำเหมือนคลื่น", "ช่วยกระตุ้นการกินน้ำ", "ไม่มีเสียงดังรบกวน", "ประกอบง่ายภายในไม่กี่นาที"]
+        "subtitle": {
+            "en": "Vibrant Bubble Pattern Socks",
+            "th": "ถุงเท้ากันลื่นห้านิ้วลายจุดฟองสบู่สดใส"
+        },
+        "badge": {
+            "en": "New Arrival",
+            "th": "มาใหม่"
+        },
+        "price": "420",
+        "image": "assets/Bubble Bubble.jpg",
+        "description": {
+            "en": "Unique bubble-patterned five-toe grip socks to add vibrant energy to your practice. Breathable instep for fresh comfort.",
+            "th": "ถุงเท้ากันลื่นห้านิ้วลวดลายจุดฟองสบู่สลับสีสันสุดสดใส เติมพลังบวกให้การออกกำลังกายของคุณ ผ้าเนื้อนุ่มพิเศษกระชับหน้าเท้าและข้อเท้า"
+        },
+        "features": {
+            "en": [
+                "Unique colorful bubble prints",
+                "Highly stretchable ankle band",
+                "Instep breathability channel",
+                "Strong grip support on key touchpoints"
+            ],
+            "th": [
+                "ลายพิมพ์ฟองสบู่สลับสีโดดเด่นไม่ซ้ำใคร",
+                "ยางยืดรอบข้อเท้าสูงและกระชับ ไม่ย้วยง่าย",
+                "ช่องระบายอากาศกลางหลังเท้าเพื่อความแห้งสบาย",
+                "ปุ่มกันลื่นทนทานสูงในทุกๆ จุดสัมผัส"
+            ]
         }
     },
     {
-        id: "water_pot",
-        category: "appliances",
-        title:    { en: "Water Pot",     th: "Water Pot" },
-        subtitle: { en: "Premium Water Fountain", th: "น้ำพุระบบกรองน้ำชั้นเลิศ" },
-        badge:    { en: "Premium",       th: "พรีเมียม" },
-        price: "4,390",
-        image: "assets/water_pot.png",
-        description: {
-            en: "Advanced water fountain with human-grade filtration. Easy to disassemble and clean. Completely silent.",
-            th: "น้ำพุพร้อมระบบกรองน้ำเกรดเดียวกับคนดื่ม สามารถถอดทำความสะอาดได้ง่าย ไม่มีเสียงดังรบกวน"
+        "id": "cosmos",
+        "category": "grip",
+        "title": {
+            "en": "Cosmos Grip Socks",
+            "th": "Cosmos Grip Socks"
         },
-        features: {
-            en: ["Human-grade water filtration", "Easy disassembly for cleaning", "Silent motor"],
-            th: ["มาพร้อมระบบกรองน้ำเกรดเดียวกับคนดื่ม", "สามารถถอดทำความสะอาดได้", "ไม่มีเสียงดังรบกวน"]
+        "subtitle": {
+            "en": "Elegant Cosmos Space Theme",
+            "th": "ถุงเท้ากันลื่นห้านิ้วลายอวกาศคอสมอส"
+        },
+        "badge": {
+            "en": "Elegant",
+            "th": "หรูหรา"
+        },
+        "price": "450",
+        "image": "assets/Cosmos.jpg",
+        "description": {
+            "en": "Elegant cosmos space themed five-toe grip socks. Perfect mystical color blend for a premium studio look.",
+            "th": "ดีไซน์ลายดวงดาวและห้วงอวกาศหรูหราคอสมอสในโทนเข้มลึกลับ เพิ่มระดับความพรีเมียมให้กับการสวมใส่ในสตูดิโอ ยึดเกาะมั่นคงทุกท่าโพส"
+        },
+        "features": {
+            "en": [
+                "Elegant starry galaxy print pattern",
+                "Instep support for lateral stability",
+                "Reinforced heel protection",
+                "Full-grip cover for high performance"
+            ],
+            "th": [
+                "ลายพิมพ์ดวงดาวและกาแล็กซี่หรูหราระดับพรีเมียม",
+                "โครงสร้างกระชับกลางเท้าเพื่อกันถุงเท้าหมุนรอบ",
+                "เสริมความหนาพิเศษที่ส้นเท้ากันการเสียดสีดึงรั้ง",
+                "ปุ่มซิลิโคนแน่นและกว้างรองรับทุกแรงกดเท้า"
+            ]
         }
     },
     {
-        id: "mouse_bot",
-        category: "appliances",
-        title:    { en: "Mouse Bot",     th: "Mouse Bot" },
-        subtitle: { en: "Interactive AI Cat Toy",  th: "ของเล่นแมวเลียนแบบอัตโนมัติ" },
-        badge:    { en: "Smart",         th: "อัจฉริยะ" },
-        price: "1,490",
-        image: "assets/mouse_bot.jpg",
-        description: {
-            en: "Smart interactive cat toy that mimics mouse movement. Auto-switches modes, stops automatically when not in use.",
-            th: "ของเล่นแมวอัจฉริยะเลียนแบบการเคลื่อนที่ของหนู ปรับโหมดได้ หยุดอัตโนมัติเมื่อแมวไม่ได้เล่น"
+        "id": "emerald",
+        "category": "grip",
+        "title": {
+            "en": "Emerald Grip Socks",
+            "th": "Emerald Grip Socks"
         },
-        features: {
-            en: ["Adjustable movement modes", "No remote control needed", "Auto-stops when cat isn't playing"],
-            th: ["สามารถปรับเปลี่ยนโหมดได้", "ไม่ต้องคอยบังคับ", "หากไม่ได้เล่นด้วย Mouse Bot จะหยุดอัตโนมัติ"]
-        }
-    },
-
-    // ===== หน้า 2: ห้องน้ำแมว =====
-    {
-        id: "poopoo_2way",
-        category: "appliances",
-        title:    { en: "Poo Poo Box 2-Way",   th: "Poo Poo Box 2-Way" },
-        subtitle: { en: "Dual-Entry Litter Box",th: "ห้องน้ำแมวแบบเข้าได้สองทาง" },
-        badge:    { en: "Best Seller",          th: "ขายดี" },
-        price: "2,990",
-        image: "assets/poopoo_2way.png",
-        description: {
-            en: "Dual-entry litter box — enter from top or side. Excellent odor control while in use. Easy to clean.",
-            th: "ห้องน้ำแมวเข้าได้สองทาง เก็บกลิ่นได้ดีขณะที่สัตว์เลี้ยงใช้งาน ทำความสะอาดง่าย"
+        "subtitle": {
+            "en": "Rich Emerald Green Solid Socks",
+            "th": "ถุงเท้ากันลื่นห้านิ้วสีเขียวมรกตพรีเมียม"
         },
-        features: {
-            en: ["Dual-entry (top & side)", "Excellent odor control during use", "Easy to clean"],
-            th: ["ห้องน้ำที่เข้าได้อย่างดีออกดี", "สามารถเข้าได้สองทาง", "เก็บกลิ่นได้ดีขณะที่สัตว์เลี้ยงใช้งาน"]
-        }
-    },
-    {
-        id: "poopoo_cube",
-        category: "appliances",
-        title:    { en: "Poo Poo Box (CUBE)",     th: "Poo Poo Box (CUBE)" },
-        subtitle: { en: "Large Cube Litter Box",  th: "ห้องน้ำแมวขนาดใหญ่กว่าเดิม" },
-        badge:    { en: "Spacious",               th: "กว้างขวาง" },
-        price: "2,990",
-        image: "assets/poopoo_cube.png",
-        description: {
-            en: "Large cube-shaped litter box. Easy to clean with no odor or bacteria buildup.",
-            th: "ห้องน้ำแมวรูปทรงลูกบาศก์ขนาดใหญ่ ทำความสะอาดง่าย ไม่สะสมกลิ่นและแบคทีเรีย"
+        "badge": {
+            "en": "Premium Solid",
+            "th": "สีแนะนำ"
         },
-        features: {
-            en: ["Extra large size", "Easy to clean", "No odor or bacteria buildup"],
-            th: ["มีขนาดใหญ่", "ทำความสะอาดง่าย", "ไม่สะสมกลิ่นและแบคทีเรีย"]
+        "price": "390",
+        "image": "assets/Emerald.jpg",
+        "description": {
+            "en": "Rich emerald solid five-toe grip socks. A perfect balance of athletic performance and minimalist aesthetic.",
+            "th": "ถุงเท้ากันลื่นสีพื้นในโทนเขียวมรกตเข้มพรีเมียม เรียบหรู สะท้อนความเป็นมินิมอลแต่ทรงพลังในการเคลื่อนไหว ซิลิโคนกันลื่นหนาพิเศษยึดเกาะดีเยี่ยม"
+        },
+        "features": {
+            "en": [
+                "Classic deep emerald color",
+                "Ergonomic toe spacing",
+                "Double-yarn construction for durability",
+                "High-density non-slip print"
+            ],
+            "th": [
+                "โทนสีเขียวมรกตคลาสสิกเข้มลึก ดูมีรสนิยม",
+                "ช่องแยกนิ้วทอละเอียด สวมง่าย ไม่เบียดนิ้วเท้า",
+                "การทอเส้นด้ายคู่เพิ่มความทนทานเป็นสองเท่า",
+                "ปุ่มซิลิโคนหนาพิเศษ กันลื่นได้อย่างมั่นใจ"
+            ]
         }
     },
     {
-        id: "poopoo_long",
-        category: "appliances",
-        title:    { en: "Poo Poo Box (LONG)",      th: "Poo Poo Box (LONG)" },
-        subtitle: { en: "XL Long Litter Box",      th: "ห้องน้ำแมวขนาดใหญ่พิเศษ" },
-        badge:    { en: "XL Size",                 th: "ไซส์ XL" },
-        price: "3,490",
-        image: "assets/poopoo_long.png",
-        description: {
-            en: "Extra-large long litter box specially sized for bigger cats. Easy to clean and odor-free.",
-            th: "ห้องน้ำแมวยาวขนาดใหญ่พิเศษ เหมาะสำหรับแมวตัวใหญ่ ทำความสะอาดง่าย ไม่สะสมกลิ่น"
+        "id": "flower",
+        "category": "grip",
+        "title": {
+            "en": "Flower Grip Socks",
+            "th": "Flower Grip Socks"
         },
-        features: {
-            en: ["Extra large special size", "Easy to clean", "No odor or bacteria"],
-            th: ["ห้องน้ำที่มีขนาดใหญ่พิเศษ", "ทำความสะอาดง่าย", "ไม่สะสมกลิ่นและแบคทีเรีย"]
+        "subtitle": {
+            "en": "Sweet Blooming Flower Pattern",
+            "th": "ถุงเท้ากันลื่นห้านิ้วลายดอกไม้เบ่งบาน"
+        },
+        "badge": {
+            "en": "Popular",
+            "th": "ยอดนิยม"
+        },
+        "price": "390",
+        "image": "assets/Flower.jpg",
+        "description": {
+            "en": "Beautiful blooming flower five-toe grip socks. Soft pastel palette that brings positive vibes and cozy comfort to your practice.",
+            "th": "ถุงเท้ากันลื่นลายดอกไม้เบ่งบานหลากสีสันพาสเทล ให้ความรู้สึกอบอุ่น สดใส และสนุกสนานขณะฝึกซ้อม เนื้อผ้านุ่มกระชับระบายอับชื้นดีเยี่ยม"
+        },
+        "features": {
+            "en": [
+                "Sweet pastel floral aesthetics",
+                "Moisture-wicking combed cotton",
+                "Arch support compression",
+                "Slip-free print covering every single toe"
+            ],
+            "th": [
+                "ลวดลายดอกไม้สไตล์พาสเทลหวาน อบอุ่นหัวใจ",
+                "ผลิตจากฝ้าย Combed ซับเหงื่อและระบายอากาศไว",
+                "โอบรัดอุ้งเท้าช่วยประคองท่าการทรงตัว",
+                "ปุ่มกันลื่นคลุมเต็มฝ่าเท้ารวมถึงปลายนิ้วเท้าทุกนิ้ว"
+            ]
         }
     },
     {
-        id: "peek_a_poo",
-        category: "appliances",
-        title:    { en: "Peek a Poo",            th: "Peek a Poo" },
-        subtitle: { en: "Top-Entry Litter Box",  th: "ห้องน้ำสำหรับมองจากบน" },
-        badge:    { en: "Odor Free",             th: "ไร้กลิ่น" },
-        price: "2,390",
-        image: "assets/peek_a_poo.png",
-        description: {
-            en: "Top-entry litter box. Easy to clean, dual handles for lifting, non-stick surface gentle on paws.",
-            th: "ห้องน้ำแบบเปิดจากบน ทำความสะอาดง่าย มีที่จับสองด้าน พื้นผิวนุ่มไม่ทำให้เล็บสัตว์เลี้ยงติด"
+        "id": "galaxy",
+        "category": "grip",
+        "title": {
+            "en": "Galaxy Grip Socks",
+            "th": "Galaxy Grip Socks"
         },
-        features: {
-            en: ["Easy to clean", "Dual handles for easy lifting", "Non-stick surface gentle on paws"],
-            th: ["ทำความสะอาดง่าย", "มีที่จับสองด้านทำให้ยกได้ง่าย", "พื้นผิวนุ่มไม่ทำให้เล็บสัตว์เลี้ยงติด"]
+        "subtitle": {
+            "en": "Mystical Dusty Nebula Theme",
+            "th": "ถุงเท้ากันลื่นห้านิ้วลายกาแล็กซีสีพาสเทลหม่น"
+        },
+        "badge": {
+            "en": "Hot Item",
+            "th": "ยอดฮิต"
+        },
+        "price": "450",
+        "image": "assets/Galaxy.jpg",
+        "description": {
+            "en": "Deep starry galaxy five-toe grip socks. Features a premium nebula gradient design to make you stand out.",
+            "th": "ลวดลายห้วงอวกาศและหมอกควันเนบิวลาสีม่วง-น้ำเงินไล่โทนลึกลับน่าค้นหา สำหรับผู้ที่ต้องการความโดดเด่นมีคลาสในชั้นเรียนพิลาทิส"
+        },
+        "features": {
+            "en": [
+                "Vibrant starry galaxy gradient color",
+                "Targeted compression zone",
+                "Blister prevention fit",
+                "Industrial-grade non-slip gel"
+            ],
+            "th": [
+                "ลายพิมพ์ไล่เฉดสีเนบิวลาอวกาศสดใสสะดุดตา",
+                "ส่วนบีบอัดเฉพาะจุดรอบข้อเท้าเพิ่มความมั่นใจ",
+                "กระชับพอดีเท้าเพื่อป้องกันการเกิดแผลกดเสียดสี",
+                "เจลซิลิโคนกันลื่นเกรดอุตสาหกรรม เกาะแน่นยาวนาน"
+            ]
         }
     },
     {
-        id: "standing_board",
-        category: "furniture",
-        title:    { en: "Standing Board",          th: "Standing Board" },
-        subtitle: { en: "Vertical Scratch Board",  th: "กระดานสำหรับลับเล็บ" },
-        badge:    { en: "Durable",                 th: "ทนทาน" },
-        price: "2,390",
-        image: "assets/standing_board.png",
-        description: {
-            en: "Durable vertical scratch board. Helps cats fully stretch their body. No cardboard dust or mess.",
-            th: "กระดานลับเล็บแบบตั้ง วัสดุแข็งแรงทนทาน ช่วยให้น้องแมวยืดตัวได้สุด ไม่มีเศษกระดาษหลุดเลอะเกอะ"
+        "id": "lemon",
+        "category": "grip",
+        "title": {
+            "en": "Lemon Grip Socks",
+            "th": "Lemon Grip Socks"
         },
-        features: {
-            en: ["Strong and durable material", "Helps cats stretch fully", "No cardboard dust or mess"],
-            th: ["วัสดุแข็งแรงทนทาน ใช้ได้นาน", "ช่วยให้น้องแมวยืดตัวได้สุด", "ไม่มีเศษกระดาษหลุดเลอะเกอะ"]
-        }
-    },
-
-    // ===== หน้า 3: เสื่อ, ตะกร้า & แผ่นลับเล็บ =====
-    {
-        id: "run_run_mat",
-        category: "furniture",
-        title:    { en: "Run Run Mat (M/L)",     th: "Run Run Mat (M/L)" },
-        subtitle: { en: "Anti-slip Pet Mat",     th: "พรมกันลื่น ดักใยผ้าพิเศษ" },
-        badge:    { en: "M / L Size",            th: "ไซส์ M / L" },
-        price: "3,690 / 4,390",
-        image: "assets/run_run_mat.png",
-        description: {
-            en: "Special fiber anti-slip pet mat. Waterproof & easy to clean. Claw-friendly with 5mm cushion to reduce noise.",
-            th: "พรมกันลื่นดักใยผ้าพิเศษ กันน้ำและทำความสะอาดง่าย วัสดุเหมาะกับกรงเล็บ เบาะ 5 มม. ลดเสียงรบกวน"
+        "subtitle": {
+            "en": "Sunny Day Lemon Yellow Socks",
+            "th": "ถุงเท้ากันลื่นห้านิ้วสีเหลืองเลมอนสดใส"
         },
-        features: {
-            en: ["Waterproof & easy to clean", "Claw-friendly anti-slip material", "5mm cushion reduces noise"],
-            th: ["กันน้ำและทำความสะอาดง่าย", "กันลื่น เหมาะสำหรับกรงเล็บ", "เบาะกันกระแทก 5 มม. ลดเสียงรบกวน"]
-        }
-    },
-    {
-        id: "all_day_basket",
-        category: "furniture",
-        title:    { en: "All Day Basket",       th: "All Day Basket" },
-        subtitle: { en: "Large Cat Basket",     th: "คลอดแมวขนาดใหญ่" },
-        badge:    { en: "Cozy",                 th: "อบอุ่น" },
-        price: "2,990",
-        image: "assets/all_day_basket.png",
-        description: {
-            en: "Large and spacious cat basket. Durable with thick premium material, perfect for all-day lounging.",
-            th: "ตะกร้าแมวขนาดใหญ่ ทนทาน ใช้วัสดุหนาคุณภาพสูง เหมาะสำหรับนอนพักผ่อนทั้งวัน"
+        "badge": {
+            "en": "Fresh Aesthetic",
+            "th": "สีสดใส"
         },
-        features: {
-            en: ["Large size", "Durable thick premium material"],
-            th: ["มีขนาดใหญ่", "ทนทาน ใช้วัสดุลักษณะแบบหนาที่สุด"]
+        "price": "390",
+        "image": "assets/Lemon.jpg",
+        "description": {
+            "en": "Bright sunny lemon yellow five-toe grip socks. Uplifts your studio mood and energizes your Pilates sequences.",
+            "th": "ถุงเท้าห้านิ้วสีเหลืองเลมอนสว่างไสว ปลุกพลังความสดชื่นและกระปรี้กระเปร่าในสตูดิโอ ทอลายตารางระบายหลังเท้าดีเยี่ยม ยึดเกาะแน่นหนา"
+        },
+        "features": {
+            "en": [
+                "Vibrant cheerful lemon yellow color",
+                "Top-instep mesh panels for cooling",
+                "Five-toe natural grip splay",
+                "Superior wash resistance silicone"
+            ],
+            "th": [
+                "เฉดสีเหลืองเลมอนสว่าง สดใส สนุกสนาน",
+                "หน้าเท้าทอตาข่ายโปร่งเพื่อระบายไอความร้อนสะสม",
+                "ช่วยกางนิ้วเท้าเพื่อกระจายน้ำหนักอย่างเหมาะสม",
+                "ซิลิโคนทนทานต่อการซักเครื่อง ไม่หลุดร่อนง่าย"
+            ]
         }
     },
     {
-        id: "all_day_rack",
-        category: "furniture",
-        title:    { en: "All Day Rack",           th: "All Day Rack" },
-        subtitle: { en: "Multi-Purpose Cat Shelf", th: "ชั้นวางของแมว" },
-        badge:    { en: "Versatile",              th: "อเนกประสงค์" },
-        price: "4,890",
-        image: "assets/all_day_rack.jpg",
-        description: {
-            en: "Multi-purpose cat shelf with strong steel frame. Easy assembly, fits any location in your home.",
-            th: "ชั้นวางของอเนกประสงค์ โครงเหล็กแข็งแรงและประกอบง่าย เข้าได้กับทุกสถานที่"
+        "id": "marble",
+        "category": "grip",
+        "title": {
+            "en": "Marble Grip Socks",
+            "th": "Marble Grip Socks"
         },
-        features: {
-            en: ["Multiple usage configurations", "Strong steel frame & easy assembly", "Fits any location"],
-            th: ["ใช้งานได้หลายรูปแบบ เปิดชั้นวางของ", "โครงเหล็กแข็งแรงและประกอบง่าย", "เข้าได้กับทุกสถานที่"]
+        "subtitle": {
+            "en": "Modern Abstract Marble Textures",
+            "th": "ถุงเท้ากันลื่นห้านิ้วลายหินอ่อนสุดชิค"
+        },
+        "badge": {
+            "en": "Modern Look",
+            "th": "ลุคโมเดิร์น"
+        },
+        "price": "420",
+        "image": "assets/Marble.jpg",
+        "description": {
+            "en": "Chic modern marble textured five-toe grip socks. The perfect choice for stylish practitioners who appreciate fine aesthetics.",
+            "th": "ถุงเท้าห้านิ้วลายหินอ่อนธรรมชาติสไตล์โมเดิร์นคลาสสิก ให้ความรู้สึกนิ่ง สงบ และหรูหราเข้ากับห้องสตูดิโอได้อย่างกลมกลืน นุ่มสบายเป็นเลิศ"
+        },
+        "features": {
+            "en": [
+                "Stylish modern abstract marble pattern",
+                "Highly cushioned footbed for joint comfort",
+                "Premium sweat-absorption yarns",
+                "Eco-friendly anti-slip print"
+            ],
+            "th": [
+                "ลายพิมพ์หินอ่อนสไตล์นามธรรมสุดชิคทันสมัย",
+                "พื้นรองเท้าบุซับนุ่มเป็นพิเศษช่วยซับแรงกดข้อเท้า",
+                "เส้นด้ายเกรดสูงดูดซับเหงื่อแห้งไวพิเศษ",
+                "ซิลิโคนปลอดสารพิษ เป็นมิตรต่อผิวหนังกันลื่นดีเยี่ยม"
+            ]
         }
     },
     {
-        id: "allday_board",
-        category: "toys",
-        title:    { en: "All-day Board",           th: "All-day Board" },
-        subtitle: { en: "Ergonomic Curved Scratcher", th: "แผ่นลับเล็บแมว" },
-        badge:    { en: "Ergonomic",              th: "เข้ากับสรีระ" },
-        price: "1,990",
-        image: "assets/allday_board.png",
-        description: {
-            en: "Curved scratch board ergonomically designed for cats. Easy to clean — dust stays in the center channel. Sturdy board, minimal cardboard dust.",
-            th: "แผ่นลับเล็บโค้งมนเข้ากับสรีระแมว ทำความสะอาดง่าย เศษกระดาษสะอาดอยู่ตรงกลาง กระดาษแข็ง ผงน้อย"
+        "id": "woody",
+        "category": "grip",
+        "title": {
+            "en": "Woody Grip Socks",
+            "th": "Woody Grip Socks"
         },
-        features: {
-            en: ["Ergonomic curve fits cat body", "Easy to clean – dust stays in center channel", "Sturdy board, minimal cardboard dust"],
-            th: ["โค้งมนเข้ากับสรีระแมว", "ทำความสะอาดง่าย เศษกระดาษสะอาดอยู่ตรงกลาง", "กระดาษแข็ง ผงกระดาษน้อย"]
+        "subtitle": {
+            "en": "Warm Earthy Woody Brown Socks",
+            "th": "ถุงเท้ากันลื่นห้านิ้วสีน้ำตาลลายไม้ธรรมชาติ"
+        },
+        "badge": {
+            "en": "Earthy Tones",
+            "th": "เอิร์ธโทน"
+        },
+        "price": "390",
+        "image": "assets/Woody.jpg",
+        "description": {
+            "en": "Cozy warm woody brown five-toe grip socks. Brings the calming sense of nature and organic warm textures to your practice.",
+            "th": "ถุงเท้าห้านิ้วสีน้ำตาลเอิร์ธโทนลายเนื้อไม้ธรรมชาติ อบอุ่น เรียบง่าย สงบเงียบ เหมาะสำหรับสวมใส่เล่นโยคะและพิลาทิส ยึดเกาะกระชับเป็นเลิศ"
+        },
+        "features": {
+            "en": [
+                "Calming warm earthy brown tones",
+                "Organic texture look with high durability",
+                "Comfort fit toe pockets",
+                "Heavy-duty non-slip printing"
+            ],
+            "th": [
+                "เฉดสีน้ำตาลเอิร์ธโทนลายเนื้อไม้ อบอุ่น ผ่อนคลาย",
+                "ทอผ้าหนาแน่นทนต่อการเสียดสีสูง ใช้งานได้ยาวนาน",
+                "กระเป๋าแยกนิ้วเท้านุ่มสบายไม่ระคายเคืองช่องนิ้ว",
+                "ซิลิโคนกันลื่นหนาแน่นสูง ยึดเกาะแน่นยาวนาน"
+            ]
         }
     },
     {
-        id: "peanut_board",
-        category: "toys",
-        title:    { en: "Peanut Board",              th: "Peanut Board" },
-        subtitle: { en: "4-in-1 Multipurpose Scratcher", th: "บอร์ดลับเล็บแมว บำรุงสี่แขน" },
-        badge:    { en: "4 in 1",                    th: "4 อิน 1" },
-        price: "2,490",
-        image: "assets/peanut_board.png",
-        description: {
-            en: "4-in-1 multipurpose scratch board. Use for sleeping and scratching. No cardboard dust or mess.",
-            th: "ที่ลับเล็บอเนกประสงค์ 4 in 1 ใช้ได้ทั้งนอนและลับเล็บ ไม่มีเศษกระดาษหลุดเลอะเกอะ"
+        "id": "polo",
+        "category": "daily",
+        "title": {
+            "en": "Polo Daily Socks",
+            "th": "Polo Daily Socks"
         },
-        features: {
-            en: ["4-in-1 multipurpose design", "Use for sleeping & scratching", "No cardboard dust or mess"],
-            th: ["ที่ลับเล็บอเนกประสงค์ 4 in 1", "ใช้ได้กับนอนและลับเล็บ", "ไม่มีเศษกระดาษหลุดเลอะเกอะ"]
-        }
-    },
-
-    // ===== หน้า 4: อุปกรณ์เสริม & ความปลอดภัย =====
-    {
-        id: "antibug_light",
-        category: "appliances",
-        title:    { en: "Anti-bug Light",              th: "Anti-bug Light" },
-        subtitle: { en: "Natural Insect Repellent Light", th: "ไฟกันแมลง" },
-        badge:    { en: "Natural",                     th: "ธรรมชาติ 100%" },
-        price: "1,090",
-        image: "assets/antibug_light.png",
-        description: {
-            en: "Protects your pets from insects naturally. Made from 100% natural herbs with a flashing night light for safe walks.",
-            th: "ป้องกันสัตว์เลี้ยงจากแมลง ใช้สมุนไพรธรรมชาติ 100% มีไฟกะพริบสำหรับการเดินตอนกลางคืน"
+        "subtitle": {
+            "en": "Sporty Ribbed Non-Grip Socks",
+            "th": "ถุงเท้าแฟชั่นสตรีทลุคสไตล์โปโล (ไม่มีกันลื่น)"
         },
-        features: {
-            en: ["Protects pets from insects", "100% natural herbs", "Night flashing light for safe walking"],
-            th: ["ป้องกันสัตว์เลี้ยงจากแมลงได้", "ใช้สมุนไพรธรรมชาติ 100%", "มีไฟกะพริบสำหรับการเดินตอนกลางคืน"]
-        }
-    },
-    {
-        id: "car_seat",
-        category: "furniture",
-        title:    { en: "Go Go Car Seat",              th: "Go Go Car Seat" },
-        subtitle: { en: "Pet Car Travel Seat",         th: "ที่นั่งในรถยนต์ สำหรับการเดินทาง" },
-        badge:    { en: "Travel",                      th: "เดินทาง" },
-        price: "5,450",
-        image: "assets/car_seat.png",
-        description: {
-            en: "Thick and durable pet car seat. Anti-bacterial material, 3-in-1 usage modes for comfortable travel.",
-            th: "ที่นั่งในรถยนต์สำหรับสัตว์เลี้ยง หนาและทนทาน ไม่ฉีกขาด วัสดุต้านเชื้อแบคทีเรีย ใช้งานได้แบบ 3 in 1"
+        "badge": {
+            "en": "Daily Sporty",
+            "th": "ใส่ลำลอง"
         },
-        features: {
-            en: ["Thick & durable — no tearing", "Anti-bacterial material", "3-in-1 usage modes"],
-            th: ["หนาและทนทาน ไม่ฉีกขาด", "วัสดุต้านเชื้อแบคทีเรีย", "ใช้งานได้แบบ 3 in 1"]
+        "price": "290",
+        "image": "assets/Polo.jpg",
+        "description": {
+            "en": "Classic ribbed daily five-toe socks without grip. Ideal for pairing with sneakers, casual outdoor wear, and preventing toe-rub friction.",
+            "th": "ถุงเท้าแฟชั่นห้านิ้วแบบไม่มีกันลื่น ทรงข้อกลาง Ribbed สไตล์สปอร์ตคลาสสิก เหมาะสำหรับใส่กับรองเท้าผ้าใบ ลำลอง ออกข้างนอก ช่วยลดกลิ่นอับและอาการนิ้วเท้าเบียดเสียดสี"
+        },
+        "features": {
+            "en": [
+                "Classic ribbed retro sport style",
+                "No silicon print for footwear comfort",
+                "Prevents inter-toe moisture accumulation",
+                "Breathable lightweight structure"
+            ],
+            "th": [
+                "ทรงข้อกลางลอนร่องสไตล์สปอร์ตย้อนยุคสุดชิค",
+                "แบบไม่มีซิลิโคน เหมาะสำหรับใส่เดินนอกบ้านในรองเท้า",
+                "ช่วยระบายอากาศและลดการสะสมความชื้นระหว่างนิ้วเท้า",
+                "น้ำหนักเบา นุ่มสบาย สวมใส่ได้ตลอดทั้งวัน"
+            ]
         }
     },
     {
-        id: "silicone_mat",
-        category: "toys",
-        title:    { en: "Silicone Mat",                th: "Silicone Mat" },
-        subtitle: { en: "Food & Water Silicone Placemat", th: "แผ่นซิลิโคนรองอาหาร/น้ำ" },
-        badge:    { en: "BPA Free",                    th: "ปลอด BPA" },
-        price: "790",
-        image: "assets/silicone_mat.png",
-        description: {
-            en: "Anti-slip waterproof silicone placemat. 1cm raised edge prevents liquid spills. BPA-free food-safe silicone.",
-            th: "แผ่นซิลิโคนกันลื่นและกันน้ำ มีขอบสูง 1 ซม. ป้องกันของเหลวรั่วไหล วัสดุซิลิโคนปลอดสาร BPA"
+        "id": "peach_lavender",
+        "category": "daily",
+        "title": {
+            "en": "Peach Lavender Socks",
+            "th": "Peach Lavender Socks"
         },
-        features: {
-            en: ["Anti-slip & waterproof", "1cm raised edge prevents spills", "BPA-free silicone"],
-            th: ["กันลื่นและกันน้ำ", "มีขอบสูง 1 ซม. ป้องกันของเหลวรั่วไหล", "วัสดุซิลิโคนปลอดสาร BPA"]
+        "subtitle": {
+            "en": "Sweet Two-Tone Non-Grip Socks",
+            "th": "ถุงเท้าห้านิ้วทูโทนสีพีช-ลาเวนเดอร์ (ไม่มีกันลื่น)"
+        },
+        "badge": {
+            "en": "Cozy Home",
+            "th": "หวานละมุน"
+        },
+        "price": "290",
+        "image": "assets/Peach Lavender.jpg",
+        "description": {
+            "en": "Sweet peach and lavender dual-toned daily five-toe socks. Perfect cozy fit for home lounging, light walks, and preventing blisters.",
+            "th": "ถุงเท้าห้านิ้วข้อสั้นแบบไม่มีกันลื่นในสีคู่สลับทูโทน พีชและม่วงลาเวนเดอร์ สุดหวานละมุนตา สวมใส่พักผ่อนสบายๆ ในบ้าน หรือใส่นอนช่วยรักษาอุณหภูมิร่างกาย"
+        },
+        "features": {
+            "en": [
+                "Sweet contrast two-tone color block",
+                "Blister-free soft inter-toe fit",
+                "Ideal for home cozy lounging",
+                "High elastic comfort cuff"
+            ],
+            "th": [
+                "การตัดสีทูโทน พีช-ลาเวนเดอร์ น่ารักสะดุดตา",
+                "ช่องแยกนิ้วเท้านุ่มเรียบลื่น ป้องกันการเกิดตุ่มเสียดสี",
+                "เหมาะสำหรับสวมใส่อุ่นข้อเท้าและพักผ่อนในบ้าน",
+                "ขอบถุงเท้ายืดหยุ่นสูงพิเศษ ไม่โอบรัดหน้าแข้งจนเจ็บ"
+            ]
         }
     },
     {
-        id: "nonslip_mat",
-        category: "toys",
-        title:    { en: "Non-slip Silicone Mat",       th: "Non-slip Silicone Mat" },
-        subtitle: { en: "Safety Floor Mat for Pets",   th: "แผ่นกันลื่นสำหรับน้องแมว" },
-        badge:    { en: "Safety",                      th: "ปลอดภัย" },
-        price: "2,350",
-        image: "assets/nonslip_mat.png",
-        description: {
-            en: "Premium non-slip silicone floor mat for pets. Waterproof with BPA-free safe silicone material.",
-            th: "แผ่นกันลื่นสำหรับน้องแมว กันลื่นและกันน้ำ วัสดุซิลิโคนปลอดภัย"
+        "id": "daisy_open_toe",
+        "category": "grip",
+        "title": {
+            "en": "Daisy Open Toe Grip Socks",
+            "th": "Daisy Open Toe Grip Socks"
         },
-        features: {
-            en: ["Anti-slip & waterproof", "BPA-free safe silicone material"],
-            th: ["กันลื่นและกันน้ำ", "วัสดุซิลิโคนปลอดภัย"]
+        "subtitle": {
+            "en": "Signature Open-Toe Flower Socks",
+            "th": "ถุงเท้ากันลื่นแบบเปิดนิ้วเท้าลายเดซี่สีสันสดใส"
+        },
+        "badge": {
+            "en": "Open Toe",
+            "th": "เปิดนิ้วเท้า"
+        },
+        "price": "390",
+        "image": "assets/Daisy Open Toe.jpg",
+        "description": {
+            "en": "Signature daisy patterned five-toe open toe grip socks. Open toe design allows for better sensory feedback and natural toe movement. Designed in Korea.",
+            "th": "ถุงเท้ากันลื่นห้านิ้วแบบเปิดนิ้วเท้าลายเดซี่สุดน่ารัก ดีไซน์เปิดนิ้วเท้าช่วยให้หน้าสัมผัสเท้าได้ระบายอากาศ ยึดเกาะเครื่องได้มั่นคงและสัมผัสได้อย่างธรรมชาติ"
+        },
+        "features": {
+            "en": [
+                "Premium combed cotton blend",
+                "Open five-toe separation",
+                "Full-sole silicon non-slip grip",
+                "Elastic arch support band"
+            ],
+            "th": [
+                "ผลิตจากเนื้อผ้าฝ้ายผสมพรีเมียมนุ่มพิเศษ",
+                "ดีไซน์แยก 5 นิ้วแบบเปิดปลาย ช่วยการทรงตัวตามธรรมชาติ",
+                "ปุ่มซิลิโคนกันลื่นหนาแน่นเต็มฝ่าเท้า",
+                "แถบยืดหยุ่นโอบอุ้มอุ้งเท้า ลดความเมื่อยล้า"
+            ]
         }
     },
     {
-        id: "dry_mat",
-        category: "toys",
-        title:    { en: "Dry Mat",                     th: "Dry Mat" },
-        subtitle: { en: "Diatomite Absorbent Mat",     th: "แผ่นรองซับน้ำ" },
-        badge:    { en: "Quick Dry",                   th: "ซับน้ำเร็ว" },
-        price: "990",
-        image: "assets/dry_mat.png",
-        description: {
-            en: "Premium diatomite drying mat. Highly absorbent, ideal for placing under food and water bowls.",
-            th: "แผ่นรองซับน้ำจากไดอะตอมไมต์ ซับซับดี เหมาะสำหรับวางชามอาหาร/น้ำ"
+        "id": "earth_white",
+        "category": "grip",
+        "title": {
+            "en": "Earth White Grip Socks",
+            "th": "Earth White Grip Socks"
         },
-        features: {
-            en: ["Diatomite material", "Highly absorbent", "Ideal for food & water bowl placement"],
-            th: ["ใช้วัสดุไดอะตอมไมต์", "ซับซับดี", "เหมาะสำหรับวางชามอาหาร/น้ำ"]
-        }
-    },
-
-    // ===== หน้า 5: อ่างอาบน้ำ, แปรงขน & Catthenon =====
-    {
-        id: "floating_bath_tub",
-        category: "toys",
-        title:    { en: "Floating Bath Tub",           th: "Floating Bath Tub" },
-        subtitle: { en: "Foldable Pet Bath Tub",       th: "อ่างอาบน้ำสำหรับสัตว์เลี้ยง" },
-        badge:    { en: "Foldable",                    th: "พับได้" },
-        price: "1,990",
-        image: "assets/floating_bath_tub.png",
-        description: {
-            en: "Foldable pet bath tub to save space. Anti-slip material with strong structure for even weight distribution.",
-            th: "อ่างอาบน้ำสำหรับสัตว์เลี้ยงที่พับเก็บได้ ประหยัดพื้นที่ วัสดุกันลื่น โครงสร้างแข็งแรงกระจายน้ำหนักดี"
+        "subtitle": {
+            "en": "Minimalist Classic Off-White Socks",
+            "th": "ถุงเท้ากันลื่นห้านิ้วสีขาวเอิร์ธโทนสุดคลาสสิก"
         },
-        features: {
-            en: ["Foldable, space-saving design", "Anti-slip material", "Strong structure distributes weight evenly"],
-            th: ["พับเก็บได้/ประหยัดพื้นที่", "วัสดุกันลื่น", "โครงสร้างแข็งแรงกระจายน้ำหนักดี"]
-        }
-    },
-    {
-        id: "banana_brush",
-        category: "toys",
-        title:    { en: "Banana Brush",                th: "Banana Brush" },
-        subtitle: { en: "Natural Pet Grooming Brush",  th: "แปรงขนแมว" },
-        badge:    { en: "Natural",                     th: "ธรรมชาติ" },
-        price: "1,200",
-        image: "assets/banana_brush.png",
-        description: {
-            en: "Gentle banana-shaped grooming brush. 100% natural bristles, specially designed for pets.",
-            th: "แปรงขนแมวทรงกล้วย อ่อนโยน ไม่ระคายเคือง ขนแปรงธรรมชาติ 100% ออกแบบมาเพื่อสัตว์เลี้ยงโดยเฉพาะ"
+        "badge": {
+            "en": "Earthy Tones",
+            "th": "เอิร์ธโทน"
         },
-        features: {
-            en: ["Gentle — non-irritating", "100% natural bristles", "Designed specifically for pets"],
-            th: ["อ่อนโยน/ไม่ระคายเคือง", "ขนแปรงธรรมชาติ 100%", "ออกแบบมาเพื่อสัตว์เลี้ยงโดยเฉพาะ"]
+        "price": "390",
+        "image": "assets/Earth White.png",
+        "description": {
+            "en": "Classic earth white five-toe grip socks. Minimalist off-white color that matches beautifully with any studio attire and offers top-tier stability.",
+            "th": "ถุงเท้ากันลื่นห้านิ้วสีขาวเอิร์ธโทนมินิมอล เรียบง่าย สะอาดตา แมทช์ชุดออกกำลังกายง่าย ผลิตจากเส้นด้ายทนทานพิเศษพร้อมปุ่มกันลื่นเจลพรีเมียม"
+        },
+        "features": {
+            "en": [
+                "Classic aesthetic off-white tone",
+                "Anatomical five-toe separated shape",
+                "Heavy-density silicon gel grip",
+                "Double-ply combed cotton"
+            ],
+            "th": [
+                "สีขาวนวลแบบเอิร์ธโทน คลาสสิก แมทช์ง่าย",
+                "แยกนิ้วเท้าช่วยปรับสมดุลเท้าในการออกกำลังกาย",
+                "ปุ่มซิลิโคนกันลื่นหนาแน่นสูง เกาะมั่นใจทุกเครื่อง",
+                "ผลิตจากเส้นด้ายฝ้ายหนาพิเศษทนทาน"
+            ]
         }
     },
     {
-        id: "soft_brush",
-        category: "toys",
-        title:    { en: "Soft Brush",                  th: "Soft Brush" },
-        subtitle: { en: "Self-Cleaning Grooming Brush", th: "แปรงขนนุ่มแมว" },
-        badge:    { en: "Easy Clean",                  th: "ทำความสะอาดง่าย" },
-        price: "1,090",
-        image: "assets/soft_brush.png",
-        description: {
-            en: "Ultra-soft grooming brush with self-cleaning button. Easy grip, press button to remove collected fur effortlessly.",
-            th: "แปรงขนนุ่มนวลพร้อมปุ่มกำจัดขน จับง่าย กดปุ่มเพื่อกำจัดขนหลังใช้งาน"
+        "id": "earth_white_open_toe",
+        "category": "grip",
+        "title": {
+            "en": "Earth White Open Toe Grip Socks",
+            "th": "Earth White Open Toe Grip Socks"
         },
-        features: {
-            en: ["Ultra-soft bristles", "Easy grip handle", "Self-cleaning button removes fur"],
-            th: ["แปรงนุ่มนวล", "จับง่าย", "มีปุ่ม กำจัดขนหลังใช้งาน"]
+        "subtitle": {
+            "en": "Barefoot Feel Off-White Socks",
+            "th": "ถุงเท้ากันลื่นแบบเปิดนิ้วเท้าสีขาวเอิร์ธโทน"
+        },
+        "badge": {
+            "en": "Open Toe",
+            "th": "เปิดนิ้วเท้า"
+        },
+        "price": "390",
+        "image": "assets/Earth White Open Toe.png",
+        "description": {
+            "en": "Classic earth white open toe five-toe grip socks. Offers a barefoot feel with ultimate non-slip stability and sensory freedom.",
+            "th": "ถุงเท้ากันลื่นห้านิ้วแบบเปิดนิ้วเท้าสีขาวเอิร์ธโทน ให้ความรู้สึกเหมือนเท้าเปล่า สัมผัสพื้นผิวเครื่องได้อย่างอิสระ ทรงตัวและฝึกซ้อมได้แม่นยำยิ่งขึ้น"
+        },
+        "features": {
+            "en": [
+                "Barefoot feedback open toe style",
+                "Premium combed cotton blend",
+                "Full-sole silicon non-slip grip",
+                "Highly stretchable supportive band"
+            ],
+            "th": [
+                "ดีไซน์เปิดนิ้วเท้า สัมผัสพื้นและเครื่องโดยตรง",
+                "ผ้าฝ้าย Combed เกรดพรีเมียม นุ่มสบายผิว",
+                "ซิลิโคนกันลื่นคุณภาพสูงยึดเกาะแน่นปลอดภัย",
+                "ยางยืดรอบเท้ากระชับส้นไม่เลื่อนหลุดง่าย"
+            ]
         }
     },
     {
-        id: "catthenon",
-        category: "furniture",
-        title:    { en: "Catthenon",                   th: "Catthenon" },
-        subtitle: { en: "Premium Cat Scratcher Tower", th: "ที่ลับเล็บแมว" },
-        badge:    { en: "Premium",                     th: "พรีเมียม" },
-        price: "3,190",
-        image: "assets/catthenon.jpg",
-        description: {
-            en: "Premium Catthenon cat scratcher with strong, stable structure. Paper rope material — odorless and minimal dust. Easy assembly.",
-            th: "ที่ลับเล็บแมวพรีเมียม Catthenon โครงสร้างแข็งแรง มั่นคง วัสดุเชือกกระดาษ ไร้กลิ่น/ฝุ่นน้อย ประกอบง่าย"
+        "id": "marble_open_toe",
+        "category": "grip",
+        "title": {
+            "en": "Marble Open Toe Grip Socks",
+            "th": "Marble Open Toe Grip Socks"
         },
-        features: {
-            en: ["Strong, stable structure", "Paper rope material — odorless & minimal dust", "Easy assembly"],
-            th: ["โครงสร้างแข็งแรง มั่นคง", "วัสดุเชือกกระดาษ ไร้กลิ่น/ฝุ่นน้อย", "ประกอบง่าย"]
+        "subtitle": {
+            "en": "Modern Marble Open-Toe Design",
+            "th": "ถุงเท้ากันลื่นแบบเปิดนิ้วเท้าลายหินอ่อนสุดชิค"
+        },
+        "badge": {
+            "en": "Open Toe",
+            "th": "เปิดนิ้วเท้า"
+        },
+        "price": "420",
+        "image": "assets/Marble Open Toe.png",
+        "description": {
+            "en": "Modern abstract marble textured open toe grip socks. Blends elegance with performance and barefoot feedback for professional studio work.",
+            "th": "ถุงเท้ากันลื่นห้านิ้วแบบเปิดนิ้วเท้าลวดลายหินอ่อนยอดนิยมสไตล์โมเดิร์นคลาสสิก ปล่อยปลายเท้าสัมผัสเครื่องโดยตรง เพิ่มแรงยึดเกาะและการทรงตัวดีเยี่ยม"
+        },
+        "features": {
+            "en": [
+                "Stylish modern abstract marble pattern",
+                "Barefoot feedback open toe style",
+                "Soft cushioned sole for joint support",
+                "Durable eco-friendly non-slip prints"
+            ],
+            "th": [
+                "ลวดลายหินอ่อนสลับสี สวยเด่น ทันสมัย",
+                "ดีไซน์เปิดนิ้วเท้า ให้การเคลื่อนไหวเป็นธรรมชาติสุดๆ",
+                "พื้นถุงเท้าทอหนานุ่มซับแรงกระแทกบริเวณส้นเท้า",
+                "ปุ่มซิลิโคนเกรดพรีเมียม ปลอดภัยและทนทานสูง"
+            ]
+        }
+    },
+    {
+        "id": "woody_open_toe",
+        "category": "grip",
+        "title": {
+            "en": "Woody Open Toe Grip Socks",
+            "th": "Woody Open Toe Grip Socks"
+        },
+        "subtitle": {
+            "en": "Warm Earthy Brown Open-Toe Socks",
+            "th": "ถุงเท้ากันลื่นแบบเปิดนิ้วเท้าสีน้ำตาลลายไม้ธรรมชาติ"
+        },
+        "badge": {
+            "en": "Open Toe",
+            "th": "เปิดนิ้วเท้า"
+        },
+        "price": "390",
+        "image": "assets/Woody Open Toe.png",
+        "description": {
+            "en": "Cozy woody brown open toe five-toe grip socks. Earthy natural tone meets organic barefoot movement for a grounding experience.",
+            "th": "ถุงเท้ากันลื่นห้านิ้วแบบเปิดนิ้วเท้าสีน้ำตาลเอิร์ธโทนลายเนื้อไม้ อบอุ่น เรียบง่าย ได้ความรู้สึกผ่อนคลายและสัมผัสเครื่องฝึกฝนได้อย่างเป็นธรรมชาติ"
+        },
+        "features": {
+            "en": [
+                "Warm calming organic woody brown tone",
+                "Open toe barefoot motion feel",
+                "Durable dense thread count for studio use",
+                "Silicon non-slip pads covering sole"
+            ],
+            "th": [
+                "เฉดสีน้ำตาลลายไม้ อบอุ่น ผ่อนคลายสไตล์ธรรมชาติ",
+                "ดีไซน์เปิดนิ้วเท้า สัมผัสพื้นผิวเครื่องได้อย่างมั่นใจ",
+                "การทอเส้นด้ายหนาพิเศษ ทนทานต่อการเสียดสีดึงรั้ง",
+                "ซิลิโคนเต็มฝ่าเท้า ป้องกันการลื่นล้มไถลในทุกสตูดิโอ"
+            ]
+        }
+    },
+    {
+        "id": "pink",
+        "category": "grip",
+        "title": {
+            "en": "Pink Grip Socks",
+            "th": "Pink Grip Socks"
+        },
+        "subtitle": {
+            "en": "Sweet Dreamy Pink Socks",
+            "th": "ถุงเท้ากันลื่นห้านิ้วสีชมพูหวานสดใส"
+        },
+        "badge": {
+            "en": "Vibrant",
+            "th": "สีสดใส"
+        },
+        "price": "390",
+        "image": "assets/Pink.jpg",
+        "description": {
+            "en": "Vibrant and sweet dreamy pink five-toe grip socks. Energize your pilates session with a bright splash of color and secure grip performance.",
+            "th": "ถุงเท้ากันลื่นห้านิ้วสีชมพูพาสเทลสดใส น่ารักสุดๆ ช่วยเติมความกระปรี้กระเปร่าและสีสันให้กับการเคลื่อนไหวในชั้นเรียน ทอแน่นหนากระชับเท้าดีเยี่ยม"
+        },
+        "features": {
+            "en": [
+                "Sweet vibrant hot pink color theme",
+                "Soft breathing weave on instep",
+                "Anatomical five-toe separated shape",
+                "Full-sole silicon gel anti-slip prints"
+            ],
+            "th": [
+                "เฉดสีชมพูสดใสสุดชิค เพิ่มความโดดเด่นสะดุดตา",
+                "ทอตาข่ายโปร่งบริเวณหลังเท้าแห้งสบายและระบายดีเยี่ยม",
+                "กระเป๋าแยกนิ้วสวมง่าย ช่วยโอบล้อมนิ้วเท้าเป็นรายนิ้ว",
+                "ปุ่มซิลิโคนเจลหนานุ่ม ยึดเกาะเครื่องได้อย่างมีประสิทธิภาพ"
+            ]
+        }
+    },
+    {
+        "id": "mud",
+        "category": "grip",
+        "title": {
+            "en": "Mud Grip Socks",
+            "th": "Mud Grip Socks"
+        },
+        "subtitle": {
+            "en": "Organic Deep Mud-Grey Socks",
+            "th": "ถุงเท้ากันลื่นห้านิ้วสีเทาโคลนธรรมชาติ"
+        },
+        "badge": {
+            "en": "Earthy",
+            "th": "สีธรรมชาติ"
+        },
+        "price": "390",
+        "image": "assets/Mud.jpg",
+        "description": {
+            "en": "Organic deep mud-grey five-toe grip socks. Natural, grounded tone that offers a clean, professional studio look with great durability.",
+            "th": "ถุงเท้ากันลื่นห้านิ้วสีเทาโคลนเข้มแบบเอิร์ธโทน เรียบหรู คลาสสิก เหมาะสำหรับผู้เล่นที่ชอบสไตล์คุมโทน สวมใส่สบาย ซักล้างทนทาน ไม่เปื้อนง่าย"
+        },
+        "features": {
+            "en": [
+                "Calming deep mud grey color",
+                "High density double-ply cotton blend",
+                "Elastic arch support compression band",
+                "Durable slip-free silicon grip print"
+            ],
+            "th": [
+                "เฉดสีเทาเข้มธรรมชาติ เรียบร้อย ทนทาน ไม่เลอะง่าย",
+                "ทอด้ายคู่เส้นหนา ให้สัมผัสนุ่มและปกป้องสูงสุด",
+                "แถบยืดรัดกระชับอุ้งเท้า ป้องกันถุงเท้าบิดหมุน",
+                "เจลซิลิโคนกันลื่นหนาพิเศษ ยึดเกาะแน่นยาวนาน"
+            ]
+        }
+    },
+    {
+        "id": "pink_panther",
+        "category": "grip",
+        "title": {
+            "en": "Pink Panther Grip Socks",
+            "th": "Pink Panther Grip Socks"
+        },
+        "subtitle": {
+            "en": "Vibrant Panther Pattern Socks",
+            "th": "ถุงเท้ากันลื่นห้านิ้วลายเสือชมพูพาสเทลชิค"
+        },
+        "badge": {
+            "en": "Playful",
+            "th": "สายแฟชั่น"
+        },
+        "price": "420",
+        "image": "assets/Pink Panther.jpg",
+        "description": {
+            "en": "Playful and wild pink and black panther patterned five-toe grip socks. A fashionable statement piece for pilates enthusiasts who love styling.",
+            "th": "ถุงเท้ากันลื่นห้านิ้วลวดลายเสือสลับทูโทนชมพู-ดำสุดเก๋ ดีไซน์แฟชั่นนิสต้าสำหรับผู้รักการแต่งตัวขณะออกกำลังกาย ปุ่มซิลิโคนหนาพิเศษยึดเกาะได้ทุกทิศทาง"
+        },
+        "features": {
+            "en": [
+                "Bold pink panther character design",
+                "Thick padded footbed for shock absorption",
+                "Secure non-slip eco-friendly silicone print",
+                "Reinforced elastic ankle cuff"
+            ],
+            "th": [
+                "ลายพิมพ์เสือพาสเทลสลับสีโดดเด่นเป็นเอกลักษณ์",
+                "พื้นสัมผัสใต้เท้าบุนุ่มหนาพิเศษรองรับน้ำหนักตัวได้ดี",
+                "ซิลิโคนกันลื่นเป็นมิตรต่อผิว ยึดเกาะแน่นปลอดภัย",
+                "ยางยืดขอบข้อมั่นคง กระชับข้อเท้า ไม่หมุนหรือรั้ง"
+            ]
+        }
+    },
+    {
+        "id": "silver",
+        "category": "grip",
+        "title": {
+            "en": "Silver Grip Socks",
+            "th": "Silver Grip Socks"
+        },
+        "subtitle": {
+            "en": "Elegant Silver-Grey Solid Socks",
+            "th": "ถุงเท้ากันลื่นห้านิ้วสีเทาเงินพรีเมียม"
+        },
+        "badge": {
+            "en": "Classic",
+            "th": "เรียบง่าย"
+        },
+        "price": "390",
+        "image": "assets/Silver.jpg",
+        "description": {
+            "en": "Elegant silver-grey solid five-toe grip socks. Clean, professional look that coordinates with all activewear collections perfectly.",
+            "th": "ถุงเท้ากันลื่นห้านิ้วสีเทาเงินสว่างพรีเมียม ลุคมืออาชีพ เรียบหรู สะอาดตา ดูดีทุกมิติ พร้อมซิลิโคนกันลื่นแบบเจลใสเกรดสูงสุด ทนทานเป็นพิเศษ"
+        },
+        "features": {
+            "en": [
+                "Elegant sleek silver grey shade",
+                "High moisture absorption breathable fibers",
+                "Flexible separate toe pocket slots",
+                "Transparent high density silicone print"
+            ],
+            "th": [
+                "เฉดสีเทาเงินสว่างพรีเมียม หรูหราทันสมัย",
+                "เส้นใยระบายอากาศชั้นยอด แห้งไว ไร้กลิ่นอับชื้น",
+                "ทอแยกช่องนิ้วเท้าเรียบเนียน ไม่ระคายเคืองช่องนิ้ว",
+                "ปุ่มซิลิโคนเจลแบบใสพิเศษ ยึดเกาะเสถียรและเกาะเครื่องแน่น"
+            ]
         }
     }
-
 ];
 
+
 const CATEGORIES_DEFAULT = [
-    { id: "appliances", name: { th: "อุปกรณ์อัจฉริยะ", en: "Smart Tech" } },
-    { id: "furniture", name: { th: "เฟอร์นิเจอร์", en: "Furniture" } },
-    { id: "toys", name: { th: "ของเล่น", en: "Toys" } }
+    { id: "grip", name: { th: "ถุงเท้ากันลื่น", en: "Grip Socks" } },
+    { id: "daily", name: { th: "ถุงเท้าใส่ทุกวัน", en: "Daily Socks" } },
+    { id: "accessories", name: { th: "อุปกรณ์เสริม", en: "Accessories" } }
 ];
 
 // ==========================================
@@ -484,7 +836,7 @@ let currentCategory = "all";
 let searchQuery = "";
 let currentSlide = 0;
 let slideInterval;
-let currentLanguage = localStorage.getItem("duit_lang") || "th";
+let currentLanguage = localStorage.getItem("thumbtoe_lang") || "th";
 
 // ==========================================
 // CORE INITIALIZATION
@@ -594,7 +946,7 @@ function renderCMSSlider(slides) {
         const div = document.createElement("div");
         div.className = "slide" + (idx === 0 ? " active" : "");
         div.innerHTML = `
-            <div class="slide-image" style="background-image: linear-gradient(rgba(44,42,41,0.2), rgba(44,42,41,0.4)), url('${slide.image}');"></div>
+            <div class="slide-image" style="background-image: linear-gradient(rgba(26,26,46,0.15), rgba(26,26,46,0.35)), url('${slide.image}');"></div>
             <div class="slide-content">
                 <span class="slide-badge" data-en="${escHTMLAttr(slide.badgeEn)}" data-th="${escHTMLAttr(slide.badgeTh)}">${escHTML(slide.badgeTh)}</span>
                 <h2 data-en="${escHTMLAttr(slide.titleEn)}" data-th="${escHTMLAttr(slide.titleTh)}">${escHTML(slide.titleTh)}</h2>
@@ -625,7 +977,7 @@ function applyEventCMS(ev) {
     if (ev.lineUrl) {
         const qrImg = document.querySelector(".qr-placeholder img");
         if (qrImg) qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(ev.lineUrl)}`;
-        document.querySelectorAll(`a[href="https://line.me/R/ti/p/@duit_thailand"]`).forEach(el => el.href = ev.lineUrl);
+        document.querySelectorAll(`a[href="https://line.me/R/ti/p/@thumbtoe_th"]`).forEach(el => el.href = ev.lineUrl);
     }
     // Coupon form title (%)
     const claimTitle = document.querySelector("#couponForm h3[data-en]");
@@ -653,8 +1005,8 @@ function applyStoreCMS(store) {
     if (socialLinks[1] && store.fbUrl)   socialLinks[1].href = store.fbUrl;
     if (socialLinks[2] && store.igUrl)   socialLinks[2].href = store.igUrl;
     if (socialLinks[3] && store.globalUrl) socialLinks[3].href = store.globalUrl;
-    // DUIT Global link
-    document.querySelectorAll(`a[href="https://duitoverseas.com/"]`).forEach(el => { if (store.globalUrl) el.href = store.globalUrl; });
+    // Thumb Toe Global link
+    document.querySelectorAll(`a[href="https://thumbtoe.shop/"]`).forEach(el => { if (store.globalUrl) el.href = store.globalUrl; });
     // About brand description
     const aboutLead = document.querySelector(".about-lead");
     if (aboutLead && (store.aboutEn || store.aboutTh)) {
@@ -680,7 +1032,7 @@ function escHTML(str) {
 // ==========================================
 function toggleLanguage() {
     currentLanguage = currentLanguage === "en" ? "th" : "en";
-    localStorage.setItem("duit_lang", currentLanguage);
+    localStorage.setItem("thumbtoe_lang", currentLanguage);
     applyLanguage();
     renderProducts();
 }
@@ -1130,7 +1482,7 @@ function openModal(productId) {
     // Get LINE URL from CMS if set
     const lineUrl = (_cmsData && _cmsData.store && _cmsData.store.lineUrl)
         ? _cmsData.store.lineUrl
-        : "https://line.me/R/ti/p/@duit_thailand";
+        : "https://line.me/R/ti/p/@thumbtoe_th";
 
     // Prepare for dynamic descriptions
     window.currentProductDesc = description;
@@ -1299,7 +1651,7 @@ async function registerMembership(event) {
 
     // Generate unique member ID
     const randomSuffix = Math.floor(1000 + Math.random() * 9000);
-    const memberId = `DUIT-VIP-${randomSuffix}`;
+    const memberId = `TT-VIP-${randomSuffix}`;
 
     const newMember = {
         name: name,
@@ -1324,9 +1676,9 @@ async function registerMembership(event) {
         // Fallback handled below
     }
 
-    let leads = JSON.parse(localStorage.getItem("duit_leads")) || [];
+    let leads = JSON.parse(localStorage.getItem("thumbtoe_leads")) || [];
     leads.push(newMember);
-    localStorage.setItem("duit_leads", JSON.stringify(leads));
+    localStorage.setItem("thumbtoe_leads", JSON.stringify(leads));
 
     localStorage.setItem("claimed_membership", JSON.stringify(newMember));
 
@@ -1413,7 +1765,7 @@ function renderLeadsTable() {
     const tbody = document.getElementById("leadsTableBody");
     tbody.innerHTML = "";
 
-    const leads = JSON.parse(localStorage.getItem("duit_leads")) || [];
+    const leads = JSON.parse(localStorage.getItem("thumbtoe_leads")) || [];
 
     if (leads.length === 0) {
         tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: var(--color-text-muted);">No leads captured yet.</td></tr>`;
@@ -1447,7 +1799,7 @@ function escapeHTML(str) {
 
 function clearLeads() {
     if (confirm("Are you sure you want to permanently clear ALL captured lead records? This cannot be undone.")) {
-        localStorage.removeItem("duit_leads");
+        localStorage.removeItem("thumbtoe_leads");
         localStorage.removeItem("claimed_coupon");
         renderLeadsTable();
         alert("All leads have been cleared.");
@@ -1455,7 +1807,7 @@ function clearLeads() {
 }
 
 function exportLeads() {
-    const leads = JSON.parse(localStorage.getItem("duit_leads")) || [];
+    const leads = JSON.parse(localStorage.getItem("thumbtoe_leads")) || [];
     if (leads.length === 0) {
         alert("No leads available to export.");
         return;
@@ -1479,8 +1831,27 @@ function exportLeads() {
     const url  = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.setAttribute("href", url);
-    link.setAttribute("download", `DUIT_Leads_Export_${new Date().toISOString().slice(0, 10)}.csv`);
+    link.setAttribute("download", `ThumbToe_Leads_Export_${new Date().toISOString().slice(0, 10)}.csv`);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
 }
+
+// ==========================================
+// TOUCH SWIPE — HERO SLIDER (Mobile)
+// ==========================================
+document.addEventListener("DOMContentLoaded", () => {
+    const sliderEl = document.querySelector(".hero-slider");
+    if (!sliderEl) return;
+    let touchStartX = 0;
+    const MIN_SWIPE = 50;
+    sliderEl.addEventListener("touchstart", (e) => {
+        touchStartX = e.changedTouches[0].clientX;
+    }, { passive: true });
+    sliderEl.addEventListener("touchend", (e) => {
+        const delta = touchStartX - e.changedTouches[0].clientX;
+        if (Math.abs(delta) >= MIN_SWIPE) {
+            delta > 0 ? nextSlide() : prevSlide();
+        }
+    }, { passive: true });
+});

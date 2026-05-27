@@ -13,3 +13,7 @@ Thumbs.db
 
 # Node.js
 node_modules/
+
+# Wrangler
+.wrangler/
+

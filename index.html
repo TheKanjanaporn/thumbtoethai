@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DUIT Thailand | Premium Minimalist Cat Furniture & Tech</title>
+    <title>Thumb Toe Thailand | Everyday Pilates Socks</title>
     <!-- Meta Descriptions for SEO -->
     <meta name="description"
-        content="Discover DUIT Thailand's premium minimalist cat furniture, modular scratchers, and smart pet drying rooms. Scan to explore our exclusive event catalog.">
+        content="Discover Thumb Toe Thailand's premium pilates socks. Korea's original grip socks brand — for pilates, yoga, and everyday movement.">
     <!-- Google Fonts: Outfit (modern geometric sans-serif) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -61,78 +61,86 @@
     <!-- Main Navigation Bar -->
     <header class="navbar">
         <div class="nav-container">
-            <a href="#" class="logo">
-                duit <span class="logo-sub">THAILAND</span>
-            </a>
+            <!-- Left Links -->
             <nav class="nav-links" id="navLinks">
-                <a href="#about" class="nav-item" data-en="About Us" data-th="เกี่ยวกับเรา">About Us</a>
+                <a href="#about" class="nav-item" data-en="About" data-th="เกี่ยวกับเรา">About</a>
                 <a href="#shop" class="nav-item" data-en="Shop" data-th="สินค้าของเรา">Shop</a>
-                <a href="#event" class="nav-item nav-highlight" data-en="Event Exclusive"
-                    data-th="สิทธิพิเศษในงาน">Event Exclusive</a>
-                <a href="#contact" class="nav-item" data-en="Contact" data-th="ติดต่อเรา">Contact</a>
+                <a href="#size" class="nav-item" data-en="Size Guide" data-th="วัดขนาดไซส์">Size Guide</a>
             </nav>
-            <div class="nav-actions">
-                <button class="lang-switch-btn" onclick="toggleLanguage()" id="langBtn" aria-label="Switch Language">
-                    <i class="fa-solid fa-globe" style="margin-right: 4px;"></i> <span id="langBtnText">TH</span>
+
+            <!-- Centered Logo -->
+            <a href="#" class="logo-centered">
+                <!-- Using the processed logo with removed background and cropped padding -->
+                <img src="assets/logo_transparent.png" alt="Thumb Toe" style="height: 38px; object-fit: contain; margin-bottom: 3px;" id="brandLogo">
+            </a>
+
+            <!-- Right Actions -->
+            <div class="nav-actions-right">
+                <div class="search-box-mini">
+                    <input type="text" placeholder="Search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <button class="icon-btn lang-switch-btn" onclick="toggleLanguage()" aria-label="Switch Language">
+                    <i class="fa-solid fa-globe"></i>
                 </button>
                 <button class="menu-btn" onclick="toggleMenu()" id="menuBtn" aria-label="Toggle Navigation Menu">
                     <i class="fa-solid fa-bars"></i>
                 </button>
             </div>
         </div>
+
+        <!-- Pastel Shop Awning as the bottom edge -->
+        <div class="shop-awning"></div>
     </header>
 
     <!-- Mobile Nav Overlay -->
     <div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="toggleMenu()"></div>
 
+    <!-- Pastel Shop Awning was moved inside header -->
+
     <!-- Hero Showcase Slider -->
     <section class="hero-slider" id="home">
         <div class="slides-container" id="slidesContainer">
-            <!-- Slide 1: Yummy Ball -->
+            <!-- Slide 1: Best Seller Socks -->
             <div class="slide active">
                 <div class="slide-image"
-                    style="background-image: linear-gradient(rgba(44, 42, 41, 0.2), rgba(44, 42, 41, 0.4)), url('https://cdn.imweb.me/thumbnail/20250428/ddee63d251372.jpg');">
+                    style="background-image: linear-gradient(rgba(26, 26, 46, 0.15), rgba(26, 26, 46, 0.35)), url('https://thumbtoe.shop/web/upload/category/editor/2026/260107_main_PC.jpg');">
                 </div>
                 <div class="slide-content">
-                    <span class="slide-badge" data-en="Hot Pick" data-th="สินค้ายอดฮิต">Hot Pick</span>
-                    <h2 data-en="duit yummy ball" data-th="duit yummy ball">duit yummy ball</h2>
-                    <p data-en="your playful toy buddy, nose work master."
-                        data-th="ของเล่นสัตว์เลี้ยงแสนสนุก ฝึกดมกลิ่นและทักษะสมอง">your playful toy buddy, nose work
-                        master.</p>
-                    <a href="#shop" class="btn-outline-white" onclick="filterCategory('toys')" data-en="Explore Toys"
-                        data-th="เลือกชมของเล่น">Explore Toys</a>
+                    <span class="slide-badge" data-en="Best Seller" data-th="สินค้าขายดี">Best Seller</span>
+                    <h2 data-en="thumb toe pilates socks" data-th="ถุงเท้าพิลาทิส thumb toe">thumb toe pilates socks</h2>
+                    <p data-en="everyday pilates, everyday comfort."
+                        data-th="ถุงเท้าพิลาทิสเกาหลี ใส่สบายทุกวัน">everyday pilates, everyday comfort.</p>
+                    <a href="#shop" class="btn-outline-white" onclick="filterCategory('grip')" data-en="Shop Now"
+                        data-th="ช้อปเลย">Shop Now</a>
                 </div>
             </div>
-            <!-- Slide 2: Automatic Feeder -->
+            <!-- Slide 2: Non-Grip Socks -->
             <div class="slide">
                 <div class="slide-image"
-                    style="background-image: linear-gradient(rgba(44, 42, 41, 0.2), rgba(44, 42, 41, 0.4)), url('https://cdn.imweb.me/thumbnail/20240419/4d999960b611b.jpg');">
+                    style="background-image: linear-gradient(rgba(26, 26, 46, 0.15), rgba(26, 26, 46, 0.35)), url('https://thumbtoe.shop/web/product/big/202505/80a4390daaa68948ac7682bfc36e8a94.jpg');">
                 </div>
                 <div class="slide-content">
-                    <span class="slide-badge" data-en="Smart Tech" data-th="อุปกรณ์อัจฉริยะ">Smart Tech</span>
-                    <h2 data-en="duit automatic feeder" data-th="เครื่องให้อาหารอัตโนมัติ duit">duit automatic feeder
-                    </h2>
-                    <p data-en="customizable smart feeder, never miss a meal."
-                        data-th="เครื่องให้อาหารอัจฉริยะ ตั้งเวลาได้ตามใจ หมดกังวลทุกมื้อ">customizable smart feeder,
-                        never miss a meal.</p>
-                    <a href="#shop" class="btn-outline-white" onclick="filterCategory('appliances')"
-                        data-en="Explore Appliances" data-th="เลือกชมอุปกรณ์">Explore Appliances</a>
+                    <span class="slide-badge" data-en="New Collection" data-th="คอลเลกชันใหม่">New Collection</span>
+                    <h2 data-en="daisy collection" data-th="คอลเลกชัน Daisy">daisy collection</h2>
+                    <p data-en="colorful grip socks for your pilates practice."
+                        data-th="ถุงเท้ากันลื่นสีสันสดใสสำหรับการฝึกพิลาทิส">colorful grip socks for your pilates practice.</p>
+                    <a href="#shop" class="btn-outline-white" onclick="filterCategory('all')"
+                        data-en="Explore Collection" data-th="ดูคอลเลกชัน">Explore Collection</a>
                 </div>
             </div>
-            <!-- Slide 3: Catthenon -->
+            <!-- Slide 3: Daily Socks -->
             <div class="slide">
                 <div class="slide-image"
-                    style="background-image: linear-gradient(rgba(44, 42, 41, 0.2), rgba(44, 42, 41, 0.4)), url('https://cdn.imweb.me/thumbnail/20241216/f2f68e665eb7f.jpg');">
+                    style="background-image: linear-gradient(rgba(26, 26, 46, 0.15), rgba(26, 26, 46, 0.35)), url('https://thumbtoe.shop/web/product/big/202602/318893c7f749c2172bf42a9c152ce0b1.jpg');">
                 </div>
                 <div class="slide-content">
-                    <span class="slide-badge" data-en="Luxury Furniture" data-th="เฟอร์นิเจอร์สุดหรู">Luxury
-                        Furniture</span>
-                    <h2 data-en="duit catthenon" data-th="คอนโดแมวที่ลับเล็บ duit">duit catthenon</h2>
-                    <p data-en="modular cat scratching tower, the kingdom of cats."
-                        data-th="คอนโดแมวที่ลับเล็บสไตล์โมเดิร์น อาณาจักรของเจ้าเหมียว">modular cat scratching tower,
-                        the kingdom of cats.</p>
-                    <a href="#shop" class="btn-outline-white" onclick="filterCategory('furniture')"
-                        data-en="Explore Furniture" data-th="เลือกชมเฟอร์นิเจอร์">Explore Furniture</a>
+                    <span class="slide-badge" data-en="Daily Essentials" data-th="สินค้าจำเป็นประจำวัน">Daily Essentials</span>
+                    <h2 data-en="non-grip daily socks" data-th="ถุงเท้าใส่ทุกวัน">non-grip daily socks</h2>
+                    <p data-en="soft, breathable socks for everyday comfort."
+                        data-th="ถุงเท้านุ่มสบาย ระบายอากาศ สำหรับใส่ทุกวัน">soft, breathable socks for everyday comfort.</p>
+                    <a href="#shop" class="btn-outline-white" onclick="filterCategory('daily')"
+                        data-en="Shop Daily Socks" data-th="ช้อปถุงเท้าใส่ทุกวัน">Shop Daily Socks</a>
                 </div>
             </div>
         </div>
@@ -155,45 +163,42 @@
         <div class="container">
             <div class="about-grid">
                 <div class="about-text-content">
-                    <span class="section-tag" data-en="Duit Design Lab" data-th="Duit Design Lab">Duit Design Lab</span>
-                    <h2 class="section-title" data-en="Harmonizing Pets & Modern Interiors"
-                        data-th="ความลงตัวระหว่างสัตว์เลี้ยงและบ้านสไตล์โมเดิร์น">Harmonizing Pets & Modern Interiors
+                    <span class="section-tag" data-en="Thumb Toe Story" data-th="เรื่องราวของ Thumb Toe">Thumb Toe Story</span>
+                    <h2 class="section-title" data-en="Everyday Pilates, Everyday Comfort"
+                        data-th="ถุงเท้าพิลาทิส สำหรับทุกวัน ทุกคน">Everyday Pilates, Everyday Comfort
                     </h2>
                     <p class="about-lead"
-                        data-en="DUIT believes that pet furniture shouldn't disrupt your home's aesthetic. Originating from South Korea, we design products that blend seamlessly into minimalist spaces, providing optimal ergonomics for cats while maintaining premium decor standards."
-                        data-th="DUIT เชื่อว่าเฟอร์นิเจอร์สัตว์เลี้ยงไม่จำเป็นต้องทำลายความสวยงามของบ้านคุณ แบรนด์พรีเมียมสัญชาติเกาหลีใต้ที่ออกแบบผลิตภัณฑ์ให้เข้ากับพื้นที่มินิมอลอย่างลงตัว สวยงามตามหลักสรีรศาสตร์สำหรับสัตว์เลี้ยง พร้อมคงระดับมาตรฐานการตกแต่งระดับหรู">
-                        DUIT believes that pet furniture shouldn't disrupt your home's aesthetic. Originating from South
-                        Korea, we design products that blend seamlessly into minimalist spaces, providing optimal
-                        ergonomics for cats while maintaining premium decor standards.
+                        data-en="Thumb Toe is Korea's original pilates socks brand. We design grip socks that combine performance, comfort, and style — perfect for pilates, yoga, barre, and everyday movement. Made with premium cotton blend and non-slip silicone grips."
+                        data-th="Thumb Toe แบรนด์ถุงเท้าพิลาทิสจากเกาหลี ออกแบบถุงเท้ากันลื่นที่รวมประสิทธิภาพ ความสบาย และสไตล์ เข้ากันอย่างลงตัว เหมาะสำหรับพิลาทิส โยคะ บาร์เร และการเคลื่อนไหวในทุกวัน ผลิตจากผ้าฝ้ายผสมพรีเมียมพร้อมซิลิโคนกันลื่น">
+                        Thumb Toe is Korea's original pilates socks brand. We design grip socks that combine
+                        performance, comfort, and style — perfect for pilates, yoga, barre, and everyday movement.
+                        Made with premium cotton blend and non-slip silicone grips.
                     </p>
                     <div class="features-mini">
                         <div class="feat-item">
-                            <span class="feat-icon"><i class="fa-solid fa-leaf"></i></span>
+                            <span class="feat-icon"><i class="fa-solid fa-hand-holding-heart"></i></span>
                             <div>
-                                <h4 data-en="Premium Eco Materials" data-th="วัสดุรักษ์โลกพรีเมียม">Premium Eco
-                                    Materials</h4>
-                                <p data-en="Non-toxic, organic felt, high-grade birch plywood, and safety-tested powder coating."
-                                    data-th="สักหลาดออร์แกนิกไร้สารพิษ, ไม้อัดไม้เบิร์ชคุณภาพสูง และการเคลือบสีฝุ่นที่ปลอดภัยสำหรับสัตว์เลี้ยง">
-                                    Non-toxic, organic felt, high-grade birch plywood, and safety-tested powder coating.
+                                <h4 data-en="Premium Grip Technology" data-th="เทคโนโลยีกันลื่นระดับพรีเมียม">Premium Grip Technology</h4>
+                                <p data-en="Non-slip silicone dots provide maximum stability during pilates and yoga."
+                                    data-th="จุดซิลิโคนกันลื่นให้ความมั่นคงสูงสุดระหว่างเล่นพิลาทิสและโยคะ">
+                                    Non-slip silicone dots provide maximum stability during pilates and yoga.
                                 </p>
                             </div>
                         </div>
                         <div class="feat-item">
-                            <span class="feat-icon"><i class="fa-solid fa-hand-holding-heart"></i></span>
+                            <span class="feat-icon"><i class="fa-solid fa-palette"></i></span>
                             <div>
-                                <h4 data-en="Designed for Cats" data-th="ออกแบบมาเพื่อแมวโดยเฉพาะ">Designed for Cats
-                                </h4>
-                                <p data-en="Engineered based on feline behaviors—scratching, lounging, climbing, and sensory play."
-                                    data-th="คิดค้นพัฒนาอิงจากพฤติกรรมตามธรรมชาติของแมว ทั้งการลับเล็บ พักผ่อน ปีนป่าย และกระตุ้นสัมผัส">
-                                    Engineered based on feline behaviors—scratching, lounging, climbing, and sensory
-                                    play.</p>
+                                <h4 data-en="Colorful Collections" data-th="คอลเลกชันหลากหลายสี">Colorful Collections</h4>
+                                <p data-en="From pastel to bold — express your style with our wide range of colors and patterns."
+                                    data-th="ตั้งแต่พาสเทลไปจนถึงสีจัด แสดงสไตล์ของคุณด้วยสีและลายหลากหลาย">
+                                    From pastel to bold — express your style with our wide range of colors and patterns.</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="about-visual">
-                    <img src="https://cdn.imweb.me/thumbnail/20241121/5295dc42418e9.jpg"
-                        alt="DUIT Interior Design Philosophy" class="about-img">
+                    <img src="https://thumbtoe.shop/web/product/big/202505/80a4390daaa68948ac7682bfc36e8a94.jpg"
+                        alt="Thumb Toe Pilates Socks" class="about-img">
                 </div>
             </div>
         </div>
@@ -203,14 +208,14 @@
     <section class="section catalog-section" id="shop">
         <div class="container">
             <div class="catalog-header">
-                <span class="section-tag" data-en="DUIT Product Catalog" data-th="แคตตาล็อกสินค้า DUIT">DUIT Product
+                <span class="section-tag" data-en="Thumb Toe Product Catalog" data-th="แคตตาล็อกสินค้า Thumb Toe">Thumb Toe Product
                     Catalog</span>
                 <h2 class="section-title" data-en="Explore Our Collections" data-th="เลือกชมคอลเลกชันสินค้า">Explore Our
                     Collections</h2>
                 <p class="catalog-subtext"
-                    data-en="Click on any product to view full specifications, dimensions, and materials."
-                    data-th="คลิกบนตัวสินค้าเพื่อชมสเปกอย่างละเอียด ขนาด วัสดุ และราคาพิเศษ">Click on any product to
-                    view full specifications, dimensions, and materials.</p>
+                    data-en="Click on any product to view full specifications, sizes, and colors."
+                    data-th="คลิกบนตัวสินค้าเพื่อชมรายละเอียด ไซส์ และสี">Click on any product to
+                    view full specifications, sizes, and colors.</p>
             </div>
 
             <!-- Search and Filter bar -->
@@ -218,12 +223,12 @@
                 <div class="category-tabs" id="categoryTabs">
                     <button class="tab-btn active" onclick="filterCategory('all')" data-category="all" data-en="All"
                         data-th="ทั้งหมด">All</button>
-                    <button class="tab-btn" onclick="filterCategory('furniture')" data-category="furniture"
-                        data-en="Furniture" data-th="เฟอร์นิเจอร์">Furniture</button>
-                    <button class="tab-btn" onclick="filterCategory('appliances')" data-category="appliances"
-                        data-en="Smart Appliances" data-th="อุปกรณ์อัจฉริยะ">Smart Appliances</button>
-                    <button class="tab-btn" onclick="filterCategory('toys')" data-category="toys"
-                        data-en="Toys & Accessories" data-th="ของเล่นและอุปกรณ์">Toys & Accessories</button>
+                    <button class="tab-btn" onclick="filterCategory('grip')" data-category="grip"
+                        data-en="Grip Socks" data-th="ถุงเท้ากันลื่น">Grip Socks</button>
+                    <button class="tab-btn" onclick="filterCategory('daily')" data-category="daily"
+                        data-en="Daily Socks" data-th="ถุงเท้าใส่ทุกวัน">Daily Socks</button>
+                    <button class="tab-btn" onclick="filterCategory('accessories')" data-category="accessories"
+                        data-en="Accessories" data-th="อุปกรณ์เสริม">Accessories</button>
                 </div>
                 <div class="search-box">
                     <i class="fa-solid fa-magnifying-glass"></i>
@@ -239,109 +244,68 @@
         </div>
     </section>
 
-    <!-- Event Exclusive Interactive Coupon Section -->
-    <section class="section event-section" id="event">
+    <!-- Size Guide Section -->
+    <section class="section size-guide-section" id="size">
         <div class="container">
-            <div class="event-card">
-                <div class="event-glow"></div>
-                <div class="event-grid">
-                    <div class="event-info">
-                        <span class="event-badge" data-en="<i class='fa-solid fa-crown'></i> VIP Membership"
-                            data-th="<i class='fa-solid fa-crown'></i> สมัครสมาชิก VIP"><i
-                                class="fa-solid fa-crown"></i>
-                            VIP Membership</span>
-                        <h2 data-en="DUIT Exclusive Club" data-th="DUIT Exclusive Club">DUIT Exclusive Club</h2>
-                        <p data-en="Join the DUIT family and get exclusive privileges before anyone else! Early access to new collections, pet care tricks, and birthday discounts."
-                            data-th="เข้าร่วมเป็นครอบครัว DUIT รับสิทธิพิเศษก่อนใคร สิทธิ์ซื้อสินค้าคอลเลกชันใหม่ก่อนใคร ทริคดูแลสัตว์เลี้ยง และส่วนลดเดือนเกิด">
-                            Join the DUIT family and get exclusive privileges before anyone else! Early access to new
-                            collections, pet care tricks, and birthday discounts.</p>
+            <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+                <span class="section-tag" data-en="Find Your Fit" data-th="วัดขนาดไซส์">Find Your Fit</span>
+                <h2 class="section-title" data-en="Size Guide" data-th="ตารางไซส์ของเรา">Size Guide</h2>
+                <p class="section-desc" data-en="Comfort starts with the perfect fit. Measure your foot to find your size." data-th="ความสบายเริ่มต้นที่ไซส์ที่พอดี ลองวัดขนาดเท้าของคุณดูนะคะ">Comfort starts with the perfect fit.</p>
+            </div>
 
-                        <div class="event-perks">
-                            <div class="perk"><i class="fa-solid fa-circle-check"></i> <span
-                                    data-en="Early access to new collections"
-                                    data-th="สิทธิ์ซื้อสินค้าคอลเลกชันใหม่ก่อนใคร">Early access to new
-                                    collections</span></div>
-                            <div class="perk"><i class="fa-solid fa-circle-check"></i> <span
-                                    data-en="Exclusive pet care tricks"
-                                    data-th="ทริคดูแลสัตว์เลี้ยงสุดเอ็กซ์คลูซีฟ">Exclusive pet care tricks</span></div>
-                            <div class="perk"><i class="fa-solid fa-circle-check"></i> <span
-                                    data-en="Special birthday discount" data-th="ส่วนลดพิเศษในเดือนเกิด">Special
-                                    birthday discount</span></div>
-                        </div>
+            <div class="size-guide-new-wrapper">
+                <!-- Left: Table -->
+                <div class="size-table-card">
+                    <div class="card-header">
+                        <i class="fa-solid fa-ruler-horizontal"></i>
+                        <h3 data-en="Socks Size" data-th="ขนาดถุงเท้า">Socks Size</h3>
                     </div>
-                    <div class="event-action-box">
-                        <!-- Registration Form -->
-                        <form id="membershipForm" onsubmit="registerMembership(event)">
-                            <h3 data-en="Join DUIT Family" data-th="สมัครสมาชิก DUIT Family">Join DUIT Family</h3>
-                            <p class="form-subtext" data-en="Enter your details to join our exclusive club."
-                                data-th="กรอกข้อมูลของคุณเพื่อรับสิทธิพิเศษ">Enter your details to join our exclusive
-                                club.</p>
+                    <table class="cute-size-table">
+                        <thead>
+                            <tr>
+                                <th>Size</th>
+                                <th>US Size</th>
+                                <th>Length (CM)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="size-label">S</td>
+                                <td>6 - 9</td>
+                                <td>23 - 25 cm</td>
+                            </tr>
+                            <tr>
+                                <td class="size-label">M</td>
+                                <td>9 - 11</td>
+                                <td>25 - 27 cm</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
-                            <div class="form-group">
-                                <label for="userName" data-en="Your Name" data-th="ชื่อ-นามสกุลของคุณ">Your Name</label>
-                                <div class="input-wrapper">
-                                    <i class="fa-solid fa-user"></i>
-                                    <input type="text" id="userName" required placeholder="John Doe">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="userPhone" data-en="Mobile Number" data-th="เบอร์โทรศัพท์มือถือ">Mobile
-                                    Number</label>
-                                <div class="input-wrapper">
-                                    <i class="fa-solid fa-phone"></i>
-                                    <input type="tel" id="userPhone" required placeholder="081-234-5678">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="userLine" data-en="LINE ID" data-th="LINE ID">LINE ID</label>
-                                <div class="input-wrapper">
-                                    <i class="fa-brands fa-line"></i>
-                                    <input type="text" id="userLine" required placeholder="line_id">
-                                </div>
-                            </div>
-
-                            <button type="submit" class="btn-submit">
-                                <span data-en="Join Now" data-th="สมัครสมาชิกเลย">Join Now</span> <i
-                                    class="fa-solid fa-arrow-right-long"></i>
-                            </button>
-                        </form>
-
-                        <!-- Membership Success Result (hidden by default) -->
-                        <div id="membershipResult" style="display: none;" class="coupon-voucher membership-success-card">
-                            <div class="voucher-header success-header">
-                                <div class="success-icon-wrapper">
-                                    <i class="fa-solid fa-circle-check"></i>
-                                </div>
-                                <h4 data-en="Welcome to DUIT Family!" data-th="ยินดีต้อนรับสู่ครอบครัว DUIT!">Welcome to DUIT Family!</h4>
-                                <p class="success-subtitle" data-en="Your VIP Membership is now active!" data-th="การสมัครสมาชิก VIP ของคุณเสร็จสมบูรณ์แล้ว!">Your VIP Membership is now active!</p>
-                            </div>
-                            <div class="voucher-body vip-card-body">
-                                <div class="badge-glow"></div>
-                                <div class="vip-card-header">
-                                    <span class="club-title">DUIT EXCLUSIVE CLUB</span>
-                                    <span class="badge-status">VIP MEMBER</span>
-                                </div>
-                                <div class="vip-card-fields">
-                                    <div class="badge-field">
-                                        <span class="field-label" data-en="MEMBER NAME" data-th="ชื่อสมาชิก">MEMBER NAME</span>
-                                        <strong id="memberNameDisplay">JOHN DOE</strong>
-                                    </div>
-                                    <div class="badge-field">
-                                        <span class="field-label" data-en="MEMBER ID" data-th="รหัสสมาชิก">MEMBER ID</span>
-                                        <strong id="memberIdDisplay">DUIT-VIP-8273</strong>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="voucher-footer success-footer">
-                                <div class="voucher-notes">
-                                    <p data-en="We have registered your contact details. Stay tuned for special perks, news, and exclusive updates via your LINE ID!" data-th="เราได้ลงทะเบียนข้อมูลของคุณเรียบร้อยแล้ว เตรียมพบกับสิทธิพิเศษ ข่าวสาร และอัปเดตสุดเอ็กซ์คลูซีฟผ่าน LINE ID ของคุณ!">We have registered your contact details. Stay tuned for special perks, news, and exclusive updates via your LINE ID!</p>
-                                </div>
-                            </div>
-                            <button onclick="resetMembershipForm()" class="btn-secondary-outline reset-member-btn" data-en="Register Another Member"
-                                data-th="สมัครสมาชิกเพิ่ม">Register Another Member</button>
-                        </div>
+                <!-- Right: Instructions -->
+                <div class="size-instruction-card">
+                    <div class="card-header">
+                        <i class="fa-solid fa-shoe-prints"></i>
+                        <h3 data-en="How to measure" data-th="วิธีวัดขนาดเท้า">How to measure</h3>
+                    </div>
+                    <ul class="measure-steps">
+                        <li>
+                            <span class="step-num">1</span>
+                            <p data-en="Place your foot firmly on a flat surface." data-th="วางเท้าลงบนพื้นเรียบให้เต็มฝ่าเท้า">Place your foot firmly on a flat surface.</p>
+                        </li>
+                        <li>
+                            <span class="step-num">2</span>
+                            <p data-en="Measure from your heel to your longest toe." data-th="วัดความยาวตั้งแต่ส้นเท้าจนถึงปลายนิ้วที่ยาวที่สุด">Measure from your heel to your longest toe.</p>
+                        </li>
+                        <li>
+                            <span class="step-num">3</span>
+                            <p data-en="If you are between sizes, we recommend sizing up!" data-th="หากขนาดอยู่กึ่งกลาง แนะนำให้เผื่อไซส์ใหญ่ขึ้น 1 ไซส์ค่ะ">If you are between sizes, we recommend sizing up!</p>
+                        </li>
+                    </ul>
+                    <div class="cute-note">
+                        <i class="fa-solid fa-heart"></i>
+                        <span data-en="If you can't find your size, please contact our staff." data-th="หากไม่แน่ใจไซส์ ทักแชทสอบถามแอดมินได้เลยนะคะ">If you can't find your size, please contact our staff.</span>
                     </div>
                 </div>
             </div>
@@ -363,17 +327,17 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <h3>duit <span>THAILAND</span></h3>
-                    <p data-en="Minimalist premium pet furniture and appliances. Imported from South Korea, crafted with love for modern homes."
-                        data-th="เฟอร์นิเจอร์และอุปกรณ์สัตว์เลี้ยงระดับพรีเมียมสไตล์มินิมอล นำเข้าจากประเทศเกาหลีใต้ รังสรรค์ด้วยความรักเพื่อยกระดับบ้านสไตล์โมเดิร์น">
-                        Minimalist premium pet furniture and appliances. Imported from South Korea, crafted with love
-                        for modern homes.</p>
+                    <h3>thumb toe <span>THAILAND</span></h3>
+                    <p data-en="Korea's original pilates socks brand. Premium grip socks for pilates, yoga, and everyday movement. Thailand Official Distributor."
+                        data-th="แบรนด์ถุงเท้าพิลาทิสจากเกาหลี ถุงเท้ากันลื่นพรีเมียมสำหรับพิลาทิส โยคะ และการเคลื่อนไหวทุกวัน ตัวแทนจำหน่ายอย่างเป็นทางการในไทย">
+                        Korea's original pilates socks brand. Premium grip socks for pilates, yoga, and everyday
+                        movement. Thailand Official Distributor.</p>
                     <div class="social-links">
-                        <a href="https://line.me/R/ti/p/@duit_thailand" target="_blank" class="social-icon"><i
+                        <a href="https://line.me/R/ti/p/@thumbtoe_th" target="_blank" class="social-icon"><i
                                 class="fa-brands fa-line"></i></a>
                         <a href="#" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="https://duitoverseas.com/" target="_blank" class="social-icon"><i
+                        <a href="https://instagram.com/thumbtoe_th" target="_blank" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://thumbtoe.shop/" target="_blank" class="social-icon"><i
                                 class="fa-solid fa-globe"></i></a>
                     </div>
                 </div>
@@ -383,23 +347,23 @@
                         <li><a href="#about" data-en="Our Story" data-th="เรื่องราวของเรา">Our Story</a></li>
                         <li><a href="#shop" data-en="All Products" data-th="สินค้าทั้งหมด">All Products</a></li>
                         <li><a href="#event" data-en="Event Offer" data-th="โปรโมชันในงาน">Event Offer</a></li>
-                        <li><a href="https://duitoverseas.com/" target="_blank" data-en="DUIT Global"
-                                data-th="DUIT ต่างประเทศ">DUIT Global</a></li>
+                        <li><a href="https://thumbtoe.shop/" target="_blank" data-en="Thumb Toe Global"
+                                data-th="Thumb Toe ต่างประเทศ">Thumb Toe Global</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
                     <h4 data-en="Showroom Contact" data-th="ติดต่อโชว์รูม">Showroom Contact</h4>
                     <p><i class="fa-solid fa-location-dot"></i> <span data-en="Bangkok Showroom, Thailand"
                             data-th="โชว์รูมกรุงเทพฯ, ประเทศไทย">Bangkok Showroom, Thailand</span></p>
-                    <p><i class="fa-solid fa-envelope"></i> contact@duitthailand.com</p>
+                    <p><i class="fa-solid fa-envelope"></i> contact@thumbtoe.shop</p>
                     <p><i class="fa-solid fa-phone"></i> +66 (0) 2-123-4567</p>
-                    <p><i class="fa-brands fa-line"></i> LINE: @duit_thailand</p>
+                    <p><i class="fa-brands fa-line"></i> LINE: @thumbtoe_th</p>
                 </div>
             </div>
             <hr class="footer-divider">
             <div class="footer-bottom">
-                <p data-en="&copy; 2026 DUIT Thailand. All rights reserved."
-                    data-th="&copy; 2026 DUIT ประเทศไทย สงวนลิขสิทธิ์ทั้งหมด">&copy; 2026 DUIT Thailand. All rights
+                <p data-en="&copy; 2026 Thumb Toe Thailand. All rights reserved."
+                    data-th="&copy; 2026 Thumb Toe ประเทศไทย สงวนลิขสิทธิ์ทั้งหมด">&copy; 2026 Thumb Toe Thailand. All rights
                     reserved.</p>
                 <div class="staff-access">
                     <!-- Staff only portal link -->

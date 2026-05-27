@@ -1,5 +1,5 @@
 /* ==========================================
-   DUIT THAILAND — ADMIN PANEL CSS
+   THUMB TOE THAILAND — ADMIN PANEL CSS
    Professional Dark Mode CMS Interface
    ========================================== */
 
@@ -66,9 +66,9 @@
     --admin-surface-3: #e8e6dd; /* Slightly darker warm gray for hover states and borders */
     --admin-border: #e2ded5; /* Light warm-gray thin border */
     --admin-border-hover: #c4c0b5; /* Darker border for hover states */
-    --admin-accent: #c8a96e; /* DUIT premium warm gold/taupe brand color */
-    --admin-accent-dark: #a8894e; /* Darker brand accent */
-    --admin-accent-light: rgba(200, 169, 110, 0.12); /* Extremely soft brand gold highlight overlay */
+    --admin-accent: #2E9E5C; /* Thumb Toe green brand color */
+    --admin-accent-dark: #237a47; /* Darker brand accent */
+    --admin-accent-light: rgba(46, 158, 92, 0.12); /* Extremely soft brand green highlight overlay */
     --admin-success: #10b981; /* Soft green */
     --admin-success-bg: rgba(16, 185, 129, 0.08);
     --admin-danger: #ef4444; /* Soft red */

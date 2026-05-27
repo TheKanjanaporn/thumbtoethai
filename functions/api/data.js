@@ -1,6 +1,6 @@
 export async function onRequestGet(context) {
     try {
-        const data = await context.env.DUIT_KV.get("cms_data");
+        const data = await context.env.DUIT_KV.get("thumbtoe_cms_data");
         if (data) {
             return new Response(data, {
                 headers: { 
@@ -31,7 +31,7 @@ export async function onRequestGet(context) {
 export async function onRequestPost(context) {
     try {
         const body = await context.request.json();
-        await context.env.DUIT_KV.put("cms_data", JSON.stringify(body));
+        await context.env.DUIT_KV.put("thumbtoe_cms_data", JSON.stringify(body));
         return new Response(JSON.stringify({ success: true }), {
             headers: { "Content-Type": "application/json" }
         });

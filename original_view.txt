@@ -1,0 +1,68 @@
+Created At: 2026-05-27T02:07:39Z
+Completed At: 2026-05-27T02:07:42Z
+File Path: `file:///c:/Users/punch/Desktop/Thumbtoe/index.html`
+Total Lines: 413
+Total Bytes: 29497
+Showing lines 1 to 413
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+1: <!DOCTYPE html>
+2: <html lang="en">
+3: 
+4: <head>
+5:     <meta charset="UTF-8">
+6:     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+7:     <title>Thumb Toe Thailand | Everyday Pilates Socks</title>
+8:     <!-- Meta Descriptions for SEO -->
+9:     <meta name="description"
+10:         content="Discover Thumb Toe Thailand's premium pilates socks. Korea's original grip socks brand — for pilates, yoga, and everyday movement.">
+11:     <!-- Google Fonts: Outfit (modern geometric sans-serif) -->
+12:     <link rel="preconnect" href="https://fonts.googleapis.com">
+13:     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+14:     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+15:     <!-- FontAwesome for icons -->
+16:     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+17:     <!-- Custom CSS -->
+18:     <link rel="stylesheet" href="styles.css">
+19: </head>
+20: 
+21: <body>
+22:     <!-- Staff Portal Backdrop and Modal -->
+23:     <div id="staffModal" class="modal-backdrop staff-modal" style="display: none;">
+24:         <div class="modal-container staff-container">
+25:             <button class="modal-close" onclick="closeStaffPortal()">&times;</button>
+26:             <h3><i class="fa-solid fa-lock"></i> Staff Lead Manager</h3>
+27:             <div id="pinSection">
+28:                 <p>Enter access code to view and export collected leads.</p>
+29:           
+<truncated 27874 bytes>
+                  <p><i class="fa-solid fa-location-dot"></i> <span data-en="Bangkok Showroom, Thailand"
+385:                             data-th="โชว์รูมกรุงเทพฯ, ประเทศไทย">Bangkok Showroom, Thailand</span></p>
+386:                     <p><i class="fa-solid fa-envelope"></i> contact@thumbtoe.shop</p>
+387:                     <p><i class="fa-solid fa-phone"></i> +66 (0) 2-123-4567</p>
+388:                     <p><i class="fa-brands fa-line"></i> LINE: @thumbtoe_th</p>
+389:                 </div>
+390:             </div>
+391:             <hr class="footer-divider">
+392:             <div class="footer-bottom">
+393:                 <p data-en="&copy; 2026 Thumb Toe Thailand. All rights reserved."
+394:                     data-th="&copy; 2026 Thumb Toe ประเทศไทย สงวนลิขสิทธิ์ทั้งหมด">&copy; 2026 Thumb Toe Thailand. All rights
+395:                     reserved.</p>
+396:                 <div class="staff-access">
+397:                     <!-- Staff only portal link -->
+398:                     <button class="btn-staff-link" onclick="openStaffPortal()"><i class="fa-solid fa-cog"></i> <span
+399:                             data-en="Lead Manager" data-th="ระบบจัดการผู้ติดต่อ">Lead Manager</span></button>
+400:                     <a href="admin.html" class="btn-staff-link" style="text-decoration:none; margin-left:0.5rem;">
+401:                         <i class="fa-solid fa-shield-halved"></i> <span data-en="Admin Panel"
+402:                             data-th="ระบบหลังบ้าน">ระบบหลังบ้าน</span>
+403:                     </a>
+404:                 </div>
+405:             </div>
+406:         </div>
+407:     </footer>
+408: 
+409:     <!-- Custom JavaScript -->
+410:     <script src="app.js"></script>
+411: </body>
+412: 
+413: </html>
+The above content shows the entire, complete file contents of the requested file.
