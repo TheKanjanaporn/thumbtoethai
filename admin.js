@@ -6538,19 +6538,9 @@ document.addEventListener('DOMContentLoaded', () => {
         discountPanel.addEventListener('input', (e) => triggerAutoSave(saveDiscount, true));
         discountPanel.addEventListener('change', (e) => triggerAutoSave(saveDiscount, true));
     }
-    // Product Drawer
-    const prodDrawer = document.getElementById('productDrawer');
-    if (prodDrawer) {
-        prodDrawer.addEventListener('input', (e) => triggerAutoSave(saveProduct, true));
-        prodDrawer.addEventListener('change', (e) => triggerAutoSave(saveProduct, true));
-    }
+    // Product Drawer (Auto-save disabled on typing to prevent input focus loss and error toasts)
     
-    // Category Drawer
-    const catDrawer = document.getElementById('categoryDrawer');
-    if (catDrawer) {
-        catDrawer.addEventListener('input', (e) => triggerAutoSave(saveCategory, true));
-        catDrawer.addEventListener('change', (e) => triggerAutoSave(saveCategory, true));
-    }
+    // Category Drawer (Auto-save disabled on typing to prevent input focus loss and error toasts)
 
     // Settings / Store Panel
     const storePanel = document.getElementById('panel-store');
