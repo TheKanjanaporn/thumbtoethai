@@ -1,8 +1,8 @@
 export async function onRequestGet(context) {
     try {
-        const data = await context.env.DUIT_KV.get("thumbtoe_cms_data");
-        if (data) {
-            return new Response(data, {
+        const value = await context.env.DUIT_KV.get("thumbtoe_cms_data", { type: "stream" });
+        if (value) {
+            return new Response(value, {
                 headers: { 
                     "Content-Type": "application/json",
                     "Cache-Control": "no-cache, no-store, must-revalidate",
@@ -30,16 +30,21 @@ export async function onRequestGet(context) {
 
 export async function onRequestPost(context) {
     try {
-        const body = await context.request.json();
-        const dataStr = JSON.stringify(body);
+        const dataStr = await context.request.text();
         
-        // Write to KV — note: KV itself is eventually consistent globally,
-        // but same-datacenter reads after write are strongly consistent.
-        // cacheTtl: 0 on GET ensures we always read the latest from KV primary.
+        let savedAt = null;
+        try {
+            // Only parsing minimally to find _savedAt if possible.
+            // If it's too large and OOMs, the catch block might not save it, but text() helps.
+            const parsed = JSON.parse(dataStr);
+            savedAt = parsed._savedAt || null;
+        } catch (e) {
+            console.log("Could not parse JSON for _savedAt", e);
+        }
+        
         await context.env.DUIT_KV.put("thumbtoe_cms_data", dataStr);
 
-        // Return the saved data back so the client can verify it was stored correctly
-        return new Response(JSON.stringify({ success: true, _savedAt: body._savedAt || null }), {
+        return new Response(JSON.stringify({ success: true, _savedAt: savedAt }), {
             headers: { "Content-Type": "application/json" }
         });
     } catch (err) {
