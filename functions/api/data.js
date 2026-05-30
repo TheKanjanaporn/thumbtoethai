@@ -30,18 +30,10 @@ export async function onRequestGet(context) {
 
 export async function onRequestPost(context) {
     try {
+        const savedAtHeader = context.request.headers.get("X-Saved-At");
+        const savedAt = savedAtHeader ? parseInt(savedAtHeader, 10) : null;
+        
         const dataStr = await context.request.text();
-        
-        let savedAt = null;
-        try {
-            // Only parsing minimally to find _savedAt if possible.
-            // If it's too large and OOMs, the catch block might not save it, but text() helps.
-            const parsed = JSON.parse(dataStr);
-            savedAt = parsed._savedAt || null;
-        } catch (e) {
-            console.log("Could not parse JSON for _savedAt", e);
-        }
-        
         await context.env.DUIT_KV.put("thumbtoe_cms_data", dataStr);
 
         return new Response(JSON.stringify({ success: true, _savedAt: savedAt }), {
@@ -54,3 +46,4 @@ export async function onRequestPost(context) {
         });
     }
 }
+
