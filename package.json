@@ -4,7 +4,8 @@
   "description": "An elegant, mobile-responsive, minimalist showcase website for **DUIT Thailand** (premium cat furniture and pet appliances). This website is specifically designed for event environments where customers scan a QR code at a booth to browse products, view detailed specifications, and claim event-exclusive discount coupons.",
   "main": "admin.js",
   "scripts": {
-    "start": "wrangler pages dev . --kv DUIT_KV"
+    "start": "wrangler pages dev . --kv DUIT_KV",
+    "build": "echo 'No build step'"
   },
   "repository": {
     "type": "git",
