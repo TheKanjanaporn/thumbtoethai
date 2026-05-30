@@ -1507,3 +1507,45 @@ html, body {
     color: var(--admin-danger);
     opacity: 1;
 }
+
+/* SLEEK MULTI-SELECT CATEGORY PILLS */
+.categories-pill-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 8px;
+    border: 1px solid var(--admin-border, #ddd);
+    border-radius: 8px;
+    background-color: #fafafa;
+    min-height: 46px;
+    align-items: center;
+}
+
+.category-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #444;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.category-pill:hover {
+    background-color: #e4e4e4;
+}
+
+.category-pill.active {
+    background-color: var(--admin-accent, #ff477e);
+    border-color: var(--admin-accent, #ff477e);
+    color: white;
+}
+
+.category-pill input {
+    display: none;
+}
