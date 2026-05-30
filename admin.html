@@ -7,7 +7,7 @@
     <meta name="robots" content="noindex, nofollow">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" rel="stylesheet">
     <link rel="stylesheet" href="admin.css">
@@ -80,9 +80,6 @@
             <button class="sidebar-link" id="nav-categories" onclick="showPanel('categories')">
                 <i class="fa-solid fa-tags"></i> หมวดหมู่สินค้า
                 <span class="badge-count" id="categoryCount">0</span>
-            </button>
-            <button class="sidebar-link" id="nav-slider" onclick="showPanel('slider')">
-                <i class="fa-solid fa-images"></i> Hero Slider
             </button>
             <button class="sidebar-link" id="nav-event" onclick="showPanel('event')">
                 <i class="fa-solid fa-gift"></i> Event Section
@@ -190,11 +187,6 @@
                                 <div style="color:var(--admin-accent); font-size:1.4rem; margin-bottom:0.5rem;"><i class="fa-solid fa-box"></i></div>
                                 <div style="font-weight:600; margin-bottom:0.3rem; font-size:0.9rem;">สินค้า</div>
                                 <div style="font-size:0.78rem; color:var(--admin-text-muted);">เพิ่ม แก้ไข ลบสินค้า, อัปโหลดรูปภาพ, ตั้งราคา และหมวดหมู่</div>
-                            </div>
-                            <div style="background:var(--admin-surface-2); border-radius:var(--radius-sm); padding:1.1rem; border:1px solid var(--admin-border);">
-                                <div style="color:var(--admin-info); font-size:1.4rem; margin-bottom:0.5rem;"><i class="fa-solid fa-images"></i></div>
-                                <div style="font-weight:600; margin-bottom:0.3rem; font-size:0.9rem;">Hero Slider</div>
-                                <div style="font-size:0.78rem; color:var(--admin-text-muted);">เปลี่ยนรูป ข้อความ หัวข้อ และลิงก์ปุ่มในแต่ละ slide</div>
                             </div>
                             <div style="background:var(--admin-surface-2); border-radius:var(--radius-sm); padding:1.1rem; border:1px solid var(--admin-border);">
                                 <div style="color:var(--admin-success); font-size:1.4rem; margin-bottom:0.5rem;"><i class="fa-solid fa-gift"></i></div>
@@ -390,7 +382,7 @@
                                         <th>หมวดหมู่</th>
                                         <th style="width:140px;">ป้าย (Badge)</th>
                                         <th>ราคา</th>
-                                        <th style="width:90px; text-align:center;">ลำดับ</th>
+                                        <th style="width:120px; text-align:center;">ลำดับ</th>
                                         <th style="width:110px; text-align:center;">จัดการ</th>
                                     </tr>
                                 </thead>
@@ -403,29 +395,6 @@
                 </div>
             </div>
 
-            <!-- ==============================
-                 SLIDER PANEL
-                 ============================== -->
-            <div class="admin-panel" id="panel-slider">
-                <div class="card">
-                    <div class="card-header">
-                        <h2><i class="fa-solid fa-images"></i> จัดการ Hero Slider</h2>
-                        <button class="btn btn-primary" onclick="addNewSlide()">
-                            <i class="fa-solid fa-plus"></i> เพิ่ม Slide
-                        </button>
-                    </div>
-                    <div class="card-body">
-                        <div class="slide-editor-list" id="slideEditorList">
-                            <!-- Dynamic -->
-                        </div>
-                    </div>
-                </div>
-                <div style="display:flex; justify-content:flex-end;">
-                    <button class="btn btn-primary" onclick="saveSlider()">
-                        <i class="fa-solid fa-floppy-disk"></i> บันทึก Hero Slider
-                    </button>
-                </div>
-            </div>
 
             <!-- ==============================
                  EVENT PANEL
@@ -544,6 +513,98 @@
                             <div class="form-group">
                                 <label class="form-label">คำอธิบายแบรนด์ (EN)</label>
                                 <textarea class="form-textarea" id="store-aboutEn" style="min-height:120px;"></textarea>
+                            </div>
+                        </div>
+
+                        <hr class="section-divider">
+                        <div style="font-weight:600; margin-bottom:1rem; font-size:0.9rem;">
+                            <i class="fa-solid fa-book-open" style="color:var(--admin-accent);"></i> จัดการหน้า Our Story (เรื่องราวของแบรนด์)
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label">ป้ายกำกับด้านบน (TH)</label>
+                                <input type="text" class="form-input" id="store-storyTagTh" placeholder="เรื่องราวของ THUMB TOE">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">ป้ายกำกับด้านบน (EN)</label>
+                                <input type="text" class="form-input" id="store-storyTagEn" placeholder="Thumb Toe Story">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">หัวข้อหลัก (TH)</label>
+                                <input type="text" class="form-input" id="store-storyTitleTh" placeholder="ถุงเท้าพิลาทิส สำหรับทุกวัน ทุกคน">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">หัวข้อหลัก (EN)</label>
+                                <input type="text" class="form-input" id="store-storyTitleEn" placeholder="Everyday Pilates, Everyday Comfort">
+                            </div>
+                            <div class="form-group span-2">
+                                <label class="form-label">URL รูปภาพ Our Story (ด้านขวา)</label>
+                                <div style="display:flex; gap:8px;">
+                                    <input type="text" id="store-storyImg" class="form-input" placeholder="https://..." style="flex:1;">
+                                    <input type="file" accept="image/*" style="display:none;" id="storyImgFileInput" onchange="handleStoryImgUpload(event)">
+                                    <button type="button" class="btn btn-secondary btn-icon" onclick="cropStoryImage()" title="ครอบตัดรูปภาพ" style="padding: 0.5rem 0.75rem; background-color: var(--admin-accent); border-color: var(--admin-accent); color: white;">
+                                        <i class="fa-solid fa-crop"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-secondary btn-icon" onclick="document.getElementById('storyImgFileInput').click()" title="อัปโหลดรูปภาพ" style="padding: 0.5rem 0.75rem;">
+                                        <i class="fa-solid fa-upload"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="font-weight:600; margin-top:1.5rem; margin-bottom:1rem; font-size:0.85rem; border-bottom:1px dashed var(--admin-border); padding-bottom:6px;">
+                            จุดเด่นที่ 1 (Highlight Item 1)
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label">ไอคอน / อีโมจิ (เช่น 🤝 หรือ &lt;i class="fa-solid fa-heart"&gt;&lt;/i&gt;)</label>
+                                <input type="text" class="form-input" id="store-storyFeat1Icon" placeholder="🤝">
+                            </div>
+                            <div style="display:flex; flex-direction:column; gap:8px; grid-column: span 1;">
+                                <div>
+                                    <label class="form-label">ชื่อจุดเด่น (TH)</label>
+                                    <input type="text" class="form-input" id="store-storyFeat1TitleTh" placeholder="เทคโนโลยีกันลื่นระดับพรีเมียม">
+                                </div>
+                                <div>
+                                    <label class="form-label">ชื่อจุดเด่น (EN)</label>
+                                    <input type="text" class="form-input" id="store-storyFeat1TitleEn" placeholder="Premium Grip Technology">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">รายละเอียด (TH)</label>
+                                <textarea class="form-textarea" id="store-storyFeat1DescTh" rows="2" placeholder="จุดซิลิโคนกันลื่นให้ความมั่นคงสูงสุด..."></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">รายละเอียด (EN)</label>
+                                <textarea class="form-textarea" id="store-storyFeat1DescEn" rows="2" placeholder="Non-slip silicone dots provide..."></textarea>
+                            </div>
+                        </div>
+
+                        <div style="font-weight:600; margin-top:1.5rem; margin-bottom:1rem; font-size:0.85rem; border-bottom:1px dashed var(--admin-border); padding-bottom:6px;">
+                            จุดเด่นที่ 2 (Highlight Item 2)
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label">ไอคอน / อีโมจิ (เช่น 🎨)</label>
+                                <input type="text" class="form-input" id="store-storyFeat2Icon" placeholder="🎨">
+                            </div>
+                            <div style="display:flex; flex-direction:column; gap:8px; grid-column: span 1;">
+                                <div>
+                                    <label class="form-label">ชื่อจุดเด่น (TH)</label>
+                                    <input type="text" class="form-input" id="store-storyFeat2TitleTh" placeholder="คอลเลกชันหลากหลายสี">
+                                </div>
+                                <div>
+                                    <label class="form-label">ชื่อจุดเด่น (EN)</label>
+                                    <input type="text" class="form-input" id="store-storyFeat2TitleEn" placeholder="Colorful Collections">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">รายละเอียด (TH)</label>
+                                <textarea class="form-textarea" id="store-storyFeat2DescTh" rows="2" placeholder="ตั้งแต่พาสเทลไปจนถึงสีจัด..."></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">รายละเอียด (EN)</label>
+                                <textarea class="form-textarea" id="store-storyFeat2DescEn" rows="2" placeholder="From pastel to bold..."></textarea>
                             </div>
                         </div>
                     </div>
@@ -713,8 +774,11 @@
                 </div>
                 <div id="imagePreviewContainer" style="margin-top:0.75rem; display:none;">
                     <img id="imagePreviewEl" src="" alt="preview" style="max-width:100%; max-height:200px; object-fit:contain; border-radius:var(--radius-sm); background:var(--admin-surface-2); padding:8px;">
-                    <div class="image-preview-actions">
-                        <button class="btn btn-danger btn-sm" onclick="clearImageInput()">
+                    <div class="image-preview-actions" style="margin-top: 8px; display: flex; gap: 8px;">
+                        <button type="button" class="btn btn-secondary btn-sm" onclick="cropExistingImage()" style="background-color: var(--admin-accent); border-color: var(--admin-accent); color: white;">
+                            <i class="fa-solid fa-crop"></i> ครอบตัดรูป
+                        </button>
+                        <button type="button" class="btn btn-danger btn-sm" onclick="clearImageInput()">
                             <i class="fa-solid fa-trash"></i> ลบรูป
                         </button>
                     </div>
@@ -752,6 +816,16 @@
                 <div class="form-group">
                     <label class="form-label">ลิงก์สั่งซื้อ Shopee (Shopee URL)</label>
                     <input type="text" class="form-input" id="prod-shopeeUrl" placeholder="เช่น https://shopee.co.th/product-url">
+                </div>
+                <div class="form-group span-2 out-of-stock-container">
+                    <div>
+                        <label class="form-label" style="margin-bottom:2px; font-weight:600; display:flex; align-items:center; gap:6px;"><i class="fa-solid fa-circle-minus" style="color:var(--admin-danger);"></i>สินค้าหมด (Out of Stock)</label>
+                        <div class="form-hint" style="margin-top:0;">เมื่อเปิดใช้งาน จะแสดงป้าย "สินค้าหมด" บนหน้าเว็บ และปิดการกดสั่งซื้อ</div>
+                    </div>
+                    <label class="big-toggle">
+                        <input type="checkbox" id="prod-outOfStock">
+                        <span class="big-toggle-slider out-of-stock-toggle"></span>
+                    </label>
                 </div>
                 <div class="form-group">
                     <label class="form-label">Badge (TH)</label>

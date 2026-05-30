@@ -31,8 +31,15 @@ export async function onRequestGet(context) {
 export async function onRequestPost(context) {
     try {
         const body = await context.request.json();
-        await context.env.DUIT_KV.put("thumbtoe_cms_data", JSON.stringify(body));
-        return new Response(JSON.stringify({ success: true }), {
+        const dataStr = JSON.stringify(body);
+        
+        // Write to KV — note: KV itself is eventually consistent globally,
+        // but same-datacenter reads after write are strongly consistent.
+        // cacheTtl: 0 on GET ensures we always read the latest from KV primary.
+        await context.env.DUIT_KV.put("thumbtoe_cms_data", dataStr);
+
+        // Return the saved data back so the client can verify it was stored correctly
+        return new Response(JSON.stringify({ success: true, _savedAt: body._savedAt || null }), {
             headers: { "Content-Type": "application/json" }
         });
     } catch (err) {

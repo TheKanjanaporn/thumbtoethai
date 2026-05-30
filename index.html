@@ -11,7 +11,7 @@
     <!-- Google Fonts: Outfit (modern geometric sans-serif) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Custom CSS -->
@@ -66,12 +66,12 @@
                 <a href="#about" class="nav-item" data-en="About" data-th="เกี่ยวกับเรา">About</a>
                 <a href="#shop" class="nav-item" data-en="Shop" data-th="สินค้าของเรา">Shop</a>
                 <a href="#size" class="nav-item" data-en="Size Guide" data-th="วัดขนาดไซส์">Size Guide</a>
+                <a href="#contact" class="nav-item" data-en="Contact Us" data-th="ช่องทางการติดต่อ">Contact Us</a>
             </nav>
 
             <!-- Centered Logo -->
             <a href="#" class="logo-centered">
-                <!-- Using the processed logo with removed background and cropped padding -->
-                <img src="assets/logo_transparent.png" alt="Thumb Toe" style="height: 38px; object-fit: contain; margin-bottom: 3px;" id="brandLogo">
+                <img src="assets/Logo3_transparent.png" alt="Thumb Toe Logo">
             </a>
 
             <!-- Right Actions -->
@@ -88,9 +88,6 @@
                 </button>
             </div>
         </div>
-
-        <!-- Pastel Shop Awning as the bottom edge -->
-        <div class="shop-awning"></div>
     </header>
 
     <!-- Mobile Nav Overlay -->
@@ -98,65 +95,6 @@
 
     <!-- Pastel Shop Awning was moved inside header -->
 
-    <!-- Hero Showcase Slider -->
-    <section class="hero-slider" id="home">
-        <div class="slides-container" id="slidesContainer">
-            <!-- Slide 1: Best Seller Socks -->
-            <div class="slide active">
-                <div class="slide-image"
-                    style="background-image: linear-gradient(rgba(26, 26, 46, 0.15), rgba(26, 26, 46, 0.35)), url('https://thumbtoe.shop/web/upload/category/editor/2026/260107_main_PC.jpg');">
-                </div>
-                <div class="slide-content">
-                    <span class="slide-badge" data-en="Best Seller" data-th="สินค้าขายดี">Best Seller</span>
-                    <h2 data-en="thumb toe pilates socks" data-th="ถุงเท้าพิลาทิส thumb toe">thumb toe pilates socks</h2>
-                    <p data-en="everyday pilates, everyday comfort."
-                        data-th="ถุงเท้าพิลาทิสเกาหลี ใส่สบายทุกวัน">everyday pilates, everyday comfort.</p>
-                    <a href="#shop" class="btn-outline-white" onclick="filterCategory('grip')" data-en="Shop Now"
-                        data-th="ช้อปเลย">Shop Now</a>
-                </div>
-            </div>
-            <!-- Slide 2: Non-Grip Socks -->
-            <div class="slide">
-                <div class="slide-image"
-                    style="background-image: linear-gradient(rgba(26, 26, 46, 0.15), rgba(26, 26, 46, 0.35)), url('https://thumbtoe.shop/web/product/big/202505/80a4390daaa68948ac7682bfc36e8a94.jpg');">
-                </div>
-                <div class="slide-content">
-                    <span class="slide-badge" data-en="New Collection" data-th="คอลเลกชันใหม่">New Collection</span>
-                    <h2 data-en="daisy collection" data-th="คอลเลกชัน Daisy">daisy collection</h2>
-                    <p data-en="colorful grip socks for your pilates practice."
-                        data-th="ถุงเท้ากันลื่นสีสันสดใสสำหรับการฝึกพิลาทิส">colorful grip socks for your pilates practice.</p>
-                    <a href="#shop" class="btn-outline-white" onclick="filterCategory('all')"
-                        data-en="Explore Collection" data-th="ดูคอลเลกชัน">Explore Collection</a>
-                </div>
-            </div>
-            <!-- Slide 3: Daily Socks -->
-            <div class="slide">
-                <div class="slide-image"
-                    style="background-image: linear-gradient(rgba(26, 26, 46, 0.15), rgba(26, 26, 46, 0.35)), url('https://thumbtoe.shop/web/product/big/202602/318893c7f749c2172bf42a9c152ce0b1.jpg');">
-                </div>
-                <div class="slide-content">
-                    <span class="slide-badge" data-en="Daily Essentials" data-th="สินค้าจำเป็นประจำวัน">Daily Essentials</span>
-                    <h2 data-en="non-grip daily socks" data-th="ถุงเท้าใส่ทุกวัน">non-grip daily socks</h2>
-                    <p data-en="soft, breathable socks for everyday comfort."
-                        data-th="ถุงเท้านุ่มสบาย ระบายอากาศ สำหรับใส่ทุกวัน">soft, breathable socks for everyday comfort.</p>
-                    <a href="#shop" class="btn-outline-white" onclick="filterCategory('daily')"
-                        data-en="Shop Daily Socks" data-th="ช้อปถุงเท้าใส่ทุกวัน">Shop Daily Socks</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slider Controls -->
-        <button class="slider-arrow prev" onclick="prevSlide()" aria-label="Previous Slide">
-            <i class="fa-solid fa-chevron-left"></i>
-        </button>
-        <button class="slider-arrow next" onclick="nextSlide()" aria-label="Next Slide">
-            <i class="fa-solid fa-chevron-right"></i>
-        </button>
-
-        <div class="slider-dots" id="sliderDots">
-            <!-- Dots generated dynamically -->
-        </div>
-    </section>
 
     <!-- Brand Intro/Philosophy -->
     <section class="section brand-about" id="about">
@@ -241,6 +179,9 @@
             <div class="products-grid" id="productsGrid">
                 <!-- Products dynamically loaded by JS -->
             </div>
+
+            <!-- Pagination -->
+            <div class="pagination-container" id="paginationContainer"></div>
         </div>
     </section>
 
@@ -327,7 +268,10 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <h3>thumb toe <span>THAILAND</span></h3>
+                    <div class="footer-logo-container">
+                        <img src="assets/Logo3_transparent.png" alt="Thumb Toe Logo" class="footer-logo">
+                        <span class="footer-logo-badge">THAILAND</span>
+                    </div>
                     <p data-en="Korea's original pilates socks brand. Premium grip socks for pilates, yoga, and everyday movement. Thailand Official Distributor."
                         data-th="แบรนด์ถุงเท้าพิลาทิสจากเกาหลี ถุงเท้ากันลื่นพรีเมียมสำหรับพิลาทิส โยคะ และการเคลื่อนไหวทุกวัน ตัวแทนจำหน่ายอย่างเป็นทางการในไทย">
                         Korea's original pilates socks brand. Premium grip socks for pilates, yoga, and everyday

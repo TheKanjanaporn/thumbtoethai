@@ -25,10 +25,11 @@
 .big-toggle-slider {
     position: absolute;
     inset: 0;
-    background: rgba(44, 42, 41, 0.08);
+    background: #cbd5e1; /* Increased default visibility (slate grey instead of pale alpha) */
     border-radius: 34px;
     transition: 0.35s cubic-bezier(0.4,0,0.2,1);
-    border: 1px solid rgba(44, 42, 41, 0.12);
+    border: 1.5px solid #94a3b8; /* Stronger visible border */
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
 }
 
 .big-toggle-slider::before {
@@ -37,23 +38,68 @@
     width: 26px;
     height: 26px;
     left: 3px;
-    top: 3px;
+    top: 2.5px;
     background: #ffffff;
     border-radius: 50%;
     transition: 0.35s cubic-bezier(0.4,0,0.2,1);
-    box-shadow: 0 2px 5px rgba(44, 42, 41, 0.15);
+    box-shadow: 0 2px 5px rgba(44, 42, 41, 0.18);
 }
 
 .big-toggle input:checked + .big-toggle-slider {
     background: var(--admin-success);
     border-color: var(--admin-success);
-    box-shadow: none; /* Minimalist: no aggressive glow */
+    box-shadow: none;
 }
 
 .big-toggle input:checked + .big-toggle-slider::before {
     transform: translateX(30px);
     background: #fff;
     box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+/* Specific Out of Stock Toggle Styling - Premium Contrast */
+.out-of-stock-toggle {
+    background: #8c827a !important; /* Dark warm brown-grey to harmonize with brand color #594a42 and provide premium contrast */
+    border: 2px solid #594a42 !important; /* Rich brand dark-brown outline */
+}
+
+.out-of-stock-toggle::before {
+    background: #ffffff !important;
+    border: 1px solid #594a42 !important;
+    box-shadow: 0 2px 5px rgba(89, 74, 66, 0.3) !important;
+}
+
+.big-toggle input:checked + .out-of-stock-toggle {
+    background: #ef4444 !important; /* Vibrant warning red */
+    border-color: #b91c1c !important; /* Rich crimson border */
+}
+
+.big-toggle input:checked + .out-of-stock-toggle::before {
+    border-color: #b91c1c !important;
+}
+
+/* Premium Out of Stock card container with responsive dynamic hover/active highlights */
+.out-of-stock-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid var(--admin-border);
+    padding: 0.85rem 1.25rem;
+    border-radius: var(--radius);
+    background: var(--admin-surface-2);
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.out-of-stock-container:hover {
+    border-color: var(--admin-border-hover);
+    background: var(--admin-surface-3);
+}
+
+.out-of-stock-container:has(input:checked) {
+    border-color: rgba(239, 68, 68, 0.35);
+    background: rgba(239, 68, 68, 0.05);
 }
 
 
@@ -135,11 +181,13 @@ html, body {
 }
 
 .login-logo {
-    font-size: 2rem;
-    font-weight: 700;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.85rem;
+    font-weight: 600;
     color: var(--admin-accent);
-    letter-spacing: 2px;
+    letter-spacing: 0.5px;
     margin-bottom: 0.25rem;
+    text-transform: lowercase;
 }
 
 .login-logo span {
@@ -258,10 +306,12 @@ html, body {
 }
 
 .sidebar-logo {
-    font-size: 1.4rem;
-    font-weight: 700;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 600;
     color: var(--admin-accent);
-    letter-spacing: 2px;
+    letter-spacing: 0.5px;
+    text-transform: lowercase;
 }
 
 .sidebar-logo span {
@@ -1408,3 +1458,34 @@ html, body {
         font-size: 0.75rem;
     }
 }
+
+/* Drag and Drop Product Reordering Styles */
+.drag-handle {
+    cursor: grab;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    color: var(--admin-text-dim);
+    transition: all var(--transition);
+    user-select: none;
+}
+
+.drag-handle:hover {
+    background-color: var(--admin-accent-light);
+    color: var(--admin-accent);
+}
+
+.drag-handle:active {
+    cursor: grabbing;
+}
+
+.product-list-table tr.dragging td {
+    background: var(--admin-accent-light) !important;
+    opacity: 0.55;
+    border-top: 1.5px dashed var(--admin-accent);
+    border-bottom: 1.5px dashed var(--admin-accent);
+}
+

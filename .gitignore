@@ -17,3 +17,8 @@ node_modules/
 # Wrangler
 .wrangler/
 
+# Agent Scratch
+scratch/
+*.py
+*.xlsx
+*.log
