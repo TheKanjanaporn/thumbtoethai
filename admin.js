@@ -6131,7 +6131,7 @@ function saveCategory(isAutoSave = false) {
     renderCategoryTable();
     updateCategoryDropdown();
     if (oldId && oldId !== newId) renderProductTable();
-    saveToAPI();
+    saveCMSData();
     showToast("บันทึกหมวดหมู่เรียบร้อย", "success");
 }
 
@@ -6145,7 +6145,7 @@ function deleteCategory(id) {
         cmsData.categories = cmsData.categories.filter(c => c.id !== id);
         renderCategoryTable();
         updateCategoryDropdown();
-        saveToAPI();
+        saveCMSData();
         showToast("ลบหมวดหมู่เรียบร้อย", "success");
     }
 }
