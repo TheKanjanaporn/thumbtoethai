@@ -1489,3 +1489,21 @@ html, body {
     border-bottom: 1.5px dashed var(--admin-accent);
 }
 
+
+/* Auto-Save Status Colors */
+.topbar-save-status.saving {
+    color: #f39c12; /* Warning/Orange */
+    opacity: 1;
+}
+.topbar-save-status.pending {
+    color: var(--admin-text-dim);
+    opacity: 1;
+}
+.topbar-save-status.saved {
+    color: var(--admin-success);
+    opacity: 1;
+}
+.topbar-save-status.error {
+    color: var(--admin-danger);
+    opacity: 1;
+}
